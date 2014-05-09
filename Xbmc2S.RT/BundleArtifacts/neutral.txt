@@ -1,0 +1,4 @@
+MainPackage=C:\Users\Steve\Projekte\XBMC2ndScreen\Xbmc2S.RT\bin\Release\Xbmc2S.RT_2.4.0.21_Bundle\Xbmc2S.RT_2.4.0.21_AnyCPU.appx
+SymbolPackage=C:\Users\Steve\Projekte\XBMC2ndScreen\Xbmc2S.RT\AppPackages\Xbmc2S.RT_2.4.0.21_Test\Xbmc2S.RT_2.4.0.21_AnyCPU.appxsym
+ResourcePack=C:\Users\Steve\Projekte\XBMC2ndScreen\Xbmc2S.RT\bin\Release\Xbmc2S.RT_2.4.0.21_Bundle\Xbmc2S.RT_2.4.0.21_scale-140.appx
+ResourcePack=C:\Users\Steve\Projekte\XBMC2ndScreen\Xbmc2S.RT\bin\Release\Xbmc2S.RT_2.4.0.21_Bundle\Xbmc2S.RT_2.4.0.21_scale-180.appx

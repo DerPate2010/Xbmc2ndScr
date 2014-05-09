@@ -1,0 +1,181 @@
+﻿<UserControl
+    x:Class="Xbmc2S.RT.MovieGridCtrl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Xbmc2S.RT"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:data="using:Xbmc2S.RT.SampleDataModel"
+    mc:Ignorable="d"
+    d:DesignHeight="600"
+    d:DesignWidth="400" Name="MGrid"
+    >
+    
+    <UserControl.Resources>
+        <CollectionViewSource
+            x:Name="groupedItemsViewSource"
+            d:Source="{Binding MovieGroup, Source={d:DesignInstance Type=data:SampleDataSource, IsDesignTimeCreatable=True}}"/>
+        <CollectionViewSource
+            x:Name="groupesSource"
+            d:Source="{Binding ABC, Source={d:DesignInstance Type=data:SampleDataSource, IsDesignTimeCreatable=True}}"/>
+    </UserControl.Resources>
+    
+    
+    <Grid>
+        <!-- Horizontal scrolling grid used in most view states -->
+        <SemanticZoom Grid.RowSpan="2"  ViewChangeStarted="SemanticZoom_OnViewChangeStarted">
+            <SemanticZoom.ZoomedInView>
+                <GridView
+            x:Name="itemGridView"
+            AutomationProperties.AutomationId="ItemGridView"
+            AutomationProperties.Name="Grouped Items"
+            Grid.RowSpan="2"
+            Padding="116,0,40,46"
+            ItemsSource="{Binding Source={StaticResource groupedItemsViewSource}}"
+            ItemTemplate="{Binding ElementName=MGrid, Path=ItemTemplate}"
+            SelectionMode="None"
+            IsSwipeEnabled="false"
+            IsItemClickEnabled="True"
+            ItemClick="ItemView_ItemClick"
+            ScrollViewer.IsHorizontalScrollChainingEnabled="False" Header="{Binding ElementName=MGrid,Path=Header}">
+
+                    <!--<GridView.ItemsPanel>
+                <ItemsPanelTemplate>                        
+                    <VirtualizingStackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>-->
+                </GridView>
+
+            </SemanticZoom.ZoomedInView>
+            <SemanticZoom.ZoomedOutView>
+                <GridView ScrollViewer.IsHorizontalScrollChainingEnabled="False" SelectionMode="None" ItemsSource="{Binding Source={StaticResource groupesSource}}">
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                Text="{Binding}"
+                                FontFamily="Segoe UI Light"
+                                FontSize="24"/>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapGrid ItemWidth="75" ItemHeight="75" Orientation="Horizontal" HorizontalChildrenAlignment="Center" MaximumRowsOrColumns="9" VerticalChildrenAlignment="Center" />
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                    <GridView.ItemContainerStyle>
+                        <Style TargetType="GridViewItem">
+                            <Setter Property="Margin" Value="4" />
+                            <Setter Property="Padding" Value="10" />
+                            <Setter Property="BorderBrush" Value="Gray" />
+                            <Setter Property="BorderThickness" Value="1" />
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="VerticalContentAlignment" Value="Center" />
+                        </Style>
+                    </GridView.ItemContainerStyle>
+                </GridView>
+            </SemanticZoom.ZoomedOutView>
+        </SemanticZoom>
+        <!-- Vertical scrolling list only used when snapped -->
+        <SemanticZoom Grid.RowSpan="2" Name="ListZoom" Visibility="Collapsed" ViewChangeStarted="SemanticZoom_OnViewChangeStarted">
+            <SemanticZoom.ZoomedInView>
+                <ListView
+            x:Name="itemListView"
+            AutomationProperties.AutomationId="ItemListView"
+            AutomationProperties.Name="Grouped Items"
+            Grid.Row="1"
+            Visibility="Visible"
+            Margin="0,-10,0,0"
+            Padding="10,0,0,60"
+            ItemsSource="{Binding Source={StaticResource groupedItemsViewSource}}"
+            ItemTemplate="{StaticResource PosterListItemTemplate}"
+            SelectionMode="None"
+            IsSwipeEnabled="false"
+            IsItemClickEnabled="True"
+            ItemClick="ItemView_ItemClick">
+
+                    <ListView.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="7,7,0,0">
+                                        <Button
+                                    AutomationProperties.Name="Group Title"
+                                    Click="Header_Click"
+                                    Style="{StaticResource TextPrimaryButtonStyle}">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Title}" Margin="3,-7,10,10" Style="{StaticResource GroupHeaderTextStyle}" />
+                                                <TextBlock Text="{StaticResource ChevronGlyph}" FontFamily="Segoe UI Symbol" Margin="0,-7,0,10" Style="{StaticResource GroupHeaderTextStyle}"/>
+                                            </StackPanel>
+                                        </Button>
+                                    </Grid>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </ListView.GroupStyle>
+                </ListView>
+            </SemanticZoom.ZoomedInView>
+            <SemanticZoom.ZoomedOutView>
+                    <GridView ScrollViewer.IsHorizontalScrollChainingEnabled="False" SelectionMode="None" ItemsSource="{Binding Source={StaticResource groupesSource}}">
+                        <GridView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                Text="{Binding}"
+                                FontFamily="Segoe UI Light"
+                                FontSize="24"/>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                        <GridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapGrid ItemWidth="75" ItemHeight="75" Orientation="Horizontal" HorizontalChildrenAlignment="Center" MaximumRowsOrColumns="9" VerticalChildrenAlignment="Center" />
+                            </ItemsPanelTemplate>
+                        </GridView.ItemsPanel>
+                        <GridView.ItemContainerStyle>
+                            <Style TargetType="GridViewItem">
+                                <Setter Property="Margin" Value="4" />
+                                <Setter Property="Padding" Value="10" />
+                                <Setter Property="BorderBrush" Value="Gray" />
+                                <Setter Property="BorderThickness" Value="1" />
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="VerticalContentAlignment" Value="Center" />
+                            </Style>
+                        </GridView.ItemContainerStyle>
+                    </GridView>
+                </SemanticZoom.ZoomedOutView>
+        </SemanticZoom>
+        <Border Grid.RowSpan="2" Background="#80000000" Visibility="Collapsed" Name="LoadMessage">
+            <ProgressRing IsActive="True"/>
+        </Border>
+
+
+        <VisualStateManager.VisualStateGroups>
+
+            <!-- Visual states reflect the application's view state -->
+            <VisualStateGroup x:Name="ApplicationViewStates">
+                <VisualState x:Name="Normal"/>
+                <VisualState x:Name="ListView">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ListZoom" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemListView" Storyboard.TargetProperty="Margin">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="110,-10,35,0"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemGridView" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Narrow">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ListZoom" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemGridView" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+    </Grid>
+</UserControl>

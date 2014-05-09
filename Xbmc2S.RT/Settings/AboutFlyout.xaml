@@ -1,0 +1,36 @@
+﻿<SettingsFlyout
+    x:Class="Xbmc2S.RT.Settings.AboutFlyout"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Xbmc2S.RT.Settings"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    IconSource="../Assets/SmallLogo.png"
+    Title="About"
+    HeaderBackground="{StaticResource AccentBrush}"
+    d:DesignWidth="346">
+
+    <!-- This StackPanel acts as a root panel for vertical layout of the content sections -->
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+
+        <!-- The StackPanel(s) below define individual content sections -->
+
+        <!-- Content Section 1-->
+        <StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}">
+
+            <TextBlock
+                   FontSize="16" TextWrapping="Wrap">This is an unofficial companion app for XBMC.
+
+If you experience any problems using this application, please contact me:</TextBlock>
+            <HyperlinkButton Click="Mail_Click">apps@casa-del-stifler.de</HyperlinkButton>
+            <HyperlinkButton Click="Website_Click">www.casa-del-stifler.de</HyperlinkButton>
+            <TextBlock FontSize="16">Movie images:</TextBlock>
+            <HyperlinkButton Click="TvDbCredit_Click">TMDb - The Movie Database</HyperlinkButton>
+
+        </StackPanel>
+
+        <!-- Define more Content Sections below as necessary -->
+
+    </StackPanel>
+</SettingsFlyout>

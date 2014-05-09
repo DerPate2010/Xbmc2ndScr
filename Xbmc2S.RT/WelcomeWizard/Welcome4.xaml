@@ -1,0 +1,63 @@
+﻿<Page
+    x:Class="Xbmc2S.RT.WelcomeWizard.Welcome4"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Xbmc2S.RT.WelcomeWizard"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+    </Page.Resources>
+
+    <Grid Background="{StaticResource AccentBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="140"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!-- Back button and page title -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+                <TextBlock x:Name="pageTitle"  Text="Setup transcoding" Grid.Column="1" IsHitTestVisible="false" Style="{StaticResource PageHeaderTextStyle}"/>
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="1" Margin="120 0 120 50">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <TextBlock Style="{StaticResource BodyTextStyle}">With thiss app you can download videos from your XBMC to your device and watch them later. Some videos in your XBMC library may be incompatible with your tablet or PC on which you installed this app. If you install VLC media player on your XBMC machine, you can convert videos in a compatible format automatically. For more information on the configuration see the tutorial.</TextBlock>
+                <HyperlinkButton Click="ButtonBase_OnClick" Margin="10">Open Tutorial</HyperlinkButton>
+
+                <TextBlock Style="{StaticResource BodyTextStyle}">Please enter the password you have set for you VLC web interface.</TextBlock>
+                <TextBlock ></TextBlock>
+                <PasswordBox Name="VlcPassword"/>
+
+                <TextBlock Style="{StaticResource BodyTextStyle}">If you have configured an other transcoding port than 8080, enter it here.</TextBlock>
+                <TextBlock ></TextBlock>
+                <TextBox Name="VlcPort"/>
+                <Button Margin="15" Click="Button_Click_1">Check connection</Button>
+                <TextBlock Name="StatusHeader" Visibility="Collapsed" Style="{StaticResource SubheaderTextStyle}" Margin="0 10 0 0">Current status:</TextBlock>
+                <TextBlock Name="ConnectedLabel" Visibility="Collapsed" Foreground="Green" Style="{StaticResource BodyTextStyle}">Connected</TextBlock>
+                <TextBlock Name="ErrorLabel" Visibility="Collapsed" Foreground="Yellow" Style="{StaticResource BodyTextStyle}">Unable to connect to VLC. Details:</TextBlock>
+                <TextBlock Name="ErrorDetails" Visibility="Collapsed" Style="{StaticResource BodyTextStyle}"></TextBlock>
+                <TextBlock Name="ErrorHint" Visibility="Collapsed" Style="{StaticResource BodyTextStyle}">This step is optional. You can continue and video conversion will not be available.</TextBlock>
+            </StackPanel>
+            <Button Grid.Row="2" Style="{StaticResource WizardButtonStyle}" Click="Button_Click">Next</Button>
+        </Grid>
+        <Border Grid.RowSpan="2" Visibility="Collapsed" Background="{StaticResource DimBrush}" Name="BusyIndicator">
+            <ProgressRing IsActive="True"></ProgressRing>
+        </Border>
+
+    </Grid>
+</Page>

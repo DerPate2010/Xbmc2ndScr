@@ -1,0 +1,11 @@
+﻿<Window x:Class="XBMCRPC13.Tryout.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <StackPanel>
+            <Button  Click="ButtonBase_OnClick">Test</Button>
+            <Image Name="ThumbImage" Width="200" Height="200"></Image>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4D213AF6-B08B-4DBF-AD96-DD89352B5456}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Xbmc2S.Model</RootNamespace>
+    <AssemblyName>Xbmc2S.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="CurrentConnectionVm.cs" />
+    <Compile Include="Download\DownloadDefinition.cs" />
+    <Compile Include="Download\DownloadItem.cs" />
+    <Compile Include="Download\DownloadManager.cs" />
+    <Compile Include="Download\DownloadStatus.cs" />
+    <Compile Include="Download\DownloadsVm.cs" />
+    <Compile Include="Download\IDownloadManager.cs" />
+    <Compile Include="Download\IDownloadView.cs" />
+    <Compile Include="Download\PresetTypes.cs" />
+    <Compile Include="Download\StartDownloadVm.cs" />
+    <Compile Include="Download\TranscodeItem.cs" />
+    <Compile Include="Download\TransferInfo.cs" />
+    <Compile Include="Download\TransferStatus.cs" />
+    <Compile Include="Download\VlmJob.cs" />
+    <Compile Include="IImageManager.cs" />
+    <Compile Include="IUpnpManager.cs" />
+    <Compile Include="IView.cs" />
+    <Compile Include="Movie\BaseSource.cs" />
+    <Compile Include="Movie\IItemDetails.cs" />
+    <Compile Include="Movie\ILauncher.cs" />
+    <Compile Include="Movie\IMovieItem.cs" />
+    <Compile Include="Movie\IItemsSource.cs" />
+    <Compile Include="Movie\ItemsSourceReference.cs" />
+    <Compile Include="Movie\ItemsSourceType.cs" />
+    <Compile Include="Movie\TmdbItem.cs" />
+    <Compile Include="Movie\TmdbPerson.cs" />
+    <Compile Include="Movie\TmdbResult.cs" />
+    <Compile Include="Movie\TmdbResultActor.cs" />
+    <Compile Include="Music\AlbumSource.cs" />
+    <Compile Include="Music\AlbumVm.cs" />
+    <Compile Include="Movie\AllMovieSource.cs" />
+    <Compile Include="Playback\ICurrentPlayingItem.cs" />
+    <Compile Include="Playback\PlayingUpnpItemVm.cs" />
+    <Compile Include="Playback\PlayingXbmcAudioVm.cs" />
+    <Compile Include="Playback\PlayingXbmcItemVm.cs" />
+    <Compile Include="Playback\PlayingXbmcVideoVm.cs" />
+    <Compile Include="Music\ArtistVm.cs" />
+    <Compile Include="BaseVM.cs" />
+    <Compile Include="BindableBase.cs" />
+    <Compile Include="Movie\CastMovieSource.cs" />
+    <Compile Include="Movie\CastVm.cs" />
+    <Compile Include="Playback\CurrentPlaybackVm.cs" />
+    <Compile Include="PlayToVm.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="RemoteVm.cs" />
+    <Compile Include="Settings\IBackgroundTransfer.cs" />
+    <Compile Include="Settings\IPlatformServices.cs" />
+    <Compile Include="Settings\ISettingsManager.cs" />
+    <Compile Include="Settings\StorageType.cs" />
+    <Compile Include="SmartDispatcher.cs" />
+    <Compile Include="Tv\CastEpisodesSource.cs" />
+    <Compile Include="Tv\CastTTVShowSource.cs" />
+    <Compile Include="Tv\EpisodeVm.cs" />
+    <Compile Include="Music\FirstAlbumVm.cs" />
+    <Compile Include="Movie\FirstCastVm.cs" />
+    <Compile Include="Movie\FirstMovieVm.cs" />
+    <Compile Include="GroupBase.cs" />
+    <Compile Include="Movie\IdMovieSource.cs" />
+    <Compile Include="IMultiCellItem.cs" />
+    <Compile Include="IAppContext.cs" />
+    <Compile Include="MainVm.cs" />
+    <Compile Include="Movie\MovieGroup.cs" />
+    <Compile Include="Movie\MovieSource.cs" />
+    <Compile Include="Movie\MovieVM.cs" />
+    <Compile Include="Music\MusicArtistSource.cs" />
+    <Compile Include="Music\MusicGroup.cs" />
+    <Compile Include="Movie\PeopleGroup.cs" />
+    <Compile Include="PlayableItemVm.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tv\SeasonVm.cs" />
+    <Compile Include="AppContext.cs" />
+    <Compile Include="Settings\SettingsVm.cs" />
+    <Compile Include="Music\SongVm.cs" />
+    <Compile Include="Movie\TitleMovieSource.cs" />
+    <Compile Include="Tv\TVGroup.cs" />
+    <Compile Include="Tv\TvShowIdSource.cs" />
+    <Compile Include="Tv\TvShowSource.cs" />
+    <Compile Include="Tv\TVShowVm.cs" />
+    <Compile Include="Movie\VirtualMovies.cs" />
+    <Compile Include="UpnpManager.cs" />
+    <Compile Include="VideoImages.cs" />
+    <Compile Include="WatchList.cs" />
+    <Compile Include="WatchListItem.cs" />
+    <Compile Include="WatchListVm.cs" />
+    <Compile Include="XbmcServer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Apps\VLCWP7\StreamClient.VLM\StreamingClient.VLM.csproj">
+      <Project>{cc4f00d4-b05a-4cbd-a28a-23093605f044}</Project>
+      <Name>StreamingClient.VLM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Okra.Core\Okra.Portable.csproj">
+      <Project>{ebecf832-39f6-488a-a306-f8341e915003}</Project>
+      <Name>Okra.Portable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TMDbWrapper\TmdbWrapper.Portable.csproj">
+      <Project>{52da4869-9d9a-4328-b603-f66c6bebc44d}</Project>
+      <Name>TmdbWrapper.Portable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbmc2S.Upnp\Xbmc2S.Upnp.csproj">
+      <Project>{c505a2f9-d11d-48c8-964d-a8512ae7cb4e}</Project>
+      <Name>Xbmc2S.Upnp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XBMCRPC13.Portable\XBMCRPC13.Portable.csproj">
+      <Project>{52eb0a62-3be8-4886-852b-ab5a68309360}</Project>
+      <Name>XBMCRPC13.Portable</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Q42.WinRT.Portable">
+      <HintPath>..\packages\Q42.WinRT.Portable.1.0.14.42\lib\portable-net45+wp80+win\Q42.WinRT.Portable.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

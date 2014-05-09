@@ -1,0 +1,39 @@
+﻿<UserControl
+    x:Class="Xbmc2S.RT.JumpList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Xbmc2S.RT"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="140"
+    d:DesignWidth="900">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Common/StandardStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Button">
+                <Setter Property="BorderThickness" Value="0"></Setter>
+                <Setter Property="Background" Value="{StaticResource AccentOverBrush}"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+                <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
+                <Setter Property="FontSize" Value="16"></Setter>
+                <Setter Property="Padding" Value="0 10"></Setter>
+                <Setter Property="MinWidth" Value="109"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Background="{StaticResource AccentBrush}">
+        <StackPanel Name="LinkPanelVertical" VerticalAlignment="Bottom" Style="{StaticResource LayoutRootStyle}" Background="{StaticResource AccentBrush}" Orientation="Horizontal" Margin="15">
+            <Button Content="Homescreen" Click="GotoHomescreen"></Button>
+            <Button Content="Movies"  Click="GotoMovies"></Button>
+            <Button Content="TV Shows"  Click="GotoTvShows"></Button>
+            <Button Content="Music"  Click="GotoMusic"></Button>
+            <Button Content="Downloads" Click="GotoDownloads"></Button>
+            <!--<Button Content="Wishlist" Grid.Column="5" Click="GotoWishList"></Button>-->
+            <Button Content="Watchlist"   Click="GotoWatchList"></Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

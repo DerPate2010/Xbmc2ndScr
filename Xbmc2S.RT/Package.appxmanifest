@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
+  <Identity Name="318SteveNessen.XBMCSecondScreen" Publisher="CN=0818B1CD-7A74-4C98-9CCF-CD4721AFDC87" Version="2.4.0.21" />
+  <Properties>
+    <DisplayName>XBMC Second Screen</DisplayName>
+    <PublisherDisplayName>Steve Nessen</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Xbmc2S.RT.App">
+      <Extensions>
+        <Extension Category="windows.backgroundTasks" EntryPoint="Xbmc2S.RT.Background.DownloadWatcher">
+          <BackgroundTasks>
+            <Task Type="systemEvent" />
+            <Task Type="timer" />
+          </BackgroundTasks>
+        </Extension>
+      </Extensions>
+      <m2:VisualElements DisplayName="XBMC Second Screen" Description="XBMC Second Screen" BackgroundColor="#00294C" ForegroundText="light" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png">
+        <m2:DefaultTile>
+          <m2:ShowNameOnTiles>
+            <m2:ShowOn Tile="square150x150Logo" />
+          </m2:ShowNameOnTiles>
+        </m2:DefaultTile>
+        <m2:LockScreen Notification="badge" BadgeLogo="Assets\BadgeLogo.png" />
+        <m2:SplashScreen BackgroundColor="#00294C" Image="Assets\SplashScreen.png" />
+      </m2:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="videosLibrary" />
+    <Capability Name="musicLibrary" />
+    <Capability Name="privateNetworkClientServer" />
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>

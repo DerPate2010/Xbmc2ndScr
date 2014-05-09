@@ -1,0 +1,4 @@
+MainPackage=C:\Users\Steve\Projekte\XBMC2ndScreen\Xbmc2S.RT\bin\ARM\Release\Xbmc2S.RT_2.2.0.13_Bundle\Xbmc2S.RT_2.2.0.13_ARM.appx
+SymbolPackage=C:\Users\Steve\Projekte\XBMC2ndScreen\Xbmc2S.RT\AppPackages\Xbmc2S.RT_2.2.0.13_Test\Xbmc2S.RT_2.2.0.13_ARM.appxsym
+ResourcePack=C:\Users\Steve\Projekte\XBMC2ndScreen\Xbmc2S.RT\bin\ARM\Release\Xbmc2S.RT_2.2.0.13_Bundle\Xbmc2S.RT_2.2.0.13_scale-140.appx
+ResourcePack=C:\Users\Steve\Projekte\XBMC2ndScreen\Xbmc2S.RT\bin\ARM\Release\Xbmc2S.RT_2.2.0.13_Bundle\Xbmc2S.RT_2.2.0.13_scale-180.appx

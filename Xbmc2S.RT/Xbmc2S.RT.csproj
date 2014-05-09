@@ -1,0 +1,508 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9E618B2D-857E-4CCD-8991-AEEDFD2B2EDF}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Xbmc2S.RT</RootNamespace>
+    <AssemblyName>Xbmc2S.RT</AssemblyName>
+    <DefaultLanguage>en</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>XbmcRt2_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>070EAFB4553A1671B5C890F2259B3FF7AEDAA97C</PackageCertificateThumbprint>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+    <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
+    <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
+    <AppxBundle>Always</AppxBundle>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Music\AlbumPage.xaml.cs">
+      <DependentUpon>AlbumPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\AppBarToggleButton.cs" />
+    <Compile Include="Common\NavigationHelper.cs" />
+    <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="RC\RCControl.xaml.cs">
+      <DependentUpon>RCControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\HomeScreenFlyout.xaml.cs">
+      <DependentUpon>HomeScreenFlyout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TVShows\EpisodeDetailPage.xaml.cs">
+      <DependentUpon>EpisodeDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Files\FileBrowser.xaml.cs">
+      <DependentUpon>FileBrowser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Files\FileDetailPage.xaml.cs">
+      <DependentUpon>FileDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Global\HubPage.xaml.cs">
+      <DependentUpon>HubPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Files\MissingFilesPage.xaml.cs">
+      <DependentUpon>MissingFilesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Global\PlayableItemCommands2.xaml.cs">
+      <DependentUpon>PlayableItemCommands2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Global\CurrentPlayingCtrl.xaml.cs">
+      <DependentUpon>CurrentPlayingCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Movies\GeneralDetailPage.xaml.cs">
+      <DependentUpon>GeneralDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Global\GeneralDetailsView.xaml.cs">
+      <DependentUpon>GeneralDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Global\MovieGridCtrl.xaml.cs">
+      <DependentUpon>MovieGridCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Global\PersonDetailPage.xaml.cs">
+      <DependentUpon>PersonDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Global\ProgressIndicator.xaml.cs">
+      <DependentUpon>ProgressIndicator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SampleDataModel\DetailsSample.cs" />
+    <Compile Include="Search\ActorFilter.cs" />
+    <Compile Include="Search\Filter.cs" />
+    <Compile Include="Search\GlobalSearchBox.xaml.cs">
+      <DependentUpon>GlobalSearchBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Search\MovieExternFilter.cs" />
+    <Compile Include="Search\MovieFullFilter.cs" />
+    <Compile Include="Search\MovieTitleFilter.cs" />
+    <Compile Include="Search\MusicFilter.cs" />
+    <Compile Include="Search\TvShowFilter.cs" />
+    <Compile Include="TVShows\SeasonOverviewPage.xaml.cs">
+      <DependentUpon>SeasonOverviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ConnectionFlyout.xaml.cs">
+      <DependentUpon>ConnectionFlyout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\LibrariesFlyout.xaml.cs">
+      <DependentUpon>LibrariesFlyout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\PrivacyFlyout.xaml.cs">
+      <DependentUpon>PrivacyFlyout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\AboutFlyout.xaml.cs">
+      <DependentUpon>AboutFlyout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Downloads\StartDownloadPage.xaml.cs">
+      <DependentUpon>StartDownloadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Downloads\DownloadsPage.xaml.cs">
+      <DependentUpon>DownloadsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Global\JumpList.xaml.cs">
+      <DependentUpon>JumpList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Music\MusicArtistPage.xaml.cs">
+      <DependentUpon>MusicArtistPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Music\MusicArtistsPage.xaml.cs">
+      <DependentUpon>MusicArtistsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\MultiCellGridView.cs" />
+    <Compile Include="Movies\MovieOverviewPage.xaml.cs">
+      <DependentUpon>MovieOverviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Files\FileTemplateSelector.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Common\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Common\BooleanNegationConverter.cs" />
+    <Compile Include="Common\RichTextColumns.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="SampleDataModel\ImageManSample.cs" />
+    <Compile Include="SampleDataModel\PlayingSample.cs" />
+    <Compile Include="SampleDataModel\SampleDataSource.cs" />
+    <Compile Include="SampleDataModel\AppContextSmaple.cs" />
+    <Compile Include="Search\SearchResultsPage.xaml.cs">
+      <DependentUpon>SearchResultsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SmartDispatcherRT.cs" />
+    <Compile Include="TVShows\TvShowsPage.xaml.cs">
+      <DependentUpon>TvShowsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UPnP\DiscoveryWin8.cs" />
+    <Compile Include="UPnP\Util.cs" />
+    <Compile Include="ViewHandler.cs" />
+    <Compile Include="WelcomeWizard\Welcome3a.xaml.cs">
+      <DependentUpon>Welcome3a.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WelcomeWizard\Welcome5.xaml.cs">
+      <DependentUpon>Welcome5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WelcomeWizard\Welcome4.xaml.cs">
+      <DependentUpon>Welcome4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WelcomeWizard\Welcome3.xaml.cs">
+      <DependentUpon>Welcome3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WelcomeWizard\Welcome2.xaml.cs">
+      <DependentUpon>Welcome2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WelcomeWizard\Welcome1.xaml.cs">
+      <DependentUpon>Welcome1.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="Common\ReadMe.txt" />
+    <None Include="packages.config" />
+    <PRIResource Include="Strings\en\Resources.resw" />
+    <None Include="XbmcRt2_StoreKey.pfx" />
+    <None Include="XbmcRt2_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\2Slogo.svg" />
+    <Content Include="Assets\BadgeLogo.scale-100.png" />
+    <Content Include="Assets\BadgeLogo.scale-140.png" />
+    <Content Include="Assets\BadgeLogo.scale-180.png" />
+    <Content Include="Assets\dir.png" />
+    <Content Include="Assets\file.png" />
+    <Content Include="Assets\Logo.scale-100.png" />
+    <Content Include="Assets\Logo.scale-140.png" />
+    <Content Include="Assets\Logo.scale-180.png" />
+    <Content Include="Assets\Logo.scale-80.png" />
+    <Content Include="Assets\rc2.png" />
+    <Content Include="Assets\SmallLogo.scale-100.png" />
+    <Content Include="Assets\SmallLogo.scale-140.png" />
+    <Content Include="Assets\SmallLogo.scale-180.png" />
+    <Content Include="Assets\SmallLogo.scale-80.png" />
+    <Content Include="Assets\SmallLogo.targetsize-16.png" />
+    <Content Include="Assets\SmallLogo.targetsize-256.png" />
+    <Content Include="Assets\SmallLogo.targetsize-32.png" />
+    <Content Include="Assets\SmallLogo.targetsize-48.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-140.png" />
+    <Content Include="Assets\SplashScreen.scale-180.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-140.png" />
+    <Content Include="Assets\StoreLogo.scale-180.png" />
+    <Content Include="Assets\WatchlistHelp.png" />
+    <Content Include="SampleDataModel\bg.jpg" />
+    <Content Include="SampleDataModel\poster.jpg" />
+    <None Include="Package.StoreAssociation.xml" />
+    <Content Include="Assets\LightGray.png" />
+    <Content Include="Assets\MediumGray.png" />
+    <Content Include="Assets\DarkGray.png" />
+    <Content Include="Assets\Check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Music\AlbumPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\StandardStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RC\RCControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\HomeScreenFlyout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TVShows\EpisodeDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Files\FileBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Files\FileDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Global\HubPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Files\MissingFilesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Global\PlayableItemCommands2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Global\CurrentPlayingCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Movies\GeneralDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Global\GeneralDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Global\MovieGridCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Global\PersonDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Global\ProgressIndicator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Search\GlobalSearchBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TVShows\SeasonOverviewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\ConnectionFlyout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Settings\LibrariesFlyout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Settings\PrivacyFlyout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Settings\AboutFlyout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Downloads\StartDownloadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Downloads\DownloadsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Global\JumpList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Movies\MovieOverviewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Music\MusicArtistPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Music\MusicArtistsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Search\SearchResultsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TVShows\TvShowsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WelcomeWizard\Welcome3a.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WelcomeWizard\Welcome5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WelcomeWizard\Welcome4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WelcomeWizard\Welcome3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WelcomeWizard\Welcome2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WelcomeWizard\Welcome1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Callisto">
+      <HintPath>..\packages\Callisto.1.3.1\lib\winrt45\Callisto.dll</HintPath>
+    </Reference>
+    <Reference Include="WinRTXamlToolkit, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WinRTXamlToolkit.1.5.2.0\lib\netcore45\WinRTXamlToolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Okra.Core\Okra.Portable.csproj">
+      <Project>{ebecf832-39f6-488a-a306-f8341e915003}</Project>
+      <Name>Okra.Portable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TMDbWrapper\TmdbWrapper.Portable.csproj">
+      <Project>{52DA4869-9D9A-4328-B603-F66C6BEBC44D}</Project>
+      <Name>TmdbWrapper.Portable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbmc2S.Model\Xbmc2S.Model.csproj">
+      <Project>{4d213af6-b08b-4dbf-ad96-dd89352b5456}</Project>
+      <Name>Xbmc2S.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbmc2S.RT.Background\Xbmc2S.RT.Background.csproj">
+      <Project>{668646A7-1FFF-4316-AFC0-7A2D144EDB4B}</Project>
+      <Name>Xbmc2S.RT.Background</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbmc2S.RT.PlattformServices\Xbmc2S.RT.PlatformServices.csproj">
+      <Project>{4DBFBD22-DDCB-4E93-83FC-899DC639F93D}</Project>
+      <Name>Xbmc2S.RT.PlatformServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbmc2S.Upnp\Xbmc2S.Upnp.csproj">
+      <Project>{C505A2F9-D11D-48C8-964D-A8512AE7CB4E}</Project>
+      <Name>Xbmc2S.Upnp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XBMCRPC.Portable\XBMCRPC.Portable.csproj">
+      <Project>{1f2a5d2f-f33c-4db0-b2f2-8c75e6f70770}</Project>
+      <Name>XBMCRPC.Portable</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Microsoft.PlayerFramework.Xaml, Version=1.8.2.1">
+      <Name>Microsoft Player Framework</Name>
+    </SDKReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
+    <VisualStudioVersion>12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

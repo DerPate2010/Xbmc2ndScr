@@ -1,0 +1,2 @@
+MainPackage=C:\Users\Steve\Projekte\XBMC2ndScreen\Xbmc2S.RT\bin\x64\Release\Xbmc2S.RT_2.2.0.13_Bundle\Xbmc2S.RT_2.2.0.13_x64.appx
+SymbolPackage=C:\Users\Steve\Projekte\XBMC2ndScreen\Xbmc2S.RT\AppPackages\Xbmc2S.RT_2.2.0.13_Test\Xbmc2S.RT_2.2.0.13_x64.appxsym

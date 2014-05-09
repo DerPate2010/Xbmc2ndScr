@@ -1,0 +1,160 @@
+﻿using System;
+using System.Net;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
+
+namespace XBMCRPC
+{
+
+    public partial class Client:IDisposable
+    {
+        internal IPlatformServices PlatformServices { get; set; }
+        private readonly ConnectionSettings _settings;
+        private uint JsonRpcId = 0;
+
+        %json_methods_properties%
+
+        public Client(ConnectionSettings settings, IPlatformServices platformServices)
+        {
+            PlatformServices = platformServices;
+            Serializer = new JsonSerializer();
+            Serializer.Converters.Add(new StringEnumConverter());
+            _settings = settings;
+            %json_methods_init%
+        }
+
+        internal JsonSerializer Serializer { get; private set; }
+
+        async internal Task<T> GetData<T>(string method, object args)
+        {
+            var request = WebRequest.Create(_settings.JsonInterfaceAddress);
+            request.Credentials = new NetworkCredential(_settings.UserName, _settings.Password);
+            request.ContentType = "application/json";
+            request.Method = "POST";
+            var postStream = await request.GetRequestStreamAsync();
+
+            var requestId = JsonRpcId++;
+            var jsonRequest = BuildJsonPost(method, args, requestId);
+            byte[] postData = Encoding.UTF8.GetBytes(jsonRequest);
+            postStream.Write(postData, 0, postData.Length);
+            postStream.Dispose();
+
+            var response = await request.GetResponseAsync();
+            var responseStream = response.GetResponseStream();
+            string responseData=null;
+            if (responseStream != null)
+            {
+                var streamReader = new StreamReader(responseStream);
+                responseData = streamReader.ReadToEnd();
+                responseStream.Dispose();
+                streamReader.Dispose();
+            }
+
+            response.Dispose();
+
+            JObject query = JObject.Parse(responseData);
+            var error = query["error"];
+            if (error!=null)
+            {
+                throw new Exception(error.ToString());
+            }
+            var result = query["result"].ToObject<T>(Serializer);
+            return result;
+        }
+
+        private static string BuildJsonPost(string method, object args, uint id)
+        {
+            var jsonPost = new JObject {new JProperty("jsonrpc", "2.0"), new JProperty("method", method)};
+            if (args != null)
+            {
+                jsonPost.Add(new JProperty("params", args));
+            }
+            jsonPost.Add(new JProperty("id", id));
+
+            return jsonPost.ToString();
+        }
+
+		
+        private ISocket _clientSocket;
+
+        public async Task StartNotificationListener()
+        {
+            _clientSocket = PlatformServices.SocketFactory.GetSocket();
+            await _clientSocket.ConnectAsync(_settings.Host, _settings.TcpPort);
+
+            var stream = _clientSocket.GetInputStream();
+
+            ListenForNotifications(stream);
+        }
+
+        private async Task ListenForNotifications(Stream stream)
+        {
+            var socketState = new NotificationListenerSocketState();
+            try
+            {
+                while (true)
+                {
+                    var receivedDataLength =
+                        await stream.ReadAsync(socketState.Buffer, 0, NotificationListenerSocketState.BufferSize);
+
+                    var receivedDataJson = Encoding.UTF8.GetString(socketState.Buffer, 0, receivedDataLength);
+
+                    socketState.Builder.Append(receivedDataJson);
+
+                    JObject jObject;
+                    if (TryParseObject(socketState.Builder.ToString(), out jObject))
+                    {
+                        ParseNotification(jObject);
+
+                        socketState = new NotificationListenerSocketState();
+                    }
+                    else
+                    {
+                        // Begin listening for remainder of announcement using same socket state
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private static bool TryParseObject(string announcementJson, out JObject jObject)
+        {
+            jObject = null;
+            try
+            {
+                jObject = JObject.Parse(announcementJson);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        private void ParseNotification(JObject jObject)
+        {
+            if (jObject["method"] != null)
+            {
+                string _method;
+                _method = jObject["method"].ToString();
+                switch (_method)
+                {
+					%notification_invoker%
+                }
+            }
+        }
+
+        public void Dispose()
+        {
+            _clientSocket.Dispose();
+        }
+
+    }
+}

@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="Xbmc2S.RT.WelcomeWizard.Welcome3a"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Xbmc2S.RT.WelcomeWizard"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+    </Page.Resources>
+
+    <Grid Background="{StaticResource AccentBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="140"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!-- Back button and page title -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+                <TextBlock x:Name="pageTitle" Grid.Column="1" IsHitTestVisible="false" Style="{StaticResource PageHeaderTextStyle}">"Play to" setup</TextBlock>
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="1" Margin="120 0 120 50">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <TextBlock Style="{StaticResource BodyTextStyle}">With the basic setup you are able to control the playback on the XBMC device. If you want to play your media on any other device in your local network, you have to enable UPnP on your XBMC settings. For more information on the configuration see the tutorial.</TextBlock>
+                <TextBlock Style="{StaticResource BodyTextStyle}"></TextBlock>
+                <HyperlinkButton Click="ButtonBase_OnClick">Open Tutorial</HyperlinkButton>
+
+                <Button Margin="15" Click="Button_Click_1">Check connection</Button>
+                <TextBlock Name="StatusHeader" Visibility="Collapsed" Style="{StaticResource SubheaderTextStyle}" Margin="0 10 0 0">Current status:</TextBlock>
+                <TextBlock Name="ConnectedLabel" Visibility="Collapsed" Foreground="Green" Style="{StaticResource BodyTextStyle}">UPnP is enabled on your XBMC Media Center</TextBlock>
+                <TextBlock Name="ErrorLabel" Visibility="Collapsed" Foreground="Yellow" Style="{StaticResource BodyTextStyle}">UPnP is disabled on your XBMC Media Center</TextBlock>
+                <TextBlock Name="ErrorDetails" Visibility="Collapsed" Style="{StaticResource BodyTextStyle}">This step is optional. You can continue. If you skip the configuration, you will not be able to play media on this or any other device in your network.</TextBlock>
+
+            </StackPanel>
+            <Button Grid.Row="2" Style="{StaticResource WizardButtonStyle}" Click="Button_Click">Next</Button>
+        </Grid>
+
+        <Border Grid.RowSpan="2" Visibility="Collapsed" Background="{StaticResource DimBrush}" Name="BusyIndicator">
+            <ProgressRing IsActive="True"></ProgressRing>
+        </Border>
+
+    </Grid>
+</Page>
