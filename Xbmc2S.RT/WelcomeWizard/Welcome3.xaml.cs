@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using XBMCRPC;
+using XBMCRPC.Application;
 using XBMCRPC.Application.Property;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -92,7 +93,7 @@ namespace Xbmc2S.RT.WelcomeWizard
 
                 var xbmc = new Client(new PlatformServices.PlatformServices(), host, port, txtUser.Text,
                                       txtPass.Password);
-                var props = await xbmc.Application.GetProperties(new Name[] { XBMCRPC.Application.Property.Name.version });
+                var props = await xbmc.Application.GetProperties( new GetProperties_properties() { XBMCRPC.Application.Property.Name.version });
 
                 App.MainVm.Settings.Set(host, port, txtUser.Text, txtPass.Password);
 

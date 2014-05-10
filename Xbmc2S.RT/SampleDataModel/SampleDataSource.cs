@@ -136,7 +136,7 @@ namespace Xbmc2S.RT.SampleDataModel
 
         private Album GetDummyAlbum()
         {
-            return new Album(){artist = new string[0]};
+            return new Album(){artist = new List<string>()};
         }
 
         IAppContext  _appContext = new AppContextSmaple();
@@ -157,12 +157,12 @@ namespace Xbmc2S.RT.SampleDataModel
                 title = "Titel 123",
                 tagline="bla bla blub",
                 art = new Artwork(),
-                country = new string[] { "Germany" },
+                country = new List<string>() { "Germany" },
                 year = 2000,
-                genre = new string[] { "Schmalz" },
-                writer = new string[] { "writer" },
-                director = new string[] { "director" },
-                studio = new string[] { "Warner Brows." },
+                genre = new List<string>() { "Schmalz" },
+                writer = new List<string>() { "writer" },
+                director = new List<string>() { "director" },
+                studio = new List<string>() { "Warner Brows." },
                 originaltitle = "ORigTitel",
                 runtime = 122,
                 plot = "test test test test test test test test test test test test test test test test test test test test test test test ",

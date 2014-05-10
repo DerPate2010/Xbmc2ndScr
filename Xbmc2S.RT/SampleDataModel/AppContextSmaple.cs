@@ -1,6 +1,7 @@
 ﻿using XBMCRPC;
 using Xbmc2S.Model;
 using Xbmc2S.Model.Download;
+using IPlatformServices = Xbmc2S.Model.IPlatformServices;
 
 namespace Xbmc2S.RT.SampleDataModel
 {

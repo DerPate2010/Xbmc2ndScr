@@ -194,7 +194,7 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Changes the value of a setting
                 /// </summary>
-        public async Task<bool> SetSettingValue(global::System.Collections.Generic.List<XBMCRPC.Setting.Value> value, string setting=null)
+        public async Task<bool> SetSettingValue(global::System.Collections.Generic.List<object> value, string setting=null)
         {
             var jArgs = new JObject();
              if (setting != null)

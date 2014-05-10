@@ -56,7 +56,7 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Toggle fullscreen/GUI
                 /// </summary>
-        public async Task<bool> SetFullscreen(XBMCRPC.Global.Toggle fullscreen=0)
+        public async Task<bool> SetFullscreen(bool fullscreen)
         {
             var jArgs = new JObject();
              if (fullscreen != null)
@@ -64,6 +64,29 @@ namespace XBMCRPC.Methods
                  var jpropfullscreen = JToken.FromObject(fullscreen, _client.Serializer);
                  jArgs.Add(new JProperty("fullscreen", jpropfullscreen));
              }
+            return await _client.GetData<bool>("GUI.SetFullscreen", jArgs);
+        }
+
+                /// <summary>
+                /// Toggle fullscreen/GUI
+                /// </summary>
+        public async Task<bool> SetFullscreen(XBMCRPC.Global.Toggle2 fullscreen)
+        {
+            var jArgs = new JObject();
+             if (fullscreen != null)
+             {
+                 var jpropfullscreen = JToken.FromObject(fullscreen, _client.Serializer);
+                 jArgs.Add(new JProperty("fullscreen", jpropfullscreen));
+             }
+            return await _client.GetData<bool>("GUI.SetFullscreen", jArgs);
+        }
+
+                /// <summary>
+                /// Toggle fullscreen/GUI
+                /// </summary>
+        public async Task<bool> SetFullscreen()
+        {
+            var jArgs = new JObject();
             return await _client.GetData<bool>("GUI.SetFullscreen", jArgs);
         }
 
@@ -84,7 +107,7 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Shows a GUI notification
                 /// </summary>
-        public async Task<string> ShowNotification(string title=null, string message=null, XBMCRPC.GUI.ShowNotification_image image=0, int displaytime=0)
+        public async Task<string> ShowNotification(XBMCRPC.GUI.ShowNotification_image1 image, string title=null, string message=null, int displaytime=0)
         {
             var jArgs = new JObject();
              if (title != null)
@@ -101,6 +124,59 @@ namespace XBMCRPC.Methods
              {
                  var jpropimage = JToken.FromObject(image, _client.Serializer);
                  jArgs.Add(new JProperty("image", jpropimage));
+             }
+             if (displaytime != null)
+             {
+                 var jpropdisplaytime = JToken.FromObject(displaytime, _client.Serializer);
+                 jArgs.Add(new JProperty("displaytime", jpropdisplaytime));
+             }
+            return await _client.GetData<string>("GUI.ShowNotification", jArgs);
+        }
+
+                /// <summary>
+                /// Shows a GUI notification
+                /// </summary>
+        public async Task<string> ShowNotification(string image, string title=null, string message=null, int displaytime=0)
+        {
+            var jArgs = new JObject();
+             if (title != null)
+             {
+                 var jproptitle = JToken.FromObject(title, _client.Serializer);
+                 jArgs.Add(new JProperty("title", jproptitle));
+             }
+             if (message != null)
+             {
+                 var jpropmessage = JToken.FromObject(message, _client.Serializer);
+                 jArgs.Add(new JProperty("message", jpropmessage));
+             }
+             if (image != null)
+             {
+                 var jpropimage = JToken.FromObject(image, _client.Serializer);
+                 jArgs.Add(new JProperty("image", jpropimage));
+             }
+             if (displaytime != null)
+             {
+                 var jpropdisplaytime = JToken.FromObject(displaytime, _client.Serializer);
+                 jArgs.Add(new JProperty("displaytime", jpropdisplaytime));
+             }
+            return await _client.GetData<string>("GUI.ShowNotification", jArgs);
+        }
+
+                /// <summary>
+                /// Shows a GUI notification
+                /// </summary>
+        public async Task<string> ShowNotification(string title=null, string message=null, int displaytime=0)
+        {
+            var jArgs = new JObject();
+             if (title != null)
+             {
+                 var jproptitle = JToken.FromObject(title, _client.Serializer);
+                 jArgs.Add(new JProperty("title", jproptitle));
+             }
+             if (message != null)
+             {
+                 var jpropmessage = JToken.FromObject(message, _client.Serializer);
+                 jArgs.Add(new JProperty("message", jpropmessage));
              }
              if (displaytime != null)
              {

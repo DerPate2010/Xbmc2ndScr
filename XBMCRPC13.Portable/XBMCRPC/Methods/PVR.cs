@@ -304,7 +304,7 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Toggle recording of a channel
                 /// </summary>
-        public async Task<string> Record(XBMCRPC.PVR.Record_channel1 channel, XBMCRPC.Global.Toggle record=0)
+        public async Task<string> Record(bool record, object channel=null)
         {
             var jArgs = new JObject();
              if (record != null)
@@ -323,7 +323,7 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Toggle recording of a channel
                 /// </summary>
-        public async Task<string> Record(int channel, XBMCRPC.Global.Toggle record=0)
+        public async Task<string> Record(XBMCRPC.Global.Toggle2 record, object channel=null)
         {
             var jArgs = new JObject();
              if (record != null)
@@ -342,13 +342,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Toggle recording of a channel
                 /// </summary>
-        public async Task<string> Record(XBMCRPC.Global.Toggle record=0)
+        public async Task<string> Record(object channel=null)
         {
             var jArgs = new JObject();
-             if (record != null)
+             if (channel != null)
              {
-                 var jproprecord = JToken.FromObject(record, _client.Serializer);
-                 jArgs.Add(new JProperty("record", jproprecord));
+                 var jpropchannel = JToken.FromObject(channel, _client.Serializer);
+                 jArgs.Add(new JProperty("channel", jpropchannel));
              }
             return await _client.GetData<string>("PVR.Record", jArgs);
         }
