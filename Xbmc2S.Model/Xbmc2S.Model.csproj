@@ -130,13 +130,13 @@
     <Compile Include="XbmcServer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Apps\VLCWP7\StreamClient.VLM\StreamingClient.VLM.csproj">
-      <Project>{cc4f00d4-b05a-4cbd-a28a-23093605f044}</Project>
-      <Name>StreamingClient.VLM</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Okra.Core\Okra.Portable.csproj">
       <Project>{ebecf832-39f6-488a-a306-f8341e915003}</Project>
       <Name>Okra.Portable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StreamClient.VLM\StreamingClient.VLM.csproj">
+      <Project>{cc4f00d4-b05a-4cbd-a28a-23093605f044}</Project>
+      <Name>StreamingClient.VLM</Name>
     </ProjectReference>
     <ProjectReference Include="..\TMDbWrapper\TmdbWrapper.Portable.csproj">
       <Project>{52da4869-9d9a-4328-b603-f66c6bebc44d}</Project>

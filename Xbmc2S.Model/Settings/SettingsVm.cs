@@ -250,7 +250,7 @@ namespace Xbmc2S.Model
         {
             var settings = new StreamingSettings();
             settings.Host = Host;
-            settings.ControlPort = settings.StreamPort = VlcPort;
+            settings.StreamPort = VlcPort;
             settings.Password = VlcPassword;
             settings.UseQSV = VlcUseQSV;
             settings.PresetHigh();
