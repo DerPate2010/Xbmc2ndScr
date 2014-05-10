@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -9,5 +9,52 @@
     <Import_RootNamespace>Xbmc2S.RT</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Common\AudioSelectionToVisibleConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\BooleanNegationConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\BooleanToCollapsedConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\BooleanToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\CanExecuteToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\HasItemsToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\MultiCellGridView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\NavigationHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\NullToCollapsedConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ObservableDictionary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\PlayableItemToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\RelayCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\SuspensionManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Global\CurrentPlayingCtrl.xaml.cs">
+      <DependentUpon>CurrentPlayingCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SampleDataModel\AppContextSmaple.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SampleDataModel\DetailsSample.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SampleDataModel\ImageManSample.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SampleDataModel\PlayingSample.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SampleDataModel\SampleDataSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SmartDispatcherRT.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UPnP\Util.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)SampleDataModel\bg.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)SampleDataModel\poster.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Common\StandardStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Global\CurrentPlayingCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
   </ItemGroup>
 </Project>

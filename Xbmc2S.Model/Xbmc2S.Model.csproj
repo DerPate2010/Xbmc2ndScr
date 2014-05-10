@@ -153,7 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Q42.WinRT.Portable">
-      <HintPath>..\packages\Q42.WinRT.Portable.1.0.14.42\lib\portable-net45+wp80+win\Q42.WinRT.Portable.dll</HintPath>
+      <HintPath>..\packages\Q42.WinRT.Portable.1.2.3.42\lib\portable-net45+win+wpa81+wp80\Q42.WinRT.Portable.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

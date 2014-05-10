@@ -81,10 +81,34 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <ProjectReference Include="..\Okra.Core\Okra.Portable.csproj">
+      <Project>{ebecf832-39f6-488a-a306-f8341e915003}</Project>
+      <Name>Okra.Portable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TMDbWrapper\TmdbWrapper.Portable.csproj">
+      <Project>{52DA4869-9D9A-4328-B603-F66C6BEBC44D}</Project>
+      <Name>TmdbWrapper.Portable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbmc2S.Model\Xbmc2S.Model.csproj">
+      <Project>{4d213af6-b08b-4dbf-ad96-dd89352b5456}</Project>
+      <Name>Xbmc2S.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbmc2S.PlatformServices\Xbmc2S.PlatformServices.csproj">
+      <Project>{271e2a1c-492f-4881-92e7-170b2705e88d}</Project>
+      <Name>Xbmc2S.PlatformServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbmc2S.Upnp\Xbmc2S.Upnp.csproj">
+      <Project>{c505a2f9-d11d-48c8-964d-a8512ae7cb4e}</Project>
+      <Name>Xbmc2S.Upnp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XBMCRPC13.Portable\XBMCRPC13.Portable.csproj">
+      <Project>{52EB0A62-3BE8-4886-852B-AB5A68309360}</Project>
+      <Name>XBMCRPC13.Portable</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
+    <Compile Include="Global\HubPage.xaml.cs">
+      <DependentUpon>HubPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -105,14 +129,25 @@
     <Content Include="Assets\WideLogo.scale-240.png" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <Page Include="Global\HubPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </ApplicationDefinition>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Microsoft.PlayerFramework.Xaml, Version=2.0.0.0">
+      <Name>Microsoft Player Framework</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Search\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.WP.cs" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

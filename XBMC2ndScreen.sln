@@ -44,6 +44,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xbmc2S.RT.WindowsPhone", "X
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamingClient.VLM", "StreamClient.VLM\StreamingClient.VLM.csproj", "{CC4F00D4-B05A-4CBD-A28A-23093605F044}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WP", "WP", "{B97025E4-58B2-4C7D-B99D-31E4EE9FA10D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xbmc2S.PlatformServices", "Xbmc2S.PlatformServices\Xbmc2S.PlatformServices.csproj", "{271E2A1C-492F-4881-92E7-170B2705E88D}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Xbmc2S.RT.Shared\Xbmc2S.RT.Shared.projitems*{b12b662b-0483-4066-89ac-1861c67c4aa3}*SharedItemsImports = 4
@@ -272,6 +276,20 @@ Global
 		{CC4F00D4-B05A-4CBD-A28A-23093605F044}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{CC4F00D4-B05A-4CBD-A28A-23093605F044}.Release|x64.ActiveCfg = Release|Any CPU
 		{CC4F00D4-B05A-4CBD-A28A-23093605F044}.Release|x86.ActiveCfg = Release|Any CPU
+		{271E2A1C-492F-4881-92E7-170B2705E88D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{271E2A1C-492F-4881-92E7-170B2705E88D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{271E2A1C-492F-4881-92E7-170B2705E88D}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{271E2A1C-492F-4881-92E7-170B2705E88D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{271E2A1C-492F-4881-92E7-170B2705E88D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{271E2A1C-492F-4881-92E7-170B2705E88D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{271E2A1C-492F-4881-92E7-170B2705E88D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{271E2A1C-492F-4881-92E7-170B2705E88D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{271E2A1C-492F-4881-92E7-170B2705E88D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{271E2A1C-492F-4881-92E7-170B2705E88D}.Release|ARM.ActiveCfg = Release|Any CPU
+		{271E2A1C-492F-4881-92E7-170B2705E88D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{271E2A1C-492F-4881-92E7-170B2705E88D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{271E2A1C-492F-4881-92E7-170B2705E88D}.Release|x64.ActiveCfg = Release|Any CPU
+		{271E2A1C-492F-4881-92E7-170B2705E88D}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -287,5 +305,6 @@ Global
 		{52EB0A62-3BE8-4886-852B-AB5A68309360} = {F065CE76-CFD6-4103-93F0-D63947D5E118}
 		{A50460FE-F74F-4185-B431-57836C425A0C} = {F065CE76-CFD6-4103-93F0-D63947D5E118}
 		{CC4F00D4-B05A-4CBD-A28A-23093605F044} = {D02D4D21-D31E-4FA4-9CB9-DB47AAC3376A}
+		{271E2A1C-492F-4881-92E7-170B2705E88D} = {B97025E4-58B2-4C7D-B99D-31E4EE9FA10D}
 	EndGlobalSection
 EndGlobal
