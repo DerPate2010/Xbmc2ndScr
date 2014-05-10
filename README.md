@@ -5,6 +5,6 @@ To use this app, you need a working XBMC installation. For the transcoding featu
 
 This project contains a JsonRPC-Client-Generator. This tool creates a .Net client access library for the XBMC API automatically.
 
-Requires:
-Visual Studio 2013 Update 2
-Player Framework (https://playerframework.codeplex.com/)
+Required Tools:
+* Visual Studio 2013 Update 2
+* Player Framework (https://playerframework.codeplex.com/)
