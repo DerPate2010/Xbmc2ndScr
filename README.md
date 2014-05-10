@@ -11,4 +11,4 @@ The entry project is Xbmc2S.RT.csproj. This project contains a JsonRPC-Client-Ge
 
 Required Tools:
 * Visual Studio 2013 Update 2
-* Player Framework (https://playerframework.codeplex.com/)
+* Player Framework v2 (https://playerframework.codeplex.com/)
