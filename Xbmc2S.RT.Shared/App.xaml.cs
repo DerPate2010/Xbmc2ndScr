@@ -6,7 +6,6 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Threading;
-using Windows.UI.ApplicationSettings;
 using Windows.UI.Popups;
 using System;
 using Windows.ApplicationModel;
@@ -21,11 +20,9 @@ using Xbmc2S.RT.Background;
 using Xbmc2S.RT.Common;
 using Xbmc2S.RT.PlatformServices;
 using Xbmc2S.RT.SampleDataModel;
-using Xbmc2S.RT.Search;
-using Xbmc2S.RT.Settings;
 using Xbmc2S.RT.UPnP;
 // The Grid App template is documented at http://go.microsoft.com/fwlink/?LinkId=234226
-using Xbmc2S.RT.WelcomeWizard;
+
 
 
 namespace Xbmc2S.RT
@@ -69,7 +66,7 @@ namespace Xbmc2S.RT
             {
                 if (_platformServices == null)
                 {
-                    _platformServices = new PlatformServices.PlatformServices(ProgressIndicator);
+                    _platformServices = new PlatformServices.PlatformServices(ProgressIndicator, GetLauncher());
                 }
                 return _platformServices;
             }
@@ -145,8 +142,10 @@ namespace Xbmc2S.RT
                 // Place the frame in the current Window
                 grid = new Grid();
                 grid.Children.Add(RootFrame);
-                grid.Children.Add(ProgressIndicator);
-
+                if (ProgressIndicator is UIElement)
+                {
+                    grid.Children.Add((UIElement) ProgressIndicator);
+                }
                 Window.Current.Content = grid;
 
                 DoPlatformDependentInitialization();
@@ -164,17 +163,6 @@ namespace Xbmc2S.RT
             view.GotoWelcomeWizard();
         }
 
-        private static ProgressIndicator ProgressIndicator
-        {
-            get
-            {
-                if (_progressIndicator == null)
-                {
-                    _progressIndicator = new ProgressIndicator() { HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Top };
-                }
-                return _progressIndicator;
-            }
-        }
 
 
         internal static Frame RootFrame { get; private set; }

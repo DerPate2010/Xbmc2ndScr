@@ -145,9 +145,6 @@
     <Compile Include="Global\PlayableItemCommands2.xaml.cs">
       <DependentUpon>PlayableItemCommands2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Global\CurrentPlayingCtrl.xaml.cs">
-      <DependentUpon>CurrentPlayingCtrl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Movies\GeneralDetailPage.xaml.cs">
       <DependentUpon>GeneralDetailPage.xaml</DependentUpon>
     </Compile>
@@ -317,10 +314,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Global\CurrentPlayingCtrl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Movies\GeneralDetailPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -444,9 +437,13 @@
       <Project>{4d213af6-b08b-4dbf-ad96-dd89352b5456}</Project>
       <Name>Xbmc2S.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Xbmc2S.RT.Background\Xbmc2S.RT.Background.csproj">
+    <ProjectReference Include="..\Xbmc2S.PlatformServices\Xbmc2S.PlatformServices.csproj">
+      <Project>{271e2a1c-492f-4881-92e7-170b2705e88d}</Project>
+      <Name>Xbmc2S.PlatformServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xbmc2S.RT.Background\Xbmc2S.Background.csproj">
       <Project>{668646A7-1FFF-4316-AFC0-7A2D144EDB4B}</Project>
-      <Name>Xbmc2S.RT.Background</Name>
+      <Name>Xbmc2S.Background</Name>
     </ProjectReference>
     <ProjectReference Include="..\Xbmc2S.RT.PlattformServices\Xbmc2S.RT.PlatformServices.csproj">
       <Project>{4DBFBD22-DDCB-4E93-83FC-899DC639F93D}</Project>

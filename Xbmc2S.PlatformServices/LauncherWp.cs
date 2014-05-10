@@ -11,7 +11,7 @@ using Xbmc2S.Model;
 
 namespace Xbmc2S.RT.PlatformServices
 {
-    class LauncherRT:ILauncher
+    public class LauncherWp:ILauncher
     {
         public async Task LaunchUriAsync(Uri uri)
         {
@@ -40,11 +40,15 @@ namespace Xbmc2S.RT.PlatformServices
             var options = new LauncherOptions();
             options.ContentType = mimetype;
             options.DisplayApplicationPicker = false;
-            //options.DesiredRemainingView = ViewSizePreference.UseNone;
+            ModifyOptions(options);
             return await Launcher.LaunchUriAsync(uri, options);
         }
 
-        private static async Task<bool> LaunchViaM3U(Uri uri)
+        protected virtual void ModifyOptions(LauncherOptions options)
+        {
+        }
+
+        private async Task<bool> LaunchViaM3U(Uri uri)
         {
             var file =
                 await
@@ -59,9 +63,7 @@ namespace Xbmc2S.RT.PlatformServices
             }
 
             var options = new LauncherOptions();
-
-            //options.DesiredRemainingView = ViewSizePreference.UseNone;
-
+            ModifyOptions(options);
             return await Launcher.LaunchFileAsync(file, options);
         }
     }

@@ -121,35 +121,18 @@
       <Project>{4D213AF6-B08B-4DBF-AD96-DD89352B5456}</Project>
       <Name>Xbmc2S.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Xbmc2S.PlatformServices\Xbmc2S.PlatformServices.csproj">
+      <Project>{271e2a1c-492f-4881-92e7-170b2705e88d}</Project>
+      <Name>Xbmc2S.PlatformServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XBMCRPC13.Portable\XBMCRPC13.Portable.csproj">
       <Project>{52eb0a62-3be8-4886-852b-ab5a68309360}</Project>
       <Name>XBMCRPC13.Portable</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BackgroundTransferManager.cs" />
-    <Compile Include="DownloadProgress.cs" />
-    <Compile Include="ImageManager.cs" />
-    <Compile Include="ImageManagerUri.cs" />
-    <Compile Include="ImageManagerUriCached.cs" />
     <Compile Include="LauncherRT.cs" />
-    <Compile Include="PlatformServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SettingsManager.cs" />
-    <Compile Include="SocketFactory.cs" />
-    <Compile Include="SocketWrapper.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Q42.WinRT, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Q42.WinRT.1.2.4.42\lib\portable-win81+wpa81\Q42.WinRT.dll</HintPath>
-    </Reference>
-    <Reference Include="Q42.WinRT.Portable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Q42.WinRT.Portable.1.2.3.42\lib\portable-net45+win+wpa81+wp80\Q42.WinRT.Portable.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

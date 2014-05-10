@@ -13,7 +13,7 @@
     <AssemblyName>Xbmc2S.RT.Background</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <SccProjectName>
     </SccProjectName>
     <SccLocalPath>
@@ -24,8 +24,9 @@
     </SccProvider>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <TargetPlatformVersion>8.1</TargetPlatformVersion>
-    <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <TargetFrameworkProfile>Profile32</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -121,9 +122,9 @@
       <Name>Xbmc2S.Model</Name>
       <Private>True</Private>
     </ProjectReference>
-    <ProjectReference Include="..\Xbmc2S.RT.PlattformServices\Xbmc2S.RT.PlatformServices.csproj">
-      <Project>{4DBFBD22-DDCB-4E93-83FC-899DC639F93D}</Project>
-      <Name>Xbmc2S.RT.PlatformServices</Name>
+    <ProjectReference Include="..\Xbmc2S.PlatformServices\Xbmc2S.PlatformServices.csproj">
+      <Project>{271e2a1c-492f-4881-92e7-170b2705e88d}</Project>
+      <Name>Xbmc2S.PlatformServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\XBMCRPC13.Portable\XBMCRPC13.Portable.csproj">
       <Project>{52eb0a62-3be8-4886-852b-ab5a68309360}</Project>
@@ -143,10 +144,14 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <TargetPlatform Include="Windows, Version=8.1" />
+    <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

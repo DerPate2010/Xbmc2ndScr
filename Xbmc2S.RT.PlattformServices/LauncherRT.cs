@@ -11,58 +11,12 @@ using Xbmc2S.Model;
 
 namespace Xbmc2S.RT.PlatformServices
 {
-    class LauncherRT:ILauncher
+    public class LauncherRT:LauncherWp
     {
-        public async Task LaunchUriAsync(Uri uri)
+        protected override void ModifyOptions(LauncherOptions options)
         {
-            if (uri.IsFile)
-            {
-                StorageFile sf = await StorageFile.GetFileFromPathAsync(uri.LocalPath);
-                await Launcher.LaunchFileAsync(sf);
-            }
-            else
-            {
-                await Launcher.LaunchUriAsync(uri);    
-            }
-            
-        }
-
-        public async Task LaunchUriAsync(Uri uri, string mimetype)
-        {
-            if (!await LaunchViaM3U(uri))
-            {
-                await LaunchUriDirect(uri, mimetype);
-            }
-        }
-
-        private async Task<bool> LaunchUriDirect(Uri uri, string mimetype)
-        {
-            var options = new LauncherOptions();
-            options.ContentType = mimetype;
-            options.DisplayApplicationPicker = false;
+            base.ModifyOptions(options);
             options.DesiredRemainingView = ViewSizePreference.UseNone;
-            return await Launcher.LaunchUriAsync(uri, options);
-        }
-
-        private static async Task<bool> LaunchViaM3U(Uri uri)
-        {
-            var file =
-                await
-                    ApplicationData.Current.TemporaryFolder.CreateFileAsync("file.m3u", CreationCollisionOption.ReplaceExisting);
-
-            using (var stream = await file.OpenStreamForWriteAsync())
-            {
-                using (StreamWriter sw = new StreamWriter(stream))
-                {
-                    sw.WriteLine(uri.ToString());
-                }
-            }
-
-            var options = new LauncherOptions();
-
-            options.DesiredRemainingView = ViewSizePreference.UseNone;
-
-            return await Launcher.LaunchFileAsync(file, options);
         }
     }
 }

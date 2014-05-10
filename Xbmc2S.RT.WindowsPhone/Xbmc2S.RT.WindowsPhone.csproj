@@ -97,6 +97,10 @@
       <Project>{271e2a1c-492f-4881-92e7-170b2705e88d}</Project>
       <Name>Xbmc2S.PlatformServices</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Xbmc2S.RT.Background\Xbmc2S.Background.csproj">
+      <Project>{668646a7-1fff-4316-afc0-7a2d144edb4b}</Project>
+      <Name>Xbmc2S.Background</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Xbmc2S.Upnp\Xbmc2S.Upnp.csproj">
       <Project>{c505a2f9-d11d-48c8-964d-a8512ae7cb4e}</Project>
       <Name>Xbmc2S.Upnp</Name>
@@ -109,9 +113,6 @@
   <ItemGroup>
     <Compile Include="Global\HubPage.xaml.cs">
       <DependentUpon>HubPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -130,10 +131,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Global\HubPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

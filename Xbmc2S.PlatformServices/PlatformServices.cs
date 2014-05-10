@@ -27,16 +27,20 @@ namespace Xbmc2S.RT.PlatformServices
         public IBackgroundTransfer BackgroundTransfer { get; private set; }
         public ILauncher Launcher { get; private set; }
 
-        public PlatformServices()
+        private PlatformServices(ILauncher launcher)
         {
-            Launcher = new LauncherRT();
-            SettingsManager= new SettingsManager();
+            Launcher = launcher;
+            SettingsManager = new SettingsManager();
             SocketFactory = new SocketFactory();
-            BackgroundTransfer= new BackgroundTransferManager();
-            _connectionStatus= new NoConnectionStatus();
+            BackgroundTransfer = new BackgroundTransferManager();
+            _connectionStatus = new NoConnectionStatus();
         }
 
-        public PlatformServices(IConnectionStatus connectionStatus):this()
+        public PlatformServices():this(new LauncherWp())
+        {
+        }
+
+        public PlatformServices(IConnectionStatus connectionStatus, ILauncher launcher):this(launcher)
         {
             _connectionStatus = connectionStatus;
         }
