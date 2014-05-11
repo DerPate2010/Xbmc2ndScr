@@ -117,32 +117,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.RT.cs" />
-    <Compile Include="Settings\HomeScreenFlyout.xaml.cs">
-      <DependentUpon>HomeScreenFlyout.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Global\ProgressIndicator.xaml.cs">
       <DependentUpon>ProgressIndicator.xaml</DependentUpon>
     </Compile>
     <Compile Include="Search\GlobalSearchBox.xaml.cs">
       <DependentUpon>GlobalSearchBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Settings\ConnectionFlyout.xaml.cs">
-      <DependentUpon>ConnectionFlyout.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Settings\LibrariesFlyout.xaml.cs">
-      <DependentUpon>LibrariesFlyout.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Settings\PrivacyFlyout.xaml.cs">
-      <DependentUpon>PrivacyFlyout.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Settings\AboutFlyout.xaml.cs">
-      <DependentUpon>AboutFlyout.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Global\JumpList.xaml.cs">
       <DependentUpon>JumpList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UPnP\DiscoveryWin8.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -156,31 +140,11 @@
     <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Settings\HomeScreenFlyout.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Global\ProgressIndicator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Search\GlobalSearchBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Settings\ConnectionFlyout.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Settings\LibrariesFlyout.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Settings\PrivacyFlyout.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Settings\AboutFlyout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -100,6 +100,8 @@ namespace Xbmc2S.RT
         {
 #if !WINDOWS_PHONE_APP
             Windows.UI.ApplicationSettings.SettingsPane.Show();
+#else
+            Frame.Navigate(typeof(SettingsPage));
 #endif
         }
 

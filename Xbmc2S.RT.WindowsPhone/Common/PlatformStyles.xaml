@@ -16,5 +16,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <Style x:Key="SettingsFlyoutSectionStyle" TargetType="StackPanel">
+        <Setter Property="Margin" Value="0,0,0,39"/>
+    </Style>
 </ResourceDictionary>
