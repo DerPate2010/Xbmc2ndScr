@@ -122,6 +122,7 @@ namespace Xbmc2S.RT
             {
                 // Create a Frame to act as the navigation context and navigate to the first page
                 RootFrame = new Frame();
+                RootFrame.Navigated += RootFrame_Navigated;
                 //Associate the frame with a SuspensionManager key                                
                 SuspensionManager.RegisterFrame(RootFrame, "AppFrame");
 

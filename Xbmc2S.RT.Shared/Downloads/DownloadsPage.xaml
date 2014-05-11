@@ -279,11 +279,7 @@
         </DataTemplate>
 
     </Page.Resources>
-    <Page.TopAppBar>
-        <AppBar>
-            <local:JumpList/>
-        </AppBar>
-    </Page.TopAppBar>
+
     <Page.BottomAppBar>
         <AppBar IsSticky="True">
             <Grid>

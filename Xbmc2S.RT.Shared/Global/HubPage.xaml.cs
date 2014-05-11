@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.System;
-using Windows.UI.ApplicationSettings;
 using Microsoft.PlayerFramework;
 using Xbmc2S.Model;
 using Xbmc2S.RT.Common;
@@ -99,7 +98,9 @@ namespace Xbmc2S.RT
 
         private void ShowSettings()
         {
-            SettingsPane.Show();
+#if !WINDOWS_PHONE_APP
+            Windows.UI.ApplicationSettings.SettingsPane.Show();
+#endif
         }
 
         private void ShowMissingFiles()

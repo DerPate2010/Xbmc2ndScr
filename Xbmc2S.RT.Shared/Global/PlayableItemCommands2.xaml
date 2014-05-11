@@ -13,8 +13,8 @@
     </UserControl.Resources>
 
 
-    <controls1:WrapPanel  >
-            <Button  Style="{StaticResource PlayInlineButtonStyle}" Command="{Binding Play}" x:Uid="PlayButton"></Button>
+    <controls1:WrapPanel>
+            <Button Style="{StaticResource PlayInlineButtonStyle}" Command="{Binding Play}" x:Uid="PlayButton"></Button>
         <Button  Style="{StaticResource PlayToInlineButtonStyle}" Command="{Binding PlayToSelection}" Click="ButtonBase_OnClick" x:Uid="PlayToButton">
                 <Button.Content>
                     <Grid>

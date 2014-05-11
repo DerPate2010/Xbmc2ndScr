@@ -117,61 +117,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.RT.cs" />
-    <Compile Include="Global\HubPage.xaml.cs">
-      <DependentUpon>HubPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Music\AlbumPage.xaml.cs">
-      <DependentUpon>AlbumPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Common\AppBarToggleButton.cs" />
-    <Compile Include="RC\RCControl.xaml.cs">
-      <DependentUpon>RCControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Settings\HomeScreenFlyout.xaml.cs">
       <DependentUpon>HomeScreenFlyout.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TVShows\EpisodeDetailPage.xaml.cs">
-      <DependentUpon>EpisodeDetailPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Files\FileBrowser.xaml.cs">
-      <DependentUpon>FileBrowser.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Files\FileDetailPage.xaml.cs">
-      <DependentUpon>FileDetailPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Files\MissingFilesPage.xaml.cs">
-      <DependentUpon>MissingFilesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Global\PlayableItemCommands2.xaml.cs">
-      <DependentUpon>PlayableItemCommands2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Movies\GeneralDetailPage.xaml.cs">
-      <DependentUpon>GeneralDetailPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Global\GeneralDetailsView.xaml.cs">
-      <DependentUpon>GeneralDetailsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Global\MovieGridCtrl.xaml.cs">
-      <DependentUpon>MovieGridCtrl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Global\PersonDetailPage.xaml.cs">
-      <DependentUpon>PersonDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Global\ProgressIndicator.xaml.cs">
       <DependentUpon>ProgressIndicator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Search\ActorFilter.cs" />
-    <Compile Include="Search\Filter.cs" />
     <Compile Include="Search\GlobalSearchBox.xaml.cs">
       <DependentUpon>GlobalSearchBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Search\MovieExternFilter.cs" />
-    <Compile Include="Search\MovieFullFilter.cs" />
-    <Compile Include="Search\MovieTitleFilter.cs" />
-    <Compile Include="Search\MusicFilter.cs" />
-    <Compile Include="Search\TvShowFilter.cs" />
-    <Compile Include="TVShows\SeasonOverviewPage.xaml.cs">
-      <DependentUpon>SeasonOverviewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Settings\ConnectionFlyout.xaml.cs">
       <DependentUpon>ConnectionFlyout.xaml</DependentUpon>
@@ -185,160 +138,33 @@
     <Compile Include="Settings\AboutFlyout.xaml.cs">
       <DependentUpon>AboutFlyout.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Downloads\StartDownloadPage.xaml.cs">
-      <DependentUpon>StartDownloadPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Downloads\DownloadsPage.xaml.cs">
-      <DependentUpon>DownloadsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Global\JumpList.xaml.cs">
       <DependentUpon>JumpList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Music\MusicArtistPage.xaml.cs">
-      <DependentUpon>MusicArtistPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Music\MusicArtistsPage.xaml.cs">
-      <DependentUpon>MusicArtistsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Movies\MovieOverviewPage.xaml.cs">
-      <DependentUpon>MovieOverviewPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Files\FileTemplateSelector.cs" />
-    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Common\BindableBase.cs" />
-    <Compile Include="Common\RichTextColumns.cs" />
-    <Compile Include="Search\SearchResultsPage.xaml.cs">
-      <DependentUpon>SearchResultsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TVShows\TvShowsPage.xaml.cs">
-      <DependentUpon>TvShowsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UPnP\DiscoveryWin8.cs" />
-    <Compile Include="WelcomeWizard\Welcome3a.xaml.cs">
-      <DependentUpon>Welcome3a.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WelcomeWizard\Welcome5.xaml.cs">
-      <DependentUpon>Welcome5.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WelcomeWizard\Welcome4.xaml.cs">
-      <DependentUpon>Welcome4.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WelcomeWizard\Welcome3.xaml.cs">
-      <DependentUpon>Welcome3.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WelcomeWizard\Welcome2.xaml.cs">
-      <DependentUpon>Welcome2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WelcomeWizard\Welcome1.xaml.cs">
-      <DependentUpon>Welcome1.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="Common\ReadMe.txt" />
     <None Include="packages.config" />
-    <PRIResource Include="Strings\en\Resources.resw" />
     <None Include="XbmcRt2_StoreKey.pfx" />
     <None Include="XbmcRt2_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\2Slogo.svg" />
-    <Content Include="Assets\BadgeLogo.scale-100.png" />
-    <Content Include="Assets\BadgeLogo.scale-140.png" />
-    <Content Include="Assets\BadgeLogo.scale-180.png" />
-    <Content Include="Assets\dir.png" />
-    <Content Include="Assets\file.png" />
-    <Content Include="Assets\Logo.scale-100.png" />
-    <Content Include="Assets\Logo.scale-140.png" />
-    <Content Include="Assets\Logo.scale-180.png" />
-    <Content Include="Assets\Logo.scale-80.png" />
-    <Content Include="Assets\rc2.png" />
-    <Content Include="Assets\SmallLogo.scale-100.png" />
-    <Content Include="Assets\SmallLogo.scale-140.png" />
-    <Content Include="Assets\SmallLogo.scale-180.png" />
-    <Content Include="Assets\SmallLogo.scale-80.png" />
-    <Content Include="Assets\SmallLogo.targetsize-16.png" />
-    <Content Include="Assets\SmallLogo.targetsize-256.png" />
-    <Content Include="Assets\SmallLogo.targetsize-32.png" />
-    <Content Include="Assets\SmallLogo.targetsize-48.png" />
-    <Content Include="Assets\SplashScreen.scale-100.png" />
-    <Content Include="Assets\SplashScreen.scale-140.png" />
-    <Content Include="Assets\SplashScreen.scale-180.png" />
-    <Content Include="Assets\StoreLogo.scale-100.png" />
-    <Content Include="Assets\StoreLogo.scale-140.png" />
-    <Content Include="Assets\StoreLogo.scale-180.png" />
-    <Content Include="Assets\WatchlistHelp.png" />
     <None Include="Package.StoreAssociation.xml" />
-    <Content Include="Assets\LightGray.png" />
-    <Content Include="Assets\MediumGray.png" />
-    <Content Include="Assets\DarkGray.png" />
-    <Content Include="Assets\Check.png" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Global\HubPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Music\AlbumPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="RC\RCControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Settings\HomeScreenFlyout.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="TVShows\EpisodeDetailPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Files\FileBrowser.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Files\FileDetailPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Files\MissingFilesPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Global\PlayableItemCommands2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Movies\GeneralDetailPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Global\GeneralDetailsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Global\MovieGridCtrl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Global\PersonDetailPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Global\ProgressIndicator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Search\GlobalSearchBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TVShows\SeasonOverviewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -358,59 +184,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Downloads\StartDownloadPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Downloads\DownloadsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Global\JumpList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Movies\MovieOverviewPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Music\MusicArtistPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Music\MusicArtistsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Search\SearchResultsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TVShows\TvShowsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WelcomeWizard\Welcome3a.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="WelcomeWizard\Welcome5.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="WelcomeWizard\Welcome4.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="WelcomeWizard\Welcome3.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="WelcomeWizard\Welcome2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="WelcomeWizard\Welcome1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -462,6 +236,29 @@
     <SDKReference Include="Microsoft.PlayerFramework.Xaml, Version=2.0.0.0">
       <Name>Microsoft Player Framework</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\BadgeLogo.scale-100.png" />
+    <Content Include="Assets\BadgeLogo.scale-140.png" />
+    <Content Include="Assets\BadgeLogo.scale-180.png" />
+    <Content Include="Assets\Logo.scale-100.png" />
+    <Content Include="Assets\Logo.scale-140.png" />
+    <Content Include="Assets\Logo.scale-180.png" />
+    <Content Include="Assets\Logo.scale-80.png" />
+    <Content Include="Assets\SmallLogo.scale-100.png" />
+    <Content Include="Assets\SmallLogo.scale-140.png" />
+    <Content Include="Assets\SmallLogo.scale-180.png" />
+    <Content Include="Assets\SmallLogo.scale-80.png" />
+    <Content Include="Assets\SmallLogo.targetsize-16.png" />
+    <Content Include="Assets\SmallLogo.targetsize-256.png" />
+    <Content Include="Assets\SmallLogo.targetsize-32.png" />
+    <Content Include="Assets\SmallLogo.targetsize-48.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-140.png" />
+    <Content Include="Assets\SplashScreen.scale-180.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-140.png" />
+    <Content Include="Assets\StoreLogo.scale-180.png" />
   </ItemGroup>
   <Import Project="..\Xbmc2S.RT.Shared\Xbmc2S.RT.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">

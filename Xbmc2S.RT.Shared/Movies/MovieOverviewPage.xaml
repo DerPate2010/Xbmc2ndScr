@@ -21,11 +21,7 @@
 
 
     </Page.Resources>
-    <Page.TopAppBar>
-        <AppBar>
-            <local:JumpList/>
-        </AppBar>
-    </Page.TopAppBar>
+
 
     <Page.BottomAppBar>
         <CommandBar Background="{StaticResource AccentBrush}">

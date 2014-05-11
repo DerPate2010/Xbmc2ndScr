@@ -26,11 +26,7 @@
             </Grid>
         </DataTemplate>
     </Page.Resources>
-    <Page.TopAppBar>
-        <AppBar>
-            <local:JumpList/>
-        </AppBar>
-    </Page.TopAppBar>
+
 
     <!--
         This grid acts as a root panel for the page that defines two rows:

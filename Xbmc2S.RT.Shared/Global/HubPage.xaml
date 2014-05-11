@@ -10,6 +10,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sampleDataModel="using:Xbmc2S.RT.SampleDataModel"
     xmlns:playerFramework="using:Microsoft.PlayerFramework"
+    xmlns:search="using:Xbmc2S.RT.Search"
+    xmlns:rc="using:Xbmc2S.RT.RC"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -118,7 +120,12 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-
+                    <Button  x:Name="backButton" Margin="0,0,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+                        Style="{StaticResource NavigationBackButtonNormalStyle}"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Back"
+                        AutomationProperties.AutomationId="BackButton"
+                        AutomationProperties.ItemType="Navigation Button"/>
                     <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Top"/>
 
@@ -206,6 +213,7 @@
                 </DataTemplate>
             </HubSection>
         </Hub>
+        <search:GlobalSearchBox />
 
     </Grid>
 </Page>

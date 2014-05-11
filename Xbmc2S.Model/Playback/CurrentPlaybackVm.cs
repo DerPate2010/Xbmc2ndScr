@@ -111,10 +111,6 @@ namespace Xbmc2S.Model
                 }
                 catch (Exception)
                 {
-                    if (Debugger.IsAttached)
-                    {
-                        Debugger.Break();
-                    }
                     failed = true;
                 }
                 if (failed)

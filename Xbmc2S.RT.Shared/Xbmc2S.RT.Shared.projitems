@@ -12,7 +12,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Annotations.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\AppBarToggleButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\AudioSelectionToVisibleConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\BindableBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\BooleanNegationConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\BooleanToCollapsedConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\BooleanToVisibilityConverter.cs" />
@@ -24,20 +27,115 @@
     <Compile Include="$(MSBuildThisFileDirectory)Common\ObservableDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\PlayableItemToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\RelayCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\RichTextColumns.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\SuspensionManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Downloads\DownloadsPage.xaml.cs">
+      <DependentUpon>DownloadsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Downloads\StartDownloadPage.xaml.cs">
+      <DependentUpon>StartDownloadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Files\FileBrowser.xaml.cs">
+      <DependentUpon>FileBrowser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Files\FileDetailPage.xaml.cs">
+      <DependentUpon>FileDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Files\FileTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Files\MissingFilesPage.xaml.cs">
+      <DependentUpon>MissingFilesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Global\CurrentPlayingCtrl.xaml.cs">
       <DependentUpon>CurrentPlayingCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Global\GeneralDetailsView.xaml.cs">
+      <DependentUpon>GeneralDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Global\HubPage.xaml.cs">
+      <DependentUpon>HubPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Global\MovieGridCtrl.xaml.cs">
+      <DependentUpon>MovieGridCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Global\PersonDetailPage.xaml.cs">
+      <DependentUpon>PersonDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Global\PlayableItemCommands2.xaml.cs">
+      <DependentUpon>PlayableItemCommands2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Movies\GeneralDetailPage.xaml.cs">
+      <DependentUpon>GeneralDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Movies\MovieOverviewPage.xaml.cs">
+      <DependentUpon>MovieOverviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Music\AlbumPage.xaml.cs">
+      <DependentUpon>AlbumPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Music\MusicArtistPage.xaml.cs">
+      <DependentUpon>MusicArtistPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Music\MusicArtistsPage.xaml.cs">
+      <DependentUpon>MusicArtistsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)RC\RCControl.xaml.cs">
+      <DependentUpon>RCControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SampleDataModel\AppContextSmaple.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SampleDataModel\DetailsSample.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SampleDataModel\ImageManSample.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SampleDataModel\PlayingSample.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SampleDataModel\SampleDataSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Search\ActorFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Search\Filter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Search\MovieExternFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Search\MovieFullFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Search\MovieTitleFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Search\MusicFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Search\SearchResultsPage.xaml.cs">
+      <DependentUpon>SearchResultsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Search\TvShowFilter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SmartDispatcherRT.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TVShows\EpisodeDetailPage.xaml.cs">
+      <DependentUpon>EpisodeDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)TVShows\SeasonOverviewPage.xaml.cs">
+      <DependentUpon>SeasonOverviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)TVShows\TvShowsPage.xaml.cs">
+      <DependentUpon>TvShowsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)UPnP\Util.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WelcomeWizard\Welcome1.xaml.cs">
+      <DependentUpon>Welcome1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WelcomeWizard\Welcome2.xaml.cs">
+      <DependentUpon>Welcome2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WelcomeWizard\Welcome3.xaml.cs">
+      <DependentUpon>Welcome3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WelcomeWizard\Welcome3a.xaml.cs">
+      <DependentUpon>Welcome3a.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WelcomeWizard\Welcome4.xaml.cs">
+      <DependentUpon>Welcome4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WelcomeWizard\Welcome5.xaml.cs">
+      <DependentUpon>Welcome5.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Check.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\DarkGray.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\dir.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\file.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\LightGray.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\MediumGray.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\rc2.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\WatchlistHelp.png" />
     <Content Include="$(MSBuildThisFileDirectory)SampleDataModel\bg.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)SampleDataModel\poster.jpg" />
   </ItemGroup>
@@ -46,7 +144,111 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Downloads\DownloadsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Downloads\StartDownloadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Files\FileBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Files\FileDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Files\MissingFilesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Global\CurrentPlayingCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Global\GeneralDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Global\HubPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Global\MovieGridCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Global\PersonDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Global\PlayableItemCommands2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Movies\GeneralDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Movies\MovieOverviewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Music\AlbumPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Music\MusicArtistPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Music\MusicArtistsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)RC\RCControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Search\SearchResultsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)TVShows\EpisodeDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)TVShows\SeasonOverviewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)TVShows\TvShowsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WelcomeWizard\Welcome1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WelcomeWizard\Welcome2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WelcomeWizard\Welcome3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WelcomeWizard\Welcome3a.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WelcomeWizard\Welcome4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)WelcomeWizard\Welcome5.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -56,5 +258,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Assets\2Slogo.svg" />
+    <None Include="$(MSBuildThisFileDirectory)Common\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
   </ItemGroup>
 </Project>

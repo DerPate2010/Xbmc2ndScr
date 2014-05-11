@@ -62,5 +62,16 @@ namespace Xbmc2S.RT
         {
             return new LauncherRT();
         }
+
+
+        void RootFrame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
+        {
+            var page = e.Content as Page;
+            if (page != null && page.TopAppBar != null)
+            {
+                page.TopAppBar= new AppBar(){ Content = new JumpList()};
+            }
+        }
+
     }
 }

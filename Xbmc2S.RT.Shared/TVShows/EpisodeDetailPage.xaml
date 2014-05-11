@@ -1,6 +1,6 @@
 ﻿<Page
     x:Name="pageRoot"
-    x:Class="Xbmc2S.RT.FileDetailPage"
+    x:Class="Xbmc2S.RT.EpisodeDetailPage"
     DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -8,16 +8,13 @@
     xmlns:common="using:Xbmc2S.RT.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:search="using:Xbmc2S.RT.Search"
     mc:Ignorable="d">
 
     <Page.Resources>
 
+
     </Page.Resources>
-    <Page.TopAppBar>
-        <AppBar>
-            <local:JumpList/>
-        </AppBar>
-    </Page.TopAppBar>
 
     <!--
         This grid acts as a root panel for the page that defines two rows:
@@ -35,11 +32,15 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <Image Name="bgImage" Source="{Binding Episode.Images.FanArt}" Grid.RowSpan="2" Stretch="UniformToFill"/>
+        <Border Background="{StaticResource DimBrush}" Grid.RowSpan="2"></Border>
+
         <!-- Back button and page title -->
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
                         Style="{StaticResource NavigationBackButtonNormalStyle}"
@@ -47,39 +48,23 @@
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
                         AutomationProperties.ItemType="Navigation Button"/>
-            <TextBlock x:Name="pageTitle" Text="Details" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+            <TextBlock x:Name="pageTitle" Text="{Binding Episode.ParentLabel}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
-            
+            <search:GlobalSearchBox  Grid.Column="2"/>
         </Grid>
 
-        <StackPanel  Grid.Row="1" DataContext="{Binding FileInfo}"  Margin="117 0 117 49" Name="ContentPanel" >
-            <RichTextBlock x:Name="richTextBlock" Style="{StaticResource ItemRichTextStyle}" IsTextSelectionEnabled="False">
-                <Paragraph LineStackingStrategy="MaxHeight">
-                    <InlineUIContainer>
-                        <Button  Style="{StaticResource PlayInlineButtonStyle}" Command="{Binding Play}" x:Uid="PlayButton"></Button>
-                    </InlineUIContainer>
-                    <LineBreak/>
-                </Paragraph>
-                <Paragraph FontSize="12">
-                    <Run Text="File:"/>
-                    <Run Text="{Binding Label}"/>
-                    <LineBreak/>
-                    <Run Text="Path:"/>
-                    <Run Text="{Binding Path}"/>
-                </Paragraph>
-                <Paragraph FontSize="12">
-                    <Run Text="Size:"/>
-                    <Run Text="{Binding Size}"/>
-                    <LineBreak/>
-                    <Run Text="Modified:"/>
-                    <Run Text="{Binding Modified}"/>
-                    <LineBreak/>
-                    <Run Text="Mime Type:"/>
-                    <Run Text="{Binding MimeType}"/>
-                    <LineBreak/>
-                </Paragraph>
+        <local:GeneralDetailsView Grid.Row="1" DataContext="{Binding Episode}">
+            <local:GeneralDetailsView.HeaderControl>
+                <DataTemplate>
+                    <Button VerticalAlignment="Top" Style="{StaticResource DropdownButtonStyle}" Content="{Binding Label}" Click="ButtonBase_OnClick">
+                        <Button.Flyout>
+                            <MenuFlyout Placement="Bottom" >
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </DataTemplate>
+            </local:GeneralDetailsView.HeaderControl>
+        </local:GeneralDetailsView>
 
-            </RichTextBlock>
-        </StackPanel>
     </Grid>
 </Page>
