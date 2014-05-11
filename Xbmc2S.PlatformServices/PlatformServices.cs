@@ -90,13 +90,24 @@ namespace Xbmc2S.RT.PlatformServices
 
         private async Task<string> GetInternal(string uri)
         {
-            HttpWebRequest request = WebRequest.CreateHttp(uri);
-            request.Accept = "application/json";
-            var response = await request.GetResponseAsync();
-            var stream = response.GetResponseStream();
-            var reader = new StreamReader(stream);
-            var json = reader.ReadToEnd();
-            return json;
+            using (_connectionStatus.GetProgressToken())
+            {
+                try
+                {
+                    HttpWebRequest request = WebRequest.CreateHttp(uri);
+                    request.Accept = "application/json";
+                    var response = await request.GetResponseAsync();
+                    var stream = response.GetResponseStream();
+                    var reader = new StreamReader(stream);
+                    var json = reader.ReadToEnd();
+                    return json;
+                }
+                catch (Exception ex)
+                {
+                    _connectionStatus.SetError(ex.Message);
+                    throw;
+                }
+            }
         }
 
         private class NoProgressToken:IDisposable

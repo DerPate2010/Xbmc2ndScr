@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,40 +56,6 @@ namespace Xbmc2S.RT
         private void RootFrame_Navigated(object sender, NavigationEventArgs e)
         {
             
-        }
-    }
-
-    internal class ProgressIndicator :UserControl, IConnectionStatus
-    {
-        public IDisposable GetProgressToken()
-        {
-            var token = new ProgressToken(OnTokenDisposed);
-            return token;
-        }
-
-        private void OnTokenDisposed(IDisposable obj)
-        {
-            
-        }
-
-        private class ProgressToken : IDisposable
-        {
-            private readonly Action<IDisposable> _onDisposed;
-
-            public ProgressToken(Action<IDisposable> onDisposed)
-            {
-                _onDisposed = onDisposed;
-            }
-
-            public void Dispose()
-            {
-                _onDisposed(this);
-            }
-        }
-
-        public void SetError(string message)
-        {
-            throw new NotImplementedException();
         }
     }
 }
