@@ -37,9 +37,9 @@
                 </Setter>
             </Style>
 
-            <!--<Style TargetType="rt:MovieGridCtrl">
+            <Style TargetType="rt:MovieGridCtrl">
                 <Setter Property="ItemTemplate" Value="{StaticResource Poster160x240ItemTemplate}"/>
-            </Style>-->
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

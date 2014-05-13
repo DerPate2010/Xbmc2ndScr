@@ -60,14 +60,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Global\PersonDetailPage.xaml.cs">
       <DependentUpon>PersonDetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Global\PlayableItemCommands2.xaml.cs">
-      <DependentUpon>PlayableItemCommands2.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Movies\GeneralDetailPage.xaml.cs">
       <DependentUpon>GeneralDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Movies\MovieOverviewPage.xaml.cs">
       <DependentUpon>MovieOverviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Movies\PlayableItemCommands2.xaml.cs">
+      <DependentUpon>PlayableItemCommands2.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Music\AlbumPage.xaml.cs">
       <DependentUpon>AlbumPage.xaml</DependentUpon>
@@ -199,15 +199,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Global\PlayableItemCommands2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Movies\GeneralDetailPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Movies\MovieOverviewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Movies\PlayableItemCommands2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
