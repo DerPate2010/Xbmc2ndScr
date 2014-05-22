@@ -36,24 +36,26 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <StackPanel>
-                <TextBlock Style="{StaticResource BodyTextBlockStyle}">With thiss app you can download videos from your XBMC to your device and watch them later. Some videos in your XBMC library may be incompatible with your tablet or PC on which you installed this app. If you install VLC media player on your XBMC machine, you can convert videos in a compatible format automatically. For more information on the configuration see the tutorial.</TextBlock>
-                <HyperlinkButton Click="ButtonBase_OnClick" Margin="10">Open Tutorial</HyperlinkButton>
+            <ScrollViewer Name="ScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource BodyTextBlockStyle}">With thiss app you can download videos from your XBMC to your device and watch them later. Some videos in your XBMC library may be incompatible with your tablet or PC on which you installed this app. If you install VLC media player on your XBMC machine, you can convert videos in a compatible format automatically. For more information on the configuration see the tutorial.</TextBlock>
+                    <HyperlinkButton Click="ButtonBase_OnClick" Margin="10">Open Tutorial</HyperlinkButton>
 
-                <TextBlock Style="{StaticResource BodyTextBlockStyle}">Please enter the password you have set for you VLC web interface.</TextBlock>
-                <TextBlock ></TextBlock>
-                <PasswordBox Name="VlcPassword"/>
+                    <TextBlock Style="{StaticResource BodyTextBlockStyle}">Please enter the password you have set for you VLC web interface.</TextBlock>
+                    <TextBlock ></TextBlock>
+                    <PasswordBox Name="VlcPassword"/>
 
-                <TextBlock Style="{StaticResource BodyTextBlockStyle}">If you have configured an other transcoding port than 8080, enter it here.</TextBlock>
-                <TextBlock ></TextBlock>
-                <TextBox Name="VlcPort"/>
-                <Button Margin="15" Click="Button_Click_1">Check connection</Button>
-                <TextBlock Name="StatusHeader" Visibility="Collapsed" Style="{StaticResource SubheaderTextBlockStyle}" Margin="0 10 0 0">Current status:</TextBlock>
-                <TextBlock Name="ConnectedLabel" Visibility="Collapsed" Foreground="Green" Style="{StaticResource BodyTextBlockStyle}">Connected</TextBlock>
-                <TextBlock Name="ErrorLabel" Visibility="Collapsed" Foreground="Yellow" Style="{StaticResource BodyTextBlockStyle}">Unable to connect to VLC. Details:</TextBlock>
-                <TextBlock Name="ErrorDetails" Visibility="Collapsed" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
-                <TextBlock Name="ErrorHint" Visibility="Collapsed" Style="{StaticResource BodyTextBlockStyle}">This step is optional. You can continue and video conversion will not be available.</TextBlock>
-            </StackPanel>
+                    <TextBlock Style="{StaticResource BodyTextBlockStyle}">If you have configured an other transcoding port than 8080, enter it here.</TextBlock>
+                    <TextBlock ></TextBlock>
+                    <TextBox Name="VlcPort"/>
+                    <Button Margin="15" Click="Button_Click_1">Check connection</Button>
+                    <TextBlock Name="StatusHeader" Visibility="Collapsed" Style="{StaticResource SubheaderTextBlockStyle}" Margin="0 10 0 0">Current status:</TextBlock>
+                    <TextBlock Name="ConnectedLabel" Visibility="Collapsed" Foreground="Green" Style="{StaticResource BodyTextBlockStyle}">Connected</TextBlock>
+                    <TextBlock Name="ErrorLabel" Visibility="Collapsed" Foreground="Yellow" Style="{StaticResource BodyTextBlockStyle}">Unable to connect to VLC. Details:</TextBlock>
+                    <TextBlock Name="ErrorDetails" Visibility="Collapsed" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
+                    <TextBlock Name="ErrorHint" Visibility="Collapsed" Style="{StaticResource BodyTextBlockStyle}">This step is optional. You can continue and video conversion will not be available.</TextBlock>
+                </StackPanel>
+            </ScrollViewer>
             <Button Grid.Row="2" Style="{StaticResource WizardButtonStyle}" Click="Next_Click">Next</Button>
         </Grid>
         <Border Grid.RowSpan="2" Visibility="Collapsed" Background="{StaticResource DimBrush}" Name="BusyIndicator">

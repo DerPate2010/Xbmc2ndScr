@@ -111,6 +111,8 @@ namespace Xbmc2S.RT.WelcomeWizard
             finally
             {
                 BusyIndicator.Visibility = Visibility.Collapsed;
+                ScrollViewer.Measure(ScrollViewer.RenderSize);
+                ScrollViewer.ScrollToVerticalOffset(double.MaxValue);
 
             }
         }

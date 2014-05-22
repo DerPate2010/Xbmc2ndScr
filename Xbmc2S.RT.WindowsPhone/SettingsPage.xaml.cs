@@ -1,4 +1,5 @@
-﻿using Xbmc2S.RT.Common;
+﻿using Windows.UI.Xaml.Media.Animation;
+using Xbmc2S.RT.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
+using Xbmc2S.RT.Settings;
 
 namespace Xbmc2S.RT
 {
@@ -67,6 +69,35 @@ namespace Xbmc2S.RT
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            var setting = e.NavigationParameter as string;
+            pivot.Items.Clear();
+            if (setting == null)
+            {
+                AddFlyout(new ConnectionFlyout());
+                AddFlyout(new HomeScreenFlyout());
+                AddFlyout(new LibrariesFlyout());
+            }
+            else
+            {
+                var settingsFlyout = GetFlyout(setting);
+                AddFlyout(settingsFlyout);
+            }
+        }
+
+        private void AddFlyout(SettingsFlyout settingsFlyout)
+        {
+            var pivotItem = new PivotItem()
+            {
+                Header = settingsFlyout.Title,
+                Content = settingsFlyout,
+            };
+            CommonNavigationTransitionInfo.SetIsStaggerElement(pivotItem, true);
+            pivot.Items.Add(pivotItem);
+        }
+
+        private SettingsFlyout GetFlyout(string setting)
+        {
+            return (SettingsFlyout)Activator.CreateInstance(Type.GetType(setting));
         }
 
         /// <summary>
@@ -99,6 +130,8 @@ namespace Xbmc2S.RT
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
+
+
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

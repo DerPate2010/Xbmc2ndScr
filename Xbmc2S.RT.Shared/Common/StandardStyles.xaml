@@ -25,9 +25,6 @@
             <x:String x:Key="BackButtonSnappedGlyph">&#xE0C4;</x:String>
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="PlatformStyles.xaml"/>
-    </ResourceDictionary.MergedDictionaries>
 
     <x:String x:Key="ChevronGlyph">&#xE26B;</x:String>
     <common:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>

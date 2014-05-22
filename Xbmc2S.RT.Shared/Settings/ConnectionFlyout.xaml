@@ -20,12 +20,13 @@
     </SettingsFlyout.Resources>
 
     <!-- This StackPanel acts as a root panel for vertical layout of the content sections -->
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
     <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  >
 
         <!-- The StackPanel(s) below define individual content sections -->
 
         <!-- Content Section 1-->
-        <StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}" Width="250" >
+        <StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}" >
             <TextBlock >Host</TextBlock>
             <TextBox Text="{Binding Host, Mode=TwoWay}"/>
             <TextBlock >Port</TextBlock>
@@ -47,4 +48,5 @@
         <!-- Define more Content Sections below as necessary -->
 
     </StackPanel>
+    </ScrollViewer>
 </SettingsFlyout>

@@ -79,13 +79,14 @@ namespace Xbmc2S.RT
             this.DefaultViewModel["TvGroup"] = App.MainVm.TvGroup;
             this.DefaultViewModel["MusicGroup"] = App.MainVm.MusicGroup;
             this.DefaultViewModel["PeopleGroup"] = App.MainVm.PeopleGroup;
-            this.DefaultViewModel["AdvancedSteps"] = new List<AdvancedStep>()
+            var advancedSteps = new List<AdvancedStep>()
             {
                 new AdvancedStep(){ Header = "Show Files", Execute = ShowFiles},
                 new AdvancedStep(){ Header = "Find files not in library", Execute = ShowMissingFiles},
-                new AdvancedStep(){ Header = "Settings", Execute = ShowSettings},
-                new AdvancedStep(){ Header = "Vote for new features", Execute = GotoUserVoice},
-            };
+            }; 
+            AddAdvancedStepsPF(advancedSteps);
+            advancedSteps.Add(new AdvancedStep(){ Header = "Vote for new features", Execute = GotoUserVoice});
+            this.DefaultViewModel["AdvancedSteps"] = advancedSteps;
             DefaultViewModel["CurrentConnection"] = App.MainVm.CurrentConnection; 
             _currentPlayingItem = await App.MainVm.GetCurrentPlayingItem();
             DefaultViewModel["CurrentPlayingItem"] = _currentPlayingItem;
@@ -271,5 +272,6 @@ namespace Xbmc2S.RT
     {
         public string Header { get; set; }
         public Action Execute { get; set; }
+        public string Type { get; set; }
     }
 }

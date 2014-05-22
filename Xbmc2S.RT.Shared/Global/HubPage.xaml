@@ -205,7 +205,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Border Height="40" BorderBrush="{StaticResource AccentBrush}" BorderThickness="0 0 0 1" VerticalAlignment="Stretch">
-                                    <TextBlock Width="290" Text="{Binding Header}" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                                    <TextBlock Width="290" Text="{Binding Header}" Style="{StaticResource BaseTextBlockStyle}" VerticalAlignment="Center" Margin="10 0 0 0"/>
                                 </Border>
                             </DataTemplate>
                         </ListView.ItemTemplate>

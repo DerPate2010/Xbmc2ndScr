@@ -25,7 +25,7 @@
         <!-- The StackPanel(s) below define individual content sections -->
 
         <!-- Content Section 1-->
-        <StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}" Width="250" >
+        <StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}"  >
             <TextBlock  >Please choose the sections, that should be visible on the home screen.</TextBlock>
             <ToggleSwitch IsOn="{Binding ShowMovies, Mode=TwoWay}">Movies</ToggleSwitch>
             <ToggleSwitch IsOn="{Binding ShowShows, Mode=TwoWay}">TV Shows</ToggleSwitch>

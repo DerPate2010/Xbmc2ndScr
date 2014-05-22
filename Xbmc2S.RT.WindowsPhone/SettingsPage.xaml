@@ -20,7 +20,7 @@
     </Page.Transitions>
 
     <Grid>
-        <Pivot x:Uid="Pivot" Title="MY APPLICATION" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True" Margin="0,12,0,0">
+        <Pivot x:Uid="Pivot" Title="{StaticResource AppName}" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True" Margin="0,12,0,0">
             <!--Pivot item one-->
             <PivotItem
                 x:Uid="PivotItem1"
