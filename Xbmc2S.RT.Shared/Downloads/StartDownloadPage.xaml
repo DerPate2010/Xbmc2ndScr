@@ -49,7 +49,7 @@
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
                         AutomationProperties.ItemType="Navigation Button"/>
-            <TextBlock x:Name="pageTitle" Grid.Column="1" Text="Download" Style="{StaticResource PageHeaderTextStyle}"/>
+            <TextBlock x:Name="pageTitle" Grid.Column="1" Text="Download" Style="{StaticResource HeaderTextBlockStyle}"/>
         </Grid>
         
         <StackPanel Grid.Row="1" Margin="125 0 120 120" Name="ContentGrid">

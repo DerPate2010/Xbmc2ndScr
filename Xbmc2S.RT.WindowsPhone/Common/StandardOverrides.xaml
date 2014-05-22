@@ -95,6 +95,8 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <Style x:Key="ConnectionDropdownButtonStyle" TargetType="Button" >
+        <Setter Property="Visibility" Value="Collapsed"/>
+    </Style>
 
 </ResourceDictionary>

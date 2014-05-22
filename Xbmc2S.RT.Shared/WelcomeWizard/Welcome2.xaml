@@ -27,7 +27,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Button x:Name="backButton" Click="GoBack" IsEnabled="false"  Style="{StaticResource NavigationBackButtonNormalStyle}" Margin="39,59,39,40"/>
-                <TextBlock x:Name="pageTitle" Text="Prepare XBMC" Grid.Column="1" IsHitTestVisible="false" Style="{StaticResource PageHeaderTextStyle}"/>
+                <TextBlock x:Name="pageTitle" Text="Prepare XBMC" Grid.Column="1" IsHitTestVisible="false" Style="{StaticResource HeaderTextBlockStyle}"/>
             </Grid>
 
         </Grid>

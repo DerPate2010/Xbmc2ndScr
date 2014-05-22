@@ -14,6 +14,7 @@ namespace Xbmc2S.RT
         private void AddAdvancedStepsPF(List<AdvancedStep> advancedSteps)
         {
             advancedSteps.Add(new AdvancedStep() { Header = "Settings", Execute = ShowSettings });
+            advancedSteps.Add(new AdvancedStep() { Header = "    Welcome Wizard", Execute = ()=>((App)App.Current).GotoWelcomeWizard(null) });
             AddCommand<ConnectionFlyout>(advancedSteps, true);
             AddCommand<HomeScreenFlyout>(advancedSteps, true);
             AddCommand<LibrariesFlyout>(advancedSteps, true);

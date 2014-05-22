@@ -2623,4 +2623,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="ConnectionDropdownButtonStyle" TargetType="Button" BasedOn="{StaticResource DropdownButtonStyle}"/>
 </ResourceDictionary>

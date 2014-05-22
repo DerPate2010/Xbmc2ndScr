@@ -393,7 +393,7 @@
                 <!--<Image Source="../Assets/rc2.png"/>-->
             </Button.Content>
             <Button.Flyout>
-                <Flyout Opening="FlyoutBase_OnOpening">
+                <Flyout>
                     <rc:RCControl/>
                 </Flyout>
             </Button.Flyout>

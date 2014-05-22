@@ -83,10 +83,15 @@
         </Setter>
     </Style>
 
-    <Style x:Key="PageHeaderTextStyle" TargetType="TextBlock" BasedOn="{StaticResource HeaderTextBlockStyle}">
+    <Style x:Key="HeaderTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource HeaderTextBlockStyle}">
         <Setter Property="TextWrapping" Value="NoWrap"/>
         <Setter Property="VerticalAlignment" Value="Bottom"/>
         <Setter Property="Margin" Value="0,0,30,40"/>
     </Style>
+
+    <Style x:Key="HubPageHeaderStyle" TargetType="TextBlock" BasedOn="{StaticResource HeaderTextBlockStyle}">
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+
 
 </ResourceDictionary>

@@ -81,5 +81,15 @@
     <Style TargetType="Grid" x:Key="WelcomeWizContainer">
         <Setter Property="Margin" Value="120 0 120 50"/>
     </Style>
+    
+        <Style x:Key="HubPageHeaderStyle" TargetType="TextBlock" BasedOn="{StaticResource HeaderTextBlockStyle}">
+        <Setter Property="Margin" Value="12,32,30,12"/>
+    </Style>
+
+    <DataTemplate x:Key="HubSectionHeaderTemplate">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding}"></TextBlock>
+        </StackPanel>
+    </DataTemplate>
 
 </ResourceDictionary>

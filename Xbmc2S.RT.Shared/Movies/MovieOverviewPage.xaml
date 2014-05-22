@@ -63,7 +63,7 @@
                         AutomationProperties.AutomationId="BackButton"
                         AutomationProperties.ItemType="Navigation Button"
                      />
-            <TextBlock x:Name="pageTitle"  Grid.Column="1" Text="Movies" IsHitTestVisible="false" Style="{StaticResource PageHeaderTextStyle}"/>
+            <TextBlock x:Name="pageTitle"  Grid.Column="1" Text="Movies" IsHitTestVisible="false" Style="{StaticResource HeaderTextBlockStyle}"/>
             <Button Grid.Column="2" Style="{StaticResource TextPrimaryButtonStyle}"  Margin="0 30 0 0" Name="WatchlistHelp" Visibility="Collapsed">
                 <Button.Content>
                     <TextBlock Foreground="{StaticResource AccentBrush}" Style="{StaticResource SubheaderTextBlockStyle}">Where is the watchlist in XBMC?</TextBlock>

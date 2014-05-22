@@ -25,6 +25,14 @@ namespace Xbmc2S.RT.RC
         public RCControl()
         {
             this.InitializeComponent();
+
+            Loaded += RCControl_Loaded;
+        }
+
+        void RCControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            App.MainVm.RemoteControl.Refresh();
+            DataContext = App.MainVm.RemoteControl;
         }
 
         private void KeyUp(object sender, KeyRoutedEventArgs e)

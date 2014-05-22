@@ -12,7 +12,8 @@
     xmlns:playerFramework="using:Microsoft.PlayerFramework"
     xmlns:search="using:Xbmc2S.RT.Search"
     xmlns:rc="using:Xbmc2S.RT.RC"
-    mc:Ignorable="d">
+    mc:Ignorable="d" 
+    Background="{ThemeResource AccentBackgroundBrush}">
 
     <Page.Resources>
         <x:String x:Key="ChevronGlyph">&#xE26B;</x:String>
@@ -100,11 +101,42 @@
         </Style>
 
     </Page.Resources>
+    <Page.BottomAppBar>
+        <CommandBar Background="{StaticResource AccentBrush}">
+            <AppBarButton Icon="Find" Label="Search">
+                <AppBarButton.Flyout>
+                    <Flyout Opening="SearchFlyout_Opening" Closed="SearchFlyout_Closed">
+                        <TextBox PlaceholderText="Search" Margin="24" IsTextPredictionEnabled="True" KeyUp="SearchBox_KeyUp"></TextBox>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+            <AppBarButton Icon="Switch" Label="Switch" Click="ConnectionsClick"/>
+            <AppBarButton Label="Remote" Name="RcButton" >
+                <AppBarButton.Icon>
+                    <FontIcon Glyph="&#xE1D0;" FontSize="18"></FontIcon>
+                </AppBarButton.Icon>
+                <AppBarButton.Flyout>
+                    <Flyout Placement="Full" >
+                        <Flyout.FlyoutPresenterStyle>
+                            <Style TargetType="FlyoutPresenter">
+                                <Setter Property="Background" Value="Transparent"/>
+                            </Style>
+                        </Flyout.FlyoutPresenterStyle>
+                        <Border Background="{StaticResource DimBrush}" Tapped="ToggleFlyout">
+                            <Border Background="{StaticResource AccentBackgroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                <rc:RCControl HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Border>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+        </CommandBar>
+    </Page.BottomAppBar>
 
     <!--
         This grid acts as a root panel for the page.
     -->
-    <Grid Background="{ThemeResource AccentBackgroundBrush}">
+    <Grid>
         <Grid.ChildrenTransitions>
             <TransitionCollection>
                 <EntranceThemeTransition/>
@@ -126,15 +158,12 @@
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
                         AutomationProperties.ItemType="Navigation Button"/>
-                    <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+                    <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HubPageHeaderStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Top"/>
 
 
-                    <Button Grid.Column="2" VerticalAlignment="Bottom" Style="{StaticResource DropdownButtonStyle}" Margin=" 15 0 0 -10" Content="{Binding CurrentConnection.Name}" Click="ConnectionsClick">
-                            <Button.Flyout>
-                                <MenuFlyout Placement="Bottom" >
-                                </MenuFlyout>
-                            </Button.Flyout>
+                    <Button Grid.Column="2" VerticalAlignment="Bottom" Style="{StaticResource ConnectionDropdownButtonStyle}" Margin=" 15 0 0 -10" Content="{Binding CurrentConnection.Name}" Click="ConnectionsClick">
+
                         </Button>
 
                 </Grid>
@@ -158,7 +187,7 @@
                     </Border>
                 </DataTemplate>
             </HubSection>
-            <HubSection IsHeaderInteractive="True" Width="700" Name="MovieSection" Header="Movies" Visibility="{Binding Settings.ShowMovies, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <HubSection HeaderTemplate="{StaticResource HubSectionHeaderTemplate}" IsHeaderInteractive="True" Width="700" Name="MovieSection" Header="Movies" Visibility="{Binding Settings.ShowMovies, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <DataTemplate>
                     <local:MultiCellGridView x:Name="itemGridView" ItemsSource="{Binding Source={StaticResource MovieItemsViewSource}}" ItemClick="ItemGridView_OnItemClick" Style="{StaticResource HomeGridStyle}">
 
@@ -167,7 +196,7 @@
 
                 </DataTemplate>
             </HubSection>
-            <HubSection Header="TV Shows" IsHeaderInteractive="True" Name="TVSection" Visibility="{Binding Settings.ShowShows, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <HubSection HeaderTemplate="{StaticResource HubSectionHeaderTemplate}" Header="TV Shows" IsHeaderInteractive="True" Name="TVSection" Visibility="{Binding Settings.ShowShows, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <DataTemplate>
                     <local:MultiCellGridView x:Name="itemGridView2" Grid.Column="1" ItemsSource="{Binding Source={StaticResource TvItemsViewSource}}" ItemClick="ItemGridView_OnItemClick" Style="{StaticResource HomeGridStyle}"
                                       ItemTemplate="{StaticResource BannerItemTemplate}">
@@ -180,7 +209,7 @@
                 </DataTemplate>
             </HubSection>
 
-            <HubSection Header="Music" IsHeaderInteractive="True" Name="MusicSection"  Visibility="{Binding Settings.ShowMusic, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <HubSection  HeaderTemplate="{StaticResource HubSectionHeaderTemplate}" Header="Music" IsHeaderInteractive="True" Name="MusicSection"  Visibility="{Binding Settings.ShowMusic, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <DataTemplate>
                     <local:MultiCellGridView x:Name="itemGridView3" Grid.Column="2" Width="700" ItemsSource="{Binding Source={StaticResource MusicItemsViewSource}}" ItemClick="ItemGridView_OnItemClick" Style="{StaticResource HomeGridStyle}">
                         <GridView.ItemsPanel>

@@ -55,12 +55,5 @@ namespace Xbmc2S.RT.Search
             get { return SearchBox.FocusOnKeyboardInput; }
             set { SearchBox.FocusOnKeyboardInput = value; }
         }
-
-        private void FlyoutBase_OnOpening(object sender, object e)
-        {
-            var flyout = (Flyout)sender;
-            App.MainVm.RemoteControl.Refresh();
-            ((FrameworkElement)flyout.Content).DataContext = App.MainVm.RemoteControl;
-        }
     }
 }

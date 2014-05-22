@@ -158,7 +158,7 @@ namespace Xbmc2S.RT
             }
         }
 
-        private void GotoWelcomeWizard(IUICommand command)
+        internal void GotoWelcomeWizard(IUICommand command)
         {
             var view = new ViewHandler();
             view.GotoWelcomeWizard();

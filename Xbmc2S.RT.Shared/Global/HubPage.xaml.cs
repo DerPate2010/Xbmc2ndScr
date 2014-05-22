@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using Windows.System;
 using Microsoft.PlayerFramework;
+using WinRTXamlToolkit.Controls.Extensions;
 using Xbmc2S.Model;
 using Xbmc2S.RT.Common;
 using System;
@@ -192,7 +193,7 @@ namespace Xbmc2S.RT
 
         private void ConnectionsClick(object sender, RoutedEventArgs e)
         {
-            var flyout = (MenuFlyout)((Button)sender).Flyout;
+            var flyout = new MenuFlyout();
 
             flyout.Items.Clear();
 
@@ -249,6 +250,15 @@ namespace Xbmc2S.RT
                 
             }
             flyout.Items.Add(new MenuFlyoutItem(){Text="Edit connection settings...", Command = new RelayCommand(EditConnectionExecuted)});
+            flyout.Placement = FlyoutPlacementMode.Bottom;
+            if (sender is AppBarButton)
+            {
+                flyout.ShowAt(pageRoot);
+            }
+            else
+            {
+                flyout.ShowAt((FrameworkElement) sender);
+            }
         }
 
         private async void ConnectToServerExecuted(XbmcServer server)
@@ -263,6 +273,29 @@ namespace Xbmc2S.RT
         {
             var view = new ViewHandler();
             view.GotoWelcomeWizard();
+        }
+
+        private void SearchFlyout_Opening(object sender, object e)
+        {
+            BottomAppBar.Visibility = Visibility.Collapsed;
+        }
+
+        private void SearchFlyout_Closed(object sender, object e)
+        {
+            BottomAppBar.Visibility = Visibility.Visible;
+        }
+
+        private void SearchBox_KeyUp(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Enter)
+            {
+                App.RootFrame.Navigate(typeof(SearchResultsPage), ((TextBox) sender).Text);
+            }
+        }
+
+        private void ToggleFlyout(object sender, RoutedEventArgs e)
+        {
+            RcButton.Flyout.Hide();
         }
     }
 
