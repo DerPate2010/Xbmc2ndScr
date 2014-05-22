@@ -25,6 +25,9 @@
             <x:String x:Key="BackButtonSnappedGlyph">&#xE0C4;</x:String>
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="PlatformStyles.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
 
     <x:String x:Key="ChevronGlyph">&#xE26B;</x:String>
     <common:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
@@ -75,100 +78,7 @@
     </Viewbox>
 
 
-    <!-- RichTextBlock styles -->
-
-    <Style x:Key="BasicRichTextStyle" TargetType="RichTextBlock">
-        <Setter Property="Foreground" Value="{StaticResource ApplicationForegroundThemeBrush}"/>
-        <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}"/>
-        <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
-        <Setter Property="TextTrimming" Value="WordEllipsis"/>
-        <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="Typography.StylisticSet20" Value="True"/>
-        <Setter Property="Typography.DiscretionaryLigatures" Value="True"/>
-        <Setter Property="Typography.CaseSensitiveForms" Value="True"/>
-    </Style>
-
-    <Style x:Key="BaselineRichTextStyle" TargetType="RichTextBlock" BasedOn="{StaticResource BasicRichTextStyle}">
-        <Setter Property="LineHeight" Value="20"/>
-        <Setter Property="LineStackingStrategy" Value="BlockLineHeight"/>
-        <!-- Properly align text along its baseline -->
-        <Setter Property="RenderTransform">
-            <Setter.Value>
-                <TranslateTransform X="-1" Y="4"/>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="ItemRichTextStyle" TargetType="RichTextBlock" BasedOn="{StaticResource BaselineRichTextStyle}"/>
-
-    <Style x:Key="BodyRichTextStyle" TargetType="RichTextBlock" BasedOn="{StaticResource BaselineRichTextStyle}">
-        <Setter Property="FontWeight" Value="SemiLight"/>
-    </Style>
-
     <!-- TextBlock styles -->
-
-    <Style x:Key="BasicTextStyle" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="{StaticResource ApplicationForegroundThemeBrush}"/>
-        <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}"/>
-        <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
-        <Setter Property="TextTrimming" Value="WordEllipsis"/>
-        <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="Typography.StylisticSet20" Value="True"/>
-        <Setter Property="Typography.DiscretionaryLigatures" Value="True"/>
-        <Setter Property="Typography.CaseSensitiveForms" Value="True"/>
-    </Style>
-
-    <Style x:Key="BaselineTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BasicTextStyle}">
-        <Setter Property="LineHeight" Value="20"/>
-        <Setter Property="LineStackingStrategy" Value="BlockLineHeight"/>
-        <!-- Properly align text along its baseline -->
-        <Setter Property="RenderTransform">
-            <Setter.Value>
-                <TranslateTransform X="-1" Y="4"/>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="HeaderTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaselineTextStyle}">
-        <Setter Property="FontSize" Value="56"/>
-        <Setter Property="FontWeight" Value="Light"/>
-        <Setter Property="LineHeight" Value="40"/>
-        <Setter Property="RenderTransform">
-            <Setter.Value>
-                <TranslateTransform X="-2" Y="8"/>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="SubheaderTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaselineTextStyle}">
-        <Setter Property="FontSize" Value="26.667"/>
-        <Setter Property="FontWeight" Value="Light"/>
-        <Setter Property="LineHeight" Value="30"/>
-        <Setter Property="RenderTransform">
-            <Setter.Value>
-                <TranslateTransform X="-1" Y="6"/>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="TitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaselineTextStyle}">
-        <Setter Property="FontWeight" Value="SemiBold"/>
-    </Style>
-
-    <Style x:Key="SubtitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaselineTextStyle}">
-        <Setter Property="FontWeight" Value="Normal"/>
-    </Style>
-
-    <Style x:Key="ItemTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaselineTextStyle}"/>
-
-    <Style x:Key="BodyTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaselineTextStyle}">
-        <Setter Property="FontWeight" Value="SemiLight"/>
-    </Style>
-
-    <Style x:Key="CaptionTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaselineTextStyle}">
-        <Setter Property="FontSize" Value="12"/>
-        <Setter Property="Foreground" Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
-    </Style>
 
     <Style x:Key="GroupHeaderTextStyle" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
@@ -321,7 +231,7 @@
                                 Width="88"
                                 MaxHeight="32"
                                 TextTrimming="WordEllipsis"
-                                Style="{StaticResource BasicTextStyle}"/>
+                                Style="{StaticResource BaseTextBlockStyle}"/>
                         </StackPanel>
                         <Rectangle
                                 x:Name="FocusVisualWhite"
@@ -480,7 +390,7 @@
 
                                 MaxHeight="32"
                                 TextTrimming="WordEllipsis"
-                                Style="{StaticResource BasicTextStyle}"/>
+                                Style="{StaticResource BaseTextBlockStyle}"/>
                         </StackPanel>
                         <Rectangle
                                 x:Name="FocusVisualWhite"
@@ -638,7 +548,7 @@
                                 Width="88"
                                 MaxHeight="32"
                                 TextTrimming="WordEllipsis"
-                                Style="{StaticResource BasicTextStyle}"/>
+                                Style="{StaticResource BaseTextBlockStyle}"/>
                         </StackPanel>
                         <Rectangle
                                 x:Name="FocusVisualWhite"
@@ -1833,13 +1743,7 @@
 
     <!-- Title area styles -->
 
-    <Style x:Key="PageHeaderTextStyle" TargetType="TextBlock" BasedOn="{StaticResource HeaderTextStyle}">
-        <Setter Property="TextWrapping" Value="NoWrap"/>
-        <Setter Property="VerticalAlignment" Value="Bottom"/>
-        <Setter Property="Margin" Value="0,0,30,40"/>
-    </Style>
-
-    <Style x:Key="PageSubheaderTextStyle" TargetType="TextBlock" BasedOn="{StaticResource SubheaderTextStyle}">
+    <Style x:Key="PageSubheaderTextStyle" TargetType="TextBlock" BasedOn="{StaticResource SubheaderTextBlockStyle}">
         <Setter Property="TextWrapping" Value="NoWrap"/>
         <Setter Property="VerticalAlignment" Value="Bottom"/>
         <Setter Property="Margin" Value="0,0,0,40"/>
@@ -2077,8 +1981,8 @@
                 <Image Source="{Binding Images.Image}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Label}"/>
             </Border>
             <StackPanel VerticalAlignment="Bottom" Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}">
-                <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextStyle}" Height="60" Margin="15,0,15,0"/>
-                <TextBlock Text="{Binding SecondLabel}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
+                <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextBlockStyle}" Height="60" Margin="15,0,15,0"/>
+                <TextBlock Text="{Binding SecondLabel}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
             </StackPanel>
         </Grid>
     </DataTemplate>
@@ -2089,11 +1993,11 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource SubheaderTextStyle}" Margin="15,0,15,0"/>
-            <TextBlock Text="{Binding Progress}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource SubheaderTextStyle}" Margin="15,0,15,0" TextAlignment="Right"/>
+            <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource SubheaderTextBlockStyle}" Margin="15,0,15,0"/>
+            <TextBlock Text="{Binding Progress}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource SubheaderTextBlockStyle}" Margin="15,0,15,0" TextAlignment="Right"/>
             <ProgressBar Grid.Row="1"  Minimum="0" Maximum="100" Value="{Binding Progress}" Margin="15 15 15 0"></ProgressBar>
-            <TextBlock Grid.Row="2" Text="{Binding Status}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
-            <TextBlock Grid.Row="2" Text="{Binding Message}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap" Margin="15,0,15,10" TextAlignment="Right"/>
+            <TextBlock Grid.Row="2" Text="{Binding Status}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
+            <TextBlock Grid.Row="2" Text="{Binding Message}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap" Margin="15,0,15,10" TextAlignment="Right"/>
         </Grid>
     </DataTemplate>
     <DataTemplate x:Key="TvShowItemTemplate">
@@ -2102,7 +2006,7 @@
                 <Image Source="{Binding Images.Banner}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Label}"/>
             </Border>
             <StackPanel VerticalAlignment="Bottom" Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}">
-                <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextStyle}" Margin="15,0,15,10"/>
+                <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextBlockStyle}" Margin="15,0,15,10"/>
             </StackPanel>
             <ContentPresenter ContentTemplate="{StaticResource WatchedCheckMark}"/>
         </Grid>
@@ -2121,8 +2025,8 @@
                 <Image Source="{Binding Images.Image}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Label}"/>
             </Border>
             <StackPanel VerticalAlignment="Bottom" Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}">
-                <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextStyle}" Height="60" Margin="15,0,15,0"/>
-                <TextBlock Text="{Binding SecondLabel}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
+                <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextBlockStyle}" Height="60" Margin="15,0,15,0"/>
+                <TextBlock Text="{Binding SecondLabel}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
             </StackPanel>
             <ContentPresenter ContentTemplate="{StaticResource WatchedCheckMark}"/>
         </Grid>
@@ -2131,8 +2035,8 @@
     <DataTemplate x:Key="PosterItemTemplate">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <StackPanel VerticalAlignment="Bottom" Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}">
-                <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextStyle}"  Margin="15,0,15,10"/>
-                <TextBlock Text="{Binding SecondLabel}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextStyle}" Margin="15,-10,15,10"
+                <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextBlockStyle}"  Margin="15,0,15,10"/>
+                <TextBlock Text="{Binding SecondLabel}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextBlockStyle}" Margin="15,-10,15,10"
                            Visibility="{Binding SecondLabel, Converter={StaticResource NullToCollapsedConverter}}"/>
             </StackPanel>
             <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}">
@@ -2147,7 +2051,7 @@
                 <Image Source="{Binding Images.Banner}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Label}"/>
             </Border>
             <StackPanel VerticalAlignment="Bottom" Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}">
-                <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextStyle}"  Margin="15,0,15,10"/>
+                <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextBlockStyle}"  Margin="15,0,15,10"/>
             </StackPanel>
             <ContentPresenter ContentTemplate="{StaticResource WatchedCheckMark}"/>
         </Grid>
@@ -2163,8 +2067,8 @@
                 <Image Source="{Binding Images.Image}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Label}"/>
             </Border>
             <StackPanel Grid.Column="1" Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}">
-                <TextBlock Text="{Binding Name}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextStyle}" Height="60" Margin="15,0,15,0"/>
-                <TextBlock Text="{Binding Role}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
+                <TextBlock Text="{Binding Name}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextBlockStyle}" Height="60" Margin="15,0,15,0"/>
+                <TextBlock Text="{Binding Role}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
             </StackPanel>
         </Grid>
     </DataTemplate>
@@ -2180,9 +2084,9 @@
                 <Image Source="{Binding Images.Image}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Label}"/>
             </Border>
             <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
-                <TextBlock Text="{Binding Label}" Style="{StaticResource TitleTextStyle}" TextWrapping="NoWrap"/>
-                <TextBlock Text="{Binding SecondLabel}" Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap"/>
-                <TextBlock Text="{Binding Description}" Style="{StaticResource BodyTextStyle}" MaxHeight="60"/>
+                <TextBlock Text="{Binding Label}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap"/>
+                <TextBlock Text="{Binding SecondLabel}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
+                <TextBlock Text="{Binding Description}" Style="{StaticResource BodyTextBlockStyle}" MaxHeight="60"/>
             </StackPanel>
         </Grid>
     </DataTemplate>
@@ -2193,11 +2097,11 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-                <TextBlock Text="{Binding Track}" Style="{StaticResource TitleTextStyle}"/>
+                <TextBlock Text="{Binding Track}" Style="{StaticResource TitleTextBlockStyle}"/>
             <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
-                <TextBlock Text="{Binding Label}" Style="{StaticResource TitleTextStyle}" TextWrapping="NoWrap"/>
-                <TextBlock Text="{Binding SecondLabel}" Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap"/>
-                <TextBlock Text="{Binding Description}" Style="{StaticResource BodyTextStyle}" MaxHeight="60"/>
+                <TextBlock Text="{Binding Label}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap"/>
+                <TextBlock Text="{Binding SecondLabel}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
+                <TextBlock Text="{Binding Description}" Style="{StaticResource BodyTextBlockStyle}" MaxHeight="60"/>
             </StackPanel>
         </Grid>
     </DataTemplate>
@@ -2208,8 +2112,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,0" Background="#CC000000">
-                <TextBlock Text="{Binding Label}" Style="{StaticResource HeaderTextStyle}" TextWrapping="NoWrap" Margin="10"/>
-                <TextBlock Text="{Binding SecondLabel}" Style="{StaticResource SubheaderTextStyle}" HorizontalAlignment="Right" VerticalAlignment="Bottom"  TextWrapping="NoWrap" Margin="10"/>
+                <TextBlock Text="{Binding Label}" Style="{StaticResource HeaderTextBlockStyle}" TextWrapping="NoWrap" Margin="10"/>
+                <TextBlock Text="{Binding SecondLabel}" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Right" VerticalAlignment="Bottom"  TextWrapping="NoWrap" Margin="10"/>
             </Grid>
             <ContentPresenter ContentTemplate="{StaticResource WatchedCheckMark}" Grid.Column="1"/>
         </Grid>
@@ -2224,7 +2128,7 @@
                 <Image Source="{Binding Images.Image}" Stretch="UniformToFill" Width="150" Height="80" AutomationProperties.Name="{Binding Label}"/>
             </Border>
             <Grid Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,0" Background="#CC000000">
-                <TextBlock Text="{Binding Label}" Style="{StaticResource SubheaderTextStyle}" TextWrapping="NoWrap" Margin="10"/>
+                <TextBlock Text="{Binding Label}" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" Margin="10"/>
                 <TextBlock Text="{Binding SecondLabel}" Style="{StaticResource PageSubheaderTextStyle}" HorizontalAlignment="Right" VerticalAlignment="Bottom"  TextWrapping="NoWrap" Margin="10"/>
             </Grid>
             <ContentPresenter ContentTemplate="{StaticResource WatchedCheckMark}" Grid.Column="1" Margin="0 0 5 0"/>
@@ -2242,8 +2146,8 @@
                 <Image Source="{Binding Images.Image}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Label}"/>
             </Border>
             <StackPanel Grid.Column="1" >
-                <TextBlock Text="{Binding Name}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextStyle}" Margin="15,0,15,0"/>
-                <TextBlock Text="{Binding Role}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
+                <TextBlock Text="{Binding Name}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextBlockStyle}" Margin="15,0,15,0"/>
+                <TextBlock Text="{Binding Role}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
             </StackPanel>
         </Grid>
     </DataTemplate>
@@ -2260,8 +2164,8 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-                <TextBlock Text="{Binding Label}" Style="{StaticResource BasicTextStyle}" FontSize="20" TextWrapping="NoWrap" />
-                <TextBlock Grid.Row="1" Text="{Binding SecondLabel}" Style="{StaticResource BasicTextStyle}"  VerticalAlignment="Bottom"  TextWrapping="NoWrap"/>
+                <TextBlock Text="{Binding Label}" Style="{StaticResource BaseTextBlockStyle}" FontSize="20" TextWrapping="NoWrap" />
+                <TextBlock Grid.Row="1" Text="{Binding SecondLabel}" Style="{StaticResource BaseTextBlockStyle}"  VerticalAlignment="Bottom"  TextWrapping="NoWrap"/>
             <ContentPresenter ContentTemplate="{StaticResource WatchedCheckMark}" Grid.RowSpan="2" />
         </Grid>
     </DataTemplate>
@@ -2277,9 +2181,9 @@
                 <Image Source="{Binding Images.Image}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Label}"/>
             </Border>
             <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
-                <TextBlock Text="{Binding Label}" Style="{StaticResource TitleTextStyle}" TextWrapping="NoWrap"/>
-                <TextBlock Text="{Binding SecondLabel}" Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap"/>
-                <TextBlock Text="{Binding Description}" Style="{StaticResource BodyTextStyle}" MaxHeight="60"/>
+                <TextBlock Text="{Binding Label}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap"/>
+                <TextBlock Text="{Binding SecondLabel}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
+                <TextBlock Text="{Binding Description}" Style="{StaticResource BodyTextBlockStyle}" MaxHeight="60"/>
             </StackPanel>
         </Grid>
     </DataTemplate>
@@ -2298,8 +2202,8 @@
                 <Image Source="{Binding Images.Image}" Stretch="UniformToFill"/>
             </Border>
             <StackPanel Grid.Column="1" Margin="10,0,0,0">
-                <TextBlock Text="{Binding Label}" Style="{StaticResource ItemTextStyle}" MaxHeight="40"/>
-                <TextBlock Text="{Binding SecondLabel}" Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap"/>
+                <TextBlock Text="{Binding Label}" Style="{StaticResource BaseTextBlockStyle}" MaxHeight="40"/>
+                <TextBlock Text="{Binding SecondLabel}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
             </StackPanel>
         </Grid>
     </DataTemplate>
@@ -2313,8 +2217,8 @@
                 <Image Source="{Binding Images.Image}" Stretch="UniformToFill"/>
             </Border>
             <StackPanel Grid.Column="1" Margin="10,0,0,0">
-                <TextBlock Text="{Binding Label}" Style="{StaticResource ItemTextStyle}" MaxHeight="40"/>
-                <TextBlock Text="{Binding SecondLabel}" Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap"/>
+                <TextBlock Text="{Binding Label}" Style="{StaticResource BaseTextBlockStyle}" MaxHeight="40"/>
+                <TextBlock Text="{Binding SecondLabel}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
             </StackPanel>
         </Grid>
     </DataTemplate>
@@ -2339,9 +2243,9 @@
                 <Image Source="{Binding Images.Image}" Stretch="UniformToFill"/>
             </Border>
             <StackPanel Grid.Column="1" Margin="10,-10,0,0">
-                <TextBlock Text="{Binding Label}" Style="{StaticResource BodyTextStyle}" TextWrapping="NoWrap"/>
-                <TextBlock Text="{Binding SecondLabel}" Style="{StaticResource BodyTextStyle}" Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" TextWrapping="NoWrap"/>
-                <TextBlock Text="{Binding Description}" Style="{StaticResource BodyTextStyle}" Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" TextWrapping="NoWrap"/>
+                <TextBlock Text="{Binding Label}" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="NoWrap"/>
+                <TextBlock Text="{Binding SecondLabel}" Style="{StaticResource BodyTextBlockStyle}" Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" TextWrapping="NoWrap"/>
+                <TextBlock Text="{Binding Description}" Style="{StaticResource BodyTextBlockStyle}" Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" TextWrapping="NoWrap"/>
             </StackPanel>
         </Grid>
     </DataTemplate>
@@ -2357,9 +2261,9 @@
                 <Image Source="{Binding Images.Image}" Stretch="UniformToFill"/>
             </Border>
             <StackPanel Grid.Column="1" Margin="10,-10,0,0">
-                <TextBlock Text="{Binding Label}" Style="{StaticResource BodyTextStyle}" TextWrapping="NoWrap"/>
-                <TextBlock Text="{Binding SecondLabel}" Style="{StaticResource BodyTextStyle}" Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" TextWrapping="NoWrap"/>
-                <TextBlock Text="{Binding Description}" Style="{StaticResource BodyTextStyle}" Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" TextWrapping="NoWrap"/>
+                <TextBlock Text="{Binding Label}" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="NoWrap"/>
+                <TextBlock Text="{Binding SecondLabel}" Style="{StaticResource BodyTextBlockStyle}" Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" TextWrapping="NoWrap"/>
+                <TextBlock Text="{Binding Description}" Style="{StaticResource BodyTextBlockStyle}" Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" TextWrapping="NoWrap"/>
             </StackPanel>
         </Grid>
     </DataTemplate>
@@ -2405,8 +2309,8 @@
                                 Stretch="Uniform"/>
                         </Grid>
                         <StackPanel Width="200" Grid.Column="1" Margin="0,20,20,20">
-                            <TextBlock Text="{Binding Title}" TextWrapping="NoWrap" Style="{StaticResource BodyTextStyle}"/>
-                            <TextBlock Text="{Binding Description}" MaxHeight="140" Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" Style="{StaticResource BodyTextStyle}"/>
+                            <TextBlock Text="{Binding Title}" TextWrapping="NoWrap" Style="{StaticResource BodyTextBlockStyle}"/>
+                            <TextBlock Text="{Binding Description}" MaxHeight="140" Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" Style="{StaticResource BodyTextBlockStyle}"/>
                         </StackPanel>
                     </Grid>
                 </ToolTip>

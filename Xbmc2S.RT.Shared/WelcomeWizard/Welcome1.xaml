@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
-         <Style x:Key="ContentTextStyle" TargetType="TextBlock"  BasedOn="{StaticResource BodyTextStyle}">
+         <Style x:Key="ContentTextStyle" TargetType="TextBlock"  BasedOn="{StaticResource BodyTextBlockStyle}">
             <Setter Property="Margin" Value="0 0 0 20"></Setter>
         </Style>
     </Page.Resources>
@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="140"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <!-- Back button and page title -->
@@ -28,12 +28,12 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="backButton" Click="GoBack" IsEnabled="false"  Style="{StaticResource BackButtonStyle}"/>
+                <Button x:Name="backButton" Click="GoBack" IsEnabled="false"  Style="{StaticResource NavigationBackButtonNormalStyle}" Margin="39,59,39,40"/>
                 <TextBlock x:Name="pageTitle" Text="Welcome" Grid.Column="1" IsHitTestVisible="false" Style="{StaticResource PageHeaderTextStyle}"/>
             </Grid>
 
         </Grid>
-        <Grid Grid.Row="1" Margin="120 0 120 50">
+        <Grid Grid.Row="1" Style="{StaticResource WelcomeWizContainer}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>

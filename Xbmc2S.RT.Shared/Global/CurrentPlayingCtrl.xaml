@@ -63,15 +63,15 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="{Binding CurrentItem.SecondLabel}" Grid.Row="0" Grid.ColumnSpan="2" Margin="0 0 0 20" Style="{StaticResource SubheaderTextStyle}" PointerPressed="CurrentPlayingLinkClick"></TextBlock>
-                <TextBlock Text="{Binding CurrentItem.Label}" Grid.Row="1" Grid.ColumnSpan="2" Margin="0 0 0 20" Style="{StaticResource HeaderTextStyle}" PointerPressed="CurrentPlayingLinkClick"></TextBlock>
+                <TextBlock Text="{Binding CurrentItem.SecondLabel}" Grid.Row="0" Grid.ColumnSpan="2" Margin="0 0 0 20" Style="{StaticResource SubheaderTextBlockStyle}" PointerPressed="CurrentPlayingLinkClick"></TextBlock>
+                <TextBlock Text="{Binding CurrentItem.Label}" Grid.Row="1" Grid.ColumnSpan="2" Margin="0 0 0 20" Style="{StaticResource HeaderTextBlockStyle}" PointerPressed="CurrentPlayingLinkClick"></TextBlock>
                 <StackPanel Orientation="Horizontal" Grid.Row="2">
-                    <TextBlock Text="{Binding CurrentItem.Time}" Style="{StaticResource SubheaderTextStyle}"/>
-                    <TextBlock Text="/" Margin="10 0 10 0"  Style="{StaticResource SubheaderTextStyle}"/>
+                    <TextBlock Text="{Binding CurrentItem.Time}" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                    <TextBlock Text="/" Margin="10 0 10 0"  Style="{StaticResource SubheaderTextBlockStyle}"/>
 
-                    <TextBlock Text="{Binding CurrentItem.TotalTime}"  Style="{StaticResource SubheaderTextStyle}"/>
+                    <TextBlock Text="{Binding CurrentItem.TotalTime}"  Style="{StaticResource SubheaderTextBlockStyle}"/>
                 </StackPanel>
-                <TextBlock Text="{Binding CurrentItem.PlayToInfo}" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1"  Style="{StaticResource SubheaderTextStyle}"/>
+                <TextBlock Text="{Binding CurrentItem.PlayToInfo}" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1"  Style="{StaticResource SubheaderTextBlockStyle}"/>
                 <playerFramework:SeekableSlider Grid.Row="3" Grid.ColumnSpan="2" MaxValue="100" ActualValue="{Binding CurrentItem.Percentage}" ScrubbingCompleted="SeekableSlider_OnScrubbingCompleted" />
                 <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.ColumnSpan="2">
                     <AppBarButton Icon="Previous" Label="Next" Command="{Binding SkipBack}"/>

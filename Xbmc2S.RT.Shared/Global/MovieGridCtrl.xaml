@@ -20,7 +20,11 @@
     </UserControl.Resources>
     
     
-    <Grid>
+    <Grid Name="ZoomRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <!-- Horizontal scrolling grid used in most view states -->
         <SemanticZoom Grid.RowSpan="2"  ViewChangeStarted="SemanticZoom_OnViewChangeStarted">
             <SemanticZoom.ZoomedInView>
@@ -75,7 +79,7 @@
             </SemanticZoom.ZoomedOutView>
         </SemanticZoom>
         <!-- Vertical scrolling list only used when snapped -->
-        <SemanticZoom Grid.RowSpan="2" Name="ListZoom" Visibility="Collapsed" ViewChangeStarted="SemanticZoom_OnViewChangeStarted">
+        <SemanticZoom Grid.Row="1" Name="ListZoom" Visibility="Collapsed" ViewChangeStarted="SemanticZoom_OnViewChangeStarted">
             <SemanticZoom.ZoomedInView>
                 <ListView
             x:Name="itemListView"
@@ -102,7 +106,7 @@
                                     Click="Header_Click"
                                     Style="{StaticResource TextPrimaryButtonStyle}">
                                             <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="{Binding Title}" Margin="3,-7,10,10" Style="{StaticResource GroupHeaderTextStyle}" />
+                                                <TextBlock Text="{Binding Label}" Margin="3,-7,10,10" Style="{StaticResource GroupHeaderTextStyle}" />
                                                 <TextBlock Text="{StaticResource ChevronGlyph}" FontFamily="Segoe UI Symbol" Margin="0,-7,0,10" Style="{StaticResource GroupHeaderTextStyle}"/>
                                             </StackPanel>
                                         </Button>
@@ -114,7 +118,8 @@
                 </ListView>
             </SemanticZoom.ZoomedInView>
             <SemanticZoom.ZoomedOutView>
-                    <GridView ScrollViewer.IsHorizontalScrollChainingEnabled="False" SelectionMode="None" ItemsSource="{Binding Source={StaticResource groupesSource}}">
+                    <GridView ScrollViewer.IsHorizontalScrollChainingEnabled="False" SelectionMode="None" ItemsSource="{Binding Source={StaticResource groupesSource}}"
+                              Background="{StaticResource AccentBackgroundBrush}" VerticalAlignment="Stretch" Margin="0 -10 0 0" Grid.RowSpan="2">
                         <GridView.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock
@@ -144,6 +149,9 @@
         <Border Grid.RowSpan="2" Background="#80000000" Visibility="Collapsed" Name="LoadMessage">
             <ProgressRing IsActive="True"/>
         </Border>
+        <Button Click="ShowChars" Name="HeaderButton2" Content="#" Width="40" Height="60" MinHeight="60" MaxHeight="80" MinWidth="40"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14 4 12 4" Background="Gray" BorderThickness="0"
+                FontFamily="Segoe UI Light" FontWeight="Light" FontSize="20">
+        </Button>
 
 
         <VisualStateManager.VisualStateGroups>

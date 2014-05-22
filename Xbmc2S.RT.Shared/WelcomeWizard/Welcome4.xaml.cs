@@ -50,14 +50,15 @@ namespace Xbmc2S.RT.WelcomeWizard
             Launcher.LaunchUriAsync(new Uri("http://www.casa-del-stifler.de/?p=488&lang=en#vlc"));
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private int checkcount;
+
+        private async void Next_Click(object sender, RoutedEventArgs e)
         {
 
             var success = await CheckConnection();
 
-            if (success)
+            if (success|| checkcount>1)
             {
-
                 Frame.Navigate(typeof(Welcome5));
             }
         }
@@ -73,6 +74,7 @@ namespace Xbmc2S.RT.WelcomeWizard
 
             try
             {
+                checkcount++;
                 var settings = App.MainVm.Settings;
 
                 int port;

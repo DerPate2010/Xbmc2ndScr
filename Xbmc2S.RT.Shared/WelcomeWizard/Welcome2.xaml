@@ -16,32 +16,33 @@
         </Grid.RowDefinitions>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="140"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <!-- Back button and page title -->
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+                <Button x:Name="backButton" Click="GoBack" IsEnabled="false"  Style="{StaticResource NavigationBackButtonNormalStyle}" Margin="39,59,39,40"/>
                 <TextBlock x:Name="pageTitle" Text="Prepare XBMC" Grid.Column="1" IsHitTestVisible="false" Style="{StaticResource PageHeaderTextStyle}"/>
             </Grid>
 
         </Grid>
-        <Grid Grid.Row="1" Margin="120 0 120 50">
+        <Grid Grid.Row="1" Style="{StaticResource WelcomeWizContainer}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel>
-                <TextBlock Style="{StaticResource BodyTextStyle}">Please setup your XBMC for remote access. Therefore you have to activate the web server and allow remote control.</TextBlock>
-                <TextBlock Style="{StaticResource BodyTextStyle}"></TextBlock>
-                <TextBlock Style="{StaticResource BodyTextStyle}">In addition you have to enable the UPNP server.</TextBlock>
-                <TextBlock Style="{StaticResource BodyTextStyle}"></TextBlock>
-                <TextBlock Style="{StaticResource BodyTextStyle}">If you're not sure which settings has to be modified, please read the tutorial.</TextBlock>
-                <TextBlock Style="{StaticResource BodyTextStyle}"></TextBlock>
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}">Please setup your XBMC for remote access. Therefore you have to activate the web server and allow remote control.</TextBlock>
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}">In addition you have to enable the UPNP server.</TextBlock>
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}">If you're not sure which settings has to be modified, please read the tutorial.</TextBlock>
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
                 <HyperlinkButton Click="ButtonBase_OnClick">Open Tutorial</HyperlinkButton>
             </StackPanel>
             <Button Grid.Row="1" Style="{StaticResource WizardButtonStyle}" Margin="0,0,0,6" VerticalAlignment="Stretch" Click="Button_Click">Next</Button>

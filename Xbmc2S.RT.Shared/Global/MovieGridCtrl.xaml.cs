@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using WinRTXamlToolkit.Controls.Extensions;
 using Xbmc2S.Model;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
@@ -29,6 +30,43 @@ namespace Xbmc2S.RT
             groupesSource.Source = "#abcdefghijklmnopqrstuvwxyz".ToCharArray();
 
             App.MainVm.Settings.SettingsChanged += Settings_SettingsChanged;
+
+            Loaded += MovieGridCtrl_Loaded;
+        }
+
+        void MovieGridCtrl_Loaded(object sender, RoutedEventArgs e)
+        {
+            var scrollViewer = itemListView.GetFirstDescendantOfType<ScrollViewer>();
+            if (scrollViewer != null) scrollViewer.ViewChanged += scrollViewer_ViewChanged;
+        }
+
+        void scrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+        {
+            RefreshGroupHeader();
+        }
+
+        private void RefreshGroupHeader()
+        {
+            var firstItem = itemListView.ItemsPanelRoot.Children.FirstOrDefault(IsFirstVisibleItem);
+
+            if (firstItem != null)
+            {
+                var content = ((ContentControl) firstItem).Content as IItemDetails;
+                if (content != null && content.Label!=null &&content.Label.Length!=0)
+                {
+                    var chr = content.Label[0];
+                    if (char.IsDigit(chr)) chr = '#';
+                    HeaderButton2.Content = chr.ToString().ToLowerInvariant();
+                }
+            }
+        }
+
+        private bool IsFirstVisibleItem(UIElement listViewItem)
+        {
+            var transform = listViewItem.TransformToVisual(itemListView);
+            var height = ((FrameworkElement)listViewItem).ActualHeight;
+            var offset = transform.TransformPoint(new Point(){Y=height});
+            return (offset.Y) > 1 && offset.Y<(height+1);
         }
 
         void Settings_SettingsChanged(object sender, EventArgs e)
@@ -171,9 +209,14 @@ namespace Xbmc2S.RT
                 {
                     itemView = itemListView;
                 }
+                if (ZoomRoot.Children.Contains((UIElement)ListZoom.ZoomedOutView))
+                {
+                    ZoomRoot.Children.Remove((UIElement) ListZoom.ZoomedOutView);
+                }
 
                 LoadMessage.Visibility = Visibility.Visible;
                 var chr = e.SourceItem.Item.ToString();
+                HeaderButton2.Content = chr;
                 if (chr == "#")
                 {
                     ScrollIntoView(ItemsSource.Items[0]);
@@ -251,6 +294,19 @@ namespace Xbmc2S.RT
             }
 
             itemView.ScrollIntoView(selected, ScrollIntoViewAlignment.Leading);
+        }
+
+        private void ShowChars(object sender, RoutedEventArgs e)
+        {
+            ListZoom.ToggleActiveView();
+            if (ListZoom.IsZoomedInViewActive)
+            {
+                ZoomRoot.Children.Remove((UIElement)ListZoom.ZoomedOutView);
+            }
+            else
+            {
+                ZoomRoot.Children.Add((UIElement)ListZoom.ZoomedOutView);
+            }
         }
     }
 }

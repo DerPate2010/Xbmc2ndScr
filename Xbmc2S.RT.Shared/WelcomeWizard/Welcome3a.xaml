@@ -16,35 +16,36 @@
         </Grid.RowDefinitions>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="140"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <!-- Back button and page title -->
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+                <Button x:Name="backButton" Click="GoBack" IsEnabled="false"  Style="{StaticResource NavigationBackButtonNormalStyle}" Margin="39,59,39,40"/>
                 <TextBlock x:Name="pageTitle" Grid.Column="1" IsHitTestVisible="false" Style="{StaticResource PageHeaderTextStyle}">"Play to" setup</TextBlock>
             </Grid>
 
         </Grid>
-        <Grid Grid.Row="1" Margin="120 0 120 50">
+        <Grid Grid.Row="1" Style="{StaticResource WelcomeWizContainer}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel>
-                <TextBlock Style="{StaticResource BodyTextStyle}">With the basic setup you are able to control the playback on the XBMC device. If you want to play your media on any other device in your local network, you have to enable UPnP on your XBMC settings. For more information on the configuration see the tutorial.</TextBlock>
-                <TextBlock Style="{StaticResource BodyTextStyle}"></TextBlock>
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}">With the basic setup you are able to control the playback on the XBMC device. If you want to play your media on any other device in your local network, you have to enable UPnP on your XBMC settings. For more information on the configuration see the tutorial.</TextBlock>
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
                 <HyperlinkButton Click="ButtonBase_OnClick">Open Tutorial</HyperlinkButton>
 
                 <Button Margin="15" Click="Button_Click_1">Check connection</Button>
-                <TextBlock Name="StatusHeader" Visibility="Collapsed" Style="{StaticResource SubheaderTextStyle}" Margin="0 10 0 0">Current status:</TextBlock>
-                <TextBlock Name="ConnectedLabel" Visibility="Collapsed" Foreground="Green" Style="{StaticResource BodyTextStyle}">UPnP is enabled on your XBMC Media Center</TextBlock>
-                <TextBlock Name="ErrorLabel" Visibility="Collapsed" Foreground="Yellow" Style="{StaticResource BodyTextStyle}">UPnP is disabled on your XBMC Media Center</TextBlock>
-                <TextBlock Name="ErrorDetails" Visibility="Collapsed" Style="{StaticResource BodyTextStyle}">This step is optional. You can continue. If you skip the configuration, you will not be able to play media on this or any other device in your network.</TextBlock>
+                <TextBlock Name="StatusHeader" Visibility="Collapsed" Style="{StaticResource SubheaderTextBlockStyle}" Margin="0 10 0 0">Current status:</TextBlock>
+                <TextBlock Name="ConnectedLabel" Visibility="Collapsed" Foreground="Green" Style="{StaticResource BodyTextBlockStyle}">UPnP is enabled on your XBMC Media Center</TextBlock>
+                <TextBlock Name="ErrorLabel" Visibility="Collapsed" Foreground="Yellow" Style="{StaticResource BodyTextBlockStyle}">UPnP is disabled on your XBMC Media Center</TextBlock>
+                <TextBlock Name="ErrorDetails" Visibility="Collapsed" Style="{StaticResource BodyTextBlockStyle}">This step is optional. You can continue. If you skip the configuration, you will not be able to play media on this or any other device in your network.</TextBlock>
 
             </StackPanel>
             <Button Grid.Row="2" Style="{StaticResource WizardButtonStyle}" Click="Button_Click">Next</Button>

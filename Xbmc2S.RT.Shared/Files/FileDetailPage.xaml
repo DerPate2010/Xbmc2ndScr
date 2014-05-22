@@ -49,7 +49,7 @@
         </Grid>
 
         <StackPanel  Grid.Row="1" DataContext="{Binding FileInfo}"  Margin="117 0 117 49" Name="ContentPanel" >
-            <RichTextBlock x:Name="richTextBlock" Style="{StaticResource ItemRichTextStyle}" IsTextSelectionEnabled="False">
+            <RichTextBlock x:Name="richTextBlock" Style="{StaticResource BodyRichTextBlockStyle}" IsTextSelectionEnabled="False">
                 <Paragraph LineStackingStrategy="MaxHeight">
                     <InlineUIContainer>
                         <Button  Style="{StaticResource PlayInlineButtonStyle}" Command="{Binding Play}" x:Uid="PlayButton"></Button>

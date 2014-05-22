@@ -270,11 +270,11 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource SubheaderTextStyle}" Margin="15,0,15,0"/>
-                <TextBlock Text="{Binding Progress}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource SubheaderTextStyle}" Margin="15,0,15,0" TextAlignment="Right"/>
+                <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource SubheaderTextBlockStyle}" Margin="15,0,15,0"/>
+                <TextBlock Text="{Binding Progress}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource SubheaderTextBlockStyle}" Margin="15,0,15,0" TextAlignment="Right"/>
                 <ProgressBar Grid.Row="1"  Minimum="0" Maximum="100" Value="{Binding Progress}" Margin="15 15 15 0" Style="{StaticResource ProgressBarStyle1}"/>
-                <TextBlock Grid.Row="2" Text="{Binding Status}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
-                <TextBlock Grid.Row="2" Text="{Binding ErrorMessage}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap" Margin="15,0,15,10" TextAlignment="Right"/>
+                <TextBlock Grid.Row="2" Text="{Binding Status}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
+                <TextBlock Grid.Row="2" Text="{Binding ErrorMessage}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap" Margin="15,0,15,10" TextAlignment="Right"/>
             </Grid>
         </DataTemplate>
 

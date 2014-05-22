@@ -25,8 +25,8 @@
                     <Image Source="{Binding Images.Image}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Label}"/>
                 </Border>
                 <StackPanel VerticalAlignment="Bottom" Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}">
-                    <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextStyle}" Margin="15,0,15,0"/>
-                    <TextBlock Text="{Binding SecondLabel}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
+                    <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextBlockStyle}" Margin="15,0,15,0"/>
+                    <TextBlock Text="{Binding SecondLabel}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -91,10 +91,10 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Text="{Binding Info.SecondLabel}" Margin="0,0,18,20" Style="{StaticResource SubheaderTextStyle}" MaxHeight="60"/>
+                        <TextBlock Text="{Binding Info.SecondLabel}" Margin="0,0,18,20" Style="{StaticResource SubheaderTextBlockStyle}" MaxHeight="60"/>
                         <Image Grid.Row="1" Source="{Binding Info.Image}" MaxHeight="720" MaxWidth="480" Margin="0,0,18,20" Stretch="Uniform" HorizontalAlignment="Center" AutomationProperties.Name="{Binding Title}"/>
                         <ScrollViewer Grid.Row="2" Margin="0,0,18,0" MaxWidth="480">
-                            <TextBlock Text="{Binding Info.Content}"  Style="{StaticResource BodyTextStyle}"/>
+                            <TextBlock Text="{Binding Info.Content}"  Style="{StaticResource BodyTextBlockStyle}"/>
                         </ScrollViewer>
                     </Grid>
                 </local:MovieGridCtrl.Header>

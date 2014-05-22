@@ -51,7 +51,7 @@
                             </Grid.ColumnDefinitions>
                             <controls:Rating ItemCount="5" Value="{Binding RatingBase5}" VerticalAlignment="Center" 
                                          Background="#222222" Foreground="White"/>
-                            <TextBlock Grid.Column="1" Text="{Binding Rating}" Style="{StaticResource BasicTextStyle}" Foreground="#6b6b6b" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Rating}" Style="{StaticResource BaseTextBlockStyle}" Foreground="#6b6b6b" VerticalAlignment="Center"/>
 
                         </Grid>
                     </Border>
@@ -62,7 +62,7 @@
 
             <ScrollViewer Style="{StaticResource VerticalScrollViewerStyle}" Grid.Row="1" Grid.Column="2">
                 <StackPanel>
-                    <RichTextBlock x:Name="richTextBlock" Width="330" Style="{StaticResource ItemRichTextStyle}" IsTextSelectionEnabled="False">
+                    <RichTextBlock x:Name="richTextBlock" Width="330" Style="{StaticResource BodyRichTextBlockStyle}" IsTextSelectionEnabled="False">
                         <Paragraph LineStackingStrategy="MaxHeight">
                             <InlineUIContainer>
                                 <local:PlayableItemCommands2 Width="330"/>
@@ -108,7 +108,7 @@
                 </StackPanel>
             </ScrollViewer>
             
-            <TextBlock Grid.Column="4" Text="{Binding ItemsLabel}" Visibility="{Binding Converter={StaticResource HasItemsToVisibilityConverter}}" Style="{StaticResource SubheaderTextStyle}"/>
+            <TextBlock Grid.Column="4" Text="{Binding ItemsLabel}" Visibility="{Binding Converter={StaticResource HasItemsToVisibilityConverter}}" Style="{StaticResource SubheaderTextBlockStyle}"/>
             
                     <ListView Width="330" Margin="0 0 20 0"
             x:Name="ItemsListView"
@@ -125,7 +125,7 @@
                         ItemClick="ItemsListView_OnItemClick"
             ItemTemplate="{StaticResource GeneralDetailsItemTemplate}" />
 
-            <TextBlock Grid.Column="6" Text="Cast" Style="{StaticResource SubheaderTextStyle}"/>
+            <TextBlock Grid.Column="6" Text="Cast" Style="{StaticResource SubheaderTextBlockStyle}"/>
             
                                 <ListView
             x:Name="CastListView"

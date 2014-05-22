@@ -48,10 +48,10 @@
 
             <GridView.Header>
                 <StackPanel Margin="0,4,14,0" Width="330">
-                    <TextBlock Text="{Binding SecondLabel}" Margin="0,0,18,20" Style="{StaticResource SubheaderTextStyle}" MaxHeight="60"/>
+                    <TextBlock Text="{Binding SecondLabel}" Margin="0,0,18,20" Style="{StaticResource SubheaderTextBlockStyle}" MaxHeight="60"/>
                     <Image Source="{Binding Images.Image}" Height="200" Width="200" Margin="0,0,18,20" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
-                    <TextBlock Text="{Binding Year}" MaxWidth="240" Margin="0,0,18,0" Style="{StaticResource BodyTextStyle}"/>
-                    <TextBlock Text="{Binding Content}" MaxWidth="240" Margin="0,0,18,0" Style="{StaticResource BodyTextStyle}"/>
+                    <TextBlock Text="{Binding Year}" MaxWidth="240" Margin="0,0,18,0" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="{Binding Content}" MaxWidth="240" Margin="0,0,18,0" Style="{StaticResource BodyTextBlockStyle}"/>
                     <local:PlayableItemCommands2/>
                 </StackPanel>
             </GridView.Header>
@@ -80,9 +80,9 @@
 
             <ListView.Header>
                 <StackPanel>
-                    <TextBlock Text="{Binding Subtitle}" Margin="10,0,18,20" Style="{StaticResource TitleTextStyle}" MaxHeight="60"/>
+                    <TextBlock Text="{Binding Subtitle}" Margin="10,0,18,20" Style="{StaticResource TitleTextBlockStyle}" MaxHeight="60"/>
                     <Image Source="{Binding Images.Image}" Margin="10,0,18,0" Height="200" Width="200" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
-                    <TextBlock Margin="10,20,18,30" Text="{Binding Description}" Style="{StaticResource BodyTextStyle}"/>
+                    <TextBlock Margin="10,20,18,30" Text="{Binding Description}" Style="{StaticResource BodyTextBlockStyle}"/>
                 </StackPanel>
             </ListView.Header>
         </ListView>

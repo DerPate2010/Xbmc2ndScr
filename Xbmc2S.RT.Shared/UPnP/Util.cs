@@ -8,12 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Windows.Networking;
+using Windows.Networking.Connectivity;
 using Windows.Networking.Sockets;
 
 namespace Xbmc2S.RT.UPnP
 {
     public class Util:Platform
     {
+        private const string URN_MediaRenderer = "urn:schemas-upnp-org:device:MediaRenderer:1";
+        private const string URN_MediaServer = "urn:schemas-upnp-org:device:MediaServer:1";
+        IProgress<string> progress = new NullProgress();
+
+
         static readonly string vbCrLf = Environment.NewLine;
         private const string Soap = "{http://schemas.xmlsoap.org/soap/envelope/}";
         private readonly NullProgress _progress = new NullProgress();
@@ -70,7 +76,37 @@ namespace Xbmc2S.RT.UPnP
             return XDocument.Parse(body);
         }
 
-        public override async Task<MediaRendererDevice[]> GetMediaRenderer()
+        private async Task<MediaRendererDevice[]> GetMediaRendererUpnp()
+        {
+            var locations = await GetDeviceLocations(URN_MediaRenderer);
+
+            var devices = new List<MediaRendererDevice>();
+            foreach (var location in locations)
+            {
+                MediaRendererDevice device = new MediaRendererDevice();
+
+                try
+                {
+                    await device.Init(location.Item1, location.Item2, progress);
+                    devices.Add(device);
+                }
+                catch (Exception)
+                {
+                }
+            }
+            return devices.ToArray();
+        }
+
+        public override Task<MediaRendererDevice[]> GetMediaRenderer()
+        {
+#if WINDOWS_PHONE_APP
+            return GetMediaRendererUpnp();
+#else
+            return GetMediaRendererWindows();
+#endif
+        }
+
+        public async Task<MediaRendererDevice[]> GetMediaRendererWindows()
         {
 
 
@@ -167,7 +203,39 @@ namespace Xbmc2S.RT.UPnP
         }
 
 
-        public override async Task<MediaServerDevice[]> GetMediaServer()
+        public override Task<MediaServerDevice[]> GetMediaServer()
+        {
+#if WINDOWS_PHONE_APP
+            return GetMediaServerUpnp();
+#else
+            return GetMediaServerWindows();
+#endif
+        }
+
+        public async Task<MediaServerDevice[]> GetMediaServerUpnp()
+        {
+
+            var locations = await GetDeviceLocations(URN_MediaServer);
+
+            var devices = new List<MediaServerDevice>();
+            foreach (var location in locations)
+            {
+                MediaServerDevice device = new MediaServerDevice();
+
+                try
+                {
+                    await device.Init(location.Item1, location.Item2, progress);
+                    devices.Add(device);
+                }
+                catch (Exception)
+                {
+                }
+            }
+            return devices.ToArray();
+
+        }
+
+        public async Task<MediaServerDevice[]> GetMediaServerWindows()
         {
 
 
@@ -261,6 +329,33 @@ namespace Xbmc2S.RT.UPnP
         }
 
 
+
+        private Task<HashSet<Tuple<Uri, Uri>>> GetDeviceLocations(string schema)
+        {
+            return Platform.Current.GetDeviceLocations(schema, CreateSsdpRequest, ParseSsdpResponse);
+        }
+
+        private byte[] CreateSsdpRequest(string authority, string schema)
+        {
+            var request = "M-SEARCH * HTTP/1.1" + vbCrLf +
+                          "HOST: " + authority + vbCrLf +
+                          "ST:" + schema + vbCrLf +
+                          "MAN: \"ssdp:discover\"" + vbCrLf +
+                          "MX: 1" + vbCrLf + "" + vbCrLf;
+            return Encoding.UTF8.GetBytes(request);
+        }
+
+        private Uri ParseSsdpResponse(byte[] responsebuf, int len)
+        {
+            var response = Encoding.UTF8.GetString(responsebuf, 0, len);
+
+            return (from line in response.Split(new[] { '\r', '\n' })
+                    where line.ToLowerInvariant().StartsWith("location:")
+                    select new Uri(line.Substring(9).Trim())).FirstOrDefault();
+        }
+
+
+
         //This code will work on win phone too
         public override async Task<HashSet<Tuple<Uri, Uri>>> GetDeviceLocations(string schema, Func<string, string, byte[]> createSsdpRequest, Func<byte[], int, Uri> parseSsdpResponse)
         {
@@ -276,7 +371,7 @@ namespace Xbmc2S.RT.UPnP
             {
                 socket.MessageReceived += (sender, e) =>
                     {
-                        if (e.LocalAddress.IPInformation.NetworkAdapter.IanaInterfaceType == 24) return; // loopback
+                        if (e.LocalAddress.IPInformation !=null && e.LocalAddress.IPInformation.NetworkAdapter.IanaInterfaceType == 24) return; // loopback
                         // any loopback renderer will also report itself on the actual network, and I don't want to show duplicates
                         using (var reader = e.GetDataReader())
                         {
@@ -292,7 +387,13 @@ namespace Xbmc2S.RT.UPnP
                     };
 
                 // CAPABILITY: PrivateNetworks
+#if WINDOWS_PHONE_APP
+                ConnectionProfile connectionProfile = NetworkInformation.GetInternetConnectionProfile();
                 await socket.BindEndpointAsync(null, "");
+#else
+                ConnectionProfile connectionProfile = NetworkInformation.GetInternetConnectionProfile();
+                await socket.BindServiceNameAsync("",connectionProfile.NetworkAdapter);
+#endif
                 socket.Control.OutboundUnicastHopLimit = 1;
                 socket.JoinMulticastGroup(remoteIp); // Alas there's no WinRT equivalent of ReuseAddress
 

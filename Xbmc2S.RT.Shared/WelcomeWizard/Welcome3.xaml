@@ -16,47 +16,48 @@
         </Grid.RowDefinitions>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="140"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <!-- Back button and page title -->
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+                <Button x:Name="backButton" Click="GoBack" IsEnabled="false"  Style="{StaticResource NavigationBackButtonNormalStyle}" Margin="39,59,39,40"/>
                 <TextBlock x:Name="pageTitle" Text="Connect to XBMC" Grid.Column="1" IsHitTestVisible="false" Style="{StaticResource PageHeaderTextStyle}"/>
             </Grid>
 
         </Grid>
-        <Grid Grid.Row="1" Margin="120 0 120 50">
+        <Grid Grid.Row="1" Style="{StaticResource WelcomeWizContainer}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel>
-                <TextBlock Style="{StaticResource BodyTextStyle}">The first step is to establish a connection to the XBMC's web interface. For more information on the configuration see the tutorial.</TextBlock>
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}">The first step is to establish a connection to the XBMC's web interface. For more information on the configuration see the tutorial.</TextBlock>
                 <HyperlinkButton Click="ButtonBase_OnClick">Open Tutorial</HyperlinkButton>
 
-                <TextBlock Style="{StaticResource BodyTextStyle}">Please enter the host name of your XBMC installation.</TextBlock>
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}">Please enter the host name of your XBMC installation.</TextBlock>
                 <TextBlock ></TextBlock>
                 <TextBox Name="txtHost"/>
-                <TextBlock Style="{StaticResource BodyTextStyle}">If you have configured an other port than 80, please enter it here.</TextBlock>
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}">If you have configured an other port than 80, please enter it here.</TextBlock>
                 <TextBlock ></TextBlock>
                 <TextBox Name="txtPort"/>
-                <TextBlock Style="{StaticResource BodyTextStyle}">If you have enabled authentication, please enter your credentials here.</TextBlock>
-                <TextBlock Style="{StaticResource BodyTextStyle}">Username</TextBlock>
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}">If you have enabled authentication, please enter your credentials here.</TextBlock>
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}">Username</TextBlock>
                 <TextBlock ></TextBlock>
                 <TextBox Name="txtUser"/>
-                <TextBlock Style="{StaticResource BodyTextStyle}">Password</TextBlock>
+                <TextBlock Style="{StaticResource BodyTextBlockStyle}">Password</TextBlock>
                 <TextBlock ></TextBlock>
                 <PasswordBox Name="txtPass"/>
                 <Button Margin="15" Click="Button_Click_1">Check connection</Button>
-                <TextBlock Name="StatusHeader" Visibility="Collapsed" Style="{StaticResource SubheaderTextStyle}" Margin="0 10 0 0">Current status:</TextBlock>
-                <TextBlock Name="ConnectedLabel" Visibility="Collapsed" Foreground="Green" Style="{StaticResource BodyTextStyle}">Connected</TextBlock>
-                <TextBlock Name="ErrorLabel" Visibility="Collapsed" Foreground="Red" Style="{StaticResource BodyTextStyle}">Unable to connect to XBMC. Details:</TextBlock>
-                <TextBlock Name="ErrorDetails" Visibility="Collapsed" Style="{StaticResource BodyTextStyle}"></TextBlock>
+                <TextBlock Name="StatusHeader" Visibility="Collapsed" Style="{StaticResource SubheaderTextBlockStyle}" Margin="0 10 0 0">Current status:</TextBlock>
+                <TextBlock Name="ConnectedLabel" Visibility="Collapsed" Foreground="Green" Style="{StaticResource BodyTextBlockStyle}">Connected</TextBlock>
+                <TextBlock Name="ErrorLabel" Visibility="Collapsed" Foreground="Red" Style="{StaticResource BodyTextBlockStyle}">Unable to connect to XBMC. Details:</TextBlock>
+                <TextBlock Name="ErrorDetails" Visibility="Collapsed" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
             </StackPanel>
             <Button Grid.Row="1" Style="{StaticResource WizardButtonStyle}" Margin="0,0,0,6" VerticalAlignment="Stretch" Click="Button_Click">Next</Button>
         </Grid>

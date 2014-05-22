@@ -10,7 +10,7 @@
     d:DesignWidth="400">
 
     <StackPanel Orientation="Horizontal" Margin="0 5 5 0" HorizontalAlignment="Right" VerticalAlignment="Top">
-        <TextBlock Style="{StaticResource SubtitleTextStyle}" Name="ErrorLabel" ></TextBlock>
+        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Name="ErrorLabel" ></TextBlock>
         <ProgressRing Name="ProgressAnimation"></ProgressRing>
     </StackPanel>
 </UserControl>

@@ -69,7 +69,7 @@
             IsSourceGrouped="False"
             d:Source="{Binding PeopleGroup, Source={d:DesignInstance Type=sampleDataModel:SampleDataSource, IsDesignTimeCreatable=True}}"/>
         <Style TargetType="GridView" x:Key="HomeGridStyle">
-            <Setter Property="Margin" Value="0 0 40 0"/>
+            <Setter Property="Margin" Value="0 0 0 0"/>
             <Setter Property="ItemTemplate" Value="{StaticResource PosterItemTemplate}"/>
             <Setter Property="SelectionMode" Value="None"/>
             <Setter Property="IsSwipeEnabled" Value="False"/>
@@ -77,7 +77,7 @@
             <Setter Property="ItemsPanel">
                 <Setter.Value>
                     <ItemsPanelTemplate>
-                        <VariableSizedWrapGrid Orientation="Vertical" ItemWidth="160" ItemHeight="240"/>
+                        <WrapGrid Orientation="Horizontal" ItemWidth="160" ItemHeight="240"/>
                     </ItemsPanelTemplate>
                 </Setter.Value>
             </Setter>
@@ -140,25 +140,25 @@
                 </Grid>
             </Hub.Header>
 
-            <HubSection  Margin="0,0,80,0" Padding=" 0 -100 0 0"  VerticalContentAlignment="Stretch">
+            <HubSection Visibility="{Binding IsPlaying, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="0,0,80,0" Padding=" 0 -100 0 0"  VerticalContentAlignment="Stretch" DataContext="{Binding CurrentPlayingItem}">
                 <DataTemplate>
-                    <local:CurrentPlayingCtrl x:Name="CurrentPlayingPanel" DataContext="{Binding CurrentPlayingItem}"/>
+                    <local:CurrentPlayingCtrl x:Name="CurrentPlayingPanel"/>
                 </DataTemplate>
             </HubSection>
             <HubSection  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Width="360" DataContext="{Binding CurrentConnection}" Visibility="{Binding ConnectionFailed, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <DataTemplate>
                     <Border Background="{StaticResource AccentBrush}" Padding="10">
                         <StackPanel>
-                            <TextBlock Style="{StaticResource SubheaderTextStyle}"  Margin="0 0 0 10">Sorry</TextBlock>
-                            <TextBlock Style="{StaticResource BodyTextStyle}" Margin="0 0 0 10">Something went wrong with the connection to your XBMC Media Center.</TextBlock>
-                            <TextBlock Style="{StaticResource BodyTextStyle}" Margin="0 0 0 10">Usually your XBMC should be discovered automatically, if the web interface and UPnP are enabled and use default ports.</TextBlock>
-                            <TextBlock Style="{StaticResource BodyTextStyle}">Please make sure, that your XBMC is running and click the button below and check your connection settings. A wizard will guide you through the setup process.</TextBlock>
+                            <TextBlock Style="{StaticResource SubheaderTextBlockStyle}"  Margin="0 0 0 10">Sorry</TextBlock>
+                            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="0 0 0 10">Something went wrong with the connection to your XBMC Media Center.</TextBlock>
+                            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="0 0 0 10">Usually your XBMC should be discovered automatically, if the web interface and UPnP are enabled and use default ports.</TextBlock>
+                            <TextBlock Style="{StaticResource BodyTextBlockStyle}">Please make sure, that your XBMC is running and click the button below and check your connection settings. A wizard will guide you through the setup process.</TextBlock>
                             <Button Command="{Binding EditSettings}" HorizontalAlignment="Right" Margin="0 15 0 0">Edit connection settings</Button>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
             </HubSection>
-            <HubSection IsHeaderInteractive="True" Name="MovieSection" Header="Movies" Visibility="{Binding Settings.ShowMovies, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <HubSection IsHeaderInteractive="True" Width="700" Name="MovieSection" Header="Movies" Visibility="{Binding Settings.ShowMovies, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <DataTemplate>
                     <local:MultiCellGridView x:Name="itemGridView" ItemsSource="{Binding Source={StaticResource MovieItemsViewSource}}" ItemClick="ItemGridView_OnItemClick" Style="{StaticResource HomeGridStyle}">
 
@@ -173,7 +173,7 @@
                                       ItemTemplate="{StaticResource BannerItemTemplate}">
                         <GridView.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <VariableSizedWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="2" ItemWidth="379" ItemHeight="80"/>
+                                <WrapGrid Orientation="Horizontal" MaximumRowsOrColumns="2" ItemWidth="379" ItemHeight="80"/>
                             </ItemsPanelTemplate>
                         </GridView.ItemsPanel>
                     </local:MultiCellGridView>
@@ -182,10 +182,10 @@
 
             <HubSection Header="Music" IsHeaderInteractive="True" Name="MusicSection"  Visibility="{Binding Settings.ShowMusic, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <DataTemplate>
-                    <local:MultiCellGridView x:Name="itemGridView3" Grid.Column="2" ItemsSource="{Binding Source={StaticResource MusicItemsViewSource}}" ItemClick="ItemGridView_OnItemClick" Style="{StaticResource HomeGridStyle}">
+                    <local:MultiCellGridView x:Name="itemGridView3" Grid.Column="2" Width="700" ItemsSource="{Binding Source={StaticResource MusicItemsViewSource}}" ItemClick="ItemGridView_OnItemClick" Style="{StaticResource HomeGridStyle}">
                         <GridView.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <VariableSizedWrapGrid Orientation="Vertical" ItemWidth="160" ItemHeight="160"/>
+                                <WrapGrid Orientation="Horizontal" ItemWidth="160" ItemHeight="160"/>
                             </ItemsPanelTemplate>
                         </GridView.ItemsPanel>
                     </local:MultiCellGridView>
