@@ -54,6 +54,13 @@ namespace Xbmc2S.RT
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
+            navigationHelper.SaveState += navigationHelper_SaveState;
+            _id = DateTime.Now.Ticks;
+        }
+
+        void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
+        {
+            _currentPlayingItem.PropertyChanged -= _currentPlayingItem_PropertyChanged;
         }
 
 
@@ -73,6 +80,8 @@ namespace Xbmc2S.RT
             await ConnectViewModel();
         }
 
+        private long _id;
+
         private async Task ConnectViewModel()
         {
             this.DefaultViewModel["Settings"] = App.MainVm.Settings;
@@ -90,7 +99,35 @@ namespace Xbmc2S.RT
             this.DefaultViewModel["AdvancedSteps"] = advancedSteps;
             DefaultViewModel["CurrentConnection"] = App.MainVm.CurrentConnection; 
             _currentPlayingItem = await App.MainVm.GetCurrentPlayingItem();
+            _currentPlayingItem.PropertyChanged += _currentPlayingItem_PropertyChanged;
+            RefreshCurrentPlayingVisibility();
             DefaultViewModel["CurrentPlayingItem"] = _currentPlayingItem;
+        }
+
+        void _currentPlayingItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "IsPlaying")
+            {
+                RefreshCurrentPlayingVisibility();
+            }
+        }
+
+        private void RefreshCurrentPlayingVisibility()
+        {
+            if (_currentPlayingItem.IsPlaying)
+            {
+                if (!Hub.Sections.Contains(CurrentPlayingSection))
+                {
+                    Hub.Sections.Insert(0, CurrentPlayingSection);
+                }
+            }
+            else
+            {
+                if (Hub.Sections.Contains(CurrentPlayingSection))
+                {
+                    Hub.Sections.Remove(CurrentPlayingSection);
+                }
+            }
         }
 
         private void GotoUserVoice()
@@ -297,6 +334,7 @@ namespace Xbmc2S.RT
         {
             RcButton.Flyout.Hide();
         }
+
     }
 
 

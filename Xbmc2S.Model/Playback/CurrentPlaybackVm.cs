@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Okra.Core;
@@ -98,16 +99,26 @@ namespace Xbmc2S.Model
             }
             throw new NotSupportedException();
         }
+
+        private CancellationTokenSource _delayCancel;
+
+        public void RefreshNow()
+        {
+            _delayCancel.Cancel();
+        }
         
         private async Task CurrentPlayingLoop()
         {
-
             while (true)
             {
                 bool failed = false;
                 try
                 {
-                    await GetCurrentPlayingItem();
+                    _delayCancel= new CancellationTokenSource();
+                    await GetCurrentPlayingItem(_delayCancel.Token);
+                }
+                catch (TaskCanceledException)
+                {
                 }
                 catch (Exception)
                 {
@@ -120,7 +131,7 @@ namespace Xbmc2S.Model
             }
         }
 
-        private async Task GetCurrentPlayingItem()
+        private async Task GetCurrentPlayingItem(CancellationToken delayCancel)
         {
             var activePlayers = await _appContext.XBMC.Player.GetActivePlayers();
             if (activePlayers.Count == 0)
@@ -162,7 +173,7 @@ namespace Xbmc2S.Model
                     IsPlaying = false;
                     CurrentItem = null;
                 }
-                await Task.Delay(TimeSpan.FromSeconds(10));
+                await Task.Delay(TimeSpan.FromSeconds(10),delayCancel);
             }
             else
             {
@@ -239,7 +250,11 @@ namespace Xbmc2S.Model
             get { return _isPlaying; }
             set
             {
-                _isPlaying = value; OnPropertyChanged(); }
+                if (SetProperty(ref _isPlaying, value))
+                {
+                    
+                }
+            }
         }
 
         public ICommand Pause { get; private set; }

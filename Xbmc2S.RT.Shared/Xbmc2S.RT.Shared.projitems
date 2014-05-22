@@ -45,9 +45,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Files\MissingFilesPage.xaml.cs">
       <DependentUpon>MissingFilesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Global\CurrentPlayingCtrl.xaml.cs">
-      <DependentUpon>CurrentPlayingCtrl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Global\GeneralDetailsView.xaml.cs">
       <DependentUpon>GeneralDetailsView.xaml</DependentUpon>
     </Compile>
@@ -176,10 +173,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Files\MissingFilesPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Global\CurrentPlayingCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

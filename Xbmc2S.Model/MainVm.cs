@@ -234,10 +234,21 @@ namespace Xbmc2S.Model
             }
             return itemsSource;
         }
-        
+
+        private CurrentPlaybackVm _currentPlaybackVm;
+
         public async Task<CurrentPlaybackVm> GetCurrentPlayingItem()
         {
-            return new CurrentPlaybackVm(_appContext);
+            if (_currentPlaybackVm == null)
+            {
+                _currentPlaybackVm = new CurrentPlaybackVm(_appContext);
+            }
+            else
+            {
+                _currentPlaybackVm.RefreshNow();
+            }
+
+            return _currentPlaybackVm;
         }
 
         public PersonVm SearchPerson(string name)

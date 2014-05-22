@@ -12,7 +12,15 @@ namespace Xbmc2S.RT.Common
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return (value is bool && (bool)value) ? Visibility.Visible : Visibility.Collapsed;
+            try
+            {
+                return (value is bool && (bool)value) ? Visibility.Visible : Visibility.Collapsed;
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

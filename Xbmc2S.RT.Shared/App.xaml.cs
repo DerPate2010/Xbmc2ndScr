@@ -44,6 +44,19 @@ namespace Xbmc2S.RT
             this.Suspending += OnSuspending;
             Platform.Current= new Util();
             SuspensionManager.KnownTypes.Add(typeof(ItemsSourceReference));
+
+            TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
+            UnhandledException += App_UnhandledException;
+        }
+
+        void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
+        {
+            e.SetObserved();
         }
 
         public static MainVm MainVm

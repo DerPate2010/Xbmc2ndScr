@@ -20,7 +20,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid Name="CurrentPlayingPanel" Width="1200" Visibility="{Binding IsPlaying, Converter={StaticResource BooleanToVisibilityConverter}}" >
+    <Grid Width="1200" Visibility="{Binding IsPlaying, Converter={StaticResource BooleanToVisibilityConverter}}" >
         <Image Source="{Binding CurrentItem.Images.FanArt}" Grid.RowSpan="2" Stretch="UniformToFill"/>
         <Border>
             <Border.Background>

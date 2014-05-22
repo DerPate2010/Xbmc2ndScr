@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml.Controls;
@@ -56,7 +57,7 @@ namespace Xbmc2S.RT
             if (!_refreshPending)
             {
                 _refreshPending = true;
-                DoRefresh();
+                SmartDispatcher.RunAsync(DoRefresh);
             }
         }
 
@@ -71,14 +72,14 @@ namespace Xbmc2S.RT
             }
             else
             {
-                _progressIndicator.ProgressValue = null;
-                await _progressIndicator.ShowAsync();
+                    _progressIndicator.ProgressValue = null;
+                    await _progressIndicator.ShowAsync();
             }
         }
 
         public void SetError(string message)
         {
-            DisplayError(message);
+            SmartDispatcher.RunAsync(()=>DisplayError(message));
         }
 
 
@@ -90,7 +91,6 @@ namespace Xbmc2S.RT
                 await _progressIndicator.ShowAsync();
                 await Task.Delay(4000);
                 _progressIndicator.Text = "";
-
             }
         }
     }

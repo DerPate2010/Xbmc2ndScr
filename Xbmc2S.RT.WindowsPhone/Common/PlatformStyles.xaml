@@ -104,5 +104,4 @@
             <TextBlock Margin="6 0 0 0" Text="{StaticResource ChevronGlyph}" FontFamily="Segoe UI Symbol"  Style="{StaticResource SubheaderTextBlockStyle}" FontWeight="SemiBold"/>
         </StackPanel>
     </DataTemplate>
-
 </ResourceDictionary>
