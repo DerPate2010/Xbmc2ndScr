@@ -45,12 +45,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Files\MissingFilesPage.xaml.cs">
       <DependentUpon>MissingFilesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Global\AdvancedStep.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Global\GeneralDetailsView.xaml.cs">
       <DependentUpon>GeneralDetailsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Global\HubPage.xaml.cs">
-      <DependentUpon>HubPage.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Global\HubPage.Shared.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Global\MovieGridCtrl.xaml.cs">
       <DependentUpon>MovieGridCtrl.xaml</DependentUpon>
     </Compile>
@@ -177,10 +176,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Global\GeneralDetailsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Global\HubPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

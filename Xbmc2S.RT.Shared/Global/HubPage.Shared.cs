@@ -1,32 +1,20 @@
-﻿using System.Threading.Tasks;
-using System.Windows.Input;
-using Windows.System;
-using Microsoft.PlayerFramework;
-using WinRTXamlToolkit.Controls.Extensions;
-using Xbmc2S.Model;
-using Xbmc2S.RT.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using System.Text;
+using System.Threading.Tasks;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
-// The Hub Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=286574
+using Xbmc2S.Model;
+using Xbmc2S.RT.Common;
 
 namespace Xbmc2S.RT
 {
-    /// <summary>
-    /// A page that displays a grouped collection of items.
-    /// </summary>
-    public sealed partial class HubPage : Page
+    public partial class HubPage
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
@@ -93,11 +81,11 @@ namespace Xbmc2S.RT
             {
                 new AdvancedStep(){ Header = "Show Files", Execute = ShowFiles},
                 new AdvancedStep(){ Header = "Find files not in library", Execute = ShowMissingFiles},
-            }; 
+            };
             AddAdvancedStepsPF(advancedSteps);
-            advancedSteps.Add(new AdvancedStep(){ Header = "Vote for new features", Execute = GotoUserVoice});
+            advancedSteps.Add(new AdvancedStep() { Header = "Vote for new features", Execute = GotoUserVoice });
             this.DefaultViewModel["AdvancedSteps"] = advancedSteps;
-            DefaultViewModel["CurrentConnection"] = App.MainVm.CurrentConnection; 
+            DefaultViewModel["CurrentConnection"] = App.MainVm.CurrentConnection;
             _currentPlayingItem = await App.MainVm.GetCurrentPlayingItem();
             _currentPlayingItem.PropertyChanged += _currentPlayingItem_PropertyChanged;
             RefreshCurrentPlayingVisibility();
@@ -224,7 +212,7 @@ namespace Xbmc2S.RT
 
         private void Advanced_Click(object sender, ItemClickEventArgs e)
         {
-            ((AdvancedStep) e.ClickedItem).Execute();
+            ((AdvancedStep)e.ClickedItem).Execute();
         }
 
 
@@ -236,12 +224,12 @@ namespace Xbmc2S.RT
 
             var recent = App.MainVm.CurrentConnection.GetRecentServers();
 
-            var multiPort = recent.GroupBy(r => r.Host).Where(g => g.Count() > 1).Select(g=>g.First().Host).ToList();
-            
+            var multiPort = recent.GroupBy(r => r.Host).Where(g => g.Count() > 1).Select(g => g.First().Host).ToList();
+
 
             foreach (var server in recent)
             {
-                RelayCommand command=null;
+                RelayCommand command = null;
                 var name = server.Host;
                 if (multiPort.Contains(name))
                 {
@@ -254,7 +242,7 @@ namespace Xbmc2S.RT
                 }
                 else
                 {
-                    command = new RelayCommand(()=>ConnectToServerExecuted(server));
+                    command = new RelayCommand(() => ConnectToServerExecuted(server));
                 }
 
                 flyout.Items.Add(new MenuFlyoutItem() { Text = name, Command = command });
@@ -276,7 +264,7 @@ namespace Xbmc2S.RT
                     else
                     {
                         command = new RelayCommand(() => ConnectToServerExecuted(server));
-                        flyout.Items.Add(new MenuFlyoutItem() {Text = name, Command = command});
+                        flyout.Items.Add(new MenuFlyoutItem() { Text = name, Command = command });
                     }
                 }
             }
@@ -284,9 +272,9 @@ namespace Xbmc2S.RT
             if (!(flyout.Items.Last() is MenuFlyoutSeparator))
             {
                 flyout.Items.Add(new MenuFlyoutSeparator());
-                
+
             }
-            flyout.Items.Add(new MenuFlyoutItem(){Text="Edit connection settings...", Command = new RelayCommand(EditConnectionExecuted)});
+            flyout.Items.Add(new MenuFlyoutItem() { Text = "Edit connection settings...", Command = new RelayCommand(EditConnectionExecuted) });
             flyout.Placement = FlyoutPlacementMode.Bottom;
             if (sender is AppBarButton)
             {
@@ -294,7 +282,7 @@ namespace Xbmc2S.RT
             }
             else
             {
-                flyout.ShowAt((FrameworkElement) sender);
+                flyout.ShowAt((FrameworkElement)sender);
             }
         }
 
@@ -326,23 +314,10 @@ namespace Xbmc2S.RT
         {
             if (e.Key == VirtualKey.Enter)
             {
-                App.RootFrame.Navigate(typeof(SearchResultsPage), ((TextBox) sender).Text);
+                App.RootFrame.Navigate(typeof(SearchResultsPage), ((TextBox)sender).Text);
             }
         }
 
-        private void ToggleFlyout(object sender, RoutedEventArgs e)
-        {
-            RcButton.Flyout.Hide();
-        }
 
-    }
-
-
-
-    class AdvancedStep
-    {
-        public string Header { get; set; }
-        public Action Execute { get; set; }
-        public string Type { get; set; }
     }
 }

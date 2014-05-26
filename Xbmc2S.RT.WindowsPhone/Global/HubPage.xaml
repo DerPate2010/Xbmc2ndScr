@@ -16,73 +16,67 @@
     Background="{ThemeResource AccentBackgroundBrush}">
 
     <Page.Resources>
-        <x:String x:Key="ChevronGlyph">&#xE26B;</x:String>
+            <Style TargetType="playerFramework:SeekableSlider">
+                <Setter Property="Foreground" Value="{StaticResource AccentColor}"/>
+                <Setter Property="SliderTrackDecreasePressedBackground" Value="{StaticResource ButtonPressedForegroundThemeBrush}" />
+                <Setter Property="SliderTrackDecreasePointerOverBackground" Value="{StaticResource ButtonPointerOverForegroundThemeBrush}" />
+                <Setter Property="Margin" Value="0 46 0 0" />
+                <Setter Property="Height" Value="8" />
 
-        <Style TargetType="playerFramework:SeekableSlider">
-            <Setter Property="Foreground" Value="{StaticResource AccentColor}"/>
-            <Setter Property="SliderTrackDecreasePressedBackground" Value="{StaticResource ButtonPressedForegroundThemeBrush}" />
-            <Setter Property="SliderTrackDecreasePointerOverBackground" Value="{StaticResource ButtonPointerOverForegroundThemeBrush}" />
-            <Setter Property="Margin" Value="0 46 0 0" />
-            <Setter Property="Height" Value="8" />
-
-            <Setter Property="SliderThumbStyle">
-                <Setter.Value>
-                    <Style TargetType="Thumb">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="Thumb">
-                                    <Canvas HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-18,-38,18,0">
-                                        <Grid>
-                                            <Ellipse Stroke="{StaticResource ButtonForegroundThemeBrush}" Fill="{StaticResource ButtonPressedForegroundThemeBrush}" StrokeThickness="2" Width="35" Height="35"/>
-                                            <Path Fill="{StaticResource ButtonForegroundThemeBrush}" Margin="0,0,0,-7" VerticalAlignment="Bottom" HorizontalAlignment="Center" Data="M 0,0 8,0 4,8Z"/>
-                                        </Grid>
-                                    </Canvas>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <!--
+                <Setter Property="SliderThumbStyle">
+                    <Setter.Value>
+                        <Style TargetType="Thumb">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Thumb">
+                                        <Canvas HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-18,-38,18,0">
+                                            <Grid>
+                                                <Ellipse Stroke="{StaticResource ButtonForegroundThemeBrush}" Fill="{StaticResource ButtonPressedForegroundThemeBrush}" StrokeThickness="2" Width="35" Height="35"/>
+                                                <Path Fill="{StaticResource ButtonForegroundThemeBrush}" Margin="0,0,0,-7" VerticalAlignment="Bottom" HorizontalAlignment="Center" Data="M 0,0 8,0 4,8Z"/>
+                                            </Grid>
+                                        </Canvas>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <!--
             Collection of grouped items displayed by this page, bound to a subset
             of the complete item list because items in groups cannot be virtualized
         -->
 
-        <CollectionViewSource
+            <CollectionViewSource
             x:Name="TvItemsViewSource"
             Source="{Binding TvGroup.Items}"
-            IsSourceGrouped="False"
-            d:Source="{Binding TvGroup, Source={d:DesignInstance Type=sampleDataModel:SampleDataSource, IsDesignTimeCreatable=True}}"/>
-        <CollectionViewSource
+            IsSourceGrouped="False"/>
+            <CollectionViewSource
             x:Name="MusicItemsViewSource"
             Source="{Binding MusicGroup.Items}"
-            IsSourceGrouped="False"
-            d:Source="{Binding MusicGroup, Source={d:DesignInstance Type=sampleDataModel:SampleDataSource, IsDesignTimeCreatable=True}}"/>
-        <CollectionViewSource
+            IsSourceGrouped="False"/>
+            <CollectionViewSource
             x:Name="MovieItemsViewSource"
             Source="{Binding MovieGroup.Items}"
-            IsSourceGrouped="False"
-            d:Source="{Binding MovieGroup, Source={d:DesignInstance Type=sampleDataModel:SampleDataSource, IsDesignTimeCreatable=True}}"/>
-        <CollectionViewSource
+            IsSourceGrouped="False"/>
+            <CollectionViewSource
             x:Name="PeopleItemsViewSource"
             Source="{Binding PeopleGroup.Items}"
-            IsSourceGrouped="False"
-            d:Source="{Binding PeopleGroup, Source={d:DesignInstance Type=sampleDataModel:SampleDataSource, IsDesignTimeCreatable=True}}"/>
+            IsSourceGrouped="False"/>
+
         <Style TargetType="GridView" x:Key="HomeGridStyle">
             <Setter Property="Margin" Value="0 0 0 0"/>
-            <Setter Property="ItemTemplate" Value="{StaticResource PosterItemTemplate}"/>
             <Setter Property="SelectionMode" Value="None"/>
             <Setter Property="IsSwipeEnabled" Value="False"/>
             <Setter Property="IsItemClickEnabled" Value="True"/>
-            <Setter Property="ItemsPanel">
+            <Setter Property="Grid.Row" Value="1"/>
+            <Setter Property="ItemContainerStyle">
                 <Setter.Value>
-                    <ItemsPanelTemplate>
-                        <WrapGrid Orientation="Horizontal" ItemWidth="160" ItemHeight="240"/>
-                    </ItemsPanelTemplate>
+                    <Style TargetType="GridViewItem">
+                        <Setter Property="Margin" Value="5"/>
+                    </Style>
                 </Setter.Value>
             </Setter>
-            <Setter Property="Grid.Row" Value="1"/>
         </Style>
 
 
@@ -100,6 +94,20 @@
             </Setter>
         </Style>
 
+
+        <Style TargetType="HubSection" x:Key="ItemsSectionStyle">
+            <Setter Property="HeaderTemplate" Value="{StaticResource HubSectionHeaderTemplate}"/>
+            <Setter Property="IsHeaderInteractive" Value="True"/>
+            <Setter Property="MinWidth" Value="1"/>
+            <Setter Property="Width" Value="NaN"/>
+        </Style>
+        <Style TargetType="HubSection" x:Key="CurrentPlayingSectionStyle">
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="Width" Value="NaN"/>
+            <Setter Property="MinWidth" Value="1"/>
+            <Setter Property="Padding" Value="-20 -100 0 0"/>
+            <Setter Property="Margin" Value="0"/>
+        </Style>
     </Page.Resources>
     <Page.BottomAppBar>
         <CommandBar Background="{StaticResource AccentBrush}">
@@ -122,11 +130,18 @@
                                 <Setter Property="Background" Value="Transparent"/>
                             </Style>
                         </Flyout.FlyoutPresenterStyle>
-                        <Border Background="{StaticResource DimBrush}" Tapped="ToggleFlyout">
-                            <Border Background="{StaticResource AccentBackgroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Border Background="{StaticResource DimBrush}" Tapped="ToggleFlyout"/>
+                            <Border Background="{StaticResource AccentBackgroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Row="1">
                                 <rc:RCControl HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
-                        </Border>
+                            <Border Background="{StaticResource DimBrush}" Tapped="ToggleFlyout" Grid.Row="2"/>
+                        </Grid>
                     </Flyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
@@ -160,18 +175,13 @@
                         AutomationProperties.ItemType="Navigation Button"/>
                     <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HubPageHeaderStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Top"/>
-
-
-                    <Button Grid.Column="2" VerticalAlignment="Bottom" Style="{StaticResource ConnectionDropdownButtonStyle}" Margin=" 15 0 0 -10" Content="{Binding CurrentConnection.Name}" Click="ConnectionsClick">
-
-                        </Button>
-
                 </Grid>
             </Hub.Header>
 
-            <HubSection Name="CurrentPlayingSection" Margin="-20 0 20 0" Padding="0 -100 0 0" MinWidth="0" Width="NaN" VerticalContentAlignment="Stretch" DataContext="{Binding CurrentPlayingItem}">
+            <HubSection Name="CurrentPlayingSection" Style="{StaticResource CurrentPlayingSectionStyle}"
+                        DataContext="{Binding CurrentPlayingItem}">
                 <DataTemplate>
-                    <local:CurrentPlayingCtrl Margin="0 0 -20 0"/>
+                    <local:CurrentPlayingCtrl/>
                 </DataTemplate>
             </HubSection>
             <HubSection  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Width="360" DataContext="{Binding CurrentConnection}" Visibility="{Binding ConnectionFailed, Converter={StaticResource BooleanToVisibilityConverter}}">
@@ -187,42 +197,57 @@
                     </Border>
                 </DataTemplate>
             </HubSection>
-            <HubSection HeaderTemplate="{StaticResource HubSectionHeaderTemplate}" IsHeaderInteractive="True" Width="700" Name="MovieSection" Header="Movies" Visibility="{Binding Settings.ShowMovies, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <HubSection Style="{StaticResource ItemsSectionStyle}" Name="MovieSection" Header="Movies" 
+                        Visibility="{Binding Settings.ShowMovies, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        MaxWidth="660" Width="NaN" >
                 <DataTemplate>
-                    <local:MultiCellGridView x:Name="itemGridView" ItemsSource="{Binding Source={StaticResource MovieItemsViewSource}}" ItemClick="ItemGridView_OnItemClick" Style="{StaticResource HomeGridStyle}">
-
-
+                    <local:MultiCellGridView x:Name="itemGridView" MaxWidth="660" ItemsSource="{Binding Source={StaticResource MovieItemsViewSource}}" 
+                                             ItemClick="ItemGridView_OnItemClick" Style="{StaticResource HomeGridStyle}"
+                                             ItemTemplate="{StaticResource PosterItemTemplate}" VerticalContentAlignment="Stretch">
+                        <GridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapGrid Orientation="Vertical" VerticalAlignment="Stretch" MaximumRowsOrColumns="2" 
+                                          ItemHeight="230" ItemWidth="160"/>
+                            </ItemsPanelTemplate>
+                        </GridView.ItemsPanel>
                     </local:MultiCellGridView>
 
                 </DataTemplate>
             </HubSection>
-            <HubSection HeaderTemplate="{StaticResource HubSectionHeaderTemplate}" Header="TV Shows" IsHeaderInteractive="True" Name="TVSection" Visibility="{Binding Settings.ShowShows, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <HubSection Style="{StaticResource ItemsSectionStyle}" Header="TV Shows" Name="TVSection"  MaxWidth="360" Width="NaN"
+                        Visibility="{Binding Settings.ShowShows, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <DataTemplate>
-                    <local:MultiCellGridView x:Name="itemGridView2" Grid.Column="1" ItemsSource="{Binding Source={StaticResource TvItemsViewSource}}" ItemClick="ItemGridView_OnItemClick" Style="{StaticResource HomeGridStyle}"
-                                      ItemTemplate="{StaticResource BannerItemTemplate}">
+                    <local:MultiCellGridView x:Name="itemGridView2" Style="{StaticResource HomeGridStyle}" VerticalContentAlignment="Stretch"
+                                             ItemsSource="{Binding Source={StaticResource TvItemsViewSource}}" 
+                                             ItemClick="ItemGridView_OnItemClick" ItemTemplate="{StaticResource BannerItemTemplate}">
                         <GridView.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapGrid Orientation="Horizontal" MaximumRowsOrColumns="2" ItemWidth="379" ItemHeight="80"/>
+                                <WrapGrid Orientation="Vertical" VerticalAlignment="Stretch" MaximumRowsOrColumns="7" 
+                                          ItemHeight="66" ItemWidth="340"/>
                             </ItemsPanelTemplate>
                         </GridView.ItemsPanel>
                     </local:MultiCellGridView>
                 </DataTemplate>
             </HubSection>
 
-            <HubSection  HeaderTemplate="{StaticResource HubSectionHeaderTemplate}" Header="Music" IsHeaderInteractive="True" Name="MusicSection"  Visibility="{Binding Settings.ShowMusic, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <HubSection Style="{StaticResource ItemsSectionStyle}" MaxWidth="475" Width="NaN" Header="Music" Name="MusicSection"  
+                        Visibility="{Binding Settings.ShowMusic, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <DataTemplate>
-                    <local:MultiCellGridView x:Name="itemGridView3" Grid.Column="2" Width="700" ItemsSource="{Binding Source={StaticResource MusicItemsViewSource}}" ItemClick="ItemGridView_OnItemClick" Style="{StaticResource HomeGridStyle}">
+                    <local:MultiCellGridView x:Name="itemGridView3" MaxWidth="475" ItemsSource="{Binding Source={StaticResource MusicItemsViewSource}}" 
+                                             ItemClick="ItemGridView_OnItemClick" Style="{StaticResource HomeGridStyle}"
+                                             ItemTemplate="{StaticResource PosterItemTemplate}" VerticalContentAlignment="Stretch">
                         <GridView.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapGrid Orientation="Horizontal" ItemWidth="160" ItemHeight="160"/>
+                                <WrapGrid Orientation="Vertical" VerticalAlignment="Stretch" MaximumRowsOrColumns="3" 
+                                          ItemHeight="155" ItemWidth="155"/>
                             </ItemsPanelTemplate>
                         </GridView.ItemsPanel>
                     </local:MultiCellGridView>
                 </DataTemplate>
             </HubSection>
-            <HubSection Header="People" Name="PeopleSection" Visibility="Collapsed">
+            <HubSection Style="{StaticResource ItemsSectionStyle}" Header="People" Name="PeopleSection" Visibility="Collapsed">
                 <DataTemplate>
-                    <local:MultiCellGridView x:Name="itemGridView4" Grid.Column="3" ItemsSource="{Binding Source={StaticResource PeopleItemsViewSource}}" ItemClick="ItemGridView_OnItemClick" Style="{StaticResource HomeGridStyle}"/>
+                    <local:MultiCellGridView x:Name="itemGridView4" ItemsSource="{Binding Source={StaticResource PeopleItemsViewSource}}" ItemClick="ItemGridView_OnItemClick" Style="{StaticResource HomeGridStyle}"/>
                 </DataTemplate>
             </HubSection>
             <HubSection Header=" ">

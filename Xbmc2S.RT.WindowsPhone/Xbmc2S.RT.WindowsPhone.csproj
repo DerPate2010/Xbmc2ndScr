@@ -116,7 +116,9 @@
     <Compile Include="Global\CurrentPlayingCtrl.xaml.cs">
       <DependentUpon>CurrentPlayingCtrl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HubPage.WP.cs" />
+    <Compile Include="Global\HubPage.xaml.cs">
+      <DependentUpon>HubPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProgressIndicator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search\GlobalSearchBox.xaml.cs">
@@ -142,6 +144,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Global\CurrentPlayingCtrl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Global\HubPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
