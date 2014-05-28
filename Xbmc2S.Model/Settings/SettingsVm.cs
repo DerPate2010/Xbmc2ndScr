@@ -167,13 +167,10 @@ namespace Xbmc2S.Model
         {
             await SaveCurrentInHistory();
 
-            Host = server.Host;
-            User = server.User;
-            Password = server.Password;
-            Port = (uint) server.WebInterfacePort;
             VlcPassword = server.VlcPassword;
             VlcPort = server.VlcPort;
             VlcUseQSV = server.VlcUseQsv;
+            Set(server.Host, server.WebInterfacePort, server.User, server.Password);
         }
 
         public async Task SaveCurrentInHistory()

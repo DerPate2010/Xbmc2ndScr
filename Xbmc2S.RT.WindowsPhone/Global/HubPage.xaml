@@ -64,6 +64,21 @@
             Source="{Binding PeopleGroup.Items}"
             IsSourceGrouped="False"/>
 
+        <DataTemplate x:Key="PosterItemTemplate">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}">
+                    <Image Source="{Binding Images.Image}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Label}"/>
+                </Border>
+                <StackPanel VerticalAlignment="Bottom" Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}">
+                    <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextBlockStyle}"  Margin="15,0,15,10"/>
+                    <!--<TextBlock Text="{Binding SecondLabel}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextBlockStyle}" Margin="15,-10,15,10"
+                           Visibility="{Binding SecondLabel, Converter={StaticResource NullToCollapsedConverter}}"/>-->
+                </StackPanel>
+                <ContentPresenter ContentTemplate="{StaticResource WatchedCheckMark}"/>
+            </Grid>
+        </DataTemplate>
+
+
         <Style TargetType="GridView" x:Key="HomeGridStyle">
             <Setter Property="Margin" Value="0 0 0 0"/>
             <Setter Property="SelectionMode" Value="None"/>
@@ -100,6 +115,7 @@
             <Setter Property="IsHeaderInteractive" Value="True"/>
             <Setter Property="MinWidth" Value="1"/>
             <Setter Property="Width" Value="NaN"/>
+            <Setter Property="Padding" Value="0 -10 0 0"/>
         </Style>
         <Style TargetType="HubSection" x:Key="CurrentPlayingSectionStyle">
             <Setter Property="VerticalContentAlignment" Value="Stretch"/>
@@ -193,6 +209,7 @@
                             <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="0 0 0 10">Usually your XBMC should be discovered automatically, if the web interface and UPnP are enabled and use default ports.</TextBlock>
                             <TextBlock Style="{StaticResource BodyTextBlockStyle}">Please make sure, that your XBMC is running and click the button below and check your connection settings. A wizard will guide you through the setup process.</TextBlock>
                             <Button Command="{Binding EditSettings}" HorizontalAlignment="Right" Margin="0 15 0 0">Edit connection settings</Button>
+                            <Button HorizontalAlignment="Right" Margin="0 15 0 0" Click="Retry_Click">Retry</Button>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
@@ -214,7 +231,7 @@
 
                 </DataTemplate>
             </HubSection>
-            <HubSection Style="{StaticResource ItemsSectionStyle}" Header="TV Shows" Name="TVSection"  MaxWidth="360" Width="NaN"
+            <HubSection Style="{StaticResource ItemsSectionStyle}" Header="TV Shows" x:Name="TVSection"  MaxWidth="360" Width="NaN"
                         Visibility="{Binding Settings.ShowShows, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <DataTemplate>
                     <local:MultiCellGridView x:Name="itemGridView2" Style="{StaticResource HomeGridStyle}" VerticalContentAlignment="Stretch"

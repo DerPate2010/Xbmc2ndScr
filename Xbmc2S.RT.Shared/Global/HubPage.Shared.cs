@@ -319,5 +319,12 @@ namespace Xbmc2S.RT
         }
 
 
+        private void Retry_Click(object sender, RoutedEventArgs e)
+        {
+            App.MainVm.RetryConnection();
+            Frame.Navigate(typeof(HubPage));
+            Frame.BackStack.Clear();
+
+        }
     }
 }

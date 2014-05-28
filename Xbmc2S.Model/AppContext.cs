@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Globalization;
+using System.Net;
 using TmdbWrapper;
 using XBMCRPC;
 using Xbmc2S.Model.Download;
+using XBMCRPC.Application;
+using XBMCRPC.Application.Property;
 
 namespace Xbmc2S.Model
 {
@@ -37,7 +40,7 @@ namespace Xbmc2S.Model
         }
 
 
-        private void Init()
+        internal async void Init()
         {
             var host = Settings.Host;
             if (string.IsNullOrWhiteSpace(host))
@@ -49,7 +52,13 @@ namespace Xbmc2S.Model
             {
                 port = 80;
             }
+
+            if (XBMC != null)
+            {
+                XBMC.Dispose();
+            }
             XBMC = new XBMCRPC.Client(PlatformServices, host, port, Settings.User, Settings.Password);
+            
             ImageManager = PlatformServices.GetImageManager(XBMC, !string.IsNullOrEmpty(Settings.Password));
 
             var t = XBMC.StartNotificationListener();

@@ -2,6 +2,9 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Xbmc2S.RT.Common">
+    <SolidColorBrush x:Key="ListViewItemOverlayBackgroundThemeBrush" Color="#A6000000" />
+
+
     <Style x:Key="NavigationBackButtonNormalStyle" TargetType="Button">
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>

@@ -453,6 +453,12 @@ namespace Xbmc2S.Model
         }
 
 
+        public void RetryConnection()
+        {
+            _appContext.Init();
+            _sourcesCache.Clear();
+            InitHomePageGroups();
+        }
     }
 
 

@@ -2029,27 +2029,14 @@
         </Grid>
     </DataTemplate>
 
-    <DataTemplate x:Key="PosterItemTemplate">
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <DataTemplate x:Key="BannerItemTemplate">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}">
             <StackPanel VerticalAlignment="Bottom" Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}">
                 <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextBlockStyle}"  Margin="15,0,15,10"/>
-                <TextBlock Text="{Binding SecondLabel}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextBlockStyle}" Margin="15,-10,15,10"
-                           Visibility="{Binding SecondLabel, Converter={StaticResource NullToCollapsedConverter}}"/>
             </StackPanel>
-            <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}">
-                <Image Source="{Binding Images.Image}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Label}"/>
-            </Border>
-            <ContentPresenter ContentTemplate="{StaticResource WatchedCheckMark}"/>
-        </Grid>
-    </DataTemplate>
-    <DataTemplate x:Key="BannerItemTemplate">
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}">
+            <Border>
                 <Image Source="{Binding Images.Banner}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Label}"/>
             </Border>
-            <StackPanel VerticalAlignment="Bottom" Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}">
-                <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextBlockStyle}"  Margin="15,0,15,10"/>
-            </StackPanel>
             <ContentPresenter ContentTemplate="{StaticResource WatchedCheckMark}"/>
         </Grid>
     </DataTemplate>

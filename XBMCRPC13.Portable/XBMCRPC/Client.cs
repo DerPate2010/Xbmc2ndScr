@@ -128,7 +128,7 @@ namespace XBMCRPC
             var socketState = new NotificationListenerSocketState();
             try
             {
-                while (true)
+                while (_clientSocket!=null)
                 {
                     var receivedDataLength =
                         await stream.ReadAsync(socketState.Buffer, 0, NotificationListenerSocketState.BufferSize);
@@ -371,7 +371,12 @@ jObject["params"]["sender"].ToObject<string>(Serializer)
 
         public void Dispose()
         {
-            _clientSocket.Dispose();
+            var socket = _clientSocket;
+            _clientSocket = null;
+            if (socket != null)
+            {
+                socket.Dispose();
+            }
         }
 
     }

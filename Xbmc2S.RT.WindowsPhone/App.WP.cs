@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Windows.Phone.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Xbmc2S.Model;
 using Xbmc2S.RT.PlatformServices;
