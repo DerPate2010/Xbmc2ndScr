@@ -12,20 +12,28 @@ namespace Xbmc2S.RT.Common
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            try
-            {
+
                 return (value is bool && (bool)value) ? Visibility.Visible : Visibility.Collapsed;
-            }
-            catch (Exception)
-            {
-                
-                throw;
-            }
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             return value is Visibility && (Visibility)value == Visibility.Visible;
+        }
+    }
+    public sealed class BooleanToWidthConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+
+                return (value is bool && (bool)value) ? 160d : 0d;
+
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
         }
     }
 }

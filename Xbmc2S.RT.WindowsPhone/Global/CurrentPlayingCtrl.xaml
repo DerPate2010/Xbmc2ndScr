@@ -1,0 +1,72 @@
+﻿<UserControl
+    x:Class="Xbmc2S.RT.CurrentPlayingCtrl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Xbmc2S.RT"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:data="using:Xbmc2S.RT.SampleDataModel"
+    xmlns:playerFramework="using:Microsoft.PlayerFramework"
+    xmlns:common="using:Xbmc2S.RT.Common"
+    mc:Ignorable="d"
+    d:DesignHeight="607.5"
+    d:DesignWidth="360">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Common/StandardStyles.xaml"></ResourceDictionary>
+                
+            </ResourceDictionary.MergedDictionaries>
+            <common:AudioSelectionToVisibleConverter x:Key="AudioSelectionToVisibleConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Width="360" Visibility="{Binding IsPlaying, Converter={StaticResource BooleanToVisibilityConverter}}" >
+        <Image Source="{Binding CurrentItem.Images.FanArt}" Grid.RowSpan="2" Stretch="UniformToFill" HorizontalAlignment="Center"/>
+        <Border>
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#A8000000"/>
+                    <GradientStop Color="#A8000000" Offset="0.65"/>
+                    <GradientStop Color="Black" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <StackPanel Margin="10 0 10 24" VerticalAlignment="Bottom">
+            <Image Source="{Binding CurrentItem.Images.Image}" Width="120" Height="180" PointerPressed="CurrentPlayingLinkClick" HorizontalAlignment="Left"
+                    Visibility="{Binding PlaylistEnabled, Converter={StaticResource BooleanToCollapsedConverter}, Mode=OneWay}"/>
+
+            <ListView Grid.Column="1" HorizontalAlignment="Stretch"  DisplayMemberPath="Label" ItemsSource="{Binding PlayList}" Height="200"
+                      IsItemClickEnabled="True" ItemClick="PlaylistClick" Visibility="{Binding PlaylistEnabled, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
+            </ListView>
+            
+                <TextBlock Text="{Binding CurrentItem.SecondLabel}" Grid.Row="0" Grid.ColumnSpan="2" Margin="0 0 0 20" Style="{StaticResource SubheaderTextBlockStyle}" PointerPressed="CurrentPlayingLinkClick"></TextBlock>
+                <TextBlock Text="{Binding CurrentItem.Label}" Grid.Row="1" Grid.ColumnSpan="2" Margin="0 0 0 20" Style="{StaticResource HeaderTextBlockStyle}" PointerPressed="CurrentPlayingLinkClick"></TextBlock>
+                <StackPanel Orientation="Horizontal" Grid.Row="2">
+                    <TextBlock Text="{Binding CurrentItem.Time}" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                    <TextBlock Text="/" Margin="10 0 10 0"  Style="{StaticResource SubheaderTextBlockStyle}"/>
+
+                    <TextBlock Text="{Binding CurrentItem.TotalTime}"  Style="{StaticResource SubheaderTextBlockStyle}"/>
+                </StackPanel>
+                <TextBlock Text="{Binding CurrentItem.PlayToInfo}" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1"  Style="{StaticResource SubheaderTextBlockStyle}"/>
+                <playerFramework:SeekableSlider Grid.Row="3" Grid.ColumnSpan="2" MaxValue="100" ActualValue="{Binding CurrentItem.Percentage}" ScrubbingCompleted="SeekableSlider_OnScrubbingCompleted" />
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <AppBarButton IsCompact="True" Icon="Previous" Label="Next" Command="{Binding SkipBack}"/>
+                    <AppBarButton IsCompact="True" Icon="Pause" Label="Pause" Command="{Binding Pause}"/>
+
+                    <AppBarButton IsCompact="True" Icon="Next" Label="Next" Command="{Binding Skip}"/>
+                    <AppBarButton IsCompact="True" Icon="Stop" Label="Stop" Command="{Binding Stop}"/>
+
+                    <AppBarButton IsCompact="True" Icon="Audio" Label="Audio Track" Click="OpenTrackMenu" Visibility="{Binding CurrentItem, Converter={StaticResource AudioSelectionToVisibleConverter}}"/>
+
+                    <AppBarButton IsCompact="True" Label="Subtitle" Click="OpenSubtitleMenu" Visibility="{Binding  CurrentItem, Converter={StaticResource AudioSelectionToVisibleConverter}}">
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="_"></FontIcon>
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                    <AppBarToggleButton IsCompact="True" Label="Playlist" Icon="List" IsChecked="{Binding PlaylistEnabled, Mode=TwoWay}" />
+                </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

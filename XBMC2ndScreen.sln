@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30324.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonRpcGen", "JsonRpcGen\JsonRpcGen.csproj", "{25D06510-E59F-4679-8D04-8D1CEDDB81A5}"
 EndProject
@@ -45,6 +45,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamingClient.VLM", "StreamClient.VLM\StreamingClient.VLM.csproj", "{CC4F00D4-B05A-4CBD-A28A-23093605F044}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xbmc2S.PlatformServices", "Xbmc2S.PlatformServices\Xbmc2S.PlatformServices.csproj", "{271E2A1C-492F-4881-92E7-170B2705E88D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{013D3A10-4E20-43B5-86D4-2EBA8F223FDE}"
+	ProjectSection(SolutionItems) = preProject
+		license.txt = license.txt
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

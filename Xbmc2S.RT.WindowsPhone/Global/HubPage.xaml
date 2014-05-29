@@ -135,12 +135,12 @@
                 </AppBarButton.Flyout>
             </AppBarButton>
             <AppBarButton Icon="Switch" Label="Switch" Click="ConnectionsClick"/>
-            <AppBarButton Label="Remote" Name="RcButton" >
+            <AppBarButton Label="Remote" Name="RcButton" Click="ToggleFlyout">
                 <AppBarButton.Icon>
                     <FontIcon Glyph="&#xE1D0;" FontSize="18"></FontIcon>
                 </AppBarButton.Icon>
                 <AppBarButton.Flyout>
-                    <Flyout Placement="Full" >
+                    <Flyout Placement="Full" Opened="RCFlyout_Opened" Closed="RCFlyout_Closed" >
                         <Flyout.FlyoutPresenterStyle>
                             <Style TargetType="FlyoutPresenter">
                                 <Setter Property="Background" Value="Transparent"/>
@@ -150,13 +150,11 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <Border Background="{StaticResource DimBrush}" Tapped="ToggleFlyout"/>
                             <Border Background="{StaticResource AccentBackgroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Row="1">
                                 <rc:RCControl HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
-                            <Border Background="{StaticResource DimBrush}" Tapped="ToggleFlyout" Grid.Row="2"/>
                         </Grid>
                     </Flyout>
                 </AppBarButton.Flyout>

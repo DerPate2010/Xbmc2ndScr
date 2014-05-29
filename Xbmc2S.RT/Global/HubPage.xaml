@@ -114,7 +114,11 @@
         </Style>
 
     </Page.Resources>
-
+    <Page.TopAppBar>
+        <AppBar>
+            <local:JumpList/>
+        </AppBar>
+    </Page.TopAppBar>
     <!--
         This grid acts as a root panel for the page.
     -->
@@ -144,7 +148,7 @@
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Top"/>
 
 
-                    <Button Grid.Column="2" VerticalAlignment="Bottom" Style="{StaticResource DropdownButtonStyle}" Margin=" 15 0 0 -10" Content="{Binding CurrentConnection.Name}" Click="ConnectionsClick">
+                    <Button Grid.Column="2" VerticalAlignment="Top" Style="{StaticResource ConnectionDropdownButtonStyle}" Margin=" 15 15 0 -10" Content="{Binding CurrentConnection.Name}" Click="ConnectionsClick">
                         <Button.Flyout>
                             <MenuFlyout Placement="Bottom" >
                             </MenuFlyout>

@@ -103,5 +103,10 @@ namespace Xbmc2S.RT
 
             Launcher.LaunchUriAsync(new Uri(string.Format(searchUrl, label)));
         }
+
+        private void ButtonBase2_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
