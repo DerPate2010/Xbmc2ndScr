@@ -300,24 +300,6 @@ namespace Xbmc2S.RT
             view.GotoWelcomeWizard();
         }
 
-        private void SearchFlyout_Opening(object sender, object e)
-        {
-            BottomAppBar.Visibility = Visibility.Collapsed;
-        }
-
-        private void SearchFlyout_Closed(object sender, object e)
-        {
-            BottomAppBar.Visibility = Visibility.Visible;
-        }
-
-        private void SearchBox_KeyUp(object sender, KeyRoutedEventArgs e)
-        {
-            if (e.Key == VirtualKey.Enter)
-            {
-                App.RootFrame.Navigate(typeof(SearchResultsPage), ((TextBox)sender).Text);
-            }
-        }
-
 
         private void Retry_Click(object sender, RoutedEventArgs e)
         {

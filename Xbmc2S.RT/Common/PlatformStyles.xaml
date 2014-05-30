@@ -92,4 +92,7 @@
         </StackPanel>
     </DataTemplate>
 
+    <Style TargetType="FlipViewItem" x:Key="FlipViewItemStyle">
+        <Setter Property="Margin" Value="0,20,0,0"/>
+    </Style>
 </ResourceDictionary>

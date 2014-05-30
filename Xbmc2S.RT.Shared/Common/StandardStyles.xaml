@@ -10,7 +10,9 @@
 
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:common="using:Xbmc2S.RT.Common">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:common="using:Xbmc2S.RT.Common"
+    xmlns:common1="using:Xbmc2S.Common">
 
     <!-- Non-brush values that vary across themes -->
 
@@ -28,7 +30,6 @@
 
     <x:String x:Key="ChevronGlyph">&#xE26B;</x:String>
     <common:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-    <common:BooleanToWidthConverter x:Key="BooleanToWidthConverter"/>
     <common:BooleanToCollapsedConverter x:Key="BooleanToCollapsedConverter"/>
     <common:CanExecuteToVisibilityConverter x:Key="CanExecuteToVisibilityConverter"/>
     <common:NullToCollapsedConverter x:Key="NullToCollapsedConverter"/>
@@ -364,15 +365,12 @@
         <Setter Property="FontFamily" Value="Segoe UI Symbol"/>
         <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="FontSize" Value="14"/>
-        <Setter Property="MinWidth" Value="0"/>
-        <Setter Property="MaxWidth" Value="NaN"/>
         <Setter Property="Visibility" Value="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-        <Setter Property="Width" Value="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToWidthConverter}}"/>
         <Setter Property="AutomationProperties.ItemType" Value="App Bar Button"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ButtonBase">
-                    <Grid x:Name="RootGrid" Background="Transparent" MinWidth="{TemplateBinding MinWidth}" Width="{TemplateBinding Width}" MaxWidth="{TemplateBinding MaxWidth}">
+                    <Grid x:Name="RootGrid" Background="Transparent" MinWidth="160">
                         <StackPanel VerticalAlignment="Top" Margin="5,5,5,5" Orientation="Horizontal">
                             <Grid Width="31" Height="30" Margin="0,0,0,0" HorizontalAlignment="Center">
                                 <TextBlock x:Name="BackgroundGlyph" Text="&#xE0A8;" FontFamily="Segoe UI Symbol" FontSize="40" Margin="-2,-14,0,0" Foreground="{StaticResource AppBarItemBackgroundThemeBrush}"/>

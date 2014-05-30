@@ -32,7 +32,6 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <Image Name="bgImage" Source="{Binding Images.FanArt}" Grid.RowSpan="2" Stretch="UniformToFill" Visibility="Collapsed"/>
         <Border Background="{StaticResource DimBrush}" Grid.RowSpan="2"></Border>
 
@@ -48,13 +47,7 @@
             TabIndex="1"
             Grid.RowSpan="2"
             ItemsSource="{Binding Source={StaticResource itemsViewSource}}"
-            Visibility="Collapsed">
-
-            <FlipView.ItemContainerStyle>
-                <Style TargetType="FlipViewItem">
-                    <Setter Property="Margin" Value="0,137,0,0"/>
-                </Style>
-            </FlipView.ItemContainerStyle>
+            Visibility="Collapsed" ItemContainerStyle="{StaticResource FlipViewItemStyle}">
  
             <FlipView.ItemTemplate>
                 <DataTemplate>
@@ -62,7 +55,7 @@
                         UserControl chosen as the templated item because it supports visual state management
                         Loaded/unloaded events explicitly subscribe to view state updates from the page
                     -->
-                    <local:GeneralDetailsView />
+                    <local:GeneralDetailsView/>
                 </DataTemplate>
             </FlipView.ItemTemplate>
         </FlipView>
@@ -116,32 +109,6 @@
                         </ObjectAnimationUsingKeyFrames>
                         <DoubleAnimation Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Opacity" Duration="0" To="1"/>
                         <DoubleAnimation Storyboard.TargetName="loadingText" Storyboard.TargetProperty="Opacity" Duration="0" To="0"/>
-                    </Storyboard>
-                </VisualState>
-            </VisualStateGroup>
-            <!-- Visual states reflect the application's view state -->
-            <VisualStateGroup x:Name="ApplicationViewStates">
-                <VisualState x:Name="FullScreenLandscape"/>
-                <VisualState x:Name="Filled"/>
-
-                <!-- The back button respects the narrower 100-pixel margin convention for portrait -->
-                <VisualState x:Name="FullScreenPortrait">
-                    <Storyboard>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
-                        </ObjectAnimationUsingKeyFrames>
-                    </Storyboard>
-                </VisualState>
-
-                <!-- The back button and title have different styles when snapped -->
-                <VisualState x:Name="Snapped">
-                    <Storyboard>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
-                        </ObjectAnimationUsingKeyFrames>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
-                        </ObjectAnimationUsingKeyFrames>
                     </Storyboard>
                 </VisualState>
             </VisualStateGroup>

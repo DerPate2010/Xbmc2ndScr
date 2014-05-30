@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -101,13 +102,14 @@ namespace Xbmc2S.RT
             MovieSource = App.MainVm.GetMovieSource(stateRepresentation);
 
 
-            VisualStateManager.GoToState(this, "SelectionLoading", false);
+            //VisualStateManager.GoToState(this, "SelectionLoading", false);
 
             await MovieSource.WaitForSelection();
 
             this.DefaultViewModel["Items"] = MovieSource.Items;
-            itemsViewSource.View.MoveCurrentTo(MovieSource.Selected);
-            flipView.DataContext = MovieSource.Items;
+            Dispatcher.RunIdleAsync((a) => { itemsViewSource.View.MoveCurrentTo(MovieSource.Selected); });
+
+            //flipView.DataContext = MovieSource.Items;
         }
 
         private static object GetStateRepresentation(LoadStateEventArgs e)
@@ -118,11 +120,6 @@ namespace Xbmc2S.RT
                 stateRepresentation = ItemsSourceReference.Parse(e.NavigationParameter);
             }
             return stateRepresentation;
-        }
-
-        private void VirtualizingDataList_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         public IItemsSource MovieSource { get; set; }

@@ -10,7 +10,7 @@
     xmlns:common="using:Xbmc2S.RT.Common"
     mc:Ignorable="d"
     x:Name="ControlRoot"
-    Margin="117,0,117,47"
+    Margin="0,0,0,0"
     d:DesignHeight="600"
    d:DataContext="{Binding Source={d:DesignInstance Type=sampleDataModel:DetailsSample, IsDesignTimeCreatable=True}}"
     >
@@ -18,145 +18,144 @@
         <common:HasItemsToVisibilityConverter x:Key="HasItemsToVisibilityConverter"/>
     </UserControl.Resources>
 
-
-    <ScrollViewer x:Name="scrollViewer" Style="{StaticResource HorizontalScrollViewerStyle}" Grid.Row="1" >
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="330"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="330"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            
-            <ContentPresenter ContentTemplate="{Binding ElementName=ControlRoot, Path=HeaderControl}"/>
-
-            
-
-            <Border Background="#222222" Grid.Column="0"  Grid.Row="1" VerticalAlignment="Top" >
-                <Grid>
-                    <Image x:Name="image"  VerticalAlignment="Top"  Stretch="Uniform" Source="{Binding Images.Image}"  MaxWidth="465" Margin="0 0 0 80" AutomationProperties.Name="{Binding Title}"/>
-                    <ContentPresenter ContentTemplate="{StaticResource WatchedCheckMark}"/>
-                    <Border Background="#222222" VerticalAlignment="Bottom" Height="80">
+    <Grid>
+        <Hub>
+            <HubSection>
+                <HubSection.Header>
+                    <ContentPresenter ContentTemplate="{Binding ElementName=ControlRoot, Path=HeaderControl}"/>
+                </HubSection.Header>
+                <DataTemplate>
+                    <Border Background="#222222" VerticalAlignment="Top" >
                         <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <controls:Rating ItemCount="5" Value="{Binding RatingBase5}" VerticalAlignment="Center" 
-                                         Background="#222222" Foreground="White"/>
-                            <TextBlock Grid.Column="1" Text="{Binding Rating}" Style="{StaticResource BaseTextBlockStyle}" Foreground="#6b6b6b" VerticalAlignment="Center"/>
+                            <Image x:Name="image"  VerticalAlignment="Top"  Stretch="Uniform" Source="{Binding Images.Image}"  MaxWidth="465" Margin="0 0 0 80" AutomationProperties.Name="{Binding Title}"/>
+                            <ContentPresenter ContentTemplate="{StaticResource WatchedCheckMark}"/>
+                            <Border Background="#222222" VerticalAlignment="Bottom" Height="80">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <controls:Rating ItemCount="5" Value="{Binding RatingBase5}" VerticalAlignment="Center" 
+                                                 Background="#222222" Foreground="White"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Rating}" Style="{StaticResource BaseTextBlockStyle}" Foreground="#6b6b6b" VerticalAlignment="Center"/>
 
+                                </Grid>
+                            </Border>
                         </Grid>
-                    </Border>
-                </Grid>
-                
-                <!---->
-                </Border>
 
-            <ScrollViewer Style="{StaticResource VerticalScrollViewerStyle}" Grid.Row="1" Grid.Column="2">
-                <StackPanel>
-                    <RichTextBlock x:Name="richTextBlock" Width="330" Style="{StaticResource BodyRichTextBlockStyle}" IsTextSelectionEnabled="False">
-                        <Paragraph LineStackingStrategy="MaxHeight">
-                            <InlineUIContainer>
-                                <local:PlayableItemCommands2 Width="330"/>
-                            </InlineUIContainer>                            
-                            <LineBreak/>
-                        </Paragraph>
-                        <Paragraph>
-                            <Run FontSize="16" FontWeight="Light" Text="{Binding SecondLabel}"/>
-                            <LineBreak/>
-                            <Run FontWeight="Normal" Text="{Binding Content}"/>
-                            <LineBreak/>
-                        </Paragraph>
-                        <Paragraph FontSize="12">
-                            <Run Text="Country:"/>
-                            <Run Text="{Binding Country}"/>
-                            <LineBreak/>
-                            <Run Text="Original Title:"/>
-                            <Run Text="{Binding OriginalTitle}"/>
-                            <LineBreak/>
-                            <Run Text="Year:"/>
-                            <Run Text="{Binding Year}"/>
-                            <LineBreak/>
-                            <Run Text="Runtime:"/>
-                            <Run Text="{Binding Runtime}"/>
-                            <LineBreak/>
-                            <Run Text="Genre:"/>
-                            <Run Text="{Binding Genre}"/>
-                            <LineBreak/>
-                            <Run Text="Director:"/>
-                            <Run Text="{Binding Director}"/>
-                            <LineBreak/>
-                            <Run Text="Writer:"/>
-                            <Run Text="{Binding Writer}"/>
-                            <LineBreak/>
-                            <Run Text="Studio:"/>
-                            <Run Text="{Binding Studio}"/>
-                        </Paragraph>
-                        <Paragraph FontSize="12">
-                            <Run Text="File:"/>
-                            <Run Text="{Binding Path}"/>
-                        </Paragraph>
-                    </RichTextBlock>
-                </StackPanel>
-            </ScrollViewer>
-            
-            <TextBlock Grid.Column="4" Text="{Binding ItemsLabel}" Visibility="{Binding Converter={StaticResource HasItemsToVisibilityConverter}}" Style="{StaticResource SubheaderTextBlockStyle}"/>
-            
+                        <!---->
+                        </Border>
+                </DataTemplate>
+            </HubSection>
+            <HubSection>
+                <DataTemplate>
+                     <ScrollViewer Style="{StaticResource VerticalScrollViewerStyle}">
+                        <StackPanel>
+                            <RichTextBlock x:Name="richTextBlock" Width="330" Style="{StaticResource BodyRichTextBlockStyle}" IsTextSelectionEnabled="False">
+                                <Paragraph LineStackingStrategy="MaxHeight">
+                                    <InlineUIContainer>
+                                        <local:PlayableItemCommands2 Width="330"/>
+                                    </InlineUIContainer>                            
+                                    <LineBreak/>
+                                </Paragraph>
+                                <Paragraph>
+                                    <Run FontSize="16" FontWeight="Light" Text="{Binding SecondLabel}"/>
+                                    <LineBreak/>
+                                    <Run FontWeight="Normal" Text="{Binding Content}"/>
+                                    <LineBreak/>
+                                </Paragraph>
+                                <Paragraph FontSize="12">
+                                    <Run Text="Country:"/>
+                                    <Run Text="{Binding Country}"/>
+                                    <LineBreak/>
+                                    <Run Text="Original Title:"/>
+                                    <Run Text="{Binding OriginalTitle}"/>
+                                    <LineBreak/>
+                                    <Run Text="Year:"/>
+                                    <Run Text="{Binding Year}"/>
+                                    <LineBreak/>
+                                    <Run Text="Runtime:"/>
+                                    <Run Text="{Binding Runtime}"/>
+                                    <LineBreak/>
+                                    <Run Text="Genre:"/>
+                                    <Run Text="{Binding Genre}"/>
+                                    <LineBreak/>
+                                    <Run Text="Director:"/>
+                                    <Run Text="{Binding Director}"/>
+                                    <LineBreak/>
+                                    <Run Text="Writer:"/>
+                                    <Run Text="{Binding Writer}"/>
+                                    <LineBreak/>
+                                    <Run Text="Studio:"/>
+                                    <Run Text="{Binding Studio}"/>
+                                </Paragraph>
+                                <Paragraph FontSize="12">
+                                    <Run Text="File:"/>
+                                    <Run Text="{Binding Path}"/>
+                                </Paragraph>
+                            </RichTextBlock>
+                        </StackPanel>
+                    </ScrollViewer>
+           
+                </DataTemplate>
+            </HubSection>
+            <HubSection  Visibility="{Binding Converter={StaticResource HasItemsToVisibilityConverter}}">
+                <HubSection.Header>
+                    <TextBlock Text="{Binding ItemsLabel}" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                </HubSection.Header>
+                <DataTemplate>
                     <ListView Width="330" Margin="0 0 20 0"
-            x:Name="ItemsListView"
-            AutomationProperties.AutomationId="ItemsListView"
-            AutomationProperties.Name="Items"
-            TabIndex="1"
-            Grid.Row="1"
-                        Grid.Column="4"
-                        Visibility="{Binding Converter={StaticResource HasItemsToVisibilityConverter}}"
+                    x:Name="ItemsListView"
+                    AutomationProperties.AutomationId="ItemsListView"
+                    AutomationProperties.Name="Items"
+                    TabIndex="1"
+                    ItemsSource="{Binding Items}"
+                    IsSwipeEnabled="False"
+                                IsItemClickEnabled="True"
+                                ItemClick="ItemsListView_OnItemClick"
+                    ItemTemplate="{StaticResource GeneralDetailsItemTemplate}" />
+                </DataTemplate>
+            </HubSection>
+            <HubSection>
+                <HubSection.Header>
+                    <TextBlock Text="Cast" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                </HubSection.Header>
+                <DataTemplate>
+                                        <ListView
+                    x:Name="CastListView"
+                    AutomationProperties.AutomationId="ItemsListView"
+                    AutomationProperties.Name="Items"
+                    TabIndex="1"
 
-            ItemsSource="{Binding Items}"
-            IsSwipeEnabled="False"
-                        IsItemClickEnabled="True"
-                        ItemClick="ItemsListView_OnItemClick"
-            ItemTemplate="{StaticResource GeneralDetailsItemTemplate}" />
-
-            <TextBlock Grid.Column="6" Text="Cast" Style="{StaticResource SubheaderTextBlockStyle}"/>
-            
-                                <ListView
-            x:Name="CastListView"
-            AutomationProperties.AutomationId="ItemsListView"
-            AutomationProperties.Name="Items"
-            TabIndex="1"
-            Grid.Row="1"
-                        Grid.Column="6"
-
-            ItemsSource="{Binding Cast}"
-            IsSwipeEnabled="False"
-                                    IsItemClickEnabled="True"
-                                    ItemClick="CastListView_OnItemClick"
-            ItemTemplate="{StaticResource ImageItemTemplate}" />
-
-        </Grid>
+                    ItemsSource="{Binding Cast}"
+                    IsSwipeEnabled="False"
+                                            IsItemClickEnabled="True"
+                                            ItemClick="CastListView_OnItemClick"
+                    ItemTemplate="{StaticResource ImageItemTemplate}" />
+                </DataTemplate>
+            </HubSection>
+        </Hub>
 
         <VisualStateManager.VisualStateGroups>
-
             <!-- Visual states reflect the application's view state inside the FlipView -->
             <VisualStateGroup x:Name="ApplicationViewStates">
-                <VisualState x:Name="Normal"/>
-                <VisualState x:Name="Narrow">
-                        <Storyboard>
-                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ControlRoot" Storyboard.TargetProperty="Margin">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="39 0 39 39"/>
-                        </ObjectAnimationUsingKeyFrames>
-                    </Storyboard>
-                </VisualState>
-            </VisualStateGroup>
+                            <VisualState x:Name="Normal">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ControlRoot" Storyboard.TargetProperty="Margin">
+                                        <DiscreteObjectKeyFrame KeyTime="0" Value="77 0 77 0"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </VisualState>
+                            <VisualState x:Name="Narrow">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ControlRoot" Storyboard.TargetProperty="Margin">
+                                        <DiscreteObjectKeyFrame KeyTime="0" Value="39 0 39 0"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-    </ScrollViewer>
+    </Grid>
+
 
 </UserControl>

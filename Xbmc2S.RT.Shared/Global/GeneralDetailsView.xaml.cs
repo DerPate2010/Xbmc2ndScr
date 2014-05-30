@@ -29,8 +29,10 @@ namespace Xbmc2S.RT
         public GeneralDetailsView()
         {
             this.InitializeComponent();
+#if !WINDOWS_PHONE_APP
             Window.Current.SizeChanged += WindowSizeChanged;
             AdaptWindowSize();
+#endif
         }
 
         private void WindowSizeChanged(object sender, WindowSizeChangedEventArgs e)

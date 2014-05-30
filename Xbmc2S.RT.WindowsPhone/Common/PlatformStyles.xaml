@@ -107,4 +107,10 @@
             <TextBlock Margin="6 0 0 0" Text="{StaticResource ChevronGlyph}" FontFamily="Segoe UI Symbol"  Style="{StaticResource SubheaderTextBlockStyle}" FontWeight="SemiBold"/>
         </StackPanel>
     </DataTemplate>
+
+
+    <Style TargetType="FlipViewItem" x:Key="FlipViewItemStyle">
+        <Setter Property="Margin" Value="0,65,0,0"/>
+    </Style>
+
 </ResourceDictionary>

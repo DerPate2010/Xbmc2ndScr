@@ -53,25 +53,5 @@ namespace Xbmc2S.RT
                 }
             });
         }
-
-        private bool _rcOpen = false;
-         
-        private void ToggleFlyout(object sender, RoutedEventArgs e)
-        {
-            if (_rcOpen)
-            {
-                RcButton.Flyout.Hide();
-            }
-        }
-
-        private void RCFlyout_Closed(object sender, object e)
-        {
-            _rcOpen = false;
-        }
-
-        private void RCFlyout_Opened(object sender, object e)
-        {
-            _rcOpen = true;
-        }
     }
 }

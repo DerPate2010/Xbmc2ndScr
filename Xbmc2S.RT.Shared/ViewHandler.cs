@@ -4,6 +4,7 @@ using System.Linq;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Animation;
 using Xbmc2S.Model;
 using Xbmc2S.Model.Download;
 using Xbmc2S.RT.WelcomeWizard;

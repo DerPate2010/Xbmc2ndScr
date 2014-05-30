@@ -11,10 +11,9 @@
     d:DesignWidth="330">
     <UserControl.Resources>
     </UserControl.Resources>
-
     <controls1:WrapPanel>
-            <Button Style="{StaticResource PlayInlineButtonStyle}" Command="{Binding Play}" x:Uid="PlayButton"></Button>
-        <Button  Style="{StaticResource PlayToInlineButtonStyle}" Command="{Binding PlayToSelection}" Click="ButtonBase_OnClick" x:Uid="PlayToButton">
+        <Button Style="{StaticResource PlayInlineButtonStyle}" Visibility="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}" Command="{Binding Play}" x:Uid="PlayButton"></Button>
+        <Button  Visibility="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}" Style="{StaticResource PlayToInlineButtonStyle}" Command="{Binding PlayToSelection}" Click="ButtonBase_OnClick" x:Uid="PlayToButton">
                 <Button.Content>
                     <Grid>
                         <TextBlock Text="&#xE102;" HorizontalAlignment="Left" VerticalAlignment="Center"/>
@@ -24,7 +23,7 @@
                     </Grid>
                 </Button.Content>
             </Button>
-        <Button Style="{StaticResource DownloadInlineButtonStyle}" Command="{Binding PrepareDownload}"  x:Uid="DownloadButton"></Button>
+        <Button  Visibility="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}" Style="{StaticResource DownloadInlineButtonStyle}" Command="{Binding PrepareDownload}"  x:Uid="DownloadButton"></Button>
         <StackPanel Width="150" Visibility="{Binding IsOffline, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="5" Orientation="Horizontal">
                 <TextBlock Foreground="OrangeRed" Text="&#x26a0;" FontSize="26" Width="23" Margin="4 0 4 0" HorizontalAlignment="Center" IsColorFontEnabled="False"  />
                 <TextBlock Foreground="OrangeRed" Text="Media offline" x:Uid="MissingMedia" HorizontalAlignment="Center" VerticalAlignment="top"
@@ -32,11 +31,11 @@
             </StackPanel>
 
             <!--<Button Style="{StaticResource FavoriteAppBarButtonStyle}" Click="PlayClick"></Button>-->
-        <local:AppBarToggleButton  Style="{StaticResource WatchedInlineButtonStyle}"  IsChecked="{Binding IsWatched, Mode=TwoWay}" Command="{Binding WatchedCommand}" x:Uid="WatchedButton"/>
-        <Button  Style="{StaticResource FavoriteInlineButtonStyle}" Click="ButtonBase2_OnClick" Command="{Binding ToWatchlist}" AutomationProperties.Name="Watchlist"></Button>
-        <Button  Style="{StaticResource UnfavoriteInlineButtonStyle}" Command="{Binding FromWatchlist}" AutomationProperties.Name="Watchlist"></Button>
+        <local:AppBarToggleButton  Visibility="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}" Style="{StaticResource WatchedInlineButtonStyle}"  IsChecked="{Binding IsWatched, Mode=TwoWay}" Command="{Binding WatchedCommand}" x:Uid="WatchedButton"/>
+        <Button  Visibility="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}" Style="{StaticResource FavoriteInlineButtonStyle}" Click="ButtonBase2_OnClick" Command="{Binding ToWatchlist}" AutomationProperties.Name="Watchlist"></Button>
+        <Button  Visibility="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}" Style="{StaticResource UnfavoriteInlineButtonStyle}" Command="{Binding FromWatchlist}" AutomationProperties.Name="Watchlist"></Button>
         <Button  Style="{StaticResource VideoInlineButtonStyle}" Command="{Binding PlayTrailer}" Visibility="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}"></Button>
-        <Button  Style="{StaticResource SearchInlineButtonStyle}" Click="SearchSelected"></Button>
+        <Button  Visibility="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}" Style="{StaticResource SearchInlineButtonStyle}" Click="SearchSelected"></Button>
 
     </controls1:WrapPanel>
     
