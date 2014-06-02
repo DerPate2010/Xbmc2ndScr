@@ -95,4 +95,11 @@
     <Style TargetType="FlipViewItem" x:Key="FlipViewItemStyle">
         <Setter Property="Margin" Value="0,20,0,0"/>
     </Style>
+    <Style TargetType="GridView" x:Key="TvShowGridStyle">
+        <Setter Property="Padding" Value="116,136,116,46"/>
+        <Setter Property="Grid.RowSpan" Value="2"/>
+
+        <Setter Property="ItemTemplate" Value="{StaticResource TvShowItemTemplate}"/>
+    </Style>
+
 </ResourceDictionary>

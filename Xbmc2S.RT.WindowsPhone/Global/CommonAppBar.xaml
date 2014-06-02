@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:rc="using:Xbmc2S.RT.RC"
+    xmlns:rt="using:Xbmc2S.RT"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400"
@@ -42,4 +43,13 @@
             </Flyout>
         </AppBarButton.Flyout>
     </AppBarButton>
+    <CommandBar.SecondaryCommands>
+        <AppBarButton Label="Go to..." Name="GoToButton">
+            <AppBarButton.Flyout>
+                <Flyout Placement="Full">    
+                    <rt:JumpList VerticalAlignment="Top" Tapped="UIElement_OnTapped"/>
+                </Flyout>
+            </AppBarButton.Flyout>
+        </AppBarButton>
+    </CommandBar.SecondaryCommands>
 </CommandBar>

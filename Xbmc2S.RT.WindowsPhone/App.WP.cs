@@ -83,6 +83,10 @@ namespace Xbmc2S.RT
                             commandBar.PrimaryCommands.Insert(pos, commandBarElement);
                             pos++;
                         }
+                        foreach (var commandBarElement in commonBar.SecondaryCommands)
+                        {
+                            commandBar.SecondaryCommands.Add(commandBarElement);
+                        }
                     }
                 }
             }

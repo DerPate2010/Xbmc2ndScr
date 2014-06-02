@@ -50,6 +50,9 @@
       <DependentUpon>GeneralDetailsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Global\HubPage.Shared.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Global\JumpList.xaml.cs">
+      <DependentUpon>JumpList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Global\MovieGridCtrl.xaml.cs">
       <DependentUpon>MovieGridCtrl.xaml</DependentUpon>
     </Compile>
@@ -177,6 +180,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Global\GeneralDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Global\JumpList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

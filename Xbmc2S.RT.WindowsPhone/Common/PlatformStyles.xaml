@@ -19,6 +19,20 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="SnappedBackButtonStyle" TargetType="Button">
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Visibility" Value="Collapsed"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Background="Transparent" x:Name="RootGrid" Height="1" Width="39">
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style x:Key="SettingsFlyoutSectionStyle" TargetType="StackPanel">
         <Setter Property="Margin" Value="12,0,12,39"/>
     </Style>
@@ -43,6 +57,14 @@
     
     
     <Style x:Key="HeaderTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="LineHeight" Value="30"/>
+        <Setter Property="Margin" Value="12,12,30,12"/>
+        <Setter Property="FontWeight" Value="Light"/>
+    </Style>
+    <Style x:Key="SnappedPageHeaderTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
         <Setter Property="TextWrapping" Value="NoWrap"/>
         <Setter Property="VerticalAlignment" Value="Bottom"/>
         <Setter Property="FontSize" Value="36"/>
@@ -111,6 +133,12 @@
 
     <Style TargetType="FlipViewItem" x:Key="FlipViewItemStyle">
         <Setter Property="Margin" Value="0,65,0,0"/>
+    </Style>
+
+    <Style TargetType="GridView" x:Key="TvShowGridStyle">
+        <Setter Property="Padding" Value="22 0 22 0"/>
+        <Setter Property="Grid.Row" Value="1"/>
+        <Setter Property="ItemTemplate" Value="{StaticResource BannerItemTemplate}"/>
     </Style>
 
 </ResourceDictionary>

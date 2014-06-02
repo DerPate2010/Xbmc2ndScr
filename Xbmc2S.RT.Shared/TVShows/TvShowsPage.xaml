@@ -27,7 +27,7 @@
     -->
     <Grid Style="{StaticResource LayoutRootStyle}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="140"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -37,14 +37,13 @@
             AutomationProperties.AutomationId="ItemsGridView"
             AutomationProperties.Name="Items"
             TabIndex="1"
-            Grid.RowSpan="2"
-            Padding="116,136,116,46"
             ItemsSource="{Binding Source={StaticResource itemsViewSource}}"
-            ItemTemplate="{StaticResource TvShowItemTemplate}"
             SelectionMode="None"
             IsSwipeEnabled="false"
             IsItemClickEnabled="True"
-            ItemClick="ItemGridView_OnItemClick"/>
+            ItemClick="ItemGridView_OnItemClick"
+            Style="{StaticResource TvShowGridStyle}">
+        </GridView>
 
         <!-- Vertical scrolling list only used when snapped -->
         <ListView
@@ -70,12 +69,13 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+            <Button x:Name="backButton" Margin="39,59,39,40" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
                         Style="{StaticResource NavigationBackButtonNormalStyle}"
                         VerticalAlignment="Top"
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
-                        AutomationProperties.ItemType="Navigation Button"/>
+                        AutomationProperties.ItemType="Navigation Button"
+                     />
             <TextBlock x:Name="pageTitle" Grid.Column="1" Text="TV Shows" IsHitTestVisible="false" Style="{StaticResource HeaderTextBlockStyle}"/>
             <search:GlobalSearchBox  Grid.Column="2"/>
         </Grid>

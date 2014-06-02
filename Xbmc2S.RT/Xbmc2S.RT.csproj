@@ -129,9 +129,6 @@
     <Compile Include="Search\GlobalSearchBox.xaml.cs">
       <DependentUpon>GlobalSearchBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Global\JumpList.xaml.cs">
-      <DependentUpon>JumpList.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -169,10 +166,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Search\GlobalSearchBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Global\JumpList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

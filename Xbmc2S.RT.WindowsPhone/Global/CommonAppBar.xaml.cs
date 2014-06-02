@@ -76,5 +76,10 @@ namespace Xbmc2S.RT.Global
         {
             findb.Flyout.Hide();
         }
+
+        private void UIElement_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            GoToButton.Flyout.Hide();
+        }
     }
 }

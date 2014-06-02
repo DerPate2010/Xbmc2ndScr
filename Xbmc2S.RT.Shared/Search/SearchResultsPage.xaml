@@ -35,7 +35,7 @@
     -->
     <Grid Style="{StaticResource LayoutRootStyle}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="140"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -97,12 +97,13 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+            <Button x:Name="backButton" Margin="39,59,39,40" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
                         Style="{StaticResource NavigationBackButtonNormalStyle}"
                         VerticalAlignment="Top"
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
-                        AutomationProperties.ItemType="Navigation Button"/>
+                        AutomationProperties.ItemType="Navigation Button"
+                     />
             <TextBlock x:Name="pageTitle" Grid.Column="1" Text="Search" IsHitTestVisible="false" Style="{StaticResource HeaderTextBlockStyle}"  />
             <TextBlock x:Name="resultText" Grid.Column="2" Text="Results for&#x00a0;" IsHitTestVisible="false" Style="{StaticResource PageSubheaderTextStyle}"/>
             <TextBlock x:Name="queryText" Grid.Column="3" Text="{Binding QueryText}" IsHitTestVisible="false" Style="{StaticResource PageSubheaderTextStyle}"/>
