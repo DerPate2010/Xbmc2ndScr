@@ -51,13 +51,13 @@ namespace Xbmc2S.RT.Global
         private void SearchFlyout_Opening(object sender, object e)
         {
             var p = findb.GetFirstAncestorOfType<CommandBar>();
-             p.Visibility = Visibility.Collapsed;
+            if (p != null) p.Visibility = Visibility.Collapsed;
         }
 
         private void SearchFlyout_Closed(object sender, object e)
         {
             var p = findb.GetFirstAncestorOfType<CommandBar>();
-            p.Visibility = Visibility.Visible;
+            if (p != null) p.Visibility = Visibility.Visible;
         }
 
         private void SearchBox_KeyUp(object sender, KeyRoutedEventArgs e)

@@ -33,7 +33,7 @@
     -->
     <Grid Style="{StaticResource LayoutRootStyle}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="140"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -43,16 +43,18 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+            <Button x:Name="backButton" Margin="39,59,39,40" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
                         Style="{StaticResource NavigationBackButtonNormalStyle}"
                         VerticalAlignment="Top"
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
-                        AutomationProperties.ItemType="Navigation Button"/>
+                        AutomationProperties.ItemType="Navigation Button"
+                     />
             <TextBlock x:Name="pageTitle" Grid.Column="1" Text="Download" Style="{StaticResource HeaderTextBlockStyle}"/>
         </Grid>
-        
-        <StackPanel Grid.Row="1" Margin="125 0 120 120" Name="ContentGrid">
+
+        <ScrollViewer Grid.Row="1">
+        <StackPanel Margin="125 0 120 120" Name="ContentGrid">
             <TextBlock TextWrapping="Wrap" Name="ModeHint" Style="{StaticResource ContentText}" FontSize="20" 
                                Text="Transcoding will convert the file to a format that is compatible to any PC or tablet. Direct download should only be selected, if you're sure, that the file can be played on you hardware. XBMC does not support transcoding on its own. You have to install VLC media player as streaming server on the XBMC machine."/>
             <HyperlinkButton Padding="0">Instructions can be found here.</HyperlinkButton>
@@ -105,28 +107,13 @@
             </StackPanel>
             <Button Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" FontSize="20" Command="{Binding StartDownload}">Start Transfer</Button>
         </StackPanel>
-
+        </ScrollViewer>
         <VisualStateManager.VisualStateGroups>
 
             <!-- Visual states reflect the application's view state -->
             <VisualStateGroup x:Name="ApplicationViewStates">
-                <VisualState x:Name="FullScreenLandscape"/>
-                <VisualState x:Name="Filled"/>
-
-                <!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
-                <VisualState x:Name="FullScreenPortrait">
-                    <Storyboard>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
-                        </ObjectAnimationUsingKeyFrames>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentGrid" Storyboard.TargetProperty="Margin">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="96,0,86,56"/>
-                        </ObjectAnimationUsingKeyFrames>
-                    </Storyboard>
-                </VisualState>
-
-                <!-- The back button and title have different styles when snapped -->
-                <VisualState x:Name="Snapped">
+                <VisualState x:Name="Normal"/>
+                <VisualState x:Name="Narrow">
                     <Storyboard>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
                             <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>

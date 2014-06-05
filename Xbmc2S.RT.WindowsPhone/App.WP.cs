@@ -80,8 +80,15 @@ namespace Xbmc2S.RT
                         int pos=0;
                         foreach (var commandBarElement in commonBar.PrimaryCommands)
                         {
-                            commandBar.PrimaryCommands.Insert(pos, commandBarElement);
-                            pos++;
+                            if (commandBar.PrimaryCommands.Count > 3)
+                            {
+                                commandBar.SecondaryCommands.Add(commandBarElement);
+                            }
+                            else
+                            {
+                                commandBar.PrimaryCommands.Insert(pos, commandBarElement);
+                                pos++;
+                            }
                         }
                         foreach (var commandBarElement in commonBar.SecondaryCommands)
                         {

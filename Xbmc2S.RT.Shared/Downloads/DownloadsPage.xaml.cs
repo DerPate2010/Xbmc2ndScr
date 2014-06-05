@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -52,7 +53,27 @@ namespace Xbmc2S.RT
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
+            Window.Current.SizeChanged += WindowSizeChanged;
+            AdaptWindowSize();
         }
+
+        private void WindowSizeChanged(object sender, WindowSizeChangedEventArgs e)
+        {
+            AdaptWindowSize();
+        }
+
+        private void AdaptWindowSize()
+        {
+            if (Window.Current.Bounds.Width < 768)
+            {
+                VisualStateManager.GoToState(this, "Narrow", true);
+            }
+            else
+            {
+                VisualStateManager.GoToState(this, "Normal", true);
+            }
+        }
+
 
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -82,6 +103,7 @@ namespace Xbmc2S.RT
 
         private void ItemGridView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+#if !WINDOWS_PHONE_APP
             if (itemGridView.SelectedItems.Count > 0)
             {
                 BottomAppBar.IsOpen = true;
@@ -90,6 +112,7 @@ namespace Xbmc2S.RT
             {
                 BottomAppBar.IsOpen = false;
             }
+#endif
             _downloads.NotifySelectionChanged();
         }
 

@@ -8,7 +8,8 @@
     xmlns:common="using:Xbmc2S.RT.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:data="using:Xbmc2S.RT.SampleDataModel"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Background="{StaticResource AccentBackgroundBrush}">
 
     <Page.Resources>
 
@@ -264,7 +265,7 @@
             </Setter>
         </Style>
         <DataTemplate x:Key="DataTemplate1">
-            <Grid HorizontalAlignment="Left" Width="400" Height="80" Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}">
+            <Grid HorizontalAlignment="Left" Width="344" Height="80" Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -281,20 +282,16 @@
     </Page.Resources>
 
     <Page.BottomAppBar>
-        <AppBar IsSticky="True">
-            <Grid>
-                <StackPanel Orientation="Horizontal">
-                    <Button Style="{StaticResource ClearSelectionAppBarButtonStyle}" Command="{Binding ClearSelection}"></Button>
-                    <Button Style="{StaticResource StopAppBarButtonStyle}" Command="{Binding StopSelected}"></Button>
-                    <Button Style="{StaticResource DeleteAppBarButtonStyle}" Command="{Binding DeleteSelected}"></Button>
-                    <Button Style="{StaticResource PlayAppBarButtonStyle}" Command="{Binding PlaySelected}"></Button>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Style="{StaticResource DeleteAppBarButtonStyle}" Command="{Binding RemoveFinished}" AutomationProperties.Name="Remove finished"></Button>
-                    <Button Style="{StaticResource SelectAllAppBarButtonStyle}" Command="{Binding SelectAll}"></Button>
-                </StackPanel>
-            </Grid>
-        </AppBar>
+        <CommandBar IsSticky="True" Background="{StaticResource AccentBrush}">
+            <AppBarButton Icon="Stop" Command="{Binding StopSelected}" Label="Stop"/>
+            <AppBarButton Icon="Play" Command="{Binding PlaySelected}" Label="Play"/>
+            <AppBarButton Icon="Delete" Command="{Binding DeleteSelected}" Label="Delete"/>
+            <AppBarButton Icon="Clear" Command="{Binding RemoveFinished}" Label="Remove finished"/>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="SelectAll" Command="{Binding SelectAll}" Label="Select all"/>
+                <AppBarButton Icon="ClearSelection" Command="{Binding ClearSelection}" Label="Clear selection"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
     </Page.BottomAppBar>
 
     <!--
@@ -304,7 +301,7 @@
     -->
     <Grid Style="{StaticResource LayoutRootStyle}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="140"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -317,29 +314,13 @@
             AutomationProperties.AutomationId="ItemsGridView"
             AutomationProperties.Name="Items"
             TabIndex="1"
-            Grid.RowSpan="2"
-            Padding="116,136,116,46"
+            Grid.Row="1"
+            Padding="116,0,116,46"
             ItemsSource="{Binding Source={StaticResource itemsViewSource}}"
             ItemTemplate="{StaticResource DataTemplate1}"
             SelectionMode="Multiple"
             IsSwipeEnabled="false"
             SelectionChanged="ItemGridView_OnSelectionChanged"/>
-
-        <!-- Vertical scrolling list only used when snapped -->
-        <ListView
-            x:Name="itemListView"
-            AutomationProperties.AutomationId="ItemsListView"
-            AutomationProperties.Name="Items"
-            TabIndex="1"
-            Grid.Row="1"
-            Visibility="Collapsed"
-            Margin="0,-10,0,0"
-            Padding="10,0,0,60"
-            ItemsSource="{Binding Source={StaticResource itemsViewSource}}"
-            ItemTemplate="{StaticResource DownloadTemplate}"
-            SelectionMode="None"
-            IsSwipeEnabled="false"
-/>
 
         <!-- Back button and page title -->
         <Grid>
@@ -347,12 +328,13 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+            <Button x:Name="backButton" Margin="39,59,39,40" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
                         Style="{StaticResource NavigationBackButtonNormalStyle}"
                         VerticalAlignment="Top"
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
-                        AutomationProperties.ItemType="Navigation Button"/>
+                        AutomationProperties.ItemType="Navigation Button"
+                     />
             <TextBlock x:Name="pageTitle" Grid.Column="1" Text="Downloads" IsHitTestVisible="false" Style="{StaticResource HeaderTextBlockStyle}"/>
         </Grid>
 
@@ -360,26 +342,8 @@
 
             <!-- Visual states reflect the application's view state -->
             <VisualStateGroup x:Name="ApplicationViewStates">
-                <VisualState x:Name="FullScreenLandscape"/>
-                <VisualState x:Name="Filled"/>
-
-                <!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
-                <VisualState x:Name="FullScreenPortrait">
-                    <Storyboard>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
-                        </ObjectAnimationUsingKeyFrames>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemGridView" Storyboard.TargetProperty="Padding">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="96,136,86,56"/>
-                        </ObjectAnimationUsingKeyFrames>
-                    </Storyboard>
-                </VisualState>
-
-                <!--
-                    The back button and title have different styles when snapped, and the list representation is substituted
-                    for the grid displayed in all other view states
-                -->
-                <VisualState x:Name="Snapped">
+                <VisualState x:Name="Normal"/>
+                <VisualState x:Name="Narrow">
                     <Storyboard>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
                             <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
@@ -388,11 +352,8 @@
                             <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
                         </ObjectAnimationUsingKeyFrames>
 
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemListView" Storyboard.TargetProperty="Visibility">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
-                        </ObjectAnimationUsingKeyFrames>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemGridView" Storyboard.TargetProperty="Visibility">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemGridView" Storyboard.TargetProperty="Padding">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="20 0 20 0"/>
                         </ObjectAnimationUsingKeyFrames>
                     </Storyboard>
                 </VisualState>

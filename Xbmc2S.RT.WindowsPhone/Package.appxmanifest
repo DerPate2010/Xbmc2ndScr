@@ -39,5 +39,7 @@
   </Applications>
   <Capabilities>
     <Capability Name="internetClientServer" />
+    <Capability Name="musicLibrary" />
+    <Capability Name="videosLibrary" />
   </Capabilities>
 </Package>

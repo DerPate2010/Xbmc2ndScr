@@ -53,10 +53,16 @@
                 <ComboBox
                     ItemsSource="{Binding Source={StaticResource filtersViewSource}}"
                     Visibility="Collapsed"
-                    Margin="120,-3,120,30"
+                    Margin="20,-3,20,12"
                     SelectionChanged="Filter_SelectionChanged"
                     HorizontalAlignment="Left"
-                    Name="filtersItemsCombo"/>
+                    Name="filtersItemsCombo">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Description}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
 
                 <ItemsControl
                     x:Name="filtersItemsControl"
