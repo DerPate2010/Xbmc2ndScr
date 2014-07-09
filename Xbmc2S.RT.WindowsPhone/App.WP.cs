@@ -10,6 +10,8 @@ using Windows.Networking;
 using Windows.Networking.Connectivity;
 using Windows.Networking.Sockets;
 using Windows.Phone.UI.Input;
+using Windows.Storage;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Markup;
@@ -28,6 +30,24 @@ namespace Xbmc2S.RT
         private async void DoPlatformDependentInitialization()
         {
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+
+            string firstLaunchkey = "firstLaunchMessageDone1";
+            object firstLaunchMessageDoneObject;
+            ApplicationData.Current.LocalSettings.Values.TryGetValue(firstLaunchkey, out firstLaunchMessageDoneObject);
+            bool firstLaunchMessageDone = false;
+            if (firstLaunchMessageDoneObject is bool)
+            {
+                firstLaunchMessageDone = (bool)firstLaunchMessageDoneObject;
+            }
+            if (!firstLaunchMessageDone)
+            {
+                var dlg =
+                    new MessageDialog(
+                        "This app is an open source companion for XBMC. It is free for everyone. Please help to make it the best XBMC experience on Windows Phone. You can support the development by adding code improvements or giving user feedback. ");
+                await dlg.ShowAsync();
+                ApplicationData.Current.LocalSettings.Values[firstLaunchkey] = true;
+ 
+            }
         }
 
         private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
