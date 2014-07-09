@@ -202,7 +202,7 @@
                         Visibility="{Binding Settings.ShowShows, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <DataTemplate>
                     <local:MultiCellGridView x:Name="itemGridView2" Style="{StaticResource HomeGridStyle}" VerticalContentAlignment="Stretch"
-                                             ItemsSource="{Binding Source={StaticResource TvItemsViewSource}}" 
+                                             ItemsSource="{Binding Source={StaticResource TvItemsViewSource}}" MaxWidth="340"
                                              ItemClick="ItemGridView_OnItemClick" ItemTemplate="{StaticResource BannerItemTemplate}">
                         <GridView.ItemsPanel>
                             <ItemsPanelTemplate>

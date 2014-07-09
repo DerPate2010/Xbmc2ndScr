@@ -59,12 +59,12 @@
                                     <LineBreak/>
                                 </Paragraph>
                                 <Paragraph>
-                                    <Run FontSize="16" FontWeight="Light" Text="{Binding SecondLabel}"/>
+                                    <Run FontWeight="Light" Text="{Binding SecondLabel}"/>
                                     <LineBreak/>
                                     <Run FontWeight="Normal" Text="{Binding Content}"/>
                                     <LineBreak/>
                                 </Paragraph>
-                                <Paragraph FontSize="12">
+                                <Paragraph >
                                     <Run Text="Country:"/>
                                     <Run Text="{Binding Country}"/>
                                     <LineBreak/>
@@ -89,7 +89,7 @@
                                     <Run Text="Studio:"/>
                                     <Run Text="{Binding Studio}"/>
                                 </Paragraph>
-                                <Paragraph FontSize="12">
+                                <Paragraph >
                                     <Run Text="File:"/>
                                     <Run Text="{Binding Path}"/>
                                 </Paragraph>

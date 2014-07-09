@@ -111,8 +111,8 @@
                         AutomationProperties.ItemType="Navigation Button"
                      />
             <TextBlock x:Name="pageTitle" Grid.Column="1" Text="Search" IsHitTestVisible="false" Style="{StaticResource HeaderTextBlockStyle}"  />
-            <TextBlock x:Name="resultText" Grid.Column="2" Text="Results for&#x00a0;" IsHitTestVisible="false" Style="{StaticResource PageSubheaderTextStyle}"/>
-            <TextBlock x:Name="queryText" Grid.Column="3" Text="{Binding QueryText}" IsHitTestVisible="false" Style="{StaticResource PageSubheaderTextStyle}"/>
+            <TextBlock x:Name="resultText" Grid.Column="2" Text="Results for&#x00a0;" IsHitTestVisible="false" Style="{StaticResource PageSubheaderTextStyle}" Margin="0 0 0 6"/>
+            <TextBlock x:Name="queryText" Grid.Column="3" Text="{Binding QueryText}" IsHitTestVisible="false" Style="{StaticResource PageSubheaderTextStyle}" Margin="0 0 0 6"/>
             <search:GlobalSearchBox  Grid.Column="4"/>
         </Grid>
 

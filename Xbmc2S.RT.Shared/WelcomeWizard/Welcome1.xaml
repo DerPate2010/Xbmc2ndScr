@@ -11,7 +11,9 @@
             <Setter Property="Margin" Value="0 0 0 20"></Setter>
         </Style>
     </Page.Resources>
-
+    <Page.BottomAppBar>
+        <CommandBar Visibility="Collapsed"/>
+    </Page.BottomAppBar>    
     <Grid Background="{StaticResource AccentBackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>

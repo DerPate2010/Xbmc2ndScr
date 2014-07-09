@@ -59,7 +59,17 @@ namespace Xbmc2S.RT.WelcomeWizard
         {
             BusyIndicator.Visibility = Visibility.Visible;
 
-            if (await App.MainVm.CurrentConnection.UPnPAvailable())
+                bool upnpAvailable=false;
+            try
+            {
+                upnpAvailable = await App.MainVm.CurrentConnection.UPnPAvailable();
+            }
+            catch (Exception ex)
+            {
+                
+            }
+
+            if (upnpAvailable)
             {
 
 

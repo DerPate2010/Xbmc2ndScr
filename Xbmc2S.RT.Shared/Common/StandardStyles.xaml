@@ -2094,8 +2094,8 @@
                 <Image Source="{Binding Images.Image}" Stretch="UniformToFill"/>
             </Border>
             <StackPanel Grid.Column="1" Margin="10,0,0,0">
-                <TextBlock Text="{Binding Label}" Style="{StaticResource BaseTextBlockStyle}" MaxHeight="40"/>
-                <TextBlock Text="{Binding SecondLabel}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
+                <TextBlock Text="{Binding Label}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource TitleTextBlockStyle}" Margin="15,0,15,0"/>
+                <TextBlock Text="{Binding SecondLabel}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
             </StackPanel>
         </Grid>
     </DataTemplate>

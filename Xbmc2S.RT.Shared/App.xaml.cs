@@ -94,13 +94,14 @@ namespace Xbmc2S.RT
         /// <param name="args">Details about the launch request and process.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs args)
         {
+            Task launchTask = null;
             await PrepareWindow(args);
 
             if (RootFrame.Content == null)
             {
 
 
-                await MainVm.CurrentConnection.OnLaunch();
+                launchTask = MainVm.CurrentConnection.OnLaunch();
 
                 //else
                 {
@@ -119,8 +120,10 @@ namespace Xbmc2S.RT
             Window.Current.Activate();
 
             await RegisterBackgroundTask();
-
-            //new SampleDataSource();
+            if (launchTask != null)
+            {
+                await launchTask;
+            }
         }
 
         private async Task PrepareWindow(IActivatedEventArgs args)

@@ -92,12 +92,12 @@
     </Style>
 
     <Style x:Key="CaptionTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontSize" Value="16"/>
         <Setter Property="FontWeight" Value="Normal"/>
     </Style>
 
     <Style x:Key="BaseRichTextBlockStyle" TargetType="RichTextBlock">
-        <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+        <Setter Property="FontSize" Value="16"/>
         <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
         <Setter Property="SelectionHighlightColor" Value="{ThemeResource TextSelectionHighlightColorThemeBrush}" />
         <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
@@ -115,6 +115,7 @@
         <Setter Property="FontWeight" Value="SemiLight"/>
     </Style>
 
+    <x:Double x:Key="RichTextFontSize">16</x:Double>
 
     <Style x:Key="HubPageHeaderStyle" TargetType="TextBlock" BasedOn="{StaticResource HeaderTextBlockStyle}">
         <Setter Property="Margin" Value="0,32,0,0"/>

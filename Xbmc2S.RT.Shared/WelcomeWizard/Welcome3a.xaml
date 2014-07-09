@@ -8,6 +8,9 @@
     mc:Ignorable="d">
     <Page.Resources>
     </Page.Resources>
+    <Page.BottomAppBar>
+        <CommandBar Visibility="Collapsed"/>
+    </Page.BottomAppBar>
 
     <Grid Background="{StaticResource AccentBackgroundBrush}">
         <Grid.RowDefinitions>
