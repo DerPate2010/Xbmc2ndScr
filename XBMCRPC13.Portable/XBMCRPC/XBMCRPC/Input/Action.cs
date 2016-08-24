@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using System.Runtime.Serialization;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.Input
 {
    public enum Action
@@ -18,6 +20,7 @@ namespace XBMCRPC.Input
        parentdir,
        parentfolder,
        back,
+       menu,
        previousmenu,
        info,
        pause,
@@ -35,6 +38,7 @@ namespace XBMCRPC.Input
        osd,
        showsubtitles,
        nextsubtitle,
+       cyclesubtitle,
        codecinfo,
        nextpicture,
        previouspicture,
@@ -55,6 +59,8 @@ namespace XBMCRPC.Input
        nextcalibration,
        resetcalibration,
        analogmove,
+       analogmovex,
+       analogmovey,
        rotate,
        rotateccw,
        close,
@@ -82,13 +88,6 @@ namespace XBMCRPC.Input
        number7,
        number8,
        number9,
-       osdleft,
-       osdright,
-       osdup,
-       osddown,
-       osdselect,
-       osdvalueplus,
-       osdvalueminus,
        smallstepback,
        fastforward,
        rewind,
@@ -98,8 +97,6 @@ namespace XBMCRPC.Input
        delete,
        copy,
        move,
-       mplayerosd,
-       hidesubmenu,
        screenshot,
        rename,
        togglewatched,
@@ -124,7 +121,6 @@ namespace XBMCRPC.Input
        analogseekforward,
        analogseekback,
        showpreset,
-       presetlist,
        nextpreset,
        previouspreset,
        lockpreset,
@@ -169,6 +165,7 @@ namespace XBMCRPC.Input
        decreasepar,
        volampup,
        volampdown,
+       volumeamplification,
        createbookmark,
        createepisodebookmark,
        settingsreset,
@@ -190,6 +187,7 @@ namespace XBMCRPC.Input
        rightclick,
        middleclick,
        doubleclick,
+       longclick,
        wheelup,
        wheeldown,
        mousedrag,
@@ -203,6 +201,7 @@ namespace XBMCRPC.Input
        swiperight,
        swipeup,
        swipedown,
+       error,
        noop,
    }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using System.Runtime.Serialization;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.GUI
 {
    public enum Window
@@ -16,10 +18,20 @@ namespace XBMCRPC.GUI
        music,
        video,
        videos,
-       tv,
        pvr,
+       tvchannels,
+       tvrecordings,
+       tvguide,
+       tvtimers,
+       tvsearch,
+       radiochannels,
+       radiorecordings,
+       radioguide,
+       radiotimers,
+       radiosearch,
        pvrguideinfo,
        pvrrecordinginfo,
+       pvrradiordsinfo,
        pvrtimersetting,
        pvrgroupmanager,
        pvrchannelmanager,
@@ -28,8 +40,6 @@ namespace XBMCRPC.GUI
        pvrupdateprogress,
        pvrosdchannels,
        pvrosdguide,
-       pvrosddirector,
-       pvrosdcutter,
        pvrosdteletext,
        systeminfo,
        testpattern,
@@ -74,6 +84,8 @@ namespace XBMCRPC.GUI
        visualisationpresetlist,
        osdvideosettings,
        osdaudiosettings,
+       audiodspmanager,
+       osdaudiodspsettings,
        videobookmarks,
        filebrowser,
        networksetup,
@@ -88,8 +100,6 @@ namespace XBMCRPC.GUI
        pictureinfo,
        accesspoints,
        fullscreeninfo,
-       karaokeselector,
-       karaokelargeselector,
        sliderdialog,
        addoninformation,
        subtitlesearch,
@@ -105,23 +115,20 @@ namespace XBMCRPC.GUI
        textviewer,
        fullscreenvideo,
        fullscreenlivetv,
+       fullscreenradio,
        visualisation,
        slideshow,
-       filestackingdialog,
-       karaoke,
        weather,
        screensaver,
        videoosd,
        videomenu,
        videotimeseek,
-       musicoverlay,
-       videooverlay,
        startwindow,
        startup,
-       peripherals,
        peripheralsettings,
        extendedprogressdialog,
        mediafilter,
        addon,
+       eventlog,
    }
 }

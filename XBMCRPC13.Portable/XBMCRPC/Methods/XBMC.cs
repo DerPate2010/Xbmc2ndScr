@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.Methods
 {
    public partial class XBMC
@@ -12,12 +14,14 @@ namespace XBMCRPC.Methods
           }
 
                 /// <summary>
-                /// Retrieve info booleans about XBMC and the system
+                /// Retrieve info booleans about Kodi and the system
                 /// </summary>
-        public async Task<XBMCRPC.XBMC.GetInfoBooleansResponse> GetInfoBooleans(global::System.Collections.Generic.List<string> booleans=null)
+                /// <param name="booleans"> REQUIRED </param>
+                /// <returns>XBMCRPC.XBMC.GetInfoBooleansResponse</returns>
+        public async Task<XBMCRPC.XBMC.GetInfoBooleansResponse> GetInfoBooleans(global::System.Collections.Generic.List<string> booleans)
         {
             var jArgs = new JObject();
-             if (booleans != null)
+
              {
                  var jpropbooleans = JToken.FromObject(booleans, _client.Serializer);
                  jArgs.Add(new JProperty("booleans", jpropbooleans));
@@ -26,12 +30,14 @@ namespace XBMCRPC.Methods
         }
 
                 /// <summary>
-                /// Retrieve info labels about XBMC and the system
+                /// Retrieve info labels about Kodi and the system
                 /// </summary>
-        public async Task<XBMCRPC.XBMC.GetInfoLabelsResponse> GetInfoLabels(global::System.Collections.Generic.List<string> labels=null)
+                /// <param name="labels"> REQUIRED See http://kodi.wiki/view/InfoLabels for a list of possible info labels</param>
+                /// <returns>XBMCRPC.XBMC.GetInfoLabelsResponse</returns>
+        public async Task<XBMCRPC.XBMC.GetInfoLabelsResponse> GetInfoLabels(global::System.Collections.Generic.List<string> labels)
         {
             var jArgs = new JObject();
-             if (labels != null)
+
              {
                  var jproplabels = JToken.FromObject(labels, _client.Serializer);
                  jArgs.Add(new JProperty("labels", jproplabels));

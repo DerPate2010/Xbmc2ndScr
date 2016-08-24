@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.Methods
 {
    public partial class Settings
@@ -14,9 +16,14 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Retrieves all setting categories
                 /// </summary>
-        public async Task<XBMCRPC.Settings.GetCategoriesResponse> GetCategories(XBMCRPC.Setting.Level level=0, string section=null, XBMCRPC.Settings.GetCategories_properties properties=null)
+                /// <param name="level"> </param>
+                /// <param name="section"> </param>
+                /// <param name="properties"> </param>
+                /// <returns>XBMCRPC.Settings.GetCategoriesResponse</returns>
+        public async Task<XBMCRPC.Settings.GetCategoriesResponse> GetCategories(XBMCRPC.Setting.Level? level=null, string section=null, XBMCRPC.Settings.GetCategories_properties properties=null)
         {
             var jArgs = new JObject();
+
              if (level != null)
              {
                  var jproplevel = JToken.FromObject(level, _client.Serializer);
@@ -38,9 +45,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Retrieves all setting sections
                 /// </summary>
-        public async Task<XBMCRPC.Settings.GetSectionsResponse> GetSections(XBMCRPC.Setting.Level level=0, XBMCRPC.Settings.GetSections_properties properties=null)
+                /// <param name="level"> </param>
+                /// <param name="properties"> </param>
+                /// <returns>XBMCRPC.Settings.GetSectionsResponse</returns>
+        public async Task<XBMCRPC.Settings.GetSectionsResponse> GetSections(XBMCRPC.Setting.Level? level=null, XBMCRPC.Settings.GetSections_properties properties=null)
         {
             var jArgs = new JObject();
+
              if (level != null)
              {
                  var jproplevel = JToken.FromObject(level, _client.Serializer);
@@ -57,10 +68,12 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Retrieves the value of a setting
                 /// </summary>
-        public async Task<XBMCRPC.Settings.GetSettingValueResponse> GetSettingValue(string setting=null)
+                /// <param name="setting"> REQUIRED </param>
+                /// <returns>XBMCRPC.Settings.GetSettingValueResponse</returns>
+        public async Task<XBMCRPC.Settings.GetSettingValueResponse> GetSettingValue(string setting)
         {
             var jArgs = new JObject();
-             if (setting != null)
+
              {
                  var jpropsetting = JToken.FromObject(setting, _client.Serializer);
                  jArgs.Add(new JProperty("setting", jpropsetting));
@@ -71,9 +84,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Retrieves all settings
                 /// </summary>
-        public async Task<XBMCRPC.Settings.GetSettingsResponse> GetSettings(XBMCRPC.Settings.GetSettings_filter1 filter, XBMCRPC.Setting.Level level=0)
+                /// <param name="level"> </param>
+                /// <param name="filter"> </param>
+                /// <returns>XBMCRPC.Settings.GetSettingsResponse</returns>
+        public async Task<XBMCRPC.Settings.GetSettingsResponse> GetSettings(XBMCRPC.Setting.Level? level=null, XBMCRPC.Settings.GetSettings_filter1 filter=null)
         {
             var jArgs = new JObject();
+
              if (level != null)
              {
                  var jproplevel = JToken.FromObject(level, _client.Serializer);
@@ -90,9 +107,12 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Retrieves all settings
                 /// </summary>
-        public async Task<XBMCRPC.Settings.GetSettingsResponse> GetSettings(XBMCRPC.Setting.Level level=0)
+                /// <param name="level"> </param>
+                /// <returns>XBMCRPC.Settings.GetSettingsResponse</returns>
+        public async Task<XBMCRPC.Settings.GetSettingsResponse> GetSettings(XBMCRPC.Setting.Level? level=null)
         {
             var jArgs = new JObject();
+
              if (level != null)
              {
                  var jproplevel = JToken.FromObject(level, _client.Serializer);
@@ -104,10 +124,12 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Resets the value of a setting
                 /// </summary>
-        public async Task<string> ResetSettingValue(string setting=null)
+                /// <param name="setting"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> ResetSettingValue(string setting)
         {
             var jArgs = new JObject();
-             if (setting != null)
+
              {
                  var jpropsetting = JToken.FromObject(setting, _client.Serializer);
                  jArgs.Add(new JProperty("setting", jpropsetting));
@@ -118,15 +140,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Changes the value of a setting
                 /// </summary>
-        public async Task<bool> SetSettingValue(bool value, string setting=null)
+                /// <param name="setting"> REQUIRED </param>
+                /// <param name="value"> REQUIRED </param>
+                /// <returns>bool</returns>
+        public async Task<bool> SetSettingValue(string setting, bool? value=null)
         {
             var jArgs = new JObject();
-             if (setting != null)
+
              {
                  var jpropsetting = JToken.FromObject(setting, _client.Serializer);
                  jArgs.Add(new JProperty("setting", jpropsetting));
              }
-             if (value != null)
              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
@@ -137,15 +161,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Changes the value of a setting
                 /// </summary>
-        public async Task<bool> SetSettingValue(int value, string setting=null)
+                /// <param name="setting"> REQUIRED </param>
+                /// <param name="value"> REQUIRED </param>
+                /// <returns>bool</returns>
+        public async Task<bool> SetSettingValue(string setting, int value)
         {
             var jArgs = new JObject();
-             if (setting != null)
+
              {
                  var jpropsetting = JToken.FromObject(setting, _client.Serializer);
                  jArgs.Add(new JProperty("setting", jpropsetting));
              }
-             if (value != null)
              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
@@ -156,15 +182,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Changes the value of a setting
                 /// </summary>
-        public async Task<bool> SetSettingValue(double value, string setting=null)
+                /// <param name="setting"> REQUIRED </param>
+                /// <param name="value"> REQUIRED </param>
+                /// <returns>bool</returns>
+        public async Task<bool> SetSettingValue(string setting, double? value=null)
         {
             var jArgs = new JObject();
-             if (setting != null)
+
              {
                  var jpropsetting = JToken.FromObject(setting, _client.Serializer);
                  jArgs.Add(new JProperty("setting", jpropsetting));
              }
-             if (value != null)
              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
@@ -175,15 +203,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Changes the value of a setting
                 /// </summary>
-        public async Task<bool> SetSettingValue(string value, string setting=null)
+                /// <param name="setting"> REQUIRED </param>
+                /// <param name="value"> REQUIRED </param>
+                /// <returns>bool</returns>
+        public async Task<bool> SetSettingValue(string setting, string value)
         {
             var jArgs = new JObject();
-             if (setting != null)
+
              {
                  var jpropsetting = JToken.FromObject(setting, _client.Serializer);
                  jArgs.Add(new JProperty("setting", jpropsetting));
              }
-             if (value != null)
              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
@@ -194,15 +224,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Changes the value of a setting
                 /// </summary>
-        public async Task<bool> SetSettingValue(global::System.Collections.Generic.List<object> value, string setting=null)
+                /// <param name="setting"> REQUIRED </param>
+                /// <param name="value"> REQUIRED </param>
+                /// <returns>bool</returns>
+        public async Task<bool> SetSettingValue(string setting, global::System.Collections.Generic.List<object> value)
         {
             var jArgs = new JObject();
-             if (setting != null)
+
              {
                  var jpropsetting = JToken.FromObject(setting, _client.Serializer);
                  jArgs.Add(new JProperty("setting", jpropsetting));
              }
-             if (value != null)
              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
@@ -213,10 +245,12 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Changes the value of a setting
                 /// </summary>
-        public async Task<bool> SetSettingValue(string setting=null)
+                /// <param name="setting"> REQUIRED </param>
+                /// <returns>bool</returns>
+        public async Task<bool> SetSettingValue(string setting)
         {
             var jArgs = new JObject();
-             if (setting != null)
+
              {
                  var jpropsetting = JToken.FromObject(setting, _client.Serializer);
                  jArgs.Add(new JProperty("setting", jpropsetting));

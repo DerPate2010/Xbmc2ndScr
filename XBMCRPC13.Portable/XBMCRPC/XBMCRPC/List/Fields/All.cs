@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using System.Runtime.Serialization;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.List.Fields
 {
    public enum AllItem
@@ -79,6 +81,11 @@ namespace XBMCRPC.List.Fields
        channelnumber,
        starttime,
        endtime,
+       specialsortseason,
+       specialsortepisode,
+       compilation,
+       releasetype,
+       albumreleasetype,
    }
    public class All : List<AllItem>
    {

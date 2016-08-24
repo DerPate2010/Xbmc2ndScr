@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,15 +12,18 @@ using JsonRpcGen.TypeHandler;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 
+
+
 namespace JsonRpcGen
 {
     class Program
     {
+        public const string PRAGMA = "#pragma warning disable CS0108";
 
         static void Main(string[] args)
         {
 #if DEBUG
-            args = new string[] { "http://localhost:85/jsonrpc", "xbmc", "xbmc", "XBMCRPC" };
+            args = new string[] { "http://localhost:8080/jsonrpc", "kodi", "kodi", "XBMCRPC" };
 #endif
             Global.TargetDir = new DirectoryInfo(@"..\..\..\XBMCRPC13.Portable\" + args[3]);
             if (Global.TargetDir.Exists)
@@ -27,14 +32,28 @@ namespace JsonRpcGen
             }
             Global.BaseNamespace = args[3];
 
-            //var schemaTask = GetSchema(args[0], args[1], args[2]);
-            //schemaTask.Wait();
-            //var schema = schemaTask.Result;
-            JObject schema = JObject.Parse(File.ReadAllText(@"..\..\xbmc13.json"));
+            var schemaTask = GetSchema(args[0], args[1], args[2]);
+            try
+            {
+                schemaTask.Wait();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Cannot read JSON scheme! Kodi not running?");
+                Console.WriteLine("Error: {0}", e.Message);
+                Console.Write("Hit RETURN to continue:");
+                Console.ReadLine();
+                return;
+            }
+            var schema = schemaTask.Result;
+            //JObject schema = JObject.Parse(File.ReadAllText(@"..\..\kodi16.json"));
 
             var types = schema["result"]["types"];
             var methods = schema["result"]["methods"];
             var notifications = schema["result"]["notifications"];
+
+            // MAM: we also save the API Version we have received from Kodi as a String Constant in our Namespace
+            var version = schema["result"]["version"];
 
             CollectTypes(types);
 
@@ -56,6 +75,9 @@ namespace JsonRpcGen
             WriteTypes();
 
             CopyBaseClases(methodClasses, notificationInvoker);
+
+            // MAM: save the API Version so that the User of the Lib can read it and act upon it
+            GenVersion(version.ToString());
         }
 
         private static void WriteTypes()
@@ -102,6 +124,9 @@ namespace JsonRpcGen
             writer.WriteLine("using System.Linq;");
             writer.WriteLine("using Newtonsoft.Json.Linq;");
             writer.WriteLine("using System.Runtime.Serialization;");
+            // MAM: get rid of this annoying warning created by KODI
+            writer.WriteLine(PRAGMA);
+            writer.WriteLine("");
         }
 
         private static void CollectTypes(JToken types)
@@ -162,6 +187,13 @@ namespace JsonRpcGen
             return query;
         }
 
+        /// <summary>
+        /// Generate Methods for each JSON callable function that we have found in the KODI list
+        /// </summary>
+        /// <param name="methods"></param>
+        /// <param name="notifications"></param>
+        /// <param name="notificationInvoke"></param>
+        /// <returns></returns>
         private static List<string> GenMethods(JToken methods, JToken notifications, out string notificationInvoke)
         {
             notificationInvoke = null;
@@ -189,6 +221,8 @@ namespace JsonRpcGen
                     writer.WriteLine("using System;");
                     writer.WriteLine("using System.Threading.Tasks;");
                     writer.WriteLine("using Newtonsoft.Json.Linq;");
+                    writer.WriteLine(PRAGMA);
+                    writer.WriteLine("");
                     writer.WriteLine("namespace " + namesp);
                     writer.WriteLine("{");
                     writer.WriteLine("   public partial class " + className);
@@ -208,10 +242,10 @@ namespace JsonRpcGen
                 var dim = parameters.Count(p => p.Type.TypeHandler is MultiTypeHandler);
                 if (dim > 1)
                 {
-                    multiMethods.Add(methodName +" - " + dim);
+                    multiMethods.Add(methodName + " - " + dim);
                 }
                 var overloadParam = parameters.FirstOrDefault(p => p.Type.TypeHandler is MultiTypeHandler);
-                if (overloadParam==null)
+                if (overloadParam == null)
                 {
                     overloads.Add(parameters);
                 }
@@ -230,7 +264,12 @@ namespace JsonRpcGen
                     //var parameter = parameters.ElementAt(i);
                     //parameters.SetOverload(i);
                     //retType.SetOverload(i);
-                    var writer2 = new StreamWriter(classFile.Open(FileMode.Append, FileAccess.Write));
+
+                    // MAM: we often encountered a sharing violation here, so we try to relax the thing a bit
+                    var writer2 = new StreamWriter(classFile.Open(FileMode.Append, FileAccess.Write, FileShare.ReadWrite));
+                    // MAM: set Autoflush, so every line is written out instantly
+                    writer2.AutoFlush = true;
+
                     //retType.WriteType(writer2, replacements);
                     //parameters.WriteTypes(writer2, replacements);
                     writer2.WriteLine();
@@ -241,6 +280,18 @@ namespace JsonRpcGen
                         writer2.Write("                /// ");
                         writer2.WriteLine(description.ToString());
                         writer2.WriteLine("                /// </summary>");
+
+                        foreach (var p in overload)
+                        {
+                            writer2.Write("                /// <param name=\"{0}\"> {1}",p.Name,p.Required?"REQUIRED ":"");
+                            if (p.Description != null)
+                            {
+                                writer2.Write("{0}", p.Description);
+                            }
+                            writer2.WriteLine("</param>");
+                        }
+                        writer2.WriteLine("                /// <returns>{0}</returns>", retType.TypeHandler.NetType);
+
                     }
                     writer2.Write("        public async Task<");
                     writer2.Write(retType.TypeHandler.NetType);
@@ -251,16 +302,78 @@ namespace JsonRpcGen
                     writer2.Write("");
                     writer2.WriteLine(")");
                     writer2.WriteLine("        {");
-                    writer2.WriteLine("            var jArgs = new JObject();");
+
+                    // MAM: later! no need for constructor if we have a quickexit situation
+                    // writer2.WriteLine("            var jArgs = new JObject();");
+
+                    // MAM: check if first argument is numeric
+                    var first = true; // MAM 230816
+                    var NoParameter = true; // MAM: if we have no Paramter to send at all, dont add jArgs to the wait call!
+
                     foreach (var pname in overload)
                     {
-                        writer2.WriteLine("             if (" + pname.Name + " != null)");
+                        NoParameter = false;
+                        // MAM: fast exit if first argument is not given
+                        if (first == true)
+                        {
+                            first = false; // MAM: only one time for each Method only please!
+                            string FirstType = pname.Type.TypeHandler.NetType.ToString();
+                            if (FirstType == "int")
+                            {
+                                writer2.WriteLine("             if (" + pname.Name + " == 0 )");
+                                writer2.WriteLine("             {");
+                                switch (retType.Name)
+                                {
+                                    case "integer":
+                                        writer2.WriteLine("                 return 0;"); break;
+                                    case "bool":
+                                        writer2.WriteLine("                 return false;"); break;
+                                    case "double":
+                                        writer2.WriteLine("                 return 0;"); break;
+                                    default:
+                                        writer2.WriteLine("                 return null;"); break;
+                                }
+                                writer2.WriteLine("              }");
+                                writer2.WriteLine("");
+                            }
+                            writer2.WriteLine("            var jArgs = new JObject();");
+                            writer2.WriteLine("");
+                        }
+
+                        // MAM: only check, if parameter is optional!
+                        if (pname.Required == false)
+                        {
+                            string FirstType = pname.Type.TypeHandler.NetType.ToString();
+                            switch (FirstType)
+                            {
+                                case "integer":
+                                    writer2.WriteLine("             if (" + pname.Name + " != 0)");
+                                    break;
+                                case "string":
+                                    writer2.WriteLine("             if (" + pname.Name + " != null)");
+                                    break;
+                                case "bool": // MAM: bool are always to be send, no matter of their value
+                                    break;
+                                default:
+                                    writer2.WriteLine("             if (" + pname.Name + " != null)");
+                                    break;
+                            }
+                        }
+
                         writer2.WriteLine("             {");
                         writer2.WriteLine("                 var jprop" + pname.Name + " = JToken.FromObject(" + pname.Name + ", _client.Serializer);");
                         writer2.WriteLine("                 jArgs.Add(new JProperty(\"" + pname.OriginalName + "\", jprop" + pname.Name + "));");
                         writer2.WriteLine("             }");
+
                     }
-                    writer2.WriteLine("            return await _client.GetData<" + retType.TypeHandler.NetType + ">(\"" + method.Name + "\", jArgs);");
+                    if (NoParameter == false)
+                    {
+                        writer2.WriteLine("            return await _client.GetData<" + retType.TypeHandler.NetType + ">(\"" + method.Name + "\", jArgs);");
+                    }
+                    else
+                    {
+                        writer2.WriteLine("            return await _client.GetData<" + retType.TypeHandler.NetType + ">(\"" + method.Name + "\",null);");
+                    }
                     writer2.WriteLine("        }");
 
                     writer2.Close();
@@ -280,7 +393,8 @@ namespace JsonRpcGen
                 {
                     //parameters.SetOverload(i);
                     //retType.SetOverload(i);
-                    var writer2 = new StreamWriter(classFile.Open(FileMode.Append, FileAccess.Write));
+                    var writer2 = new StreamWriter(classFile.Open(FileMode.Append, FileAccess.Write, FileShare.ReadWrite));
+                    writer2.AutoFlush = true;
                     //retType.WriteType(writer2, replacements);
                     //parameters.WriteTypes(writer2, replacements);
                     writer2.WriteLine();
@@ -394,18 +508,18 @@ namespace JsonRpcGen
 
         private static void AddOverloads(ParamTypeHandler overloadParam, List<ParamTypeHandler> parameters, int indexToReplace, List<List<ParamTypeHandler>> overloads)
         {
-            var multiTypeHandler = ((MultiTypeHandler) overloadParam.Type.TypeHandler);
+            var multiTypeHandler = ((MultiTypeHandler)overloadParam.Type.TypeHandler);
             foreach (var type in multiTypeHandler.TypeHandlers)
             {
                 if (type.TypeHandler is MultiTypeHandler)
                 {
-                    AddOverloads(new ParamTypeHandler(type, overloadParam.Name), parameters, indexToReplace, overloads);
+                    AddOverloads(new ParamTypeHandler(type, overloadParam.Name,overloadParam.Required,overloadParam.Description, true), parameters, indexToReplace, overloads);
                 }
                 else
                 {
                     var overload = new List<ParamTypeHandler>(parameters);
                     overload.RemoveAt(indexToReplace);
-                    overload.Insert(indexToReplace, new ParamTypeHandler(type, overloadParam.Name, false));
+                    overload.Insert(indexToReplace, new ParamTypeHandler(type, overloadParam.Name, overloadParam.Required, overloadParam.Description, false));
                     overloads.Add(overload);
                 }
             }
@@ -413,19 +527,54 @@ namespace JsonRpcGen
 
         private static string GetParameterList(IEnumerable<ParamTypeHandler> parameters)
         {
-            var orderedParameters = parameters.OrderByDescending(p => string.IsNullOrEmpty(p.GetDefault())).ToList();
+            // var orderedParameters = parameters; ; //.OrderByDescending(p => string.IsNullOrEmpty(p.GetDefault())).ToList();
+            // return string.Join(", ", orderedParameters.Where(p => p.Type.TypeHandler.NetType != null).Select(p => p.Type.TypeHandler.NetType + " " + p.Name + p.GetDefault()));
+            string Result = "";
+            int i;
+            var p = parameters.GetEnumerator();
 
-            return string.Join(", ", orderedParameters.Where(p => p.Type.TypeHandler.NetType != null).Select(p => p.Type.TypeHandler.NetType + " " + p.Name + p.GetDefault()));
+            for (i = 0; i < parameters.Count(); i++)
+            {
+                p.MoveNext();
+
+                if (i > 0)
+                {
+                    Result += ", ";
+                }
+                Result += (p.Current.Type.TypeHandler.NetType);
+                if (p.Current.IsNullable || p.Current.Type.TypeHandler.IsEnum)
+                {
+                    Result += "?";
+                }
+                Result += " ";
+                Result += p.Current.Name;
+                Result += p.Current.GetDefault();
+            }
+            return Result;
         }
 
         private static IEnumerable<ParamTypeHandler> GetParams(JProperty method, string typePrefix)
         {
-            List<ParamTypeHandler> paramHAndlers= new List<ParamTypeHandler>();
+            List<ParamTypeHandler> paramHAndlers = new List<ParamTypeHandler>();
 
             var parameters = method.First["params"];
             foreach (JObject parameter in parameters)
             {
                 var name = parameter["name"].ToString();
+
+                // MAM: read and save the "required" attribute. Never generate an optional Parameter for this!
+                bool req = false;
+                string Description = "";
+
+                if (parameter["required"] != null && 
+                    parameter["required"].ToString().ToLower() == "true")
+                {
+                    req = true;
+                }
+                if (parameter["description"] != null)
+                {
+                    Description = parameter["description"].ToString();
+                }
 
                 TypeReference paramType;
                 var refName = parameter["$ref"];
@@ -438,7 +587,7 @@ namespace JsonRpcGen
                     paramType = Global.TypeMap.AddAnonymousType(parameter, typePrefix + "_" + name);
                 }
 
-                paramHAndlers.Add(new ParamTypeHandler(paramType, name));
+                paramHAndlers.Add(new ParamTypeHandler(paramType, name,req,Description,true));
             }
 
             return paramHAndlers;
@@ -470,6 +619,41 @@ namespace JsonRpcGen
             return Global.TypeMap.GetOrAddType(refName);
         }
 
+
+        /// <summary>
+        /// Generate a Constant from the API Version we have read from Kodi
+        /// </summary>
+        /// <param name="version"></param>
+        private static void GenVersion(string version)
+        {
+            var path = Global.TargetDir.FullName;
+            var namesp = Global.BaseNamespace;
+
+            var classFile = new FileInfo(Path.Combine(path, "KodiAPIVersion.cs"));
+#if DEBUG
+            // Console.WriteLine("Neue Datei {0}", classFile.FullName);
+#endif
+            if (classFile.Exists)
+            {
+                classFile.Delete();
+            }
+            var writer = new StreamWriter(classFile.Open(FileMode.Create, FileAccess.Write));
+
+            writer.WriteLine("using System;");
+            writer.WriteLine("using System.Threading.Tasks;");
+            writer.WriteLine("using Newtonsoft.Json.Linq;");
+            writer.WriteLine(PRAGMA);
+            writer.WriteLine("");
+            writer.WriteLine("namespace " + namesp);
+            writer.WriteLine("{");
+            writer.WriteLine("  struct Version");
+            writer.WriteLine("  {");
+            writer.WriteLine("       public const string KodiAPIVersion = \"" + version + "\";");
+            writer.WriteLine("   }");
+            writer.WriteLine("}");
+            writer.Close();
+
+        }
     }
 }
 

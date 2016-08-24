@@ -12,6 +12,7 @@ namespace JsonRpcGen.TypeHandler
             : base(fullname)
         {
             _enums = (JArray)enums;
+            IsEnum = true;
         }
 
         public override void WriteDefinition(TextWriter writer)
@@ -27,15 +28,16 @@ namespace JsonRpcGen.TypeHandler
                     writer.WriteLine("       [global::System.Runtime.Serialization.EnumMember(Value=\"" + name + "\")]");
                     name = Global.MakeFirstUpper(name);
                 }
-                name = name.Replace('.', '_');
-                writer.WriteLine("       " + name + ",");
+                // MAM: stupid KODI Name "Visualization-library" illegal for Enum, so we change "-" to "_"
+                writer.WriteLine("       " + Global.ChangeDotsAndDashesToUnderscores(name) + ",");
             }
             writer.WriteLine("   }");
         }
 
         public override string GetDefault()
         {
-            return "0";
+            //return "0";
+            return "null";
         }
     }
 }

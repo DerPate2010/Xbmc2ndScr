@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.Methods
 {
    public partial class Playlist
@@ -14,15 +16,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Add item(s) to playlist
                 /// </summary>
-        public async Task<string> Add(XBMCRPC.Playlist.ItemFile item, int playlistid=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Add(int playlistid, XBMCRPC.Playlist.ItemFile item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -33,15 +42,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Add item(s) to playlist
                 /// </summary>
-        public async Task<string> Add(XBMCRPC.Playlist.Item1 item, int playlistid=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Add(int playlistid, XBMCRPC.Playlist.Item1 item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -52,15 +68,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Add item(s) to playlist
                 /// </summary>
-        public async Task<string> Add(XBMCRPC.Playlist.ItemMovieid item, int playlistid=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Add(int playlistid, XBMCRPC.Playlist.ItemMovieid item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -71,15 +94,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Add item(s) to playlist
                 /// </summary>
-        public async Task<string> Add(XBMCRPC.Playlist.ItemEpisodeid item, int playlistid=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Add(int playlistid, XBMCRPC.Playlist.ItemEpisodeid item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -90,15 +120,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Add item(s) to playlist
                 /// </summary>
-        public async Task<string> Add(XBMCRPC.Playlist.ItemMusicvideoid item, int playlistid=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Add(int playlistid, XBMCRPC.Playlist.ItemMusicvideoid item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -109,15 +146,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Add item(s) to playlist
                 /// </summary>
-        public async Task<string> Add(XBMCRPC.Playlist.ItemArtistid item, int playlistid=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Add(int playlistid, XBMCRPC.Playlist.ItemArtistid item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -128,15 +172,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Add item(s) to playlist
                 /// </summary>
-        public async Task<string> Add(XBMCRPC.Playlist.ItemAlbumid item, int playlistid=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Add(int playlistid, XBMCRPC.Playlist.ItemAlbumid item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -147,15 +198,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Add item(s) to playlist
                 /// </summary>
-        public async Task<string> Add(XBMCRPC.Playlist.ItemSongid item, int playlistid=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Add(int playlistid, XBMCRPC.Playlist.ItemSongid item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -166,15 +224,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Add item(s) to playlist
                 /// </summary>
-        public async Task<string> Add(XBMCRPC.Playlist.ItemGenreid item, int playlistid=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Add(int playlistid, XBMCRPC.Playlist.ItemGenreid item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -185,15 +250,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Add item(s) to playlist
                 /// </summary>
-        public async Task<string> Add(global::System.Collections.Generic.List<object> item, int playlistid=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Add(int playlistid, global::System.Collections.Generic.List<object> item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -204,10 +276,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Add item(s) to playlist
                 /// </summary>
-        public async Task<string> Add(int playlistid=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Add(int playlistid)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
@@ -218,10 +297,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Clear playlist
                 /// </summary>
-        public async Task<string> Clear(int playlistid=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Clear(int playlistid)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
@@ -232,10 +318,20 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Get all items from playlist
                 /// </summary>
-        public async Task<XBMCRPC.Playlist.GetItemsResponse> GetItems(int playlistid=0, XBMCRPC.List.Fields.All properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="properties"> </param>
+                /// <param name="limits"> </param>
+                /// <param name="sort"> </param>
+                /// <returns>XBMCRPC.Playlist.GetItemsResponse</returns>
+        public async Task<XBMCRPC.Playlist.GetItemsResponse> GetItems(int playlistid, XBMCRPC.List.Fields.All properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
@@ -261,24 +357,31 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Returns all existing playlists
                 /// </summary>
+                /// <returns>global::System.Collections.Generic.List<XBMCRPC.Playlist.GetPlaylistsResponseItem></returns>
         public async Task<global::System.Collections.Generic.List<XBMCRPC.Playlist.GetPlaylistsResponseItem>> GetPlaylists()
         {
-            var jArgs = new JObject();
-            return await _client.GetData<global::System.Collections.Generic.List<XBMCRPC.Playlist.GetPlaylistsResponseItem>>("Playlist.GetPlaylists", jArgs);
+            return await _client.GetData<global::System.Collections.Generic.List<XBMCRPC.Playlist.GetPlaylistsResponseItem>>("Playlist.GetPlaylists",null);
         }
 
                 /// <summary>
                 /// Retrieves the values of the given properties
                 /// </summary>
-        public async Task<XBMCRPC.Playlist.Property.Value> GetProperties(int playlistid=0, XBMCRPC.Playlist.GetProperties_properties properties=null)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="properties"> REQUIRED </param>
+                /// <returns>XBMCRPC.Playlist.Property.Value</returns>
+        public async Task<XBMCRPC.Playlist.Property.Value> GetProperties(int playlistid, XBMCRPC.Playlist.GetProperties_properties properties)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (properties != null)
              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
                  jArgs.Add(new JProperty("properties", jpropproperties));
@@ -289,20 +392,27 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Insert item(s) into playlist. Does not work for picture playlists (aka slideshows).
                 /// </summary>
-        public async Task<string> Insert(XBMCRPC.Playlist.ItemFile item, int playlistid=0, int position=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="position"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Insert(int playlistid, int position, XBMCRPC.Playlist.ItemFile item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (position != null)
              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -313,20 +423,27 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Insert item(s) into playlist. Does not work for picture playlists (aka slideshows).
                 /// </summary>
-        public async Task<string> Insert(XBMCRPC.Playlist.Item1 item, int playlistid=0, int position=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="position"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Insert(int playlistid, int position, XBMCRPC.Playlist.Item1 item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (position != null)
              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -337,20 +454,27 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Insert item(s) into playlist. Does not work for picture playlists (aka slideshows).
                 /// </summary>
-        public async Task<string> Insert(XBMCRPC.Playlist.ItemMovieid item, int playlistid=0, int position=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="position"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Insert(int playlistid, int position, XBMCRPC.Playlist.ItemMovieid item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (position != null)
              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -361,20 +485,27 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Insert item(s) into playlist. Does not work for picture playlists (aka slideshows).
                 /// </summary>
-        public async Task<string> Insert(XBMCRPC.Playlist.ItemEpisodeid item, int playlistid=0, int position=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="position"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Insert(int playlistid, int position, XBMCRPC.Playlist.ItemEpisodeid item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (position != null)
              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -385,20 +516,27 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Insert item(s) into playlist. Does not work for picture playlists (aka slideshows).
                 /// </summary>
-        public async Task<string> Insert(XBMCRPC.Playlist.ItemMusicvideoid item, int playlistid=0, int position=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="position"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Insert(int playlistid, int position, XBMCRPC.Playlist.ItemMusicvideoid item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (position != null)
              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -409,20 +547,27 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Insert item(s) into playlist. Does not work for picture playlists (aka slideshows).
                 /// </summary>
-        public async Task<string> Insert(XBMCRPC.Playlist.ItemArtistid item, int playlistid=0, int position=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="position"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Insert(int playlistid, int position, XBMCRPC.Playlist.ItemArtistid item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (position != null)
              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -433,20 +578,27 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Insert item(s) into playlist. Does not work for picture playlists (aka slideshows).
                 /// </summary>
-        public async Task<string> Insert(XBMCRPC.Playlist.ItemAlbumid item, int playlistid=0, int position=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="position"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Insert(int playlistid, int position, XBMCRPC.Playlist.ItemAlbumid item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (position != null)
              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -457,20 +609,27 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Insert item(s) into playlist. Does not work for picture playlists (aka slideshows).
                 /// </summary>
-        public async Task<string> Insert(XBMCRPC.Playlist.ItemSongid item, int playlistid=0, int position=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="position"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Insert(int playlistid, int position, XBMCRPC.Playlist.ItemSongid item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (position != null)
              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -481,20 +640,27 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Insert item(s) into playlist. Does not work for picture playlists (aka slideshows).
                 /// </summary>
-        public async Task<string> Insert(XBMCRPC.Playlist.ItemGenreid item, int playlistid=0, int position=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="position"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Insert(int playlistid, int position, XBMCRPC.Playlist.ItemGenreid item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (position != null)
              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -505,20 +671,27 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Insert item(s) into playlist. Does not work for picture playlists (aka slideshows).
                 /// </summary>
-        public async Task<string> Insert(global::System.Collections.Generic.List<object> item, int playlistid=0, int position=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="position"> REQUIRED </param>
+                /// <param name="item"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Insert(int playlistid, int position, global::System.Collections.Generic.List<object> item)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (position != null)
              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
              }
-             if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
@@ -529,15 +702,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Insert item(s) into playlist. Does not work for picture playlists (aka slideshows).
                 /// </summary>
-        public async Task<string> Insert(int playlistid=0, int position=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="position"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Insert(int playlistid, int position)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (position != null)
              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
@@ -548,15 +728,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Remove item from playlist. Does not work for picture playlists (aka slideshows).
                 /// </summary>
-        public async Task<string> Remove(int playlistid=0, int position=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="position"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Remove(int playlistid, int position)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (position != null)
              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
@@ -567,20 +754,27 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Swap items in the playlist. Does not work for picture playlists (aka slideshows).
                 /// </summary>
-        public async Task<string> Swap(int playlistid=0, int position1=0, int position2=0)
+                /// <param name="playlistid"> REQUIRED </param>
+                /// <param name="position1"> REQUIRED </param>
+                /// <param name="position2"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Swap(int playlistid, int position1, int position2)
         {
+             if (playlistid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playlistid != null)
+
              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
              }
-             if (position1 != null)
              {
                  var jpropposition1 = JToken.FromObject(position1, _client.Serializer);
                  jArgs.Add(new JProperty("position1", jpropposition1));
              }
-             if (position2 != null)
              {
                  var jpropposition2 = JToken.FromObject(position2, _client.Serializer);
                  jArgs.Add(new JProperty("position2", jpropposition2));
@@ -588,9 +782,9 @@ namespace XBMCRPC.Methods
             return await _client.GetData<string>("Playlist.Swap", jArgs);
         }
 
-        public delegate void OnAddDelegate(string sender=null, XBMCRPC.Playlist.OnAdd_data data=null);
+        public delegate void OnAddDelegate(string sender, XBMCRPC.Playlist.OnAdd_data data);
         public event OnAddDelegate OnAdd;
-        internal void RaiseOnAdd(string sender=null, XBMCRPC.Playlist.OnAdd_data data=null)
+        internal void RaiseOnAdd(string sender, XBMCRPC.Playlist.OnAdd_data data)
         {
             if (OnAdd != null)
             {
@@ -598,9 +792,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnClearDelegate(string sender=null, XBMCRPC.Playlist.OnClear_data data=null);
+        public delegate void OnClearDelegate(string sender, XBMCRPC.Playlist.OnClear_data data);
         public event OnClearDelegate OnClear;
-        internal void RaiseOnClear(string sender=null, XBMCRPC.Playlist.OnClear_data data=null)
+        internal void RaiseOnClear(string sender, XBMCRPC.Playlist.OnClear_data data)
         {
             if (OnClear != null)
             {
@@ -608,9 +802,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnRemoveDelegate(string sender=null, XBMCRPC.Playlist.OnRemove_data data=null);
+        public delegate void OnRemoveDelegate(string sender, XBMCRPC.Playlist.OnRemove_data data);
         public event OnRemoveDelegate OnRemove;
-        internal void RaiseOnRemove(string sender=null, XBMCRPC.Playlist.OnRemove_data data=null)
+        internal void RaiseOnRemove(string sender, XBMCRPC.Playlist.OnRemove_data data)
         {
             if (OnRemove != null)
             {

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using System.Runtime.Serialization;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.Video.Fields
 {
    public enum MovieItem
@@ -40,6 +42,7 @@ namespace XBMCRPC.Video.Fields
        dateadded,
        tag,
        art,
+       userrating,
    }
    public class Movie : List<MovieItem>
    {

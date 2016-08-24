@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using System.Runtime.Serialization;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.Video.Fields
 {
    public enum EpisodeItem
@@ -32,6 +34,10 @@ namespace XBMCRPC.Video.Fields
        dateadded,
        uniqueid,
        art,
+       specialsortseason,
+       specialsortepisode,
+       userrating,
+       seasonid,
    }
    public class Episode : List<EpisodeItem>
    {

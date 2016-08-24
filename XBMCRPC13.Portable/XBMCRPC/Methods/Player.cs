@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.Methods
 {
    public partial class Player
@@ -14,19 +16,27 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Returns all active players
                 /// </summary>
+                /// <returns>global::System.Collections.Generic.List<XBMCRPC.Player.GetActivePlayersResponseItem></returns>
         public async Task<global::System.Collections.Generic.List<XBMCRPC.Player.GetActivePlayersResponseItem>> GetActivePlayers()
         {
-            var jArgs = new JObject();
-            return await _client.GetData<global::System.Collections.Generic.List<XBMCRPC.Player.GetActivePlayersResponseItem>>("Player.GetActivePlayers", jArgs);
+            return await _client.GetData<global::System.Collections.Generic.List<XBMCRPC.Player.GetActivePlayersResponseItem>>("Player.GetActivePlayers",null);
         }
 
                 /// <summary>
                 /// Retrieves the currently played item
                 /// </summary>
-        public async Task<XBMCRPC.Player.GetItemResponse> GetItem(int playerid=0, XBMCRPC.List.Fields.All properties=null)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="properties"> </param>
+                /// <returns>XBMCRPC.Player.GetItemResponse</returns>
+        public async Task<XBMCRPC.Player.GetItemResponse> GetItem(int playerid, XBMCRPC.List.Fields.All properties=null)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
@@ -40,17 +50,41 @@ namespace XBMCRPC.Methods
         }
 
                 /// <summary>
-                /// Retrieves the values of the given properties
+                /// Get a list of available players
                 /// </summary>
-        public async Task<XBMCRPC.Player.Property.Value> GetProperties(int playerid=0, XBMCRPC.Player.GetProperties_properties properties=null)
+                /// <param name="media"> </param>
+                /// <returns>global::System.Collections.Generic.List<XBMCRPC.Player.GetPlayersResponseItem></returns>
+        public async Task<global::System.Collections.Generic.List<XBMCRPC.Player.GetPlayersResponseItem>> GetPlayers(XBMCRPC.Player.GetPlayers_media? media=null)
         {
             var jArgs = new JObject();
-             if (playerid != null)
+
+             if (media != null)
+             {
+                 var jpropmedia = JToken.FromObject(media, _client.Serializer);
+                 jArgs.Add(new JProperty("media", jpropmedia));
+             }
+            return await _client.GetData<global::System.Collections.Generic.List<XBMCRPC.Player.GetPlayersResponseItem>>("Player.GetPlayers", jArgs);
+        }
+
+                /// <summary>
+                /// Retrieves the values of the given properties
+                /// </summary>
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="properties"> REQUIRED </param>
+                /// <returns>XBMCRPC.Player.Property.Value</returns>
+        public async Task<XBMCRPC.Player.Property.Value> GetProperties(int playerid, XBMCRPC.Player.GetProperties_properties properties)
+        {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
+            var jArgs = new JObject();
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (properties != null)
              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
                  jArgs.Add(new JProperty("properties", jpropproperties));
@@ -61,15 +95,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Go to previous/next/specific item in the playlist
                 /// </summary>
-        public async Task<string> GoTo(XBMCRPC.Player.GoTo_to1 to, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="to"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> GoTo(int playerid, XBMCRPC.Player.GoTo_to1? to)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (to != null)
              {
                  var jpropto = JToken.FromObject(to, _client.Serializer);
                  jArgs.Add(new JProperty("to", jpropto));
@@ -80,15 +121,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Go to previous/next/specific item in the playlist
                 /// </summary>
-        public async Task<string> GoTo(int to, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="to"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> GoTo(int playerid, int to)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (to != null)
              {
                  var jpropto = JToken.FromObject(to, _client.Serializer);
                  jArgs.Add(new JProperty("to", jpropto));
@@ -99,10 +147,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Go to previous/next/specific item in the playlist
                 /// </summary>
-        public async Task<string> GoTo(int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> GoTo(int playerid)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
@@ -113,15 +168,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// If picture is zoomed move viewport left/right/up/down otherwise skip previous/next
                 /// </summary>
-        public async Task<string> Move(int playerid=0, XBMCRPC.Player.Move_direction direction=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="direction"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Move(int playerid, XBMCRPC.Player.Move_direction? direction)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (direction != null)
              {
                  var jpropdirection = JToken.FromObject(direction, _client.Serializer);
                  jArgs.Add(new JProperty("direction", jpropdirection));
@@ -132,9 +194,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Start playback of either the playlist with the given ID, a slideshow with the pictures from the given directory or a single file or an item from the database.
                 /// </summary>
-        public async Task<string> Open(XBMCRPC.Player.Open_item1 item, XBMCRPC.Player.Open_options options=null)
+                /// <param name="item"> </param>
+                /// <param name="options"> </param>
+                /// <returns>string</returns>
+        public async Task<string> Open(XBMCRPC.Player.Open_item1 item=null, XBMCRPC.Player.Open_options options=null)
         {
             var jArgs = new JObject();
+
              if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
@@ -151,9 +217,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Start playback of either the playlist with the given ID, a slideshow with the pictures from the given directory or a single file or an item from the database.
                 /// </summary>
-        public async Task<string> Open(XBMCRPC.Playlist.ItemFile item, XBMCRPC.Player.Open_options options=null)
+                /// <param name="item"> </param>
+                /// <param name="options"> </param>
+                /// <returns>string</returns>
+        public async Task<string> Open(XBMCRPC.Playlist.ItemFile item=null, XBMCRPC.Player.Open_options options=null)
         {
             var jArgs = new JObject();
+
              if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
@@ -170,9 +240,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Start playback of either the playlist with the given ID, a slideshow with the pictures from the given directory or a single file or an item from the database.
                 /// </summary>
-        public async Task<string> Open(XBMCRPC.Playlist.Item1 item, XBMCRPC.Player.Open_options options=null)
+                /// <param name="item"> </param>
+                /// <param name="options"> </param>
+                /// <returns>string</returns>
+        public async Task<string> Open(XBMCRPC.Playlist.Item1 item=null, XBMCRPC.Player.Open_options options=null)
         {
             var jArgs = new JObject();
+
              if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
@@ -189,9 +263,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Start playback of either the playlist with the given ID, a slideshow with the pictures from the given directory or a single file or an item from the database.
                 /// </summary>
-        public async Task<string> Open(XBMCRPC.Playlist.ItemMovieid item, XBMCRPC.Player.Open_options options=null)
+                /// <param name="item"> </param>
+                /// <param name="options"> </param>
+                /// <returns>string</returns>
+        public async Task<string> Open(XBMCRPC.Playlist.ItemMovieid item=null, XBMCRPC.Player.Open_options options=null)
         {
             var jArgs = new JObject();
+
              if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
@@ -208,9 +286,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Start playback of either the playlist with the given ID, a slideshow with the pictures from the given directory or a single file or an item from the database.
                 /// </summary>
-        public async Task<string> Open(XBMCRPC.Playlist.ItemEpisodeid item, XBMCRPC.Player.Open_options options=null)
+                /// <param name="item"> </param>
+                /// <param name="options"> </param>
+                /// <returns>string</returns>
+        public async Task<string> Open(XBMCRPC.Playlist.ItemEpisodeid item=null, XBMCRPC.Player.Open_options options=null)
         {
             var jArgs = new JObject();
+
              if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
@@ -227,9 +309,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Start playback of either the playlist with the given ID, a slideshow with the pictures from the given directory or a single file or an item from the database.
                 /// </summary>
-        public async Task<string> Open(XBMCRPC.Playlist.ItemMusicvideoid item, XBMCRPC.Player.Open_options options=null)
+                /// <param name="item"> </param>
+                /// <param name="options"> </param>
+                /// <returns>string</returns>
+        public async Task<string> Open(XBMCRPC.Playlist.ItemMusicvideoid item=null, XBMCRPC.Player.Open_options options=null)
         {
             var jArgs = new JObject();
+
              if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
@@ -246,9 +332,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Start playback of either the playlist with the given ID, a slideshow with the pictures from the given directory or a single file or an item from the database.
                 /// </summary>
-        public async Task<string> Open(XBMCRPC.Playlist.ItemArtistid item, XBMCRPC.Player.Open_options options=null)
+                /// <param name="item"> </param>
+                /// <param name="options"> </param>
+                /// <returns>string</returns>
+        public async Task<string> Open(XBMCRPC.Playlist.ItemArtistid item=null, XBMCRPC.Player.Open_options options=null)
         {
             var jArgs = new JObject();
+
              if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
@@ -265,9 +355,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Start playback of either the playlist with the given ID, a slideshow with the pictures from the given directory or a single file or an item from the database.
                 /// </summary>
-        public async Task<string> Open(XBMCRPC.Playlist.ItemAlbumid item, XBMCRPC.Player.Open_options options=null)
+                /// <param name="item"> </param>
+                /// <param name="options"> </param>
+                /// <returns>string</returns>
+        public async Task<string> Open(XBMCRPC.Playlist.ItemAlbumid item=null, XBMCRPC.Player.Open_options options=null)
         {
             var jArgs = new JObject();
+
              if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
@@ -284,9 +378,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Start playback of either the playlist with the given ID, a slideshow with the pictures from the given directory or a single file or an item from the database.
                 /// </summary>
-        public async Task<string> Open(XBMCRPC.Playlist.ItemSongid item, XBMCRPC.Player.Open_options options=null)
+                /// <param name="item"> </param>
+                /// <param name="options"> </param>
+                /// <returns>string</returns>
+        public async Task<string> Open(XBMCRPC.Playlist.ItemSongid item=null, XBMCRPC.Player.Open_options options=null)
         {
             var jArgs = new JObject();
+
              if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
@@ -303,9 +401,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Start playback of either the playlist with the given ID, a slideshow with the pictures from the given directory or a single file or an item from the database.
                 /// </summary>
-        public async Task<string> Open(XBMCRPC.Playlist.ItemGenreid item, XBMCRPC.Player.Open_options options=null)
+                /// <param name="item"> </param>
+                /// <param name="options"> </param>
+                /// <returns>string</returns>
+        public async Task<string> Open(XBMCRPC.Playlist.ItemGenreid item=null, XBMCRPC.Player.Open_options options=null)
         {
             var jArgs = new JObject();
+
              if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
@@ -322,9 +424,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Start playback of either the playlist with the given ID, a slideshow with the pictures from the given directory or a single file or an item from the database.
                 /// </summary>
-        public async Task<string> Open(XBMCRPC.Player.Open_item2 item, XBMCRPC.Player.Open_options options=null)
+                /// <param name="item"> </param>
+                /// <param name="options"> </param>
+                /// <returns>string</returns>
+        public async Task<string> Open(XBMCRPC.Player.Open_item2 item=null, XBMCRPC.Player.Open_options options=null)
         {
             var jArgs = new JObject();
+
              if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
@@ -341,9 +447,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Start playback of either the playlist with the given ID, a slideshow with the pictures from the given directory or a single file or an item from the database.
                 /// </summary>
-        public async Task<string> Open(XBMCRPC.Player.Open_itemPartymode item, XBMCRPC.Player.Open_options options=null)
+                /// <param name="item"> </param>
+                /// <param name="options"> </param>
+                /// <returns>string</returns>
+        public async Task<string> Open(XBMCRPC.Player.Open_itemPartymode item=null, XBMCRPC.Player.Open_options options=null)
         {
             var jArgs = new JObject();
+
              if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
@@ -360,9 +470,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Start playback of either the playlist with the given ID, a slideshow with the pictures from the given directory or a single file or an item from the database.
                 /// </summary>
-        public async Task<string> Open(XBMCRPC.Player.Open_itemChannelid item, XBMCRPC.Player.Open_options options=null)
+                /// <param name="item"> </param>
+                /// <param name="options"> </param>
+                /// <returns>string</returns>
+        public async Task<string> Open(XBMCRPC.Player.Open_itemChannelid item=null, XBMCRPC.Player.Open_options options=null)
         {
             var jArgs = new JObject();
+
              if (item != null)
              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
@@ -379,9 +493,35 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Start playback of either the playlist with the given ID, a slideshow with the pictures from the given directory or a single file or an item from the database.
                 /// </summary>
+                /// <param name="item"> </param>
+                /// <param name="options"> </param>
+                /// <returns>string</returns>
+        public async Task<string> Open(XBMCRPC.Player.Open_itemRecordingid item=null, XBMCRPC.Player.Open_options options=null)
+        {
+            var jArgs = new JObject();
+
+             if (item != null)
+             {
+                 var jpropitem = JToken.FromObject(item, _client.Serializer);
+                 jArgs.Add(new JProperty("item", jpropitem));
+             }
+             if (options != null)
+             {
+                 var jpropoptions = JToken.FromObject(options, _client.Serializer);
+                 jArgs.Add(new JProperty("options", jpropoptions));
+             }
+            return await _client.GetData<string>("Player.Open", jArgs);
+        }
+
+                /// <summary>
+                /// Start playback of either the playlist with the given ID, a slideshow with the pictures from the given directory or a single file or an item from the database.
+                /// </summary>
+                /// <param name="options"> </param>
+                /// <returns>string</returns>
         public async Task<string> Open(XBMCRPC.Player.Open_options options=null)
         {
             var jArgs = new JObject();
+
              if (options != null)
              {
                  var jpropoptions = JToken.FromObject(options, _client.Serializer);
@@ -393,10 +533,44 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Pauses or unpause playback and returns the new state
                 /// </summary>
-        public async Task<XBMCRPC.Player.Speed> PlayPause(bool play, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="play"> </param>
+                /// <returns>XBMCRPC.Player.Speed</returns>
+        public async Task<XBMCRPC.Player.Speed> PlayPause(int playerid, bool? play=null)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
+             {
+                 var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
+                 jArgs.Add(new JProperty("playerid", jpropplayerid));
+             }
+             {
+                 var jpropplay = JToken.FromObject(play, _client.Serializer);
+                 jArgs.Add(new JProperty("play", jpropplay));
+             }
+            return await _client.GetData<XBMCRPC.Player.Speed>("Player.PlayPause", jArgs);
+        }
+
+                /// <summary>
+                /// Pauses or unpause playback and returns the new state
+                /// </summary>
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="play"> </param>
+                /// <returns>XBMCRPC.Player.Speed</returns>
+        public async Task<XBMCRPC.Player.Speed> PlayPause(int playerid, XBMCRPC.Global.Toggle2? play=null)
+        {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
+            var jArgs = new JObject();
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
@@ -412,29 +586,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Pauses or unpause playback and returns the new state
                 /// </summary>
-        public async Task<XBMCRPC.Player.Speed> PlayPause(XBMCRPC.Global.Toggle2 play, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <returns>XBMCRPC.Player.Speed</returns>
+        public async Task<XBMCRPC.Player.Speed> PlayPause(int playerid)
         {
-            var jArgs = new JObject();
-             if (playerid != null)
+             if (playerid == 0 )
              {
-                 var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
-                 jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             if (play != null)
-             {
-                 var jpropplay = JToken.FromObject(play, _client.Serializer);
-                 jArgs.Add(new JProperty("play", jpropplay));
-             }
-            return await _client.GetData<XBMCRPC.Player.Speed>("Player.PlayPause", jArgs);
-        }
+                 return null;
+              }
 
-                /// <summary>
-                /// Pauses or unpause playback and returns the new state
-                /// </summary>
-        public async Task<XBMCRPC.Player.Speed> PlayPause(int playerid=0)
-        {
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
@@ -445,10 +607,18 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Rotates current picture
                 /// </summary>
-        public async Task<string> Rotate(int playerid=0, XBMCRPC.Player.Rotate_value value=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="value"> </param>
+                /// <returns>string</returns>
+        public async Task<string> Rotate(int playerid, XBMCRPC.Player.Rotate_value? value=null)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
@@ -464,15 +634,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Seek through the playing item
                 /// </summary>
-        public async Task<XBMCRPC.Player.SeekResponse> Seek(double value, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="value"> REQUIRED </param>
+                /// <returns>XBMCRPC.Player.SeekResponse</returns>
+        public async Task<XBMCRPC.Player.SeekResponse> Seek(int playerid, double? value=null)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (value != null)
              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
@@ -483,15 +660,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Seek through the playing item
                 /// </summary>
-        public async Task<XBMCRPC.Player.SeekResponse> Seek(XBMCRPC.Player.Position.Time value, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="value"> REQUIRED </param>
+                /// <returns>XBMCRPC.Player.SeekResponse</returns>
+        public async Task<XBMCRPC.Player.SeekResponse> Seek(int playerid, XBMCRPC.Player.Position.Time value)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (value != null)
              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
@@ -502,15 +686,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Seek through the playing item
                 /// </summary>
-        public async Task<XBMCRPC.Player.SeekResponse> Seek(XBMCRPC.Player.Seek_value1 value, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="value"> REQUIRED </param>
+                /// <returns>XBMCRPC.Player.SeekResponse</returns>
+        public async Task<XBMCRPC.Player.SeekResponse> Seek(int playerid, XBMCRPC.Player.Seek_value1? value)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (value != null)
              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
@@ -521,10 +712,121 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Seek through the playing item
                 /// </summary>
-        public async Task<XBMCRPC.Player.SeekResponse> Seek(int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="value"> REQUIRED </param>
+                /// <returns>XBMCRPC.Player.SeekResponse</returns>
+        public async Task<XBMCRPC.Player.SeekResponse> Seek(int playerid, XBMCRPC.Player.Seek_valuePercentage value)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
+             {
+                 var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
+                 jArgs.Add(new JProperty("playerid", jpropplayerid));
+             }
+             {
+                 var jpropvalue = JToken.FromObject(value, _client.Serializer);
+                 jArgs.Add(new JProperty("value", jpropvalue));
+             }
+            return await _client.GetData<XBMCRPC.Player.SeekResponse>("Player.Seek", jArgs);
+        }
+
+                /// <summary>
+                /// Seek through the playing item
+                /// </summary>
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="value"> REQUIRED </param>
+                /// <returns>XBMCRPC.Player.SeekResponse</returns>
+        public async Task<XBMCRPC.Player.SeekResponse> Seek(int playerid, XBMCRPC.Player.Seek_valueTime value)
+        {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
+            var jArgs = new JObject();
+
+             {
+                 var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
+                 jArgs.Add(new JProperty("playerid", jpropplayerid));
+             }
+             {
+                 var jpropvalue = JToken.FromObject(value, _client.Serializer);
+                 jArgs.Add(new JProperty("value", jpropvalue));
+             }
+            return await _client.GetData<XBMCRPC.Player.SeekResponse>("Player.Seek", jArgs);
+        }
+
+                /// <summary>
+                /// Seek through the playing item
+                /// </summary>
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="value"> REQUIRED </param>
+                /// <returns>XBMCRPC.Player.SeekResponse</returns>
+        public async Task<XBMCRPC.Player.SeekResponse> Seek(int playerid, XBMCRPC.Player.Seek_valueStep value)
+        {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
+            var jArgs = new JObject();
+
+             {
+                 var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
+                 jArgs.Add(new JProperty("playerid", jpropplayerid));
+             }
+             {
+                 var jpropvalue = JToken.FromObject(value, _client.Serializer);
+                 jArgs.Add(new JProperty("value", jpropvalue));
+             }
+            return await _client.GetData<XBMCRPC.Player.SeekResponse>("Player.Seek", jArgs);
+        }
+
+                /// <summary>
+                /// Seek through the playing item
+                /// </summary>
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="value"> REQUIRED </param>
+                /// <returns>XBMCRPC.Player.SeekResponse</returns>
+        public async Task<XBMCRPC.Player.SeekResponse> Seek(int playerid, XBMCRPC.Player.Seek_valueSeconds value)
+        {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
+            var jArgs = new JObject();
+
+             {
+                 var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
+                 jArgs.Add(new JProperty("playerid", jpropplayerid));
+             }
+             {
+                 var jpropvalue = JToken.FromObject(value, _client.Serializer);
+                 jArgs.Add(new JProperty("value", jpropvalue));
+             }
+            return await _client.GetData<XBMCRPC.Player.SeekResponse>("Player.Seek", jArgs);
+        }
+
+                /// <summary>
+                /// Seek through the playing item
+                /// </summary>
+                /// <param name="playerid"> REQUIRED </param>
+                /// <returns>XBMCRPC.Player.SeekResponse</returns>
+        public async Task<XBMCRPC.Player.SeekResponse> Seek(int playerid)
+        {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
+            var jArgs = new JObject();
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
@@ -535,15 +837,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Set the audio stream played by the player
                 /// </summary>
-        public async Task<string> SetAudioStream(XBMCRPC.Player.SetAudioStream_stream1 stream, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="stream"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> SetAudioStream(int playerid, XBMCRPC.Player.SetAudioStream_stream1? stream)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (stream != null)
              {
                  var jpropstream = JToken.FromObject(stream, _client.Serializer);
                  jArgs.Add(new JProperty("stream", jpropstream));
@@ -554,15 +863,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Set the audio stream played by the player
                 /// </summary>
-        public async Task<string> SetAudioStream(int stream, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="stream"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> SetAudioStream(int playerid, int stream)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (stream != null)
              {
                  var jpropstream = JToken.FromObject(stream, _client.Serializer);
                  jArgs.Add(new JProperty("stream", jpropstream));
@@ -573,10 +889,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Set the audio stream played by the player
                 /// </summary>
-        public async Task<string> SetAudioStream(int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> SetAudioStream(int playerid)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
@@ -587,15 +910,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Turn partymode on or off
                 /// </summary>
-        public async Task<string> SetPartymode(bool partymode, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="partymode"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> SetPartymode(int playerid, bool? partymode=null)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (partymode != null)
              {
                  var jproppartymode = JToken.FromObject(partymode, _client.Serializer);
                  jArgs.Add(new JProperty("partymode", jproppartymode));
@@ -606,15 +936,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Turn partymode on or off
                 /// </summary>
-        public async Task<string> SetPartymode(XBMCRPC.Global.Toggle2 partymode, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="partymode"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> SetPartymode(int playerid, XBMCRPC.Global.Toggle2? partymode)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (partymode != null)
              {
                  var jproppartymode = JToken.FromObject(partymode, _client.Serializer);
                  jArgs.Add(new JProperty("partymode", jproppartymode));
@@ -625,10 +962,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Turn partymode on or off
                 /// </summary>
-        public async Task<string> SetPartymode(int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> SetPartymode(int playerid)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
@@ -639,15 +983,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Set the repeat mode of the player
                 /// </summary>
-        public async Task<string> SetRepeat(XBMCRPC.Player.Repeat repeat, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="repeat"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> SetRepeat(int playerid, XBMCRPC.Player.Repeat? repeat)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (repeat != null)
              {
                  var jproprepeat = JToken.FromObject(repeat, _client.Serializer);
                  jArgs.Add(new JProperty("repeat", jproprepeat));
@@ -658,15 +1009,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Set the repeat mode of the player
                 /// </summary>
-        public async Task<string> SetRepeat(XBMCRPC.Player.SetRepeat_repeat1 repeat, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="repeat"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> SetRepeat(int playerid, XBMCRPC.Player.SetRepeat_repeat1? repeat)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (repeat != null)
              {
                  var jproprepeat = JToken.FromObject(repeat, _client.Serializer);
                  jArgs.Add(new JProperty("repeat", jproprepeat));
@@ -677,10 +1035,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Set the repeat mode of the player
                 /// </summary>
-        public async Task<string> SetRepeat(int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> SetRepeat(int playerid)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
@@ -691,15 +1056,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Shuffle/Unshuffle items in the player
                 /// </summary>
-        public async Task<string> SetShuffle(bool shuffle, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="shuffle"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> SetShuffle(int playerid, bool? shuffle=null)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (shuffle != null)
              {
                  var jpropshuffle = JToken.FromObject(shuffle, _client.Serializer);
                  jArgs.Add(new JProperty("shuffle", jpropshuffle));
@@ -710,15 +1082,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Shuffle/Unshuffle items in the player
                 /// </summary>
-        public async Task<string> SetShuffle(XBMCRPC.Global.Toggle2 shuffle, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="shuffle"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> SetShuffle(int playerid, XBMCRPC.Global.Toggle2? shuffle)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (shuffle != null)
              {
                  var jpropshuffle = JToken.FromObject(shuffle, _client.Serializer);
                  jArgs.Add(new JProperty("shuffle", jpropshuffle));
@@ -729,10 +1108,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Shuffle/Unshuffle items in the player
                 /// </summary>
-        public async Task<string> SetShuffle(int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> SetShuffle(int playerid)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
@@ -743,15 +1129,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Set the speed of the current playback
                 /// </summary>
-        public async Task<XBMCRPC.Player.Speed> SetSpeed(int speed, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="speed"> REQUIRED </param>
+                /// <returns>XBMCRPC.Player.Speed</returns>
+        public async Task<XBMCRPC.Player.Speed> SetSpeed(int playerid, int speed)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (speed != null)
              {
                  var jpropspeed = JToken.FromObject(speed, _client.Serializer);
                  jArgs.Add(new JProperty("speed", jpropspeed));
@@ -762,15 +1155,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Set the speed of the current playback
                 /// </summary>
-        public async Task<XBMCRPC.Player.Speed> SetSpeed(XBMCRPC.Global.IncrementDecrement speed, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="speed"> REQUIRED </param>
+                /// <returns>XBMCRPC.Player.Speed</returns>
+        public async Task<XBMCRPC.Player.Speed> SetSpeed(int playerid, XBMCRPC.Global.IncrementDecrement? speed)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (speed != null)
              {
                  var jpropspeed = JToken.FromObject(speed, _client.Serializer);
                  jArgs.Add(new JProperty("speed", jpropspeed));
@@ -781,10 +1181,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Set the speed of the current playback
                 /// </summary>
-        public async Task<XBMCRPC.Player.Speed> SetSpeed(int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <returns>XBMCRPC.Player.Speed</returns>
+        public async Task<XBMCRPC.Player.Speed> SetSpeed(int playerid)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
@@ -795,20 +1202,27 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Set the subtitle displayed by the player
                 /// </summary>
-        public async Task<string> SetSubtitle(XBMCRPC.Player.SetSubtitle_subtitle1 subtitle, int playerid=0, bool enable=false)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="subtitle"> REQUIRED </param>
+                /// <param name="enable"> Whether to enable subtitles to be displayed after setting the new subtitle</param>
+                /// <returns>string</returns>
+        public async Task<string> SetSubtitle(int playerid, XBMCRPC.Player.SetSubtitle_subtitle1? subtitle, bool? enable=null)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (subtitle != null)
              {
                  var jpropsubtitle = JToken.FromObject(subtitle, _client.Serializer);
                  jArgs.Add(new JProperty("subtitle", jpropsubtitle));
              }
-             if (enable != null)
              {
                  var jpropenable = JToken.FromObject(enable, _client.Serializer);
                  jArgs.Add(new JProperty("enable", jpropenable));
@@ -819,20 +1233,27 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Set the subtitle displayed by the player
                 /// </summary>
-        public async Task<string> SetSubtitle(int subtitle, int playerid=0, bool enable=false)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="subtitle"> REQUIRED </param>
+                /// <param name="enable"> Whether to enable subtitles to be displayed after setting the new subtitle</param>
+                /// <returns>string</returns>
+        public async Task<string> SetSubtitle(int playerid, int subtitle, bool? enable=null)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (subtitle != null)
              {
                  var jpropsubtitle = JToken.FromObject(subtitle, _client.Serializer);
                  jArgs.Add(new JProperty("subtitle", jpropsubtitle));
              }
-             if (enable != null)
              {
                  var jpropenable = JToken.FromObject(enable, _client.Serializer);
                  jArgs.Add(new JProperty("enable", jpropenable));
@@ -843,15 +1264,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Set the subtitle displayed by the player
                 /// </summary>
-        public async Task<string> SetSubtitle(int playerid=0, bool enable=false)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="enable"> Whether to enable subtitles to be displayed after setting the new subtitle</param>
+                /// <returns>string</returns>
+        public async Task<string> SetSubtitle(int playerid, bool? enable=null)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (enable != null)
              {
                  var jpropenable = JToken.FromObject(enable, _client.Serializer);
                  jArgs.Add(new JProperty("enable", jpropenable));
@@ -862,10 +1290,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Stops playback
                 /// </summary>
-        public async Task<string> Stop(int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Stop(int playerid)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
@@ -876,15 +1311,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Zoom current picture
                 /// </summary>
-        public async Task<string> Zoom(XBMCRPC.Player.Zoom_zoom1 zoom, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="zoom"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Zoom(int playerid, XBMCRPC.Player.Zoom_zoom1? zoom)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (zoom != null)
              {
                  var jpropzoom = JToken.FromObject(zoom, _client.Serializer);
                  jArgs.Add(new JProperty("zoom", jpropzoom));
@@ -895,15 +1337,22 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Zoom current picture
                 /// </summary>
-        public async Task<string> Zoom(int zoom, int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <param name="zoom"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Zoom(int playerid, int zoom)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
              }
-             if (zoom != null)
              {
                  var jpropzoom = JToken.FromObject(zoom, _client.Serializer);
                  jArgs.Add(new JProperty("zoom", jpropzoom));
@@ -914,10 +1363,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Zoom current picture
                 /// </summary>
-        public async Task<string> Zoom(int playerid=0)
+                /// <param name="playerid"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> Zoom(int playerid)
         {
+             if (playerid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (playerid != null)
+
              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
@@ -925,9 +1381,9 @@ namespace XBMCRPC.Methods
             return await _client.GetData<string>("Player.Zoom", jArgs);
         }
 
-        public delegate void OnPauseDelegate(string sender=null, XBMCRPC.Player.Notifications.Data data=null);
+        public delegate void OnPauseDelegate(string sender, XBMCRPC.Player.Notifications.Data data);
         public event OnPauseDelegate OnPause;
-        internal void RaiseOnPause(string sender=null, XBMCRPC.Player.Notifications.Data data=null)
+        internal void RaiseOnPause(string sender, XBMCRPC.Player.Notifications.Data data)
         {
             if (OnPause != null)
             {
@@ -935,9 +1391,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnPlayDelegate(string sender=null, XBMCRPC.Player.Notifications.Data data=null);
+        public delegate void OnPlayDelegate(string sender, XBMCRPC.Player.Notifications.Data data);
         public event OnPlayDelegate OnPlay;
-        internal void RaiseOnPlay(string sender=null, XBMCRPC.Player.Notifications.Data data=null)
+        internal void RaiseOnPlay(string sender, XBMCRPC.Player.Notifications.Data data)
         {
             if (OnPlay != null)
             {
@@ -945,9 +1401,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnPropertyChangedDelegate(string sender=null, XBMCRPC.Player.OnPropertyChanged_data data=null);
+        public delegate void OnPropertyChangedDelegate(string sender, XBMCRPC.Player.OnPropertyChanged_data data);
         public event OnPropertyChangedDelegate OnPropertyChanged;
-        internal void RaiseOnPropertyChanged(string sender=null, XBMCRPC.Player.OnPropertyChanged_data data=null)
+        internal void RaiseOnPropertyChanged(string sender, XBMCRPC.Player.OnPropertyChanged_data data)
         {
             if (OnPropertyChanged != null)
             {
@@ -955,9 +1411,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnSeekDelegate(string sender=null, XBMCRPC.Player.OnSeek_data data=null);
+        public delegate void OnSeekDelegate(string sender, XBMCRPC.Player.OnSeek_data data);
         public event OnSeekDelegate OnSeek;
-        internal void RaiseOnSeek(string sender=null, XBMCRPC.Player.OnSeek_data data=null)
+        internal void RaiseOnSeek(string sender, XBMCRPC.Player.OnSeek_data data)
         {
             if (OnSeek != null)
             {
@@ -965,9 +1421,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnSpeedChangedDelegate(string sender=null, XBMCRPC.Player.Notifications.Data data=null);
+        public delegate void OnSpeedChangedDelegate(string sender, XBMCRPC.Player.Notifications.Data data);
         public event OnSpeedChangedDelegate OnSpeedChanged;
-        internal void RaiseOnSpeedChanged(string sender=null, XBMCRPC.Player.Notifications.Data data=null)
+        internal void RaiseOnSpeedChanged(string sender, XBMCRPC.Player.Notifications.Data data)
         {
             if (OnSpeedChanged != null)
             {
@@ -975,9 +1431,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnStopDelegate(string sender=null, XBMCRPC.Player.OnStop_data data=null);
+        public delegate void OnStopDelegate(string sender, XBMCRPC.Player.OnStop_data data);
         public event OnStopDelegate OnStop;
-        internal void RaiseOnStop(string sender=null, XBMCRPC.Player.OnStop_data data=null)
+        internal void RaiseOnStop(string sender, XBMCRPC.Player.OnStop_data data)
         {
             if (OnStop != null)
             {

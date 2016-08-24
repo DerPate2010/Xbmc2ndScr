@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.Methods
 {
    public partial class Input
@@ -14,37 +16,39 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Goes back in GUI
                 /// </summary>
+                /// <returns>string</returns>
         public async Task<string> Back()
         {
-            var jArgs = new JObject();
-            return await _client.GetData<string>("Input.Back", jArgs);
+            return await _client.GetData<string>("Input.Back",null);
         }
 
                 /// <summary>
                 /// Shows the context menu
                 /// </summary>
+                /// <returns>string</returns>
         public async Task<string> ContextMenu()
         {
-            var jArgs = new JObject();
-            return await _client.GetData<string>("Input.ContextMenu", jArgs);
+            return await _client.GetData<string>("Input.ContextMenu",null);
         }
 
                 /// <summary>
                 /// Navigate down in GUI
                 /// </summary>
+                /// <returns>string</returns>
         public async Task<string> Down()
         {
-            var jArgs = new JObject();
-            return await _client.GetData<string>("Input.Down", jArgs);
+            return await _client.GetData<string>("Input.Down",null);
         }
 
                 /// <summary>
                 /// Execute a specific action
                 /// </summary>
-        public async Task<string> ExecuteAction(XBMCRPC.Input.Action action=0)
+                /// <param name="action"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> ExecuteAction(XBMCRPC.Input.Action? action)
         {
             var jArgs = new JObject();
-             if (action != null)
+
              {
                  var jpropaction = JToken.FromObject(action, _client.Serializer);
                  jArgs.Add(new JProperty("action", jpropaction));
@@ -55,60 +59,62 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Goes to home window in GUI
                 /// </summary>
+                /// <returns>string</returns>
         public async Task<string> Home()
         {
-            var jArgs = new JObject();
-            return await _client.GetData<string>("Input.Home", jArgs);
+            return await _client.GetData<string>("Input.Home",null);
         }
 
                 /// <summary>
                 /// Shows the information dialog
                 /// </summary>
+                /// <returns>string</returns>
         public async Task<string> Info()
         {
-            var jArgs = new JObject();
-            return await _client.GetData<string>("Input.Info", jArgs);
+            return await _client.GetData<string>("Input.Info",null);
         }
 
                 /// <summary>
                 /// Navigate left in GUI
                 /// </summary>
+                /// <returns>string</returns>
         public async Task<string> Left()
         {
-            var jArgs = new JObject();
-            return await _client.GetData<string>("Input.Left", jArgs);
+            return await _client.GetData<string>("Input.Left",null);
         }
 
                 /// <summary>
                 /// Navigate right in GUI
                 /// </summary>
+                /// <returns>string</returns>
         public async Task<string> Right()
         {
-            var jArgs = new JObject();
-            return await _client.GetData<string>("Input.Right", jArgs);
+            return await _client.GetData<string>("Input.Right",null);
         }
 
                 /// <summary>
                 /// Select current item in GUI
                 /// </summary>
+                /// <returns>string</returns>
         public async Task<string> Select()
         {
-            var jArgs = new JObject();
-            return await _client.GetData<string>("Input.Select", jArgs);
+            return await _client.GetData<string>("Input.Select",null);
         }
 
                 /// <summary>
                 /// Send a generic (unicode) text
                 /// </summary>
-        public async Task<string> SendText(string text=null, bool done=false)
+                /// <param name="text"> REQUIRED Unicode text</param>
+                /// <param name="done"> Whether this is the whole input or not (closes an open input dialog if true).</param>
+                /// <returns>string</returns>
+        public async Task<string> SendText(string text, bool? done=null)
         {
             var jArgs = new JObject();
-             if (text != null)
+
              {
                  var jproptext = JToken.FromObject(text, _client.Serializer);
                  jArgs.Add(new JProperty("text", jproptext));
              }
-             if (done != null)
              {
                  var jpropdone = JToken.FromObject(done, _client.Serializer);
                  jArgs.Add(new JProperty("done", jpropdone));
@@ -119,33 +125,33 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Show codec information of the playing item
                 /// </summary>
+                /// <returns>string</returns>
         public async Task<string> ShowCodec()
         {
-            var jArgs = new JObject();
-            return await _client.GetData<string>("Input.ShowCodec", jArgs);
+            return await _client.GetData<string>("Input.ShowCodec",null);
         }
 
                 /// <summary>
                 /// Show the on-screen display for the current player
                 /// </summary>
+                /// <returns>string</returns>
         public async Task<string> ShowOSD()
         {
-            var jArgs = new JObject();
-            return await _client.GetData<string>("Input.ShowOSD", jArgs);
+            return await _client.GetData<string>("Input.ShowOSD",null);
         }
 
                 /// <summary>
                 /// Navigate up in GUI
                 /// </summary>
+                /// <returns>string</returns>
         public async Task<string> Up()
         {
-            var jArgs = new JObject();
-            return await _client.GetData<string>("Input.Up", jArgs);
+            return await _client.GetData<string>("Input.Up",null);
         }
 
-        public delegate void OnInputFinishedDelegate(string sender=null, object data=null);
+        public delegate void OnInputFinishedDelegate(string sender, object data);
         public event OnInputFinishedDelegate OnInputFinished;
-        internal void RaiseOnInputFinished(string sender=null, object data=null)
+        internal void RaiseOnInputFinished(string sender, object data)
         {
             if (OnInputFinished != null)
             {
@@ -153,9 +159,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnInputRequestedDelegate(string sender=null, XBMCRPC.Input.OnInputRequested_data data=null);
+        public delegate void OnInputRequestedDelegate(string sender, XBMCRPC.Input.OnInputRequested_data data);
         public event OnInputRequestedDelegate OnInputRequested;
-        internal void RaiseOnInputRequested(string sender=null, XBMCRPC.Input.OnInputRequested_data data=null)
+        internal void RaiseOnInputRequested(string sender, XBMCRPC.Input.OnInputRequested_data data)
         {
             if (OnInputRequested != null)
             {

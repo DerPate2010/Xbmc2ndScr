@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.Methods
 {
    public partial class Favourites
@@ -14,15 +16,21 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Add a favourite with the given details
                 /// </summary>
-        public async Task<string> AddFavourite(string title=null, XBMCRPC.Favourite.Type type=0, string path=null, string window=null, string windowparameter=null, string thumbnail=null)
+                /// <param name="title"> REQUIRED </param>
+                /// <param name="type"> REQUIRED </param>
+                /// <param name="path"> Required for media and script favourites types</param>
+                /// <param name="window"> Required for window favourite type</param>
+                /// <param name="windowparameter"> </param>
+                /// <param name="thumbnail"> </param>
+                /// <returns>string</returns>
+        public async Task<string> AddFavourite(string title, XBMCRPC.Favourite.Type? type, string path=null, string window=null, string windowparameter=null, string thumbnail=null)
         {
             var jArgs = new JObject();
-             if (title != null)
+
              {
                  var jproptitle = JToken.FromObject(title, _client.Serializer);
                  jArgs.Add(new JProperty("title", jproptitle));
              }
-             if (type != null)
              {
                  var jproptype = JToken.FromObject(type, _client.Serializer);
                  jArgs.Add(new JProperty("type", jproptype));
@@ -53,9 +61,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Retrieve all favourites
                 /// </summary>
-        public async Task<XBMCRPC.Favourites.GetFavouritesResponse> GetFavourites(XBMCRPC.Favourite.Type type=0, XBMCRPC.Favourite.Fields.Favourite properties=null)
+                /// <param name="type"> </param>
+                /// <param name="properties"> </param>
+                /// <returns>XBMCRPC.Favourites.GetFavouritesResponse</returns>
+        public async Task<XBMCRPC.Favourites.GetFavouritesResponse> GetFavourites(XBMCRPC.Favourite.Type? type=null, XBMCRPC.Favourite.Fields.Favourite properties=null)
         {
             var jArgs = new JObject();
+
              if (type != null)
              {
                  var jproptype = JToken.FromObject(type, _client.Serializer);

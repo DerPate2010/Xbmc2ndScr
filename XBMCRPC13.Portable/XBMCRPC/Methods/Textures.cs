@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.Methods
 {
    public partial class Textures
@@ -14,9 +16,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Retrieve all textures
                 /// </summary>
-        public async Task<XBMCRPC.Textures.GetTexturesResponse> GetTextures(XBMCRPC.List.Filter.TexturesAnd filter, XBMCRPC.Textures.Fields.Texture properties=null)
+                /// <param name="properties"> </param>
+                /// <param name="filter"> </param>
+                /// <returns>XBMCRPC.Textures.GetTexturesResponse</returns>
+        public async Task<XBMCRPC.Textures.GetTexturesResponse> GetTextures(XBMCRPC.Textures.Fields.Texture properties=null, XBMCRPC.List.Filter.TexturesAnd filter=null)
         {
             var jArgs = new JObject();
+
              if (properties != null)
              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
@@ -33,9 +39,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Retrieve all textures
                 /// </summary>
-        public async Task<XBMCRPC.Textures.GetTexturesResponse> GetTextures(XBMCRPC.List.Filter.TexturesOr filter, XBMCRPC.Textures.Fields.Texture properties=null)
+                /// <param name="properties"> </param>
+                /// <param name="filter"> </param>
+                /// <returns>XBMCRPC.Textures.GetTexturesResponse</returns>
+        public async Task<XBMCRPC.Textures.GetTexturesResponse> GetTextures(XBMCRPC.Textures.Fields.Texture properties=null, XBMCRPC.List.Filter.TexturesOr filter=null)
         {
             var jArgs = new JObject();
+
              if (properties != null)
              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
@@ -52,9 +62,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Retrieve all textures
                 /// </summary>
-        public async Task<XBMCRPC.Textures.GetTexturesResponse> GetTextures(XBMCRPC.List.Filter.Rule.Textures filter, XBMCRPC.Textures.Fields.Texture properties=null)
+                /// <param name="properties"> </param>
+                /// <param name="filter"> </param>
+                /// <returns>XBMCRPC.Textures.GetTexturesResponse</returns>
+        public async Task<XBMCRPC.Textures.GetTexturesResponse> GetTextures(XBMCRPC.Textures.Fields.Texture properties=null, XBMCRPC.List.Filter.Rule.Textures filter=null)
         {
             var jArgs = new JObject();
+
              if (properties != null)
              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
@@ -71,9 +85,12 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Retrieve all textures
                 /// </summary>
+                /// <param name="properties"> </param>
+                /// <returns>XBMCRPC.Textures.GetTexturesResponse</returns>
         public async Task<XBMCRPC.Textures.GetTexturesResponse> GetTextures(XBMCRPC.Textures.Fields.Texture properties=null)
         {
             var jArgs = new JObject();
+
              if (properties != null)
              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
@@ -85,10 +102,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Remove the specified texture
                 /// </summary>
-        public async Task<string> RemoveTexture(int textureid=0)
+                /// <param name="textureid"> REQUIRED Texture database identifier</param>
+                /// <returns>string</returns>
+        public async Task<string> RemoveTexture(int textureid)
         {
+             if (textureid == 0 )
+             {
+                 return null;
+              }
+
             var jArgs = new JObject();
-             if (textureid != null)
+
              {
                  var jproptextureid = JToken.FromObject(textureid, _client.Serializer);
                  jArgs.Add(new JProperty("textureid", jproptextureid));

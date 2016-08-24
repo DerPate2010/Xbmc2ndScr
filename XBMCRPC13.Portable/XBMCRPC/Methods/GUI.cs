@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.Methods
 {
    public partial class GUI
@@ -14,10 +16,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Activates the given window
                 /// </summary>
-        public async Task<string> ActivateWindow(XBMCRPC.GUI.Window window=0, global::System.Collections.Generic.List<string> parameters=null)
+                /// <param name="window"> REQUIRED </param>
+                /// <param name="parameters"> </param>
+                /// <returns>string</returns>
+        public async Task<string> ActivateWindow(XBMCRPC.GUI.Window? window, global::System.Collections.Generic.List<string> parameters=null)
         {
             var jArgs = new JObject();
-             if (window != null)
+
              {
                  var jpropwindow = JToken.FromObject(window, _client.Serializer);
                  jArgs.Add(new JProperty("window", jpropwindow));
@@ -33,10 +38,12 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Retrieves the values of the given properties
                 /// </summary>
-        public async Task<XBMCRPC.GUI.Property.Value> GetProperties(XBMCRPC.GUI.GetProperties_properties properties=null)
+                /// <param name="properties"> REQUIRED </param>
+                /// <returns>XBMCRPC.GUI.Property.Value</returns>
+        public async Task<XBMCRPC.GUI.Property.Value> GetProperties(XBMCRPC.GUI.GetProperties_properties properties)
         {
             var jArgs = new JObject();
-             if (properties != null)
+
              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
                  jArgs.Add(new JProperty("properties", jpropproperties));
@@ -47,19 +54,21 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Returns the supported stereoscopic modes of the GUI
                 /// </summary>
+                /// <returns>XBMCRPC.GUI.GetStereoscopicModesResponse</returns>
         public async Task<XBMCRPC.GUI.GetStereoscopicModesResponse> GetStereoscopicModes()
         {
-            var jArgs = new JObject();
-            return await _client.GetData<XBMCRPC.GUI.GetStereoscopicModesResponse>("GUI.GetStereoscopicModes", jArgs);
+            return await _client.GetData<XBMCRPC.GUI.GetStereoscopicModesResponse>("GUI.GetStereoscopicModes",null);
         }
 
                 /// <summary>
                 /// Toggle fullscreen/GUI
                 /// </summary>
-        public async Task<bool> SetFullscreen(bool fullscreen)
+                /// <param name="fullscreen"> REQUIRED </param>
+                /// <returns>bool</returns>
+        public async Task<bool> SetFullscreen(bool? fullscreen=null)
         {
             var jArgs = new JObject();
-             if (fullscreen != null)
+
              {
                  var jpropfullscreen = JToken.FromObject(fullscreen, _client.Serializer);
                  jArgs.Add(new JProperty("fullscreen", jpropfullscreen));
@@ -70,10 +79,12 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Toggle fullscreen/GUI
                 /// </summary>
-        public async Task<bool> SetFullscreen(XBMCRPC.Global.Toggle2 fullscreen)
+                /// <param name="fullscreen"> REQUIRED </param>
+                /// <returns>bool</returns>
+        public async Task<bool> SetFullscreen(XBMCRPC.Global.Toggle2? fullscreen)
         {
             var jArgs = new JObject();
-             if (fullscreen != null)
+
              {
                  var jpropfullscreen = JToken.FromObject(fullscreen, _client.Serializer);
                  jArgs.Add(new JProperty("fullscreen", jpropfullscreen));
@@ -84,19 +95,21 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Toggle fullscreen/GUI
                 /// </summary>
+                /// <returns>bool</returns>
         public async Task<bool> SetFullscreen()
         {
-            var jArgs = new JObject();
-            return await _client.GetData<bool>("GUI.SetFullscreen", jArgs);
+            return await _client.GetData<bool>("GUI.SetFullscreen",null);
         }
 
                 /// <summary>
                 /// Sets the stereoscopic mode of the GUI to the given mode
                 /// </summary>
-        public async Task<string> SetStereoscopicMode(XBMCRPC.GUI.SetStereoscopicMode_mode mode=0)
+                /// <param name="mode"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> SetStereoscopicMode(XBMCRPC.GUI.SetStereoscopicMode_mode? mode)
         {
             var jArgs = new JObject();
-             if (mode != null)
+
              {
                  var jpropmode = JToken.FromObject(mode, _client.Serializer);
                  jArgs.Add(new JProperty("mode", jpropmode));
@@ -107,15 +120,19 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Shows a GUI notification
                 /// </summary>
-        public async Task<string> ShowNotification(XBMCRPC.GUI.ShowNotification_image1 image, string title=null, string message=null, int displaytime=0)
+                /// <param name="title"> REQUIRED </param>
+                /// <param name="message"> REQUIRED </param>
+                /// <param name="image"> </param>
+                /// <param name="displaytime"> The time in milliseconds the notification will be visible</param>
+                /// <returns>string</returns>
+        public async Task<string> ShowNotification(string title, string message, XBMCRPC.GUI.ShowNotification_image1? image=null, int displaytime=0)
         {
             var jArgs = new JObject();
-             if (title != null)
+
              {
                  var jproptitle = JToken.FromObject(title, _client.Serializer);
                  jArgs.Add(new JProperty("title", jproptitle));
              }
-             if (message != null)
              {
                  var jpropmessage = JToken.FromObject(message, _client.Serializer);
                  jArgs.Add(new JProperty("message", jpropmessage));
@@ -136,15 +153,19 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Shows a GUI notification
                 /// </summary>
-        public async Task<string> ShowNotification(string image, string title=null, string message=null, int displaytime=0)
+                /// <param name="title"> REQUIRED </param>
+                /// <param name="message"> REQUIRED </param>
+                /// <param name="image"> </param>
+                /// <param name="displaytime"> The time in milliseconds the notification will be visible</param>
+                /// <returns>string</returns>
+        public async Task<string> ShowNotification(string title, string message, string image=null, int displaytime=0)
         {
             var jArgs = new JObject();
-             if (title != null)
+
              {
                  var jproptitle = JToken.FromObject(title, _client.Serializer);
                  jArgs.Add(new JProperty("title", jproptitle));
              }
-             if (message != null)
              {
                  var jpropmessage = JToken.FromObject(message, _client.Serializer);
                  jArgs.Add(new JProperty("message", jpropmessage));
@@ -165,15 +186,18 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Shows a GUI notification
                 /// </summary>
-        public async Task<string> ShowNotification(string title=null, string message=null, int displaytime=0)
+                /// <param name="title"> REQUIRED </param>
+                /// <param name="message"> REQUIRED </param>
+                /// <param name="displaytime"> The time in milliseconds the notification will be visible</param>
+                /// <returns>string</returns>
+        public async Task<string> ShowNotification(string title, string message, int displaytime=0)
         {
             var jArgs = new JObject();
-             if (title != null)
+
              {
                  var jproptitle = JToken.FromObject(title, _client.Serializer);
                  jArgs.Add(new JProperty("title", jproptitle));
              }
-             if (message != null)
              {
                  var jpropmessage = JToken.FromObject(message, _client.Serializer);
                  jArgs.Add(new JProperty("message", jpropmessage));
@@ -186,9 +210,29 @@ namespace XBMCRPC.Methods
             return await _client.GetData<string>("GUI.ShowNotification", jArgs);
         }
 
-        public delegate void OnScreensaverActivatedDelegate(string sender=null, object data=null);
+        public delegate void OnDPMSActivatedDelegate(string sender, object data);
+        public event OnDPMSActivatedDelegate OnDPMSActivated;
+        internal void RaiseOnDPMSActivated(string sender, object data)
+        {
+            if (OnDPMSActivated != null)
+            {
+                OnDPMSActivated.BeginInvoke(sender, data, null, null);
+            }
+        }
+
+        public delegate void OnDPMSDeactivatedDelegate(string sender, object data);
+        public event OnDPMSDeactivatedDelegate OnDPMSDeactivated;
+        internal void RaiseOnDPMSDeactivated(string sender, object data)
+        {
+            if (OnDPMSDeactivated != null)
+            {
+                OnDPMSDeactivated.BeginInvoke(sender, data, null, null);
+            }
+        }
+
+        public delegate void OnScreensaverActivatedDelegate(string sender, object data);
         public event OnScreensaverActivatedDelegate OnScreensaverActivated;
-        internal void RaiseOnScreensaverActivated(string sender=null, object data=null)
+        internal void RaiseOnScreensaverActivated(string sender, object data)
         {
             if (OnScreensaverActivated != null)
             {
@@ -196,9 +240,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnScreensaverDeactivatedDelegate(string sender=null, object data=null);
+        public delegate void OnScreensaverDeactivatedDelegate(string sender, XBMCRPC.GUI.OnScreensaverDeactivated_data data);
         public event OnScreensaverDeactivatedDelegate OnScreensaverDeactivated;
-        internal void RaiseOnScreensaverDeactivated(string sender=null, object data=null)
+        internal void RaiseOnScreensaverDeactivated(string sender, XBMCRPC.GUI.OnScreensaverDeactivated_data data)
         {
             if (OnScreensaverDeactivated != null)
             {

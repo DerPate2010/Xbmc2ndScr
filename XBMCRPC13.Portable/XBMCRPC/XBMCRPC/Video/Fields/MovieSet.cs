@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using System.Runtime.Serialization;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.Video.Fields
 {
    public enum MovieSetItem
@@ -12,6 +14,7 @@ namespace XBMCRPC.Video.Fields
        fanart,
        thumbnail,
        art,
+       plot,
    }
    public class MovieSet : List<MovieSetItem>
    {

@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.Methods
 {
    public partial class Files
@@ -14,10 +16,16 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Get the directories and files in the given directory
                 /// </summary>
-        public async Task<XBMCRPC.Files.GetDirectoryResponse> GetDirectory(string directory=null, XBMCRPC.Files.Media media=0, XBMCRPC.List.Fields.Files properties=null, XBMCRPC.List.Sort sort=null, XBMCRPC.List.Limits limits=null)
+                /// <param name="directory"> REQUIRED </param>
+                /// <param name="media"> </param>
+                /// <param name="properties"> </param>
+                /// <param name="sort"> </param>
+                /// <param name="limits"> Limits are applied after getting the directory content thus retrieval is not faster when they are applied.</param>
+                /// <returns>XBMCRPC.Files.GetDirectoryResponse</returns>
+        public async Task<XBMCRPC.Files.GetDirectoryResponse> GetDirectory(string directory, XBMCRPC.Files.Media? media=null, XBMCRPC.List.Fields.Files properties=null, XBMCRPC.List.Sort sort=null, XBMCRPC.List.Limits limits=null)
         {
             var jArgs = new JObject();
-             if (directory != null)
+
              {
                  var jpropdirectory = JToken.FromObject(directory, _client.Serializer);
                  jArgs.Add(new JProperty("directory", jpropdirectory));
@@ -48,10 +56,14 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Get details for a specific file
                 /// </summary>
-        public async Task<XBMCRPC.Files.GetFileDetailsResponse> GetFileDetails(string file=null, XBMCRPC.Files.Media media=0, XBMCRPC.List.Fields.Files properties=null)
+                /// <param name="file"> REQUIRED Full path to the file</param>
+                /// <param name="media"> </param>
+                /// <param name="properties"> </param>
+                /// <returns>XBMCRPC.Files.GetFileDetailsResponse</returns>
+        public async Task<XBMCRPC.Files.GetFileDetailsResponse> GetFileDetails(string file, XBMCRPC.Files.Media? media=null, XBMCRPC.List.Fields.Files properties=null)
         {
             var jArgs = new JObject();
-             if (file != null)
+
              {
                  var jpropfile = JToken.FromObject(file, _client.Serializer);
                  jArgs.Add(new JProperty("file", jpropfile));
@@ -72,10 +84,14 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Get the sources of the media windows
                 /// </summary>
-        public async Task<XBMCRPC.Files.GetSourcesResponse> GetSources(XBMCRPC.Files.Media media=0, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null)
+                /// <param name="media"> REQUIRED </param>
+                /// <param name="limits"> </param>
+                /// <param name="sort"> </param>
+                /// <returns>XBMCRPC.Files.GetSourcesResponse</returns>
+        public async Task<XBMCRPC.Files.GetSourcesResponse> GetSources(XBMCRPC.Files.Media? media, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null)
         {
             var jArgs = new JObject();
-             if (media != null)
+
              {
                  var jpropmedia = JToken.FromObject(media, _client.Serializer);
                  jArgs.Add(new JProperty("media", jpropmedia));
@@ -96,10 +112,12 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Provides a way to download a given file (e.g. providing an URL to the real file location)
                 /// </summary>
-        public async Task<XBMCRPC.Files.PrepareDownloadResponse> PrepareDownload(string path=null)
+                /// <param name="path"> REQUIRED </param>
+                /// <returns>XBMCRPC.Files.PrepareDownloadResponse</returns>
+        public async Task<XBMCRPC.Files.PrepareDownloadResponse> PrepareDownload(string path)
         {
             var jArgs = new JObject();
-             if (path != null)
+
              {
                  var jproppath = JToken.FromObject(path, _client.Serializer);
                  jArgs.Add(new JProperty("path", jproppath));

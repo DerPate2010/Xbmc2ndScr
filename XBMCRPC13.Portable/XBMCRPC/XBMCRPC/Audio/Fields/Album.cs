@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using System.Runtime.Serialization;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.Audio.Fields
 {
    public enum AlbumItem
@@ -26,6 +28,9 @@ namespace XBMCRPC.Audio.Fields
        genreid,
        artistid,
        displayartist,
+       compilation,
+       releasetype,
+       dateadded,
    }
    public class Album : List<AlbumItem>
    {

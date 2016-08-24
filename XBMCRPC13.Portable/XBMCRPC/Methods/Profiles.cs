@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.Methods
 {
    public partial class Profiles
@@ -14,9 +16,12 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Retrieve the current profile
                 /// </summary>
+                /// <param name="properties"> </param>
+                /// <returns>XBMCRPC.Profiles.Details.Profile</returns>
         public async Task<XBMCRPC.Profiles.Details.Profile> GetCurrentProfile(XBMCRPC.Profiles.Fields.Profile properties=null)
         {
             var jArgs = new JObject();
+
              if (properties != null)
              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
@@ -28,9 +33,14 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Retrieve all profiles
                 /// </summary>
+                /// <param name="properties"> </param>
+                /// <param name="limits"> </param>
+                /// <param name="sort"> </param>
+                /// <returns>XBMCRPC.Profiles.GetProfilesResponse</returns>
         public async Task<XBMCRPC.Profiles.GetProfilesResponse> GetProfiles(XBMCRPC.Profiles.Fields.Profile properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null)
         {
             var jArgs = new JObject();
+
              if (properties != null)
              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
@@ -52,15 +62,18 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Load the specified profile
                 /// </summary>
-        public async Task<string> LoadProfile(string profile=null, bool prompt=false, XBMCRPC.Profiles.Password password=null)
+                /// <param name="profile"> REQUIRED Profile name</param>
+                /// <param name="prompt"> Prompt for password</param>
+                /// <param name="password"> </param>
+                /// <returns>string</returns>
+        public async Task<string> LoadProfile(string profile, bool? prompt=null, XBMCRPC.Profiles.Password password=null)
         {
             var jArgs = new JObject();
-             if (profile != null)
+
              {
                  var jpropprofile = JToken.FromObject(profile, _client.Serializer);
                  jArgs.Add(new JProperty("profile", jpropprofile));
              }
-             if (prompt != null)
              {
                  var jpropprompt = JToken.FromObject(prompt, _client.Serializer);
                  jArgs.Add(new JProperty("prompt", jpropprompt));

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using System.Runtime.Serialization;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.PVR.Fields
 {
    public enum ChannelItem
@@ -13,6 +15,8 @@ namespace XBMCRPC.PVR.Fields
        locked,
        channel,
        lastplayed,
+       broadcastnow,
+       broadcastnext,
    }
    public class Channel : List<ChannelItem>
    {

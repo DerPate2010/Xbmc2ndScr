@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using System.Runtime.Serialization;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.Video.Details
 {
    public class Movie : XBMCRPC.Video.Details.File
@@ -25,6 +27,7 @@ namespace XBMCRPC.Video.Details
        public string tagline { get; set; }
        public int top250 { get; set; }
        public string trailer { get; set; }
+       public int userrating { get; set; }
        public string votes { get; set; }
        public global::System.Collections.Generic.List<string> writer { get; set; }
        public int year { get; set; }

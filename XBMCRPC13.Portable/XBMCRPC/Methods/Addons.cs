@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.Methods
 {
    public partial class Addons
@@ -14,10 +16,14 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Executes the given addon with the given parameters (if possible)
                 /// </summary>
-        public async Task<string> ExecuteAddon(XBMCRPC.Addons.ExecuteAddon_params1 params_arg, string addonid=null, bool wait=false)
+                /// <param name="addonid"> REQUIRED </param>
+                /// <param name="params_arg"> </param>
+                /// <param name="wait"> </param>
+                /// <returns>string</returns>
+        public async Task<string> ExecuteAddon(string addonid, XBMCRPC.Addons.ExecuteAddon_params1 params_arg=null, bool? wait=null)
         {
             var jArgs = new JObject();
-             if (addonid != null)
+
              {
                  var jpropaddonid = JToken.FromObject(addonid, _client.Serializer);
                  jArgs.Add(new JProperty("addonid", jpropaddonid));
@@ -27,7 +33,6 @@ namespace XBMCRPC.Methods
                  var jpropparams_arg = JToken.FromObject(params_arg, _client.Serializer);
                  jArgs.Add(new JProperty("params_arg", jpropparams_arg));
              }
-             if (wait != null)
              {
                  var jpropwait = JToken.FromObject(wait, _client.Serializer);
                  jArgs.Add(new JProperty("wait", jpropwait));
@@ -38,10 +43,14 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Executes the given addon with the given parameters (if possible)
                 /// </summary>
-        public async Task<string> ExecuteAddon(global::System.Collections.Generic.List<string> params_arg, string addonid=null, bool wait=false)
+                /// <param name="addonid"> REQUIRED </param>
+                /// <param name="params_arg"> </param>
+                /// <param name="wait"> </param>
+                /// <returns>string</returns>
+        public async Task<string> ExecuteAddon(string addonid, global::System.Collections.Generic.List<string> params_arg=null, bool? wait=null)
         {
             var jArgs = new JObject();
-             if (addonid != null)
+
              {
                  var jpropaddonid = JToken.FromObject(addonid, _client.Serializer);
                  jArgs.Add(new JProperty("addonid", jpropaddonid));
@@ -51,7 +60,6 @@ namespace XBMCRPC.Methods
                  var jpropparams_arg = JToken.FromObject(params_arg, _client.Serializer);
                  jArgs.Add(new JProperty("params_arg", jpropparams_arg));
              }
-             if (wait != null)
              {
                  var jpropwait = JToken.FromObject(wait, _client.Serializer);
                  jArgs.Add(new JProperty("wait", jpropwait));
@@ -62,10 +70,14 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Executes the given addon with the given parameters (if possible)
                 /// </summary>
-        public async Task<string> ExecuteAddon(string params_arg, string addonid=null, bool wait=false)
+                /// <param name="addonid"> REQUIRED </param>
+                /// <param name="params_arg"> </param>
+                /// <param name="wait"> </param>
+                /// <returns>string</returns>
+        public async Task<string> ExecuteAddon(string addonid, string params_arg=null, bool? wait=null)
         {
             var jArgs = new JObject();
-             if (addonid != null)
+
              {
                  var jpropaddonid = JToken.FromObject(addonid, _client.Serializer);
                  jArgs.Add(new JProperty("addonid", jpropaddonid));
@@ -75,7 +87,6 @@ namespace XBMCRPC.Methods
                  var jpropparams_arg = JToken.FromObject(params_arg, _client.Serializer);
                  jArgs.Add(new JProperty("params_arg", jpropparams_arg));
              }
-             if (wait != null)
              {
                  var jpropwait = JToken.FromObject(wait, _client.Serializer);
                  jArgs.Add(new JProperty("wait", jpropwait));
@@ -86,15 +97,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Executes the given addon with the given parameters (if possible)
                 /// </summary>
-        public async Task<string> ExecuteAddon(string addonid=null, bool wait=false)
+                /// <param name="addonid"> REQUIRED </param>
+                /// <param name="wait"> </param>
+                /// <returns>string</returns>
+        public async Task<string> ExecuteAddon(string addonid, bool? wait=null)
         {
             var jArgs = new JObject();
-             if (addonid != null)
+
              {
                  var jpropaddonid = JToken.FromObject(addonid, _client.Serializer);
                  jArgs.Add(new JProperty("addonid", jpropaddonid));
              }
-             if (wait != null)
              {
                  var jpropwait = JToken.FromObject(wait, _client.Serializer);
                  jArgs.Add(new JProperty("wait", jpropwait));
@@ -105,10 +118,13 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Gets the details of a specific addon
                 /// </summary>
-        public async Task<XBMCRPC.Addons.GetAddonDetailsResponse> GetAddonDetails(string addonid=null, XBMCRPC.Addon.Fields properties=null)
+                /// <param name="addonid"> REQUIRED </param>
+                /// <param name="properties"> </param>
+                /// <returns>XBMCRPC.Addons.GetAddonDetailsResponse</returns>
+        public async Task<XBMCRPC.Addons.GetAddonDetailsResponse> GetAddonDetails(string addonid, XBMCRPC.Addon.Fields properties=null)
         {
             var jArgs = new JObject();
-             if (addonid != null)
+
              {
                  var jpropaddonid = JToken.FromObject(addonid, _client.Serializer);
                  jArgs.Add(new JProperty("addonid", jpropaddonid));
@@ -124,9 +140,56 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Gets all available addons
                 /// </summary>
-        public async Task<XBMCRPC.Addons.GetAddonsResponse> GetAddons(bool enabled, XBMCRPC.Addon.Types type=0, XBMCRPC.Addon.Content content=0, XBMCRPC.Addon.Fields properties=null, XBMCRPC.List.Limits limits=null)
+                /// <param name="type"> </param>
+                /// <param name="content"> Content provided by the addon. Only considered for plugins and scripts.</param>
+                /// <param name="enabled"> </param>
+                /// <param name="properties"> </param>
+                /// <param name="limits"> </param>
+                /// <returns>XBMCRPC.Addons.GetAddonsResponse</returns>
+        public async Task<XBMCRPC.Addons.GetAddonsResponse> GetAddons(XBMCRPC.Addon.Types? type=null, XBMCRPC.Addon.Content? content=null, bool? enabled=null, XBMCRPC.Addon.Fields properties=null, XBMCRPC.List.Limits limits=null)
         {
             var jArgs = new JObject();
+
+             if (type != null)
+             {
+                 var jproptype = JToken.FromObject(type, _client.Serializer);
+                 jArgs.Add(new JProperty("type", jproptype));
+             }
+             if (content != null)
+             {
+                 var jpropcontent = JToken.FromObject(content, _client.Serializer);
+                 jArgs.Add(new JProperty("content", jpropcontent));
+             }
+             {
+                 var jpropenabled = JToken.FromObject(enabled, _client.Serializer);
+                 jArgs.Add(new JProperty("enabled", jpropenabled));
+             }
+             if (properties != null)
+             {
+                 var jpropproperties = JToken.FromObject(properties, _client.Serializer);
+                 jArgs.Add(new JProperty("properties", jpropproperties));
+             }
+             if (limits != null)
+             {
+                 var jproplimits = JToken.FromObject(limits, _client.Serializer);
+                 jArgs.Add(new JProperty("limits", jproplimits));
+             }
+            return await _client.GetData<XBMCRPC.Addons.GetAddonsResponse>("Addons.GetAddons", jArgs);
+        }
+
+                /// <summary>
+                /// Gets all available addons
+                /// </summary>
+                /// <param name="type"> </param>
+                /// <param name="content"> Content provided by the addon. Only considered for plugins and scripts.</param>
+                /// <param name="enabled"> </param>
+                /// <param name="properties"> </param>
+                /// <param name="limits"> </param>
+                /// <returns>XBMCRPC.Addons.GetAddonsResponse</returns>
+        public async Task<XBMCRPC.Addons.GetAddonsResponse> GetAddons(XBMCRPC.Addon.Types? type=null, XBMCRPC.Addon.Content? content=null, XBMCRPC.Addons.GetAddons_enabled2? enabled=null, XBMCRPC.Addon.Fields properties=null, XBMCRPC.List.Limits limits=null)
+        {
+            var jArgs = new JObject();
+
              if (type != null)
              {
                  var jproptype = JToken.FromObject(type, _client.Serializer);
@@ -158,43 +221,15 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Gets all available addons
                 /// </summary>
-        public async Task<XBMCRPC.Addons.GetAddonsResponse> GetAddons(XBMCRPC.Addons.GetAddons_enabled2 enabled, XBMCRPC.Addon.Types type=0, XBMCRPC.Addon.Content content=0, XBMCRPC.Addon.Fields properties=null, XBMCRPC.List.Limits limits=null)
+                /// <param name="type"> </param>
+                /// <param name="content"> Content provided by the addon. Only considered for plugins and scripts.</param>
+                /// <param name="properties"> </param>
+                /// <param name="limits"> </param>
+                /// <returns>XBMCRPC.Addons.GetAddonsResponse</returns>
+        public async Task<XBMCRPC.Addons.GetAddonsResponse> GetAddons(XBMCRPC.Addon.Types? type=null, XBMCRPC.Addon.Content? content=null, XBMCRPC.Addon.Fields properties=null, XBMCRPC.List.Limits limits=null)
         {
             var jArgs = new JObject();
-             if (type != null)
-             {
-                 var jproptype = JToken.FromObject(type, _client.Serializer);
-                 jArgs.Add(new JProperty("type", jproptype));
-             }
-             if (content != null)
-             {
-                 var jpropcontent = JToken.FromObject(content, _client.Serializer);
-                 jArgs.Add(new JProperty("content", jpropcontent));
-             }
-             if (enabled != null)
-             {
-                 var jpropenabled = JToken.FromObject(enabled, _client.Serializer);
-                 jArgs.Add(new JProperty("enabled", jpropenabled));
-             }
-             if (properties != null)
-             {
-                 var jpropproperties = JToken.FromObject(properties, _client.Serializer);
-                 jArgs.Add(new JProperty("properties", jpropproperties));
-             }
-             if (limits != null)
-             {
-                 var jproplimits = JToken.FromObject(limits, _client.Serializer);
-                 jArgs.Add(new JProperty("limits", jproplimits));
-             }
-            return await _client.GetData<XBMCRPC.Addons.GetAddonsResponse>("Addons.GetAddons", jArgs);
-        }
 
-                /// <summary>
-                /// Gets all available addons
-                /// </summary>
-        public async Task<XBMCRPC.Addons.GetAddonsResponse> GetAddons(XBMCRPC.Addon.Types type=0, XBMCRPC.Addon.Content content=0, XBMCRPC.Addon.Fields properties=null, XBMCRPC.List.Limits limits=null)
-        {
-            var jArgs = new JObject();
              if (type != null)
              {
                  var jproptype = JToken.FromObject(type, _client.Serializer);
@@ -221,15 +256,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Enables/Disables a specific addon
                 /// </summary>
-        public async Task<string> SetAddonEnabled(bool enabled, string addonid=null)
+                /// <param name="addonid"> REQUIRED </param>
+                /// <param name="enabled"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> SetAddonEnabled(string addonid, bool? enabled=null)
         {
             var jArgs = new JObject();
-             if (addonid != null)
+
              {
                  var jpropaddonid = JToken.FromObject(addonid, _client.Serializer);
                  jArgs.Add(new JProperty("addonid", jpropaddonid));
              }
-             if (enabled != null)
              {
                  var jpropenabled = JToken.FromObject(enabled, _client.Serializer);
                  jArgs.Add(new JProperty("enabled", jpropenabled));
@@ -240,15 +277,17 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Enables/Disables a specific addon
                 /// </summary>
-        public async Task<string> SetAddonEnabled(XBMCRPC.Global.Toggle2 enabled, string addonid=null)
+                /// <param name="addonid"> REQUIRED </param>
+                /// <param name="enabled"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> SetAddonEnabled(string addonid, XBMCRPC.Global.Toggle2? enabled)
         {
             var jArgs = new JObject();
-             if (addonid != null)
+
              {
                  var jpropaddonid = JToken.FromObject(addonid, _client.Serializer);
                  jArgs.Add(new JProperty("addonid", jpropaddonid));
              }
-             if (enabled != null)
              {
                  var jpropenabled = JToken.FromObject(enabled, _client.Serializer);
                  jArgs.Add(new JProperty("enabled", jpropenabled));
@@ -259,10 +298,12 @@ namespace XBMCRPC.Methods
                 /// <summary>
                 /// Enables/Disables a specific addon
                 /// </summary>
-        public async Task<string> SetAddonEnabled(string addonid=null)
+                /// <param name="addonid"> REQUIRED </param>
+                /// <returns>string</returns>
+        public async Task<string> SetAddonEnabled(string addonid)
         {
             var jArgs = new JObject();
-             if (addonid != null)
+
              {
                  var jpropaddonid = JToken.FromObject(addonid, _client.Serializer);
                  jArgs.Add(new JProperty("addonid", jpropaddonid));

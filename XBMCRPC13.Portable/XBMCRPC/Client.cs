@@ -196,6 +196,12 @@ jObject["params"]["sender"].ToObject<string>(Serializer)
 , jObject["params"]["data"].ToObject<object>(Serializer)
 );
             break;
+        case "AudioLibrary.OnExport":
+            AudioLibrary.RaiseOnExport(
+jObject["params"]["sender"].ToObject<string>(Serializer)
+, jObject["params"]["data"].ToObject<XBMCRPC.AudioLibrary.OnExport_data>(Serializer)
+);
+            break;
         case "AudioLibrary.OnRemove":
             AudioLibrary.RaiseOnRemove(
 jObject["params"]["sender"].ToObject<string>(Serializer)
@@ -220,6 +226,18 @@ jObject["params"]["sender"].ToObject<string>(Serializer)
 , jObject["params"]["data"].ToObject<XBMCRPC.AudioLibrary.OnUpdate_data>(Serializer)
 );
             break;
+        case "GUI.OnDPMSActivated":
+            GUI.RaiseOnDPMSActivated(
+jObject["params"]["sender"].ToObject<string>(Serializer)
+, jObject["params"]["data"].ToObject<object>(Serializer)
+);
+            break;
+        case "GUI.OnDPMSDeactivated":
+            GUI.RaiseOnDPMSDeactivated(
+jObject["params"]["sender"].ToObject<string>(Serializer)
+, jObject["params"]["data"].ToObject<object>(Serializer)
+);
+            break;
         case "GUI.OnScreensaverActivated":
             GUI.RaiseOnScreensaverActivated(
 jObject["params"]["sender"].ToObject<string>(Serializer)
@@ -229,7 +247,7 @@ jObject["params"]["sender"].ToObject<string>(Serializer)
         case "GUI.OnScreensaverDeactivated":
             GUI.RaiseOnScreensaverDeactivated(
 jObject["params"]["sender"].ToObject<string>(Serializer)
-, jObject["params"]["data"].ToObject<object>(Serializer)
+, jObject["params"]["data"].ToObject<XBMCRPC.GUI.OnScreensaverDeactivated_data>(Serializer)
 );
             break;
         case "Input.OnInputFinished":
@@ -307,7 +325,7 @@ jObject["params"]["sender"].ToObject<string>(Serializer)
         case "System.OnQuit":
             System.RaiseOnQuit(
 jObject["params"]["sender"].ToObject<string>(Serializer)
-, jObject["params"]["data"].ToObject<object>(Serializer)
+, jObject["params"]["data"].ToObject<XBMCRPC.System.OnQuit_data>(Serializer)
 );
             break;
         case "System.OnRestart":
@@ -338,6 +356,12 @@ jObject["params"]["sender"].ToObject<string>(Serializer)
             VideoLibrary.RaiseOnCleanStarted(
 jObject["params"]["sender"].ToObject<string>(Serializer)
 , jObject["params"]["data"].ToObject<object>(Serializer)
+);
+            break;
+        case "VideoLibrary.OnExport":
+            VideoLibrary.RaiseOnExport(
+jObject["params"]["sender"].ToObject<string>(Serializer)
+, jObject["params"]["data"].ToObject<XBMCRPC.VideoLibrary.OnExport_data>(Serializer)
 );
             break;
         case "VideoLibrary.OnRemove":

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using System.Runtime.Serialization;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.Video.Details
 {
    public class TVShow : XBMCRPC.Video.Details.Item
@@ -21,6 +23,7 @@ namespace XBMCRPC.Video.Details
        public global::System.Collections.Generic.List<string> studio { get; set; }
        public global::System.Collections.Generic.List<string> tag { get; set; }
        public int tvshowid { get; set; }
+       public int userrating { get; set; }
        public string votes { get; set; }
        public int watchedepisodes { get; set; }
        public int year { get; set; }

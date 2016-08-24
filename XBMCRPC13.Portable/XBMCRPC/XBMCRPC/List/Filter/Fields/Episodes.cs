@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using System.Runtime.Serialization;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.List.Filter.Fields
 {
    public enum Episodes
@@ -29,6 +31,7 @@ namespace XBMCRPC.List.Filter.Fields
        studio,
        mpaarating,
        dateadded,
+       tag,
        videoresolution,
        audiochannels,
        videocodec,

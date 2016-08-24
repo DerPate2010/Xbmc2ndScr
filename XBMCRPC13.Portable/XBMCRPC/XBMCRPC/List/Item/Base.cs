@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using System.Runtime.Serialization;
+#pragma warning disable CS0108
+
 namespace XBMCRPC.List.Item
 {
     using Newtonsoft.Json;
@@ -14,8 +16,10 @@ namespace XBMCRPC.List.Item
        public global::System.Collections.Generic.List<int> albumartistid { get; set; }
        public int albumid { get; set; }
        public string albumlabel { get; set; }
+       public XBMCRPC.Audio.Album.ReleaseType albumreleasetype { get; set; }
        public global::System.Collections.Generic.List<XBMCRPC.Video.CastItem> cast { get; set; }
        public string comment { get; set; }
+       public bool compilation { get; set; }
        public global::System.Collections.Generic.List<string> country { get; set; }
        public string description { get; set; }
        public int disc { get; set; }
@@ -34,12 +38,15 @@ namespace XBMCRPC.List.Item
        public string plotoutline { get; set; }
        public string premiered { get; set; }
        public string productioncode { get; set; }
+       public XBMCRPC.Audio.Album.ReleaseType releasetype { get; set; }
        public int season { get; set; }
        public string set { get; set; }
        public int setid { get; set; }
        public global::System.Collections.Generic.List<string> showlink { get; set; }
        public string showtitle { get; set; }
        public string sorttitle { get; set; }
+       public int specialsortepisode { get; set; }
+       public int specialsortseason { get; set; }
        public global::System.Collections.Generic.List<string> studio { get; set; }
        public global::System.Collections.Generic.List<string> style { get; set; }
        public global::System.Collections.Generic.List<string> tag { get; set; }
