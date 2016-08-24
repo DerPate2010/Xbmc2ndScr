@@ -20,7 +20,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.Profiles.Details.Profile</returns>
         public async Task<XBMCRPC.Profiles.Details.Profile> GetCurrentProfile(XBMCRPC.Profiles.Fields.Profile properties=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -39,7 +39,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.Profiles.GetProfilesResponse</returns>
         public async Task<XBMCRPC.Profiles.GetProfilesResponse> GetProfiles(XBMCRPC.Profiles.Fields.Profile properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -66,14 +66,20 @@ namespace XBMCRPC.Methods
                 /// <param name="prompt"> Prompt for password</param>
                 /// <param name="password"> </param>
                 /// <returns>string</returns>
-        public async Task<string> LoadProfile(string profile, bool? prompt=null, XBMCRPC.Profiles.Password password=null)
+        public async Task<string> LoadProfile(string profile=null, bool? prompt=null, XBMCRPC.Profiles.Password password=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (profile == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null profile");
+              }
+             else
+              {
                  var jpropprofile = JToken.FromObject(profile, _client.Serializer);
                  jArgs.Add(new JProperty("profile", jpropprofile));
-             }
+              }
+             if (prompt != null)
              {
                  var jpropprompt = JToken.FromObject(prompt, _client.Serializer);
                  jArgs.Add(new JProperty("prompt", jpropprompt));

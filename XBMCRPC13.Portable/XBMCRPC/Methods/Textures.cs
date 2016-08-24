@@ -21,7 +21,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.Textures.GetTexturesResponse</returns>
         public async Task<XBMCRPC.Textures.GetTexturesResponse> GetTextures(XBMCRPC.Textures.Fields.Texture properties=null, XBMCRPC.List.Filter.TexturesAnd filter=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -44,7 +44,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.Textures.GetTexturesResponse</returns>
         public async Task<XBMCRPC.Textures.GetTexturesResponse> GetTextures(XBMCRPC.Textures.Fields.Texture properties=null, XBMCRPC.List.Filter.TexturesOr filter=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -67,7 +67,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.Textures.GetTexturesResponse</returns>
         public async Task<XBMCRPC.Textures.GetTexturesResponse> GetTextures(XBMCRPC.Textures.Fields.Texture properties=null, XBMCRPC.List.Filter.Rule.Textures filter=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -89,7 +89,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.Textures.GetTexturesResponse</returns>
         public async Task<XBMCRPC.Textures.GetTexturesResponse> GetTextures(XBMCRPC.Textures.Fields.Texture properties=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -104,19 +104,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="textureid"> REQUIRED Texture database identifier</param>
                 /// <returns>string</returns>
-        public async Task<string> RemoveTexture(int textureid)
+        public async Task<string> RemoveTexture(int? textureid=null)
         {
-             if (textureid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (textureid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null textureid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jproptextureid = JToken.FromObject(textureid, _client.Serializer);
                  jArgs.Add(new JProperty("textureid", jproptextureid));
-             }
+              }
             return await _client.GetData<string>("Textures.RemoveTexture", jArgs);
         }
    }

@@ -23,16 +23,19 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.JSONRPC.IntrospectResponse</returns>
         public async Task<XBMCRPC.JSONRPC.IntrospectResponse> Introspect(bool? getdescriptions=null, bool? getmetadata=null, bool? filterbytransport=null, XBMCRPC.JSONRPC.Introspect_filter filter=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
+             if (getdescriptions != null)
              {
                  var jpropgetdescriptions = JToken.FromObject(getdescriptions, _client.Serializer);
                  jArgs.Add(new JProperty("getdescriptions", jpropgetdescriptions));
              }
+             if (getmetadata != null)
              {
                  var jpropgetmetadata = JToken.FromObject(getmetadata, _client.Serializer);
                  jArgs.Add(new JProperty("getmetadata", jpropgetmetadata));
              }
+             if (filterbytransport != null)
              {
                  var jpropfilterbytransport = JToken.FromObject(filterbytransport, _client.Serializer);
                  jArgs.Add(new JProperty("filterbytransport", jpropfilterbytransport));
@@ -52,18 +55,28 @@ namespace XBMCRPC.Methods
                 /// <param name="message"> REQUIRED </param>
                 /// <param name="data"> </param>
                 /// <returns>object</returns>
-        public async Task<object> NotifyAll(string sender, string message, object data=null)
+        public async Task<object> NotifyAll(string sender=null, string message=null, object data=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (sender == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null sender");
+              }
+             else
+              {
                  var jpropsender = JToken.FromObject(sender, _client.Serializer);
                  jArgs.Add(new JProperty("sender", jpropsender));
-             }
-             {
+              }
+             if (message == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null message");
+              }
+             else
+              {
                  var jpropmessage = JToken.FromObject(message, _client.Serializer);
                  jArgs.Add(new JProperty("message", jpropmessage));
-             }
+              }
              if (data != null)
              {
                  var jpropdata = JToken.FromObject(data, _client.Serializer);

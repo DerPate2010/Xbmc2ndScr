@@ -119,8 +119,16 @@ namespace XBMCRPC
             await _clientSocket.ConnectAsync(_settings.Host, _settings.TcpPort);
 
             var stream = _clientSocket.GetInputStream();
-
+			
+			//
+			// compiler complains about not waiting for results to be ready
+			// we can safely ignore this because we get the results throug
+			// a different channel
+			// 
+#pragma warning disable CS4014
             ListenForNotifications(stream);
+#pragma warning restore CS4014
+
         }
 
         private async Task ListenForNotifications(Stream stream)

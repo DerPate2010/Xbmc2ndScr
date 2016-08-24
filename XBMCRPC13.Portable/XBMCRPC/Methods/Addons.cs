@@ -20,19 +20,25 @@ namespace XBMCRPC.Methods
                 /// <param name="params_arg"> </param>
                 /// <param name="wait"> </param>
                 /// <returns>string</returns>
-        public async Task<string> ExecuteAddon(string addonid, XBMCRPC.Addons.ExecuteAddon_params1 params_arg=null, bool? wait=null)
+        public async Task<string> ExecuteAddon(string addonid=null, XBMCRPC.Addons.ExecuteAddon_params1 params_arg=null, bool? wait=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (addonid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null addonid");
+              }
+             else
+              {
                  var jpropaddonid = JToken.FromObject(addonid, _client.Serializer);
                  jArgs.Add(new JProperty("addonid", jpropaddonid));
-             }
+              }
              if (params_arg != null)
              {
                  var jpropparams_arg = JToken.FromObject(params_arg, _client.Serializer);
                  jArgs.Add(new JProperty("params_arg", jpropparams_arg));
              }
+             if (wait != null)
              {
                  var jpropwait = JToken.FromObject(wait, _client.Serializer);
                  jArgs.Add(new JProperty("wait", jpropwait));
@@ -47,19 +53,25 @@ namespace XBMCRPC.Methods
                 /// <param name="params_arg"> </param>
                 /// <param name="wait"> </param>
                 /// <returns>string</returns>
-        public async Task<string> ExecuteAddon(string addonid, global::System.Collections.Generic.List<string> params_arg=null, bool? wait=null)
+        public async Task<string> ExecuteAddon(string addonid=null, global::System.Collections.Generic.List<string> params_arg=null, bool? wait=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (addonid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null addonid");
+              }
+             else
+              {
                  var jpropaddonid = JToken.FromObject(addonid, _client.Serializer);
                  jArgs.Add(new JProperty("addonid", jpropaddonid));
-             }
+              }
              if (params_arg != null)
              {
                  var jpropparams_arg = JToken.FromObject(params_arg, _client.Serializer);
                  jArgs.Add(new JProperty("params_arg", jpropparams_arg));
              }
+             if (wait != null)
              {
                  var jpropwait = JToken.FromObject(wait, _client.Serializer);
                  jArgs.Add(new JProperty("wait", jpropwait));
@@ -74,19 +86,25 @@ namespace XBMCRPC.Methods
                 /// <param name="params_arg"> </param>
                 /// <param name="wait"> </param>
                 /// <returns>string</returns>
-        public async Task<string> ExecuteAddon(string addonid, string params_arg=null, bool? wait=null)
+        public async Task<string> ExecuteAddon(string addonid=null, string params_arg=null, bool? wait=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (addonid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null addonid");
+              }
+             else
+              {
                  var jpropaddonid = JToken.FromObject(addonid, _client.Serializer);
                  jArgs.Add(new JProperty("addonid", jpropaddonid));
-             }
+              }
              if (params_arg != null)
              {
                  var jpropparams_arg = JToken.FromObject(params_arg, _client.Serializer);
                  jArgs.Add(new JProperty("params_arg", jpropparams_arg));
              }
+             if (wait != null)
              {
                  var jpropwait = JToken.FromObject(wait, _client.Serializer);
                  jArgs.Add(new JProperty("wait", jpropwait));
@@ -100,14 +118,20 @@ namespace XBMCRPC.Methods
                 /// <param name="addonid"> REQUIRED </param>
                 /// <param name="wait"> </param>
                 /// <returns>string</returns>
-        public async Task<string> ExecuteAddon(string addonid, bool? wait=null)
+        public async Task<string> ExecuteAddon(string addonid=null, bool? wait=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (addonid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null addonid");
+              }
+             else
+              {
                  var jpropaddonid = JToken.FromObject(addonid, _client.Serializer);
                  jArgs.Add(new JProperty("addonid", jpropaddonid));
-             }
+              }
+             if (wait != null)
              {
                  var jpropwait = JToken.FromObject(wait, _client.Serializer);
                  jArgs.Add(new JProperty("wait", jpropwait));
@@ -121,14 +145,19 @@ namespace XBMCRPC.Methods
                 /// <param name="addonid"> REQUIRED </param>
                 /// <param name="properties"> </param>
                 /// <returns>XBMCRPC.Addons.GetAddonDetailsResponse</returns>
-        public async Task<XBMCRPC.Addons.GetAddonDetailsResponse> GetAddonDetails(string addonid, XBMCRPC.Addon.Fields properties=null)
+        public async Task<XBMCRPC.Addons.GetAddonDetailsResponse> GetAddonDetails(string addonid=null, XBMCRPC.Addon.Fields properties=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (addonid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null addonid");
+              }
+             else
+              {
                  var jpropaddonid = JToken.FromObject(addonid, _client.Serializer);
                  jArgs.Add(new JProperty("addonid", jpropaddonid));
-             }
+              }
              if (properties != null)
              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
@@ -148,7 +177,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.Addons.GetAddonsResponse</returns>
         public async Task<XBMCRPC.Addons.GetAddonsResponse> GetAddons(XBMCRPC.Addon.Types? type=null, XBMCRPC.Addon.Content? content=null, bool? enabled=null, XBMCRPC.Addon.Fields properties=null, XBMCRPC.List.Limits limits=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (type != null)
              {
@@ -160,6 +189,7 @@ namespace XBMCRPC.Methods
                  var jpropcontent = JToken.FromObject(content, _client.Serializer);
                  jArgs.Add(new JProperty("content", jpropcontent));
              }
+             if (enabled != null)
              {
                  var jpropenabled = JToken.FromObject(enabled, _client.Serializer);
                  jArgs.Add(new JProperty("enabled", jpropenabled));
@@ -188,7 +218,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.Addons.GetAddonsResponse</returns>
         public async Task<XBMCRPC.Addons.GetAddonsResponse> GetAddons(XBMCRPC.Addon.Types? type=null, XBMCRPC.Addon.Content? content=null, XBMCRPC.Addons.GetAddons_enabled2? enabled=null, XBMCRPC.Addon.Fields properties=null, XBMCRPC.List.Limits limits=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (type != null)
              {
@@ -228,7 +258,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.Addons.GetAddonsResponse</returns>
         public async Task<XBMCRPC.Addons.GetAddonsResponse> GetAddons(XBMCRPC.Addon.Types? type=null, XBMCRPC.Addon.Content? content=null, XBMCRPC.Addon.Fields properties=null, XBMCRPC.List.Limits limits=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (type != null)
              {
@@ -259,18 +289,28 @@ namespace XBMCRPC.Methods
                 /// <param name="addonid"> REQUIRED </param>
                 /// <param name="enabled"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> SetAddonEnabled(string addonid, bool? enabled=null)
+        public async Task<string> SetAddonEnabled(string addonid=null, bool? enabled=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (addonid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null addonid");
+              }
+             else
+              {
                  var jpropaddonid = JToken.FromObject(addonid, _client.Serializer);
                  jArgs.Add(new JProperty("addonid", jpropaddonid));
-             }
-             {
+              }
+             if (enabled == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null enabled");
+              }
+             else
+              {
                  var jpropenabled = JToken.FromObject(enabled, _client.Serializer);
                  jArgs.Add(new JProperty("enabled", jpropenabled));
-             }
+              }
             return await _client.GetData<string>("Addons.SetAddonEnabled", jArgs);
         }
 
@@ -280,18 +320,28 @@ namespace XBMCRPC.Methods
                 /// <param name="addonid"> REQUIRED </param>
                 /// <param name="enabled"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> SetAddonEnabled(string addonid, XBMCRPC.Global.Toggle2? enabled)
+        public async Task<string> SetAddonEnabled(string addonid=null, XBMCRPC.Global.Toggle2? enabled=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (addonid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null addonid");
+              }
+             else
+              {
                  var jpropaddonid = JToken.FromObject(addonid, _client.Serializer);
                  jArgs.Add(new JProperty("addonid", jpropaddonid));
-             }
-             {
+              }
+             if (enabled == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null enabled");
+              }
+             else
+              {
                  var jpropenabled = JToken.FromObject(enabled, _client.Serializer);
                  jArgs.Add(new JProperty("enabled", jpropenabled));
-             }
+              }
             return await _client.GetData<string>("Addons.SetAddonEnabled", jArgs);
         }
 
@@ -300,14 +350,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="addonid"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> SetAddonEnabled(string addonid)
+        public async Task<string> SetAddonEnabled(string addonid=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (addonid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null addonid");
+              }
+             else
+              {
                  var jpropaddonid = JToken.FromObject(addonid, _client.Serializer);
                  jArgs.Add(new JProperty("addonid", jpropaddonid));
-             }
+              }
             return await _client.GetData<string>("Addons.SetAddonEnabled", jArgs);
         }
    }

@@ -28,19 +28,19 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="properties"> </param>
                 /// <returns>XBMCRPC.Player.GetItemResponse</returns>
-        public async Task<XBMCRPC.Player.GetItemResponse> GetItem(int playerid, XBMCRPC.List.Fields.All properties=null)
+        public async Task<XBMCRPC.Player.GetItemResponse> GetItem(int? playerid=null, XBMCRPC.List.Fields.All properties=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
+              }
              if (properties != null)
              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
@@ -56,7 +56,7 @@ namespace XBMCRPC.Methods
                 /// <returns>global::System.Collections.Generic.List<XBMCRPC.Player.GetPlayersResponseItem></returns>
         public async Task<global::System.Collections.Generic.List<XBMCRPC.Player.GetPlayersResponseItem>> GetPlayers(XBMCRPC.Player.GetPlayers_media? media=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (media != null)
              {
@@ -72,23 +72,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="properties"> REQUIRED </param>
                 /// <returns>XBMCRPC.Player.Property.Value</returns>
-        public async Task<XBMCRPC.Player.Property.Value> GetProperties(int playerid, XBMCRPC.Player.GetProperties_properties properties)
+        public async Task<XBMCRPC.Player.Property.Value> GetProperties(int? playerid=null, XBMCRPC.Player.GetProperties_properties properties=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (properties == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null properties");
+              }
+             else
+              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
                  jArgs.Add(new JProperty("properties", jpropproperties));
-             }
+              }
             return await _client.GetData<XBMCRPC.Player.Property.Value>("Player.GetProperties", jArgs);
         }
 
@@ -98,23 +103,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="to"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> GoTo(int playerid, XBMCRPC.Player.GoTo_to1? to)
+        public async Task<string> GoTo(int? playerid=null, XBMCRPC.Player.GoTo_to1? to=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (to == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null to");
+              }
+             else
+              {
                  var jpropto = JToken.FromObject(to, _client.Serializer);
                  jArgs.Add(new JProperty("to", jpropto));
-             }
+              }
             return await _client.GetData<string>("Player.GoTo", jArgs);
         }
 
@@ -124,23 +134,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="to"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> GoTo(int playerid, int to)
+        public async Task<string> GoTo(int? playerid=null, int? to=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (to == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null to");
+              }
+             else
+              {
                  var jpropto = JToken.FromObject(to, _client.Serializer);
                  jArgs.Add(new JProperty("to", jpropto));
-             }
+              }
             return await _client.GetData<string>("Player.GoTo", jArgs);
         }
 
@@ -149,19 +164,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="playerid"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> GoTo(int playerid)
+        public async Task<string> GoTo(int? playerid=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
+              }
             return await _client.GetData<string>("Player.GoTo", jArgs);
         }
 
@@ -171,23 +186,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="direction"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Move(int playerid, XBMCRPC.Player.Move_direction? direction)
+        public async Task<string> Move(int? playerid=null, XBMCRPC.Player.Move_direction? direction=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (direction == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null direction");
+              }
+             else
+              {
                  var jpropdirection = JToken.FromObject(direction, _client.Serializer);
                  jArgs.Add(new JProperty("direction", jpropdirection));
-             }
+              }
             return await _client.GetData<string>("Player.Move", jArgs);
         }
 
@@ -199,7 +219,7 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Open(XBMCRPC.Player.Open_item1 item=null, XBMCRPC.Player.Open_options options=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (item != null)
              {
@@ -222,7 +242,7 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Open(XBMCRPC.Playlist.ItemFile item=null, XBMCRPC.Player.Open_options options=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (item != null)
              {
@@ -245,7 +265,7 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Open(XBMCRPC.Playlist.Item1 item=null, XBMCRPC.Player.Open_options options=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (item != null)
              {
@@ -268,7 +288,7 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Open(XBMCRPC.Playlist.ItemMovieid item=null, XBMCRPC.Player.Open_options options=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (item != null)
              {
@@ -291,7 +311,7 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Open(XBMCRPC.Playlist.ItemEpisodeid item=null, XBMCRPC.Player.Open_options options=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (item != null)
              {
@@ -314,7 +334,7 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Open(XBMCRPC.Playlist.ItemMusicvideoid item=null, XBMCRPC.Player.Open_options options=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (item != null)
              {
@@ -337,7 +357,7 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Open(XBMCRPC.Playlist.ItemArtistid item=null, XBMCRPC.Player.Open_options options=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (item != null)
              {
@@ -360,7 +380,7 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Open(XBMCRPC.Playlist.ItemAlbumid item=null, XBMCRPC.Player.Open_options options=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (item != null)
              {
@@ -383,7 +403,7 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Open(XBMCRPC.Playlist.ItemSongid item=null, XBMCRPC.Player.Open_options options=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (item != null)
              {
@@ -406,7 +426,7 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Open(XBMCRPC.Playlist.ItemGenreid item=null, XBMCRPC.Player.Open_options options=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (item != null)
              {
@@ -429,7 +449,7 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Open(XBMCRPC.Player.Open_item2 item=null, XBMCRPC.Player.Open_options options=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (item != null)
              {
@@ -452,7 +472,7 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Open(XBMCRPC.Player.Open_itemPartymode item=null, XBMCRPC.Player.Open_options options=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (item != null)
              {
@@ -475,7 +495,7 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Open(XBMCRPC.Player.Open_itemChannelid item=null, XBMCRPC.Player.Open_options options=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (item != null)
              {
@@ -498,7 +518,7 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Open(XBMCRPC.Player.Open_itemRecordingid item=null, XBMCRPC.Player.Open_options options=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (item != null)
              {
@@ -520,7 +540,7 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Open(XBMCRPC.Player.Open_options options=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (options != null)
              {
@@ -536,19 +556,20 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="play"> </param>
                 /// <returns>XBMCRPC.Player.Speed</returns>
-        public async Task<XBMCRPC.Player.Speed> PlayPause(int playerid, bool? play=null)
+        public async Task<XBMCRPC.Player.Speed> PlayPause(int? playerid=null, bool? play=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
+              }
+             if (play != null)
              {
                  var jpropplay = JToken.FromObject(play, _client.Serializer);
                  jArgs.Add(new JProperty("play", jpropplay));
@@ -562,19 +583,19 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="play"> </param>
                 /// <returns>XBMCRPC.Player.Speed</returns>
-        public async Task<XBMCRPC.Player.Speed> PlayPause(int playerid, XBMCRPC.Global.Toggle2? play=null)
+        public async Task<XBMCRPC.Player.Speed> PlayPause(int? playerid=null, XBMCRPC.Global.Toggle2? play=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
+              }
              if (play != null)
              {
                  var jpropplay = JToken.FromObject(play, _client.Serializer);
@@ -588,19 +609,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="playerid"> REQUIRED </param>
                 /// <returns>XBMCRPC.Player.Speed</returns>
-        public async Task<XBMCRPC.Player.Speed> PlayPause(int playerid)
+        public async Task<XBMCRPC.Player.Speed> PlayPause(int? playerid=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
+              }
             return await _client.GetData<XBMCRPC.Player.Speed>("Player.PlayPause", jArgs);
         }
 
@@ -610,19 +631,19 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="value"> </param>
                 /// <returns>string</returns>
-        public async Task<string> Rotate(int playerid, XBMCRPC.Player.Rotate_value? value=null)
+        public async Task<string> Rotate(int? playerid=null, XBMCRPC.Player.Rotate_value? value=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
+              }
              if (value != null)
              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
@@ -637,23 +658,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="value"> REQUIRED </param>
                 /// <returns>XBMCRPC.Player.SeekResponse</returns>
-        public async Task<XBMCRPC.Player.SeekResponse> Seek(int playerid, double? value=null)
+        public async Task<XBMCRPC.Player.SeekResponse> Seek(int? playerid=null, double? value=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (value == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null value");
+              }
+             else
+              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
-             }
+              }
             return await _client.GetData<XBMCRPC.Player.SeekResponse>("Player.Seek", jArgs);
         }
 
@@ -663,23 +689,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="value"> REQUIRED </param>
                 /// <returns>XBMCRPC.Player.SeekResponse</returns>
-        public async Task<XBMCRPC.Player.SeekResponse> Seek(int playerid, XBMCRPC.Player.Position.Time value)
+        public async Task<XBMCRPC.Player.SeekResponse> Seek(int? playerid=null, XBMCRPC.Player.Position.Time value=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (value == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null value");
+              }
+             else
+              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
-             }
+              }
             return await _client.GetData<XBMCRPC.Player.SeekResponse>("Player.Seek", jArgs);
         }
 
@@ -689,23 +720,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="value"> REQUIRED </param>
                 /// <returns>XBMCRPC.Player.SeekResponse</returns>
-        public async Task<XBMCRPC.Player.SeekResponse> Seek(int playerid, XBMCRPC.Player.Seek_value1? value)
+        public async Task<XBMCRPC.Player.SeekResponse> Seek(int? playerid=null, XBMCRPC.Player.Seek_value1? value=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (value == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null value");
+              }
+             else
+              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
-             }
+              }
             return await _client.GetData<XBMCRPC.Player.SeekResponse>("Player.Seek", jArgs);
         }
 
@@ -715,23 +751,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="value"> REQUIRED </param>
                 /// <returns>XBMCRPC.Player.SeekResponse</returns>
-        public async Task<XBMCRPC.Player.SeekResponse> Seek(int playerid, XBMCRPC.Player.Seek_valuePercentage value)
+        public async Task<XBMCRPC.Player.SeekResponse> Seek(int? playerid=null, XBMCRPC.Player.Seek_valuePercentage value=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (value == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null value");
+              }
+             else
+              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
-             }
+              }
             return await _client.GetData<XBMCRPC.Player.SeekResponse>("Player.Seek", jArgs);
         }
 
@@ -741,23 +782,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="value"> REQUIRED </param>
                 /// <returns>XBMCRPC.Player.SeekResponse</returns>
-        public async Task<XBMCRPC.Player.SeekResponse> Seek(int playerid, XBMCRPC.Player.Seek_valueTime value)
+        public async Task<XBMCRPC.Player.SeekResponse> Seek(int? playerid=null, XBMCRPC.Player.Seek_valueTime value=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (value == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null value");
+              }
+             else
+              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
-             }
+              }
             return await _client.GetData<XBMCRPC.Player.SeekResponse>("Player.Seek", jArgs);
         }
 
@@ -767,23 +813,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="value"> REQUIRED </param>
                 /// <returns>XBMCRPC.Player.SeekResponse</returns>
-        public async Task<XBMCRPC.Player.SeekResponse> Seek(int playerid, XBMCRPC.Player.Seek_valueStep value)
+        public async Task<XBMCRPC.Player.SeekResponse> Seek(int? playerid=null, XBMCRPC.Player.Seek_valueStep value=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (value == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null value");
+              }
+             else
+              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
-             }
+              }
             return await _client.GetData<XBMCRPC.Player.SeekResponse>("Player.Seek", jArgs);
         }
 
@@ -793,23 +844,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="value"> REQUIRED </param>
                 /// <returns>XBMCRPC.Player.SeekResponse</returns>
-        public async Task<XBMCRPC.Player.SeekResponse> Seek(int playerid, XBMCRPC.Player.Seek_valueSeconds value)
+        public async Task<XBMCRPC.Player.SeekResponse> Seek(int? playerid=null, XBMCRPC.Player.Seek_valueSeconds value=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (value == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null value");
+              }
+             else
+              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
-             }
+              }
             return await _client.GetData<XBMCRPC.Player.SeekResponse>("Player.Seek", jArgs);
         }
 
@@ -818,19 +874,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="playerid"> REQUIRED </param>
                 /// <returns>XBMCRPC.Player.SeekResponse</returns>
-        public async Task<XBMCRPC.Player.SeekResponse> Seek(int playerid)
+        public async Task<XBMCRPC.Player.SeekResponse> Seek(int? playerid=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
+              }
             return await _client.GetData<XBMCRPC.Player.SeekResponse>("Player.Seek", jArgs);
         }
 
@@ -840,23 +896,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="stream"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> SetAudioStream(int playerid, XBMCRPC.Player.SetAudioStream_stream1? stream)
+        public async Task<string> SetAudioStream(int? playerid=null, XBMCRPC.Player.SetAudioStream_stream1? stream=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (stream == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null stream");
+              }
+             else
+              {
                  var jpropstream = JToken.FromObject(stream, _client.Serializer);
                  jArgs.Add(new JProperty("stream", jpropstream));
-             }
+              }
             return await _client.GetData<string>("Player.SetAudioStream", jArgs);
         }
 
@@ -866,23 +927,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="stream"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> SetAudioStream(int playerid, int stream)
+        public async Task<string> SetAudioStream(int? playerid=null, int? stream=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (stream == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null stream");
+              }
+             else
+              {
                  var jpropstream = JToken.FromObject(stream, _client.Serializer);
                  jArgs.Add(new JProperty("stream", jpropstream));
-             }
+              }
             return await _client.GetData<string>("Player.SetAudioStream", jArgs);
         }
 
@@ -891,19 +957,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="playerid"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> SetAudioStream(int playerid)
+        public async Task<string> SetAudioStream(int? playerid=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
+              }
             return await _client.GetData<string>("Player.SetAudioStream", jArgs);
         }
 
@@ -913,23 +979,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="partymode"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> SetPartymode(int playerid, bool? partymode=null)
+        public async Task<string> SetPartymode(int? playerid=null, bool? partymode=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (partymode == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null partymode");
+              }
+             else
+              {
                  var jproppartymode = JToken.FromObject(partymode, _client.Serializer);
                  jArgs.Add(new JProperty("partymode", jproppartymode));
-             }
+              }
             return await _client.GetData<string>("Player.SetPartymode", jArgs);
         }
 
@@ -939,23 +1010,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="partymode"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> SetPartymode(int playerid, XBMCRPC.Global.Toggle2? partymode)
+        public async Task<string> SetPartymode(int? playerid=null, XBMCRPC.Global.Toggle2? partymode=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (partymode == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null partymode");
+              }
+             else
+              {
                  var jproppartymode = JToken.FromObject(partymode, _client.Serializer);
                  jArgs.Add(new JProperty("partymode", jproppartymode));
-             }
+              }
             return await _client.GetData<string>("Player.SetPartymode", jArgs);
         }
 
@@ -964,19 +1040,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="playerid"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> SetPartymode(int playerid)
+        public async Task<string> SetPartymode(int? playerid=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
+              }
             return await _client.GetData<string>("Player.SetPartymode", jArgs);
         }
 
@@ -986,23 +1062,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="repeat"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> SetRepeat(int playerid, XBMCRPC.Player.Repeat? repeat)
+        public async Task<string> SetRepeat(int? playerid=null, XBMCRPC.Player.Repeat? repeat=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (repeat == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null repeat");
+              }
+             else
+              {
                  var jproprepeat = JToken.FromObject(repeat, _client.Serializer);
                  jArgs.Add(new JProperty("repeat", jproprepeat));
-             }
+              }
             return await _client.GetData<string>("Player.SetRepeat", jArgs);
         }
 
@@ -1012,23 +1093,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="repeat"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> SetRepeat(int playerid, XBMCRPC.Player.SetRepeat_repeat1? repeat)
+        public async Task<string> SetRepeat(int? playerid=null, XBMCRPC.Player.SetRepeat_repeat1? repeat=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (repeat == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null repeat");
+              }
+             else
+              {
                  var jproprepeat = JToken.FromObject(repeat, _client.Serializer);
                  jArgs.Add(new JProperty("repeat", jproprepeat));
-             }
+              }
             return await _client.GetData<string>("Player.SetRepeat", jArgs);
         }
 
@@ -1037,19 +1123,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="playerid"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> SetRepeat(int playerid)
+        public async Task<string> SetRepeat(int? playerid=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
+              }
             return await _client.GetData<string>("Player.SetRepeat", jArgs);
         }
 
@@ -1059,23 +1145,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="shuffle"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> SetShuffle(int playerid, bool? shuffle=null)
+        public async Task<string> SetShuffle(int? playerid=null, bool? shuffle=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (shuffle == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null shuffle");
+              }
+             else
+              {
                  var jpropshuffle = JToken.FromObject(shuffle, _client.Serializer);
                  jArgs.Add(new JProperty("shuffle", jpropshuffle));
-             }
+              }
             return await _client.GetData<string>("Player.SetShuffle", jArgs);
         }
 
@@ -1085,23 +1176,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="shuffle"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> SetShuffle(int playerid, XBMCRPC.Global.Toggle2? shuffle)
+        public async Task<string> SetShuffle(int? playerid=null, XBMCRPC.Global.Toggle2? shuffle=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (shuffle == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null shuffle");
+              }
+             else
+              {
                  var jpropshuffle = JToken.FromObject(shuffle, _client.Serializer);
                  jArgs.Add(new JProperty("shuffle", jpropshuffle));
-             }
+              }
             return await _client.GetData<string>("Player.SetShuffle", jArgs);
         }
 
@@ -1110,19 +1206,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="playerid"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> SetShuffle(int playerid)
+        public async Task<string> SetShuffle(int? playerid=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
+              }
             return await _client.GetData<string>("Player.SetShuffle", jArgs);
         }
 
@@ -1132,23 +1228,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="speed"> REQUIRED </param>
                 /// <returns>XBMCRPC.Player.Speed</returns>
-        public async Task<XBMCRPC.Player.Speed> SetSpeed(int playerid, int speed)
+        public async Task<XBMCRPC.Player.Speed> SetSpeed(int? playerid=null, int? speed=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (speed == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null speed");
+              }
+             else
+              {
                  var jpropspeed = JToken.FromObject(speed, _client.Serializer);
                  jArgs.Add(new JProperty("speed", jpropspeed));
-             }
+              }
             return await _client.GetData<XBMCRPC.Player.Speed>("Player.SetSpeed", jArgs);
         }
 
@@ -1158,23 +1259,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="speed"> REQUIRED </param>
                 /// <returns>XBMCRPC.Player.Speed</returns>
-        public async Task<XBMCRPC.Player.Speed> SetSpeed(int playerid, XBMCRPC.Global.IncrementDecrement? speed)
+        public async Task<XBMCRPC.Player.Speed> SetSpeed(int? playerid=null, XBMCRPC.Global.IncrementDecrement? speed=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (speed == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null speed");
+              }
+             else
+              {
                  var jpropspeed = JToken.FromObject(speed, _client.Serializer);
                  jArgs.Add(new JProperty("speed", jpropspeed));
-             }
+              }
             return await _client.GetData<XBMCRPC.Player.Speed>("Player.SetSpeed", jArgs);
         }
 
@@ -1183,19 +1289,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="playerid"> REQUIRED </param>
                 /// <returns>XBMCRPC.Player.Speed</returns>
-        public async Task<XBMCRPC.Player.Speed> SetSpeed(int playerid)
+        public async Task<XBMCRPC.Player.Speed> SetSpeed(int? playerid=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
+              }
             return await _client.GetData<XBMCRPC.Player.Speed>("Player.SetSpeed", jArgs);
         }
 
@@ -1206,23 +1312,29 @@ namespace XBMCRPC.Methods
                 /// <param name="subtitle"> REQUIRED </param>
                 /// <param name="enable"> Whether to enable subtitles to be displayed after setting the new subtitle</param>
                 /// <returns>string</returns>
-        public async Task<string> SetSubtitle(int playerid, XBMCRPC.Player.SetSubtitle_subtitle1? subtitle, bool? enable=null)
+        public async Task<string> SetSubtitle(int? playerid=null, XBMCRPC.Player.SetSubtitle_subtitle1? subtitle=null, bool? enable=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (subtitle == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null subtitle");
+              }
+             else
+              {
                  var jpropsubtitle = JToken.FromObject(subtitle, _client.Serializer);
                  jArgs.Add(new JProperty("subtitle", jpropsubtitle));
-             }
+              }
+             if (enable != null)
              {
                  var jpropenable = JToken.FromObject(enable, _client.Serializer);
                  jArgs.Add(new JProperty("enable", jpropenable));
@@ -1237,23 +1349,29 @@ namespace XBMCRPC.Methods
                 /// <param name="subtitle"> REQUIRED </param>
                 /// <param name="enable"> Whether to enable subtitles to be displayed after setting the new subtitle</param>
                 /// <returns>string</returns>
-        public async Task<string> SetSubtitle(int playerid, int subtitle, bool? enable=null)
+        public async Task<string> SetSubtitle(int? playerid=null, int? subtitle=null, bool? enable=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (subtitle == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null subtitle");
+              }
+             else
+              {
                  var jpropsubtitle = JToken.FromObject(subtitle, _client.Serializer);
                  jArgs.Add(new JProperty("subtitle", jpropsubtitle));
-             }
+              }
+             if (enable != null)
              {
                  var jpropenable = JToken.FromObject(enable, _client.Serializer);
                  jArgs.Add(new JProperty("enable", jpropenable));
@@ -1267,19 +1385,20 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="enable"> Whether to enable subtitles to be displayed after setting the new subtitle</param>
                 /// <returns>string</returns>
-        public async Task<string> SetSubtitle(int playerid, bool? enable=null)
+        public async Task<string> SetSubtitle(int? playerid=null, bool? enable=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
+              }
+             if (enable != null)
              {
                  var jpropenable = JToken.FromObject(enable, _client.Serializer);
                  jArgs.Add(new JProperty("enable", jpropenable));
@@ -1292,19 +1411,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="playerid"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Stop(int playerid)
+        public async Task<string> Stop(int? playerid=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
+              }
             return await _client.GetData<string>("Player.Stop", jArgs);
         }
 
@@ -1314,23 +1433,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="zoom"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Zoom(int playerid, XBMCRPC.Player.Zoom_zoom1? zoom)
+        public async Task<string> Zoom(int? playerid=null, XBMCRPC.Player.Zoom_zoom1? zoom=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (zoom == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null zoom");
+              }
+             else
+              {
                  var jpropzoom = JToken.FromObject(zoom, _client.Serializer);
                  jArgs.Add(new JProperty("zoom", jpropzoom));
-             }
+              }
             return await _client.GetData<string>("Player.Zoom", jArgs);
         }
 
@@ -1340,23 +1464,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playerid"> REQUIRED </param>
                 /// <param name="zoom"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Zoom(int playerid, int zoom)
+        public async Task<string> Zoom(int? playerid=null, int? zoom=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
-             {
+              }
+             if (zoom == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null zoom");
+              }
+             else
+              {
                  var jpropzoom = JToken.FromObject(zoom, _client.Serializer);
                  jArgs.Add(new JProperty("zoom", jpropzoom));
-             }
+              }
             return await _client.GetData<string>("Player.Zoom", jArgs);
         }
 
@@ -1365,25 +1494,25 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="playerid"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Zoom(int playerid)
+        public async Task<string> Zoom(int? playerid=null)
         {
-             if (playerid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playerid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playerid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplayerid = JToken.FromObject(playerid, _client.Serializer);
                  jArgs.Add(new JProperty("playerid", jpropplayerid));
-             }
+              }
             return await _client.GetData<string>("Player.Zoom", jArgs);
         }
 
-        public delegate void OnPauseDelegate(string sender, XBMCRPC.Player.Notifications.Data data);
+        public delegate void OnPauseDelegate(string sender=null, XBMCRPC.Player.Notifications.Data data=null);
         public event OnPauseDelegate OnPause;
-        internal void RaiseOnPause(string sender, XBMCRPC.Player.Notifications.Data data)
+        internal void RaiseOnPause(string sender=null, XBMCRPC.Player.Notifications.Data data=null)
         {
             if (OnPause != null)
             {
@@ -1391,9 +1520,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnPlayDelegate(string sender, XBMCRPC.Player.Notifications.Data data);
+        public delegate void OnPlayDelegate(string sender=null, XBMCRPC.Player.Notifications.Data data=null);
         public event OnPlayDelegate OnPlay;
-        internal void RaiseOnPlay(string sender, XBMCRPC.Player.Notifications.Data data)
+        internal void RaiseOnPlay(string sender=null, XBMCRPC.Player.Notifications.Data data=null)
         {
             if (OnPlay != null)
             {
@@ -1401,9 +1530,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnPropertyChangedDelegate(string sender, XBMCRPC.Player.OnPropertyChanged_data data);
+        public delegate void OnPropertyChangedDelegate(string sender=null, XBMCRPC.Player.OnPropertyChanged_data data=null);
         public event OnPropertyChangedDelegate OnPropertyChanged;
-        internal void RaiseOnPropertyChanged(string sender, XBMCRPC.Player.OnPropertyChanged_data data)
+        internal void RaiseOnPropertyChanged(string sender=null, XBMCRPC.Player.OnPropertyChanged_data data=null)
         {
             if (OnPropertyChanged != null)
             {
@@ -1411,9 +1540,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnSeekDelegate(string sender, XBMCRPC.Player.OnSeek_data data);
+        public delegate void OnSeekDelegate(string sender=null, XBMCRPC.Player.OnSeek_data data=null);
         public event OnSeekDelegate OnSeek;
-        internal void RaiseOnSeek(string sender, XBMCRPC.Player.OnSeek_data data)
+        internal void RaiseOnSeek(string sender=null, XBMCRPC.Player.OnSeek_data data=null)
         {
             if (OnSeek != null)
             {
@@ -1421,9 +1550,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnSpeedChangedDelegate(string sender, XBMCRPC.Player.Notifications.Data data);
+        public delegate void OnSpeedChangedDelegate(string sender=null, XBMCRPC.Player.Notifications.Data data=null);
         public event OnSpeedChangedDelegate OnSpeedChanged;
-        internal void RaiseOnSpeedChanged(string sender, XBMCRPC.Player.Notifications.Data data)
+        internal void RaiseOnSpeedChanged(string sender=null, XBMCRPC.Player.Notifications.Data data=null)
         {
             if (OnSpeedChanged != null)
             {
@@ -1431,9 +1560,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnStopDelegate(string sender, XBMCRPC.Player.OnStop_data data);
+        public delegate void OnStopDelegate(string sender=null, XBMCRPC.Player.OnStop_data data=null);
         public event OnStopDelegate OnStop;
-        internal void RaiseOnStop(string sender, XBMCRPC.Player.OnStop_data data)
+        internal void RaiseOnStop(string sender=null, XBMCRPC.Player.OnStop_data data=null)
         {
             if (OnStop != null)
             {

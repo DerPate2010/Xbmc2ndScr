@@ -20,8 +20,9 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Clean(bool? showdialogs=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
+             if (showdialogs != null)
              {
                  var jpropshowdialogs = JToken.FromObject(showdialogs, _client.Serializer);
                  jArgs.Add(new JProperty("showdialogs", jpropshowdialogs));
@@ -36,7 +37,7 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Export(XBMCRPC.AudioLibrary.Export_optionsPath options=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (options != null)
              {
@@ -53,7 +54,7 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Export(XBMCRPC.AudioLibrary.Export_options1 options=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (options != null)
              {
@@ -78,19 +79,19 @@ namespace XBMCRPC.Methods
                 /// <param name="albumid"> REQUIRED </param>
                 /// <param name="properties"> </param>
                 /// <returns>XBMCRPC.AudioLibrary.GetAlbumDetailsResponse</returns>
-        public async Task<XBMCRPC.AudioLibrary.GetAlbumDetailsResponse> GetAlbumDetails(int albumid, XBMCRPC.Audio.Fields.Album properties=null)
+        public async Task<XBMCRPC.AudioLibrary.GetAlbumDetailsResponse> GetAlbumDetails(int? albumid=null, XBMCRPC.Audio.Fields.Album properties=null)
         {
-             if (albumid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (albumid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null albumid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropalbumid = JToken.FromObject(albumid, _client.Serializer);
                  jArgs.Add(new JProperty("albumid", jpropalbumid));
-             }
+              }
              if (properties != null)
              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
@@ -110,7 +111,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetAlbumsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetAlbumsResponse> GetAlbums(XBMCRPC.Audio.Fields.Album properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.AudioLibrary.GetAlbums_filterGenreid filter=null, bool? includesingles=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -132,6 +133,7 @@ namespace XBMCRPC.Methods
                  var jpropfilter = JToken.FromObject(filter, _client.Serializer);
                  jArgs.Add(new JProperty("filter", jpropfilter));
              }
+             if (includesingles != null)
              {
                  var jpropincludesingles = JToken.FromObject(includesingles, _client.Serializer);
                  jArgs.Add(new JProperty("includesingles", jpropincludesingles));
@@ -150,7 +152,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetAlbumsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetAlbumsResponse> GetAlbums(XBMCRPC.Audio.Fields.Album properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.AudioLibrary.GetAlbums_filterGenre filter=null, bool? includesingles=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -172,6 +174,7 @@ namespace XBMCRPC.Methods
                  var jpropfilter = JToken.FromObject(filter, _client.Serializer);
                  jArgs.Add(new JProperty("filter", jpropfilter));
              }
+             if (includesingles != null)
              {
                  var jpropincludesingles = JToken.FromObject(includesingles, _client.Serializer);
                  jArgs.Add(new JProperty("includesingles", jpropincludesingles));
@@ -190,7 +193,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetAlbumsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetAlbumsResponse> GetAlbums(XBMCRPC.Audio.Fields.Album properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.AudioLibrary.GetAlbums_filterArtistid filter=null, bool? includesingles=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -212,6 +215,7 @@ namespace XBMCRPC.Methods
                  var jpropfilter = JToken.FromObject(filter, _client.Serializer);
                  jArgs.Add(new JProperty("filter", jpropfilter));
              }
+             if (includesingles != null)
              {
                  var jpropincludesingles = JToken.FromObject(includesingles, _client.Serializer);
                  jArgs.Add(new JProperty("includesingles", jpropincludesingles));
@@ -230,7 +234,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetAlbumsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetAlbumsResponse> GetAlbums(XBMCRPC.Audio.Fields.Album properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.AudioLibrary.GetAlbums_filterArtist filter=null, bool? includesingles=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -252,6 +256,7 @@ namespace XBMCRPC.Methods
                  var jpropfilter = JToken.FromObject(filter, _client.Serializer);
                  jArgs.Add(new JProperty("filter", jpropfilter));
              }
+             if (includesingles != null)
              {
                  var jpropincludesingles = JToken.FromObject(includesingles, _client.Serializer);
                  jArgs.Add(new JProperty("includesingles", jpropincludesingles));
@@ -270,7 +275,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetAlbumsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetAlbumsResponse> GetAlbums(XBMCRPC.Audio.Fields.Album properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.List.Filter.AlbumsAnd filter=null, bool? includesingles=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -292,6 +297,7 @@ namespace XBMCRPC.Methods
                  var jpropfilter = JToken.FromObject(filter, _client.Serializer);
                  jArgs.Add(new JProperty("filter", jpropfilter));
              }
+             if (includesingles != null)
              {
                  var jpropincludesingles = JToken.FromObject(includesingles, _client.Serializer);
                  jArgs.Add(new JProperty("includesingles", jpropincludesingles));
@@ -310,7 +316,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetAlbumsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetAlbumsResponse> GetAlbums(XBMCRPC.Audio.Fields.Album properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.List.Filter.AlbumsOr filter=null, bool? includesingles=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -332,6 +338,7 @@ namespace XBMCRPC.Methods
                  var jpropfilter = JToken.FromObject(filter, _client.Serializer);
                  jArgs.Add(new JProperty("filter", jpropfilter));
              }
+             if (includesingles != null)
              {
                  var jpropincludesingles = JToken.FromObject(includesingles, _client.Serializer);
                  jArgs.Add(new JProperty("includesingles", jpropincludesingles));
@@ -350,7 +357,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetAlbumsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetAlbumsResponse> GetAlbums(XBMCRPC.Audio.Fields.Album properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.List.Filter.Rule.Albums filter=null, bool? includesingles=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -372,6 +379,7 @@ namespace XBMCRPC.Methods
                  var jpropfilter = JToken.FromObject(filter, _client.Serializer);
                  jArgs.Add(new JProperty("filter", jpropfilter));
              }
+             if (includesingles != null)
              {
                  var jpropincludesingles = JToken.FromObject(includesingles, _client.Serializer);
                  jArgs.Add(new JProperty("includesingles", jpropincludesingles));
@@ -389,7 +397,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetAlbumsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetAlbumsResponse> GetAlbums(XBMCRPC.Audio.Fields.Album properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, bool? includesingles=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -406,6 +414,7 @@ namespace XBMCRPC.Methods
                  var jpropsort = JToken.FromObject(sort, _client.Serializer);
                  jArgs.Add(new JProperty("sort", jpropsort));
              }
+             if (includesingles != null)
              {
                  var jpropincludesingles = JToken.FromObject(includesingles, _client.Serializer);
                  jArgs.Add(new JProperty("includesingles", jpropincludesingles));
@@ -419,19 +428,19 @@ namespace XBMCRPC.Methods
                 /// <param name="artistid"> REQUIRED </param>
                 /// <param name="properties"> </param>
                 /// <returns>XBMCRPC.AudioLibrary.GetArtistDetailsResponse</returns>
-        public async Task<XBMCRPC.AudioLibrary.GetArtistDetailsResponse> GetArtistDetails(int artistid, XBMCRPC.Audio.Fields.Artist properties=null)
+        public async Task<XBMCRPC.AudioLibrary.GetArtistDetailsResponse> GetArtistDetails(int? artistid=null, XBMCRPC.Audio.Fields.Artist properties=null)
         {
-             if (artistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (artistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null artistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropartistid = JToken.FromObject(artistid, _client.Serializer);
                  jArgs.Add(new JProperty("artistid", jpropartistid));
-             }
+              }
              if (properties != null)
              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
@@ -451,8 +460,9 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetArtistsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetArtistsResponse> GetArtists(bool? albumartistsonly=null, XBMCRPC.Audio.Fields.Artist properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.AudioLibrary.GetArtists_filterGenreid filter=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
+             if (albumartistsonly != null)
              {
                  var jpropalbumartistsonly = JToken.FromObject(albumartistsonly, _client.Serializer);
                  jArgs.Add(new JProperty("albumartistsonly", jpropalbumartistsonly));
@@ -491,8 +501,9 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetArtistsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetArtistsResponse> GetArtists(bool? albumartistsonly=null, XBMCRPC.Audio.Fields.Artist properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.AudioLibrary.GetArtists_filterGenre filter=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
+             if (albumartistsonly != null)
              {
                  var jpropalbumartistsonly = JToken.FromObject(albumartistsonly, _client.Serializer);
                  jArgs.Add(new JProperty("albumartistsonly", jpropalbumartistsonly));
@@ -531,8 +542,9 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetArtistsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetArtistsResponse> GetArtists(bool? albumartistsonly=null, XBMCRPC.Audio.Fields.Artist properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.AudioLibrary.GetArtists_filterAlbumid filter=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
+             if (albumartistsonly != null)
              {
                  var jpropalbumartistsonly = JToken.FromObject(albumartistsonly, _client.Serializer);
                  jArgs.Add(new JProperty("albumartistsonly", jpropalbumartistsonly));
@@ -571,8 +583,9 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetArtistsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetArtistsResponse> GetArtists(bool? albumartistsonly=null, XBMCRPC.Audio.Fields.Artist properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.AudioLibrary.GetArtists_filterAlbum filter=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
+             if (albumartistsonly != null)
              {
                  var jpropalbumartistsonly = JToken.FromObject(albumartistsonly, _client.Serializer);
                  jArgs.Add(new JProperty("albumartistsonly", jpropalbumartistsonly));
@@ -611,8 +624,9 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetArtistsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetArtistsResponse> GetArtists(bool? albumartistsonly=null, XBMCRPC.Audio.Fields.Artist properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.AudioLibrary.GetArtists_filterSongid filter=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
+             if (albumartistsonly != null)
              {
                  var jpropalbumartistsonly = JToken.FromObject(albumartistsonly, _client.Serializer);
                  jArgs.Add(new JProperty("albumartistsonly", jpropalbumartistsonly));
@@ -651,8 +665,9 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetArtistsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetArtistsResponse> GetArtists(bool? albumartistsonly=null, XBMCRPC.Audio.Fields.Artist properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.List.Filter.ArtistsAnd filter=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
+             if (albumartistsonly != null)
              {
                  var jpropalbumartistsonly = JToken.FromObject(albumartistsonly, _client.Serializer);
                  jArgs.Add(new JProperty("albumartistsonly", jpropalbumartistsonly));
@@ -691,8 +706,9 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetArtistsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetArtistsResponse> GetArtists(bool? albumartistsonly=null, XBMCRPC.Audio.Fields.Artist properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.List.Filter.ArtistsOr filter=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
+             if (albumartistsonly != null)
              {
                  var jpropalbumartistsonly = JToken.FromObject(albumartistsonly, _client.Serializer);
                  jArgs.Add(new JProperty("albumartistsonly", jpropalbumartistsonly));
@@ -731,8 +747,9 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetArtistsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetArtistsResponse> GetArtists(bool? albumartistsonly=null, XBMCRPC.Audio.Fields.Artist properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.List.Filter.Rule.Artists filter=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
+             if (albumartistsonly != null)
              {
                  var jpropalbumartistsonly = JToken.FromObject(albumartistsonly, _client.Serializer);
                  jArgs.Add(new JProperty("albumartistsonly", jpropalbumartistsonly));
@@ -770,8 +787,9 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetArtistsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetArtistsResponse> GetArtists(bool? albumartistsonly=null, XBMCRPC.Audio.Fields.Artist properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
+             if (albumartistsonly != null)
              {
                  var jpropalbumartistsonly = JToken.FromObject(albumartistsonly, _client.Serializer);
                  jArgs.Add(new JProperty("albumartistsonly", jpropalbumartistsonly));
@@ -803,7 +821,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetGenresResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetGenresResponse> GetGenres(XBMCRPC.Library.Fields.Genre properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -832,7 +850,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetRecentlyAddedAlbumsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetRecentlyAddedAlbumsResponse> GetRecentlyAddedAlbums(XBMCRPC.Audio.Fields.Album properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -860,14 +878,9 @@ namespace XBMCRPC.Methods
                 /// <param name="limits"> </param>
                 /// <param name="sort"> </param>
                 /// <returns>XBMCRPC.AudioLibrary.GetRecentlyAddedSongsResponse</returns>
-        public async Task<XBMCRPC.AudioLibrary.GetRecentlyAddedSongsResponse> GetRecentlyAddedSongs(int albumlimit=0, XBMCRPC.Audio.Fields.Song properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null)
+        public async Task<XBMCRPC.AudioLibrary.GetRecentlyAddedSongsResponse> GetRecentlyAddedSongs(int? albumlimit=null, XBMCRPC.Audio.Fields.Song properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null)
         {
-             if (albumlimit == 0 )
-             {
-                 return null;
-              }
-
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (albumlimit != null)
              {
@@ -901,7 +914,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetRecentlyPlayedAlbumsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetRecentlyPlayedAlbumsResponse> GetRecentlyPlayedAlbums(XBMCRPC.Audio.Fields.Album properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -930,7 +943,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetRecentlyPlayedSongsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetRecentlyPlayedSongsResponse> GetRecentlyPlayedSongs(XBMCRPC.Audio.Fields.Song properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -956,19 +969,19 @@ namespace XBMCRPC.Methods
                 /// <param name="songid"> REQUIRED </param>
                 /// <param name="properties"> </param>
                 /// <returns>XBMCRPC.AudioLibrary.GetSongDetailsResponse</returns>
-        public async Task<XBMCRPC.AudioLibrary.GetSongDetailsResponse> GetSongDetails(int songid, XBMCRPC.Audio.Fields.Song properties=null)
+        public async Task<XBMCRPC.AudioLibrary.GetSongDetailsResponse> GetSongDetails(int? songid=null, XBMCRPC.Audio.Fields.Song properties=null)
         {
-             if (songid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (songid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null songid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropsongid = JToken.FromObject(songid, _client.Serializer);
                  jArgs.Add(new JProperty("songid", jpropsongid));
-             }
+              }
              if (properties != null)
              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
@@ -988,7 +1001,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetSongsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetSongsResponse> GetSongs(XBMCRPC.Audio.Fields.Song properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.AudioLibrary.GetSongs_filterGenreid filter=null, bool? includesingles=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -1010,6 +1023,7 @@ namespace XBMCRPC.Methods
                  var jpropfilter = JToken.FromObject(filter, _client.Serializer);
                  jArgs.Add(new JProperty("filter", jpropfilter));
              }
+             if (includesingles != null)
              {
                  var jpropincludesingles = JToken.FromObject(includesingles, _client.Serializer);
                  jArgs.Add(new JProperty("includesingles", jpropincludesingles));
@@ -1028,7 +1042,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetSongsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetSongsResponse> GetSongs(XBMCRPC.Audio.Fields.Song properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.AudioLibrary.GetSongs_filterGenre filter=null, bool? includesingles=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -1050,6 +1064,7 @@ namespace XBMCRPC.Methods
                  var jpropfilter = JToken.FromObject(filter, _client.Serializer);
                  jArgs.Add(new JProperty("filter", jpropfilter));
              }
+             if (includesingles != null)
              {
                  var jpropincludesingles = JToken.FromObject(includesingles, _client.Serializer);
                  jArgs.Add(new JProperty("includesingles", jpropincludesingles));
@@ -1068,7 +1083,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetSongsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetSongsResponse> GetSongs(XBMCRPC.Audio.Fields.Song properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.AudioLibrary.GetSongs_filterArtistid filter=null, bool? includesingles=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -1090,6 +1105,7 @@ namespace XBMCRPC.Methods
                  var jpropfilter = JToken.FromObject(filter, _client.Serializer);
                  jArgs.Add(new JProperty("filter", jpropfilter));
              }
+             if (includesingles != null)
              {
                  var jpropincludesingles = JToken.FromObject(includesingles, _client.Serializer);
                  jArgs.Add(new JProperty("includesingles", jpropincludesingles));
@@ -1108,7 +1124,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetSongsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetSongsResponse> GetSongs(XBMCRPC.Audio.Fields.Song properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.AudioLibrary.GetSongs_filterArtist filter=null, bool? includesingles=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -1130,6 +1146,7 @@ namespace XBMCRPC.Methods
                  var jpropfilter = JToken.FromObject(filter, _client.Serializer);
                  jArgs.Add(new JProperty("filter", jpropfilter));
              }
+             if (includesingles != null)
              {
                  var jpropincludesingles = JToken.FromObject(includesingles, _client.Serializer);
                  jArgs.Add(new JProperty("includesingles", jpropincludesingles));
@@ -1148,7 +1165,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetSongsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetSongsResponse> GetSongs(XBMCRPC.Audio.Fields.Song properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.AudioLibrary.GetSongs_filterAlbumid filter=null, bool? includesingles=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -1170,6 +1187,7 @@ namespace XBMCRPC.Methods
                  var jpropfilter = JToken.FromObject(filter, _client.Serializer);
                  jArgs.Add(new JProperty("filter", jpropfilter));
              }
+             if (includesingles != null)
              {
                  var jpropincludesingles = JToken.FromObject(includesingles, _client.Serializer);
                  jArgs.Add(new JProperty("includesingles", jpropincludesingles));
@@ -1188,7 +1206,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetSongsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetSongsResponse> GetSongs(XBMCRPC.Audio.Fields.Song properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.AudioLibrary.GetSongs_filterAlbum filter=null, bool? includesingles=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -1210,6 +1228,7 @@ namespace XBMCRPC.Methods
                  var jpropfilter = JToken.FromObject(filter, _client.Serializer);
                  jArgs.Add(new JProperty("filter", jpropfilter));
              }
+             if (includesingles != null)
              {
                  var jpropincludesingles = JToken.FromObject(includesingles, _client.Serializer);
                  jArgs.Add(new JProperty("includesingles", jpropincludesingles));
@@ -1228,7 +1247,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetSongsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetSongsResponse> GetSongs(XBMCRPC.Audio.Fields.Song properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.List.Filter.SongsAnd filter=null, bool? includesingles=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -1250,6 +1269,7 @@ namespace XBMCRPC.Methods
                  var jpropfilter = JToken.FromObject(filter, _client.Serializer);
                  jArgs.Add(new JProperty("filter", jpropfilter));
              }
+             if (includesingles != null)
              {
                  var jpropincludesingles = JToken.FromObject(includesingles, _client.Serializer);
                  jArgs.Add(new JProperty("includesingles", jpropincludesingles));
@@ -1268,7 +1288,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetSongsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetSongsResponse> GetSongs(XBMCRPC.Audio.Fields.Song properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.List.Filter.SongsOr filter=null, bool? includesingles=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -1290,6 +1310,7 @@ namespace XBMCRPC.Methods
                  var jpropfilter = JToken.FromObject(filter, _client.Serializer);
                  jArgs.Add(new JProperty("filter", jpropfilter));
              }
+             if (includesingles != null)
              {
                  var jpropincludesingles = JToken.FromObject(includesingles, _client.Serializer);
                  jArgs.Add(new JProperty("includesingles", jpropincludesingles));
@@ -1308,7 +1329,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetSongsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetSongsResponse> GetSongs(XBMCRPC.Audio.Fields.Song properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, XBMCRPC.List.Filter.Rule.Songs filter=null, bool? includesingles=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -1330,6 +1351,7 @@ namespace XBMCRPC.Methods
                  var jpropfilter = JToken.FromObject(filter, _client.Serializer);
                  jArgs.Add(new JProperty("filter", jpropfilter));
              }
+             if (includesingles != null)
              {
                  var jpropincludesingles = JToken.FromObject(includesingles, _client.Serializer);
                  jArgs.Add(new JProperty("includesingles", jpropincludesingles));
@@ -1347,7 +1369,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.AudioLibrary.GetSongsResponse</returns>
         public async Task<XBMCRPC.AudioLibrary.GetSongsResponse> GetSongs(XBMCRPC.Audio.Fields.Song properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null, bool? includesingles=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (properties != null)
              {
@@ -1364,6 +1386,7 @@ namespace XBMCRPC.Methods
                  var jpropsort = JToken.FromObject(sort, _client.Serializer);
                  jArgs.Add(new JProperty("sort", jpropsort));
              }
+             if (includesingles != null)
              {
                  var jpropincludesingles = JToken.FromObject(includesingles, _client.Serializer);
                  jArgs.Add(new JProperty("includesingles", jpropincludesingles));
@@ -1379,13 +1402,14 @@ namespace XBMCRPC.Methods
                 /// <returns>string</returns>
         public async Task<string> Scan(string directory=null, bool? showdialogs=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (directory != null)
              {
                  var jpropdirectory = JToken.FromObject(directory, _client.Serializer);
                  jArgs.Add(new JProperty("directory", jpropdirectory));
              }
+             if (showdialogs != null)
              {
                  var jpropshowdialogs = JToken.FromObject(showdialogs, _client.Serializer);
                  jArgs.Add(new JProperty("showdialogs", jpropshowdialogs));
@@ -1409,19 +1433,19 @@ namespace XBMCRPC.Methods
                 /// <param name="rating"> </param>
                 /// <param name="year"> </param>
                 /// <returns>string</returns>
-        public async Task<string> SetAlbumDetails(int albumid, string title=null, global::System.Collections.Generic.List<string> artist=null, string description=null, global::System.Collections.Generic.List<string> genre=null, global::System.Collections.Generic.List<string> theme=null, global::System.Collections.Generic.List<string> mood=null, global::System.Collections.Generic.List<string> style=null, string type=null, string albumlabel=null, int rating=0, int year=0)
+        public async Task<string> SetAlbumDetails(int? albumid=null, string title=null, global::System.Collections.Generic.List<string> artist=null, string description=null, global::System.Collections.Generic.List<string> genre=null, global::System.Collections.Generic.List<string> theme=null, global::System.Collections.Generic.List<string> mood=null, global::System.Collections.Generic.List<string> style=null, string type=null, string albumlabel=null, int? rating=null, int? year=null)
         {
-             if (albumid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (albumid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null albumid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropalbumid = JToken.FromObject(albumid, _client.Serializer);
                  jArgs.Add(new JProperty("albumid", jpropalbumid));
-             }
+              }
              if (title != null)
              {
                  var jproptitle = JToken.FromObject(title, _client.Serializer);
@@ -1496,19 +1520,19 @@ namespace XBMCRPC.Methods
                 /// <param name="disbanded"> </param>
                 /// <param name="yearsactive"> </param>
                 /// <returns>string</returns>
-        public async Task<string> SetArtistDetails(int artistid, string artist=null, global::System.Collections.Generic.List<string> instrument=null, global::System.Collections.Generic.List<string> style=null, global::System.Collections.Generic.List<string> mood=null, string born=null, string formed=null, string description=null, global::System.Collections.Generic.List<string> genre=null, string died=null, string disbanded=null, global::System.Collections.Generic.List<string> yearsactive=null)
+        public async Task<string> SetArtistDetails(int? artistid=null, string artist=null, global::System.Collections.Generic.List<string> instrument=null, global::System.Collections.Generic.List<string> style=null, global::System.Collections.Generic.List<string> mood=null, string born=null, string formed=null, string description=null, global::System.Collections.Generic.List<string> genre=null, string died=null, string disbanded=null, global::System.Collections.Generic.List<string> yearsactive=null)
         {
-             if (artistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (artistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null artistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropartistid = JToken.FromObject(artistid, _client.Serializer);
                  jArgs.Add(new JProperty("artistid", jpropartistid));
-             }
+              }
              if (artist != null)
              {
                  var jpropartist = JToken.FromObject(artist, _client.Serializer);
@@ -1589,19 +1613,19 @@ namespace XBMCRPC.Methods
                 /// <param name="playcount"> </param>
                 /// <param name="lastplayed"> </param>
                 /// <returns>string</returns>
-        public async Task<string> SetSongDetails(int songid, string title=null, global::System.Collections.Generic.List<string> artist=null, global::System.Collections.Generic.List<string> albumartist=null, global::System.Collections.Generic.List<string> genre=null, int year=0, int rating=0, string album=null, int track=0, int disc=0, int duration=0, string comment=null, string musicbrainztrackid=null, string musicbrainzartistid=null, string musicbrainzalbumid=null, string musicbrainzalbumartistid=null, int playcount=0, string lastplayed=null)
+        public async Task<string> SetSongDetails(int? songid=null, string title=null, global::System.Collections.Generic.List<string> artist=null, global::System.Collections.Generic.List<string> albumartist=null, global::System.Collections.Generic.List<string> genre=null, int? year=null, int? rating=null, string album=null, int? track=null, int? disc=null, int? duration=null, string comment=null, string musicbrainztrackid=null, string musicbrainzartistid=null, string musicbrainzalbumid=null, string musicbrainzalbumartistid=null, int? playcount=null, string lastplayed=null)
         {
-             if (songid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (songid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null songid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropsongid = JToken.FromObject(songid, _client.Serializer);
                  jArgs.Add(new JProperty("songid", jpropsongid));
-             }
+              }
              if (title != null)
              {
                  var jproptitle = JToken.FromObject(title, _client.Serializer);
@@ -1690,9 +1714,9 @@ namespace XBMCRPC.Methods
             return await _client.GetData<string>("AudioLibrary.SetSongDetails", jArgs);
         }
 
-        public delegate void OnCleanFinishedDelegate(string sender, object data);
+        public delegate void OnCleanFinishedDelegate(string sender=null, object data=null);
         public event OnCleanFinishedDelegate OnCleanFinished;
-        internal void RaiseOnCleanFinished(string sender, object data)
+        internal void RaiseOnCleanFinished(string sender=null, object data=null)
         {
             if (OnCleanFinished != null)
             {
@@ -1700,9 +1724,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnCleanStartedDelegate(string sender, object data);
+        public delegate void OnCleanStartedDelegate(string sender=null, object data=null);
         public event OnCleanStartedDelegate OnCleanStarted;
-        internal void RaiseOnCleanStarted(string sender, object data)
+        internal void RaiseOnCleanStarted(string sender=null, object data=null)
         {
             if (OnCleanStarted != null)
             {
@@ -1710,9 +1734,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnExportDelegate(string sender, XBMCRPC.AudioLibrary.OnExport_data data=null);
+        public delegate void OnExportDelegate(string sender=null, XBMCRPC.AudioLibrary.OnExport_data data=null);
         public event OnExportDelegate OnExport;
-        internal void RaiseOnExport(string sender, XBMCRPC.AudioLibrary.OnExport_data data=null)
+        internal void RaiseOnExport(string sender=null, XBMCRPC.AudioLibrary.OnExport_data data=null)
         {
             if (OnExport != null)
             {
@@ -1720,9 +1744,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnRemoveDelegate(string sender, XBMCRPC.AudioLibrary.OnRemove_data data);
+        public delegate void OnRemoveDelegate(string sender=null, XBMCRPC.AudioLibrary.OnRemove_data data=null);
         public event OnRemoveDelegate OnRemove;
-        internal void RaiseOnRemove(string sender, XBMCRPC.AudioLibrary.OnRemove_data data)
+        internal void RaiseOnRemove(string sender=null, XBMCRPC.AudioLibrary.OnRemove_data data=null)
         {
             if (OnRemove != null)
             {
@@ -1730,9 +1754,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnScanFinishedDelegate(string sender, object data);
+        public delegate void OnScanFinishedDelegate(string sender=null, object data=null);
         public event OnScanFinishedDelegate OnScanFinished;
-        internal void RaiseOnScanFinished(string sender, object data)
+        internal void RaiseOnScanFinished(string sender=null, object data=null)
         {
             if (OnScanFinished != null)
             {
@@ -1740,9 +1764,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnScanStartedDelegate(string sender, object data);
+        public delegate void OnScanStartedDelegate(string sender=null, object data=null);
         public event OnScanStartedDelegate OnScanStarted;
-        internal void RaiseOnScanStarted(string sender, object data)
+        internal void RaiseOnScanStarted(string sender=null, object data=null)
         {
             if (OnScanStarted != null)
             {
@@ -1750,9 +1774,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnUpdateDelegate(string sender, XBMCRPC.AudioLibrary.OnUpdate_data data);
+        public delegate void OnUpdateDelegate(string sender=null, XBMCRPC.AudioLibrary.OnUpdate_data data=null);
         public event OnUpdateDelegate OnUpdate;
-        internal void RaiseOnUpdate(string sender, XBMCRPC.AudioLibrary.OnUpdate_data data)
+        internal void RaiseOnUpdate(string sender=null, XBMCRPC.AudioLibrary.OnUpdate_data data=null)
         {
             if (OnUpdate != null)
             {

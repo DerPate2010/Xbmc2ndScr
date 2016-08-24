@@ -88,7 +88,7 @@ namespace JsonRpcGen.ParameterHandler
             }
 
             //if (_printDefault && Required == false)
-            if (Required == false)
+            if (_printDefault && Required == false)
             {
 
                 return "=" + Type.TypeHandler.GetDefault();
