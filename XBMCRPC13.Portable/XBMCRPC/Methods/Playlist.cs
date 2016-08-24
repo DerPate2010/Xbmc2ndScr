@@ -19,23 +19,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playlistid"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Add(int playlistid, XBMCRPC.Playlist.ItemFile item)
+        public async Task<string> Add(int? playlistid=null, XBMCRPC.Playlist.ItemFile item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Add", jArgs);
         }
 
@@ -45,23 +50,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playlistid"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Add(int playlistid, XBMCRPC.Playlist.Item1 item)
+        public async Task<string> Add(int? playlistid=null, XBMCRPC.Playlist.Item1 item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Add", jArgs);
         }
 
@@ -71,23 +81,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playlistid"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Add(int playlistid, XBMCRPC.Playlist.ItemMovieid item)
+        public async Task<string> Add(int? playlistid=null, XBMCRPC.Playlist.ItemMovieid item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Add", jArgs);
         }
 
@@ -97,23 +112,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playlistid"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Add(int playlistid, XBMCRPC.Playlist.ItemEpisodeid item)
+        public async Task<string> Add(int? playlistid=null, XBMCRPC.Playlist.ItemEpisodeid item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Add", jArgs);
         }
 
@@ -123,23 +143,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playlistid"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Add(int playlistid, XBMCRPC.Playlist.ItemMusicvideoid item)
+        public async Task<string> Add(int? playlistid=null, XBMCRPC.Playlist.ItemMusicvideoid item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Add", jArgs);
         }
 
@@ -149,23 +174,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playlistid"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Add(int playlistid, XBMCRPC.Playlist.ItemArtistid item)
+        public async Task<string> Add(int? playlistid=null, XBMCRPC.Playlist.ItemArtistid item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Add", jArgs);
         }
 
@@ -175,23 +205,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playlistid"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Add(int playlistid, XBMCRPC.Playlist.ItemAlbumid item)
+        public async Task<string> Add(int? playlistid=null, XBMCRPC.Playlist.ItemAlbumid item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Add", jArgs);
         }
 
@@ -201,23 +236,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playlistid"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Add(int playlistid, XBMCRPC.Playlist.ItemSongid item)
+        public async Task<string> Add(int? playlistid=null, XBMCRPC.Playlist.ItemSongid item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Add", jArgs);
         }
 
@@ -227,23 +267,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playlistid"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Add(int playlistid, XBMCRPC.Playlist.ItemGenreid item)
+        public async Task<string> Add(int? playlistid=null, XBMCRPC.Playlist.ItemGenreid item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Add", jArgs);
         }
 
@@ -253,23 +298,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playlistid"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Add(int playlistid, global::System.Collections.Generic.List<object> item)
+        public async Task<string> Add(int? playlistid=null, global::System.Collections.Generic.List<object> item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Add", jArgs);
         }
 
@@ -278,19 +328,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="playlistid"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Add(int playlistid)
+        public async Task<string> Add(int? playlistid=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
+              }
             return await _client.GetData<string>("Playlist.Add", jArgs);
         }
 
@@ -299,19 +349,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="playlistid"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Clear(int playlistid)
+        public async Task<string> Clear(int? playlistid=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
+              }
             return await _client.GetData<string>("Playlist.Clear", jArgs);
         }
 
@@ -323,19 +373,19 @@ namespace XBMCRPC.Methods
                 /// <param name="limits"> </param>
                 /// <param name="sort"> </param>
                 /// <returns>XBMCRPC.Playlist.GetItemsResponse</returns>
-        public async Task<XBMCRPC.Playlist.GetItemsResponse> GetItems(int playlistid, XBMCRPC.List.Fields.All properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null)
+        public async Task<XBMCRPC.Playlist.GetItemsResponse> GetItems(int? playlistid=null, XBMCRPC.List.Fields.All properties=null, XBMCRPC.List.Limits limits=null, XBMCRPC.List.Sort sort=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
+              }
              if (properties != null)
              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
@@ -369,23 +419,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playlistid"> REQUIRED </param>
                 /// <param name="properties"> REQUIRED </param>
                 /// <returns>XBMCRPC.Playlist.Property.Value</returns>
-        public async Task<XBMCRPC.Playlist.Property.Value> GetProperties(int playlistid, XBMCRPC.Playlist.GetProperties_properties properties)
+        public async Task<XBMCRPC.Playlist.Property.Value> GetProperties(int? playlistid=null, XBMCRPC.Playlist.GetProperties_properties properties=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (properties == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null properties");
+              }
+             else
+              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
                  jArgs.Add(new JProperty("properties", jpropproperties));
-             }
+              }
             return await _client.GetData<XBMCRPC.Playlist.Property.Value>("Playlist.GetProperties", jArgs);
         }
 
@@ -396,27 +451,37 @@ namespace XBMCRPC.Methods
                 /// <param name="position"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Insert(int playlistid, int position, XBMCRPC.Playlist.ItemFile item)
+        public async Task<string> Insert(int? playlistid=null, int? position=null, XBMCRPC.Playlist.ItemFile item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (position == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null position");
+              }
+             else
+              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Insert", jArgs);
         }
 
@@ -427,27 +492,37 @@ namespace XBMCRPC.Methods
                 /// <param name="position"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Insert(int playlistid, int position, XBMCRPC.Playlist.Item1 item)
+        public async Task<string> Insert(int? playlistid=null, int? position=null, XBMCRPC.Playlist.Item1 item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (position == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null position");
+              }
+             else
+              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Insert", jArgs);
         }
 
@@ -458,27 +533,37 @@ namespace XBMCRPC.Methods
                 /// <param name="position"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Insert(int playlistid, int position, XBMCRPC.Playlist.ItemMovieid item)
+        public async Task<string> Insert(int? playlistid=null, int? position=null, XBMCRPC.Playlist.ItemMovieid item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (position == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null position");
+              }
+             else
+              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Insert", jArgs);
         }
 
@@ -489,27 +574,37 @@ namespace XBMCRPC.Methods
                 /// <param name="position"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Insert(int playlistid, int position, XBMCRPC.Playlist.ItemEpisodeid item)
+        public async Task<string> Insert(int? playlistid=null, int? position=null, XBMCRPC.Playlist.ItemEpisodeid item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (position == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null position");
+              }
+             else
+              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Insert", jArgs);
         }
 
@@ -520,27 +615,37 @@ namespace XBMCRPC.Methods
                 /// <param name="position"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Insert(int playlistid, int position, XBMCRPC.Playlist.ItemMusicvideoid item)
+        public async Task<string> Insert(int? playlistid=null, int? position=null, XBMCRPC.Playlist.ItemMusicvideoid item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (position == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null position");
+              }
+             else
+              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Insert", jArgs);
         }
 
@@ -551,27 +656,37 @@ namespace XBMCRPC.Methods
                 /// <param name="position"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Insert(int playlistid, int position, XBMCRPC.Playlist.ItemArtistid item)
+        public async Task<string> Insert(int? playlistid=null, int? position=null, XBMCRPC.Playlist.ItemArtistid item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (position == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null position");
+              }
+             else
+              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Insert", jArgs);
         }
 
@@ -582,27 +697,37 @@ namespace XBMCRPC.Methods
                 /// <param name="position"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Insert(int playlistid, int position, XBMCRPC.Playlist.ItemAlbumid item)
+        public async Task<string> Insert(int? playlistid=null, int? position=null, XBMCRPC.Playlist.ItemAlbumid item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (position == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null position");
+              }
+             else
+              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Insert", jArgs);
         }
 
@@ -613,27 +738,37 @@ namespace XBMCRPC.Methods
                 /// <param name="position"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Insert(int playlistid, int position, XBMCRPC.Playlist.ItemSongid item)
+        public async Task<string> Insert(int? playlistid=null, int? position=null, XBMCRPC.Playlist.ItemSongid item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (position == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null position");
+              }
+             else
+              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Insert", jArgs);
         }
 
@@ -644,27 +779,37 @@ namespace XBMCRPC.Methods
                 /// <param name="position"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Insert(int playlistid, int position, XBMCRPC.Playlist.ItemGenreid item)
+        public async Task<string> Insert(int? playlistid=null, int? position=null, XBMCRPC.Playlist.ItemGenreid item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (position == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null position");
+              }
+             else
+              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Insert", jArgs);
         }
 
@@ -675,27 +820,37 @@ namespace XBMCRPC.Methods
                 /// <param name="position"> REQUIRED </param>
                 /// <param name="item"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Insert(int playlistid, int position, global::System.Collections.Generic.List<object> item)
+        public async Task<string> Insert(int? playlistid=null, int? position=null, global::System.Collections.Generic.List<object> item=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (position == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null position");
+              }
+             else
+              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
-             }
-             {
+              }
+             if (item == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null item");
+              }
+             else
+              {
                  var jpropitem = JToken.FromObject(item, _client.Serializer);
                  jArgs.Add(new JProperty("item", jpropitem));
-             }
+              }
             return await _client.GetData<string>("Playlist.Insert", jArgs);
         }
 
@@ -705,23 +860,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playlistid"> REQUIRED </param>
                 /// <param name="position"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Insert(int playlistid, int position)
+        public async Task<string> Insert(int? playlistid=null, int? position=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (position == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null position");
+              }
+             else
+              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
-             }
+              }
             return await _client.GetData<string>("Playlist.Insert", jArgs);
         }
 
@@ -731,23 +891,28 @@ namespace XBMCRPC.Methods
                 /// <param name="playlistid"> REQUIRED </param>
                 /// <param name="position"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Remove(int playlistid, int position)
+        public async Task<string> Remove(int? playlistid=null, int? position=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (position == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null position");
+              }
+             else
+              {
                  var jpropposition = JToken.FromObject(position, _client.Serializer);
                  jArgs.Add(new JProperty("position", jpropposition));
-             }
+              }
             return await _client.GetData<string>("Playlist.Remove", jArgs);
         }
 
@@ -758,33 +923,43 @@ namespace XBMCRPC.Methods
                 /// <param name="position1"> REQUIRED </param>
                 /// <param name="position2"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> Swap(int playlistid, int position1, int position2)
+        public async Task<string> Swap(int? playlistid=null, int? position1=null, int? position2=null)
         {
-             if (playlistid == 0 )
-             {
-                 return null;
+             var jArgs = new JObject();
+
+             if (playlistid == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null playlistid");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropplaylistid = JToken.FromObject(playlistid, _client.Serializer);
                  jArgs.Add(new JProperty("playlistid", jpropplaylistid));
-             }
-             {
+              }
+             if (position1 == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null position1");
+              }
+             else
+              {
                  var jpropposition1 = JToken.FromObject(position1, _client.Serializer);
                  jArgs.Add(new JProperty("position1", jpropposition1));
-             }
-             {
+              }
+             if (position2 == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null position2");
+              }
+             else
+              {
                  var jpropposition2 = JToken.FromObject(position2, _client.Serializer);
                  jArgs.Add(new JProperty("position2", jpropposition2));
-             }
+              }
             return await _client.GetData<string>("Playlist.Swap", jArgs);
         }
 
-        public delegate void OnAddDelegate(string sender, XBMCRPC.Playlist.OnAdd_data data);
+        public delegate void OnAddDelegate(string sender=null, XBMCRPC.Playlist.OnAdd_data data=null);
         public event OnAddDelegate OnAdd;
-        internal void RaiseOnAdd(string sender, XBMCRPC.Playlist.OnAdd_data data)
+        internal void RaiseOnAdd(string sender=null, XBMCRPC.Playlist.OnAdd_data data=null)
         {
             if (OnAdd != null)
             {
@@ -792,9 +967,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnClearDelegate(string sender, XBMCRPC.Playlist.OnClear_data data);
+        public delegate void OnClearDelegate(string sender=null, XBMCRPC.Playlist.OnClear_data data=null);
         public event OnClearDelegate OnClear;
-        internal void RaiseOnClear(string sender, XBMCRPC.Playlist.OnClear_data data)
+        internal void RaiseOnClear(string sender=null, XBMCRPC.Playlist.OnClear_data data=null)
         {
             if (OnClear != null)
             {
@@ -802,9 +977,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnRemoveDelegate(string sender, XBMCRPC.Playlist.OnRemove_data data);
+        public delegate void OnRemoveDelegate(string sender=null, XBMCRPC.Playlist.OnRemove_data data=null);
         public event OnRemoveDelegate OnRemove;
-        internal void RaiseOnRemove(string sender, XBMCRPC.Playlist.OnRemove_data data)
+        internal void RaiseOnRemove(string sender=null, XBMCRPC.Playlist.OnRemove_data data=null)
         {
             if (OnRemove != null)
             {

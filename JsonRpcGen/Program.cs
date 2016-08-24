@@ -307,64 +307,42 @@ namespace JsonRpcGen
                     // writer2.WriteLine("            var jArgs = new JObject();");
 
                     // MAM: check if first argument is numeric
-                    var first = true; // MAM 230816
                     var NoParameter = true; // MAM: if we have no Paramter to send at all, dont add jArgs to the wait call!
+                    var first = true;
 
                     foreach (var pname in overload)
                     {
                         NoParameter = false;
-                        // MAM: fast exit if first argument is not given
-                        if (first == true)
+                        // if first argument create a jArgs variable to hold the json code
+                        if (first)
                         {
-                            first = false; // MAM: only one time for each Method only please!
-                            string FirstType = pname.Type.TypeHandler.NetType.ToString();
-                            if (FirstType == "int")
-                            {
-                                writer2.WriteLine("             if (" + pname.Name + " == 0 )");
-                                writer2.WriteLine("             {");
-                                switch (retType.Name)
-                                {
-                                    case "integer":
-                                        writer2.WriteLine("                 return 0;"); break;
-                                    case "bool":
-                                        writer2.WriteLine("                 return false;"); break;
-                                    case "double":
-                                        writer2.WriteLine("                 return 0;"); break;
-                                    default:
-                                        writer2.WriteLine("                 return null;"); break;
-                                }
-                                writer2.WriteLine("              }");
-                                writer2.WriteLine("");
-                            }
-                            writer2.WriteLine("            var jArgs = new JObject();");
-                            writer2.WriteLine("");
+                            first = false;
+                            writer2.WriteLine("             var jArgs = new JObject();\r\n");
                         }
-
+                        // Assume ALL Arguments are pointers or at least nullables
+                        if (pname.Required)
+                        {
+                            writer2.WriteLine("             if (" + pname.Name + " == null)");
+                            writer2.WriteLine("              {");
+                            writer2.WriteLine("                 throw new global::System.ArgumentException(\"Parameter cannot be null {0}\");", pname.Name);
+                            //writer2.WriteLine("                 return {0};",GetMethodReturnValue(retType.TypeHandler.NetType));
+                            writer2.WriteLine("              }");
+                            writer2.WriteLine("             else") ;
+                            writer2.WriteLine("              {");
+                            writer2.WriteLine("                 var jprop" + pname.Name + " = JToken.FromObject(" + pname.Name + ", _client.Serializer);");
+                            writer2.WriteLine("                 jArgs.Add(new JProperty(\"" + pname.OriginalName + "\", jprop" + pname.Name + "));");
+                            writer2.WriteLine("              }");
+                        }
                         // MAM: only check, if parameter is optional!
-                        if (pname.Required == false)
+                        else
                         {
-                            string FirstType = pname.Type.TypeHandler.NetType.ToString();
-                            switch (FirstType)
-                            {
-                                case "integer":
-                                    writer2.WriteLine("             if (" + pname.Name + " != 0)");
-                                    break;
-                                case "string":
-                                    writer2.WriteLine("             if (" + pname.Name + " != null)");
-                                    break;
-                                case "bool": // MAM: bool are always to be send, no matter of their value
-                                    break;
-                                default:
-                                    writer2.WriteLine("             if (" + pname.Name + " != null)");
-                                    break;
-                            }
+
+                            writer2.WriteLine("             if (" + pname.Name + " != null)");
+                            writer2.WriteLine("             {");
+                            writer2.WriteLine("                 var jprop" + pname.Name + " = JToken.FromObject(" + pname.Name + ", _client.Serializer);");
+                            writer2.WriteLine("                 jArgs.Add(new JProperty(\"" + pname.OriginalName + "\", jprop" + pname.Name + "));");
+                            writer2.WriteLine("             }");
                         }
-
-                        writer2.WriteLine("             {");
-                        writer2.WriteLine("                 var jprop" + pname.Name + " = JToken.FromObject(" + pname.Name + ", _client.Serializer);");
-                        writer2.WriteLine("                 jArgs.Add(new JProperty(\"" + pname.OriginalName + "\", jprop" + pname.Name + "));");
-                        writer2.WriteLine("             }");
-
                     }
                     if (NoParameter == false)
                     {
@@ -536,19 +514,27 @@ namespace JsonRpcGen
             for (i = 0; i < parameters.Count(); i++)
             {
                 p.MoveNext();
-
+        
                 if (i > 0)
                 {
                     Result += ", ";
                 }
                 Result += (p.Current.Type.TypeHandler.NetType);
-                if (p.Current.IsNullable || p.Current.Type.TypeHandler.IsEnum)
+                if (p.Current.IsNullable || 
+                    p.Current.Type.TypeHandler.IsEnum ||
+                    ( p.Current.Type.TypeHandler.IsBuiltIn && p.Current.Type.TypeHandler.NetType!="string" && p.Current.Type.TypeHandler.NetType != "object"))
                 {
                     Result += "?";
                 }
+
                 Result += " ";
                 Result += p.Current.Name;
-                Result += p.Current.GetDefault();
+                // all parameters are now pointers or at least nullable
+                // no need for more compliclated analysis anymore, just set the default to null
+                // and therefor make the parameter optional too.
+                Result += "=null";
+                //   Result += p.Current.GetDefault();
+                
             }
             return Result;
         }
@@ -619,6 +605,22 @@ namespace JsonRpcGen
             return Global.TypeMap.GetOrAddType(refName);
         }
 
+        //MAM: return something "bad" back to the caller so he can notice that something went wrong
+        public static string GetMethodReturnValue(string RType)
+        {
+            switch (RType)
+            {
+                case "bool":
+                    return "false";
+
+                case "int":
+                case "double":
+                    return "-1";
+                    
+                default:
+                    return "null";
+            }
+        }
 
         /// <summary>
         /// Generate a Constant from the API Version we have read from Kodi

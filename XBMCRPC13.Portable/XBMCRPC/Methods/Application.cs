@@ -18,14 +18,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="properties"> REQUIRED </param>
                 /// <returns>XBMCRPC.Application.Property.Value</returns>
-        public async Task<XBMCRPC.Application.Property.Value> GetProperties(XBMCRPC.Application.GetProperties_properties properties)
+        public async Task<XBMCRPC.Application.Property.Value> GetProperties(XBMCRPC.Application.GetProperties_properties properties=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (properties == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null properties");
+              }
+             else
+              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
                  jArgs.Add(new JProperty("properties", jpropproperties));
-             }
+              }
             return await _client.GetData<XBMCRPC.Application.Property.Value>("Application.GetProperties", jArgs);
         }
 
@@ -45,12 +50,17 @@ namespace XBMCRPC.Methods
                 /// <returns>bool</returns>
         public async Task<bool> SetMute(bool? mute=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (mute == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null mute");
+              }
+             else
+              {
                  var jpropmute = JToken.FromObject(mute, _client.Serializer);
                  jArgs.Add(new JProperty("mute", jpropmute));
-             }
+              }
             return await _client.GetData<bool>("Application.SetMute", jArgs);
         }
 
@@ -59,14 +69,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="mute"> REQUIRED </param>
                 /// <returns>bool</returns>
-        public async Task<bool> SetMute(XBMCRPC.Global.Toggle2? mute)
+        public async Task<bool> SetMute(XBMCRPC.Global.Toggle2? mute=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (mute == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null mute");
+              }
+             else
+              {
                  var jpropmute = JToken.FromObject(mute, _client.Serializer);
                  jArgs.Add(new JProperty("mute", jpropmute));
-             }
+              }
             return await _client.GetData<bool>("Application.SetMute", jArgs);
         }
 
@@ -84,19 +99,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="volume"> REQUIRED </param>
                 /// <returns>int</returns>
-        public async Task<int> SetVolume(int volume)
+        public async Task<int> SetVolume(int? volume=null)
         {
-             if (volume == 0 )
-             {
-                 return 0;
+             var jArgs = new JObject();
+
+             if (volume == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null volume");
               }
-
-            var jArgs = new JObject();
-
-             {
+             else
+              {
                  var jpropvolume = JToken.FromObject(volume, _client.Serializer);
                  jArgs.Add(new JProperty("volume", jpropvolume));
-             }
+              }
             return await _client.GetData<int>("Application.SetVolume", jArgs);
         }
 
@@ -105,14 +120,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="volume"> REQUIRED </param>
                 /// <returns>int</returns>
-        public async Task<int> SetVolume(XBMCRPC.Global.IncrementDecrement? volume)
+        public async Task<int> SetVolume(XBMCRPC.Global.IncrementDecrement? volume=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (volume == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null volume");
+              }
+             else
+              {
                  var jpropvolume = JToken.FromObject(volume, _client.Serializer);
                  jArgs.Add(new JProperty("volume", jpropvolume));
-             }
+              }
             return await _client.GetData<int>("Application.SetVolume", jArgs);
         }
 
@@ -125,9 +145,9 @@ namespace XBMCRPC.Methods
             return await _client.GetData<int>("Application.SetVolume",null);
         }
 
-        public delegate void OnVolumeChangedDelegate(string sender, XBMCRPC.Application.OnVolumeChanged_data data);
+        public delegate void OnVolumeChangedDelegate(string sender=null, XBMCRPC.Application.OnVolumeChanged_data data=null);
         public event OnVolumeChangedDelegate OnVolumeChanged;
-        internal void RaiseOnVolumeChanged(string sender, XBMCRPC.Application.OnVolumeChanged_data data)
+        internal void RaiseOnVolumeChanged(string sender=null, XBMCRPC.Application.OnVolumeChanged_data data=null)
         {
             if (OnVolumeChanged != null)
             {

@@ -27,14 +27,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="properties"> REQUIRED </param>
                 /// <returns>XBMCRPC.System.Property.Value</returns>
-        public async Task<XBMCRPC.System.Property.Value> GetProperties(XBMCRPC.System.GetProperties_properties properties)
+        public async Task<XBMCRPC.System.Property.Value> GetProperties(XBMCRPC.System.GetProperties_properties properties=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (properties == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null properties");
+              }
+             else
+              {
                  var jpropproperties = JToken.FromObject(properties, _client.Serializer);
                  jArgs.Add(new JProperty("properties", jpropproperties));
-             }
+              }
             return await _client.GetData<XBMCRPC.System.Property.Value>("System.GetProperties", jArgs);
         }
 
@@ -74,9 +79,9 @@ namespace XBMCRPC.Methods
             return await _client.GetData<string>("System.Suspend",null);
         }
 
-        public delegate void OnLowBatteryDelegate(string sender, object data);
+        public delegate void OnLowBatteryDelegate(string sender=null, object data=null);
         public event OnLowBatteryDelegate OnLowBattery;
-        internal void RaiseOnLowBattery(string sender, object data)
+        internal void RaiseOnLowBattery(string sender=null, object data=null)
         {
             if (OnLowBattery != null)
             {
@@ -84,9 +89,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnQuitDelegate(string sender, XBMCRPC.System.OnQuit_data data);
+        public delegate void OnQuitDelegate(string sender=null, XBMCRPC.System.OnQuit_data data=null);
         public event OnQuitDelegate OnQuit;
-        internal void RaiseOnQuit(string sender, XBMCRPC.System.OnQuit_data data)
+        internal void RaiseOnQuit(string sender=null, XBMCRPC.System.OnQuit_data data=null)
         {
             if (OnQuit != null)
             {
@@ -94,9 +99,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnRestartDelegate(string sender, object data);
+        public delegate void OnRestartDelegate(string sender=null, object data=null);
         public event OnRestartDelegate OnRestart;
-        internal void RaiseOnRestart(string sender, object data)
+        internal void RaiseOnRestart(string sender=null, object data=null)
         {
             if (OnRestart != null)
             {
@@ -104,9 +109,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnSleepDelegate(string sender, object data);
+        public delegate void OnSleepDelegate(string sender=null, object data=null);
         public event OnSleepDelegate OnSleep;
-        internal void RaiseOnSleep(string sender, object data)
+        internal void RaiseOnSleep(string sender=null, object data=null)
         {
             if (OnSleep != null)
             {
@@ -114,9 +119,9 @@ namespace XBMCRPC.Methods
             }
         }
 
-        public delegate void OnWakeDelegate(string sender, object data);
+        public delegate void OnWakeDelegate(string sender=null, object data=null);
         public event OnWakeDelegate OnWake;
-        internal void RaiseOnWake(string sender, object data)
+        internal void RaiseOnWake(string sender=null, object data=null)
         {
             if (OnWake != null)
             {

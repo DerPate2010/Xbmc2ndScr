@@ -23,18 +23,28 @@ namespace XBMCRPC.Methods
                 /// <param name="windowparameter"> </param>
                 /// <param name="thumbnail"> </param>
                 /// <returns>string</returns>
-        public async Task<string> AddFavourite(string title, XBMCRPC.Favourite.Type? type, string path=null, string window=null, string windowparameter=null, string thumbnail=null)
+        public async Task<string> AddFavourite(string title=null, XBMCRPC.Favourite.Type? type=null, string path=null, string window=null, string windowparameter=null, string thumbnail=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (title == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null title");
+              }
+             else
+              {
                  var jproptitle = JToken.FromObject(title, _client.Serializer);
                  jArgs.Add(new JProperty("title", jproptitle));
-             }
-             {
+              }
+             if (type == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null type");
+              }
+             else
+              {
                  var jproptype = JToken.FromObject(type, _client.Serializer);
                  jArgs.Add(new JProperty("type", jproptype));
-             }
+              }
              if (path != null)
              {
                  var jproppath = JToken.FromObject(path, _client.Serializer);
@@ -66,7 +76,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.Favourites.GetFavouritesResponse</returns>
         public async Task<XBMCRPC.Favourites.GetFavouritesResponse> GetFavourites(XBMCRPC.Favourite.Type? type=null, XBMCRPC.Favourite.Fields.Favourite properties=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (type != null)
              {

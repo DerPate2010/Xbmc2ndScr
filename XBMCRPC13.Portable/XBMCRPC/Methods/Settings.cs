@@ -22,7 +22,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.Settings.GetCategoriesResponse</returns>
         public async Task<XBMCRPC.Settings.GetCategoriesResponse> GetCategories(XBMCRPC.Setting.Level? level=null, string section=null, XBMCRPC.Settings.GetCategories_properties properties=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (level != null)
              {
@@ -50,7 +50,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.Settings.GetSectionsResponse</returns>
         public async Task<XBMCRPC.Settings.GetSectionsResponse> GetSections(XBMCRPC.Setting.Level? level=null, XBMCRPC.Settings.GetSections_properties properties=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (level != null)
              {
@@ -70,14 +70,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="setting"> REQUIRED </param>
                 /// <returns>XBMCRPC.Settings.GetSettingValueResponse</returns>
-        public async Task<XBMCRPC.Settings.GetSettingValueResponse> GetSettingValue(string setting)
+        public async Task<XBMCRPC.Settings.GetSettingValueResponse> GetSettingValue(string setting=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (setting == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null setting");
+              }
+             else
+              {
                  var jpropsetting = JToken.FromObject(setting, _client.Serializer);
                  jArgs.Add(new JProperty("setting", jpropsetting));
-             }
+              }
             return await _client.GetData<XBMCRPC.Settings.GetSettingValueResponse>("Settings.GetSettingValue", jArgs);
         }
 
@@ -89,7 +94,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.Settings.GetSettingsResponse</returns>
         public async Task<XBMCRPC.Settings.GetSettingsResponse> GetSettings(XBMCRPC.Setting.Level? level=null, XBMCRPC.Settings.GetSettings_filter1 filter=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (level != null)
              {
@@ -111,7 +116,7 @@ namespace XBMCRPC.Methods
                 /// <returns>XBMCRPC.Settings.GetSettingsResponse</returns>
         public async Task<XBMCRPC.Settings.GetSettingsResponse> GetSettings(XBMCRPC.Setting.Level? level=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
              if (level != null)
              {
@@ -126,14 +131,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="setting"> REQUIRED </param>
                 /// <returns>string</returns>
-        public async Task<string> ResetSettingValue(string setting)
+        public async Task<string> ResetSettingValue(string setting=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (setting == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null setting");
+              }
+             else
+              {
                  var jpropsetting = JToken.FromObject(setting, _client.Serializer);
                  jArgs.Add(new JProperty("setting", jpropsetting));
-             }
+              }
             return await _client.GetData<string>("Settings.ResetSettingValue", jArgs);
         }
 
@@ -143,18 +153,28 @@ namespace XBMCRPC.Methods
                 /// <param name="setting"> REQUIRED </param>
                 /// <param name="value"> REQUIRED </param>
                 /// <returns>bool</returns>
-        public async Task<bool> SetSettingValue(string setting, bool? value=null)
+        public async Task<bool> SetSettingValue(string setting=null, bool? value=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (setting == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null setting");
+              }
+             else
+              {
                  var jpropsetting = JToken.FromObject(setting, _client.Serializer);
                  jArgs.Add(new JProperty("setting", jpropsetting));
-             }
-             {
+              }
+             if (value == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null value");
+              }
+             else
+              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
-             }
+              }
             return await _client.GetData<bool>("Settings.SetSettingValue", jArgs);
         }
 
@@ -164,18 +184,28 @@ namespace XBMCRPC.Methods
                 /// <param name="setting"> REQUIRED </param>
                 /// <param name="value"> REQUIRED </param>
                 /// <returns>bool</returns>
-        public async Task<bool> SetSettingValue(string setting, int value)
+        public async Task<bool> SetSettingValue(string setting=null, int? value=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (setting == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null setting");
+              }
+             else
+              {
                  var jpropsetting = JToken.FromObject(setting, _client.Serializer);
                  jArgs.Add(new JProperty("setting", jpropsetting));
-             }
-             {
+              }
+             if (value == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null value");
+              }
+             else
+              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
-             }
+              }
             return await _client.GetData<bool>("Settings.SetSettingValue", jArgs);
         }
 
@@ -185,18 +215,28 @@ namespace XBMCRPC.Methods
                 /// <param name="setting"> REQUIRED </param>
                 /// <param name="value"> REQUIRED </param>
                 /// <returns>bool</returns>
-        public async Task<bool> SetSettingValue(string setting, double? value=null)
+        public async Task<bool> SetSettingValue(string setting=null, double? value=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (setting == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null setting");
+              }
+             else
+              {
                  var jpropsetting = JToken.FromObject(setting, _client.Serializer);
                  jArgs.Add(new JProperty("setting", jpropsetting));
-             }
-             {
+              }
+             if (value == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null value");
+              }
+             else
+              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
-             }
+              }
             return await _client.GetData<bool>("Settings.SetSettingValue", jArgs);
         }
 
@@ -206,18 +246,28 @@ namespace XBMCRPC.Methods
                 /// <param name="setting"> REQUIRED </param>
                 /// <param name="value"> REQUIRED </param>
                 /// <returns>bool</returns>
-        public async Task<bool> SetSettingValue(string setting, string value)
+        public async Task<bool> SetSettingValue(string setting=null, string value=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (setting == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null setting");
+              }
+             else
+              {
                  var jpropsetting = JToken.FromObject(setting, _client.Serializer);
                  jArgs.Add(new JProperty("setting", jpropsetting));
-             }
-             {
+              }
+             if (value == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null value");
+              }
+             else
+              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
-             }
+              }
             return await _client.GetData<bool>("Settings.SetSettingValue", jArgs);
         }
 
@@ -227,18 +277,28 @@ namespace XBMCRPC.Methods
                 /// <param name="setting"> REQUIRED </param>
                 /// <param name="value"> REQUIRED </param>
                 /// <returns>bool</returns>
-        public async Task<bool> SetSettingValue(string setting, global::System.Collections.Generic.List<object> value)
+        public async Task<bool> SetSettingValue(string setting=null, global::System.Collections.Generic.List<object> value=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (setting == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null setting");
+              }
+             else
+              {
                  var jpropsetting = JToken.FromObject(setting, _client.Serializer);
                  jArgs.Add(new JProperty("setting", jpropsetting));
-             }
-             {
+              }
+             if (value == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null value");
+              }
+             else
+              {
                  var jpropvalue = JToken.FromObject(value, _client.Serializer);
                  jArgs.Add(new JProperty("value", jpropvalue));
-             }
+              }
             return await _client.GetData<bool>("Settings.SetSettingValue", jArgs);
         }
 
@@ -247,14 +307,19 @@ namespace XBMCRPC.Methods
                 /// </summary>
                 /// <param name="setting"> REQUIRED </param>
                 /// <returns>bool</returns>
-        public async Task<bool> SetSettingValue(string setting)
+        public async Task<bool> SetSettingValue(string setting=null)
         {
-            var jArgs = new JObject();
+             var jArgs = new JObject();
 
-             {
+             if (setting == null)
+              {
+                 throw new global::System.ArgumentException("Parameter cannot be null setting");
+              }
+             else
+              {
                  var jpropsetting = JToken.FromObject(setting, _client.Serializer);
                  jArgs.Add(new JProperty("setting", jpropsetting));
-             }
+              }
             return await _client.GetData<bool>("Settings.SetSettingValue", jArgs);
         }
    }
