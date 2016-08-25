@@ -8,8 +8,8 @@
     <ProjectGuid>{52EB0A62-3BE8-4886-852B-AB5A68309360}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XBMCRPC13.Portable</RootNamespace>
-    <AssemblyName>XBMCRPC13.Portable</AssemblyName>
+    <RootNamespace>XBMCRPC16.Portable</RootNamespace>
+    <AssemblyName>XBMCRPC16.Portable</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
     <DefaultLanguage>en-US</DefaultLanguage>
