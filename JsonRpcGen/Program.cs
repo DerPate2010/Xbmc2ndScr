@@ -22,10 +22,24 @@ namespace JsonRpcGen
 
         static void Main(string[] args)
         {
+
+            Console.WriteLine("JsonRpcGen for KODI");
+            Console.WriteLine("Copyright 2010-2016 by DerPate\r\n");
+            if (args.Count() != 4)
+            {
+                Console.WriteLine("Usage: jsonrpcgen <URL> <Username> <Password> <Namespace>\r\n");
+                Console.WriteLine("reads the json methods and properties from the targethost and generates sourcecode for a DLL that contains every published method, class or enums.");
+                Console.WriteLine("This code can be used to build a system independent shared library, that can be used by client applications to remotely access features and data from KODI.\r\n");
+                Console.WriteLine("Example: jsonrpcgen \"http://localhost:8080/jsonrpc\", \"kodi\", \"kodi\", \"KODIRPC\"");
+                Console.Write("press ENTER to exit.");
+                Console.ReadLine();
+                return;
+            }
 #if DEBUG
-            args = new string[] { "http://localhost:8080/jsonrpc", "kodi", "kodi", "XBMCRPC" };
+            Global.TargetDir = new DirectoryInfo(@"..\..\..\\" + args[3]+ ".Portable");
+#else
+            Global.TargetDir = new DirectoryInfo(@".\" + args[3]);
 #endif
-            Global.TargetDir = new DirectoryInfo(@"..\..\..\XBMCRPC13.Portable\" + args[3]);
             if (Global.TargetDir.Exists)
             {
                 Global.TargetDir.Delete(true);
@@ -39,8 +53,8 @@ namespace JsonRpcGen
             }
             catch (Exception e)
             {
-                Console.WriteLine("Cannot read JSON scheme! Kodi not running?");
-                Console.WriteLine("Error: {0}", e.Message);
+                Console.WriteLine("Cannot read JSON scheme from host! Kodi not running or Webaccess not enabled?");
+                Console.WriteLine("Error: {0}", e.InnerException.Message);
                 Console.Write("Hit RETURN to continue:");
                 Console.ReadLine();
                 return;
@@ -136,16 +150,22 @@ namespace JsonRpcGen
                 Global.TypeMap.GetOrAddType(type);
             }
         }
-
+        private static void ModifyAndCopyTemplate(string TemplateIn, string TemplateOut)
+        {
+            var Temp = File.ReadAllText(TemplateIn);
+            Temp = Temp.Replace("%KODINAMESPACE%", Global.BaseNamespace);
+            File.WriteAllText(TemplateOut, Temp);
+        }
         private static void CopyBaseClases(List<string> methodClasses, string notificationInvoker)
         {
-            File.Copy("Templates\\IPlatformServices.templ", Path.Combine(Global.TargetDir.FullName, "IPlatformServices.cs"), true);
-            File.Copy("Templates\\ISocket.templ", Path.Combine(Global.TargetDir.FullName, "ISocket.cs"), true);
-            File.Copy("Templates\\ISocketFactory.templ", Path.Combine(Global.TargetDir.FullName, "ISocketFactory.cs"), true);
-            File.Copy("Templates\\NotificationListenerSocketState.templ", Path.Combine(Global.TargetDir.FullName, "NotificationListenerSocketState.cs"), true);
-            File.Copy("Templates\\ConnectionSettings.templ", Path.Combine(Global.TargetDir.FullName, "ConnectionSettings.cs"), true);
+            ModifyAndCopyTemplate("Templates\\IPlatformServices.templ", Path.Combine(Global.TargetDir.FullName, "IPlatformServices.cs"));
+            ModifyAndCopyTemplate("Templates\\ISocket.templ", Path.Combine(Global.TargetDir.FullName, "ISocket.cs"));
+            ModifyAndCopyTemplate("Templates\\ISocketFactory.templ", Path.Combine(Global.TargetDir.FullName, "ISocketFactory.cs"));
+            ModifyAndCopyTemplate("Templates\\NotificationListenerSocketState.templ", Path.Combine(Global.TargetDir.FullName, "NotificationListenerSocketState.cs"));
+            ModifyAndCopyTemplate("Templates\\ConnectionSettings.templ", Path.Combine(Global.TargetDir.FullName, "ConnectionSettings.cs"));
 
             var client = File.ReadAllText("Templates\\Client.templ");
+            client = client.Replace("%KODINAMESPACE%", Global.BaseNamespace);
             var methodsPropertiesList = methodClasses.Select(m => "        public Methods." + m + " " + m + " { get; private set; }");
             var methodProperties = string.Join(Environment.NewLine, methodsPropertiesList);
             client = client.Replace("%json_methods_properties%", methodProperties);
@@ -630,7 +650,8 @@ namespace JsonRpcGen
         {
             var path = Global.TargetDir.FullName;
             var namesp = Global.BaseNamespace;
-
+            DateTime localDate = global::System.DateTime.Now;
+           
             var classFile = new FileInfo(Path.Combine(path, "KodiAPIVersion.cs"));
 #if DEBUG
             // Console.WriteLine("Neue Datei {0}", classFile.FullName);
@@ -651,6 +672,8 @@ namespace JsonRpcGen
             writer.WriteLine("  struct Version");
             writer.WriteLine("  {");
             writer.WriteLine("       public const string KodiAPIVersion = \"" + version + "\";");
+            writer.WriteLine("       public const string GenerationDate = \"" + localDate.ToShortDateString()+ "\";");
+            writer.WriteLine("       public const string GenerationTime = \"" + localDate.ToLongTimeString() + "\";");
             writer.WriteLine("   }");
             writer.WriteLine("}");
             writer.Close();
