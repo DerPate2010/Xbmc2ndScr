@@ -6,10 +6,10 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Okra.Data;
-using XBMCRPC.List;
-using XBMCRPC.Methods;
-using XBMCRPC.Video.Fields;
-using Movie = XBMCRPC.Video.Fields.Movie;
+using KODIRPC.List;
+using KODIRPC.Methods;
+using KODIRPC.Video.Fields;
+using Movie = KODIRPC.Video.Fields.Movie;
 
 namespace Xbmc2S.Model
 {
@@ -70,9 +70,9 @@ namespace Xbmc2S.Model
             return m2;
         }
 
-        protected abstract Task<XBMCRPC.VideoLibrary.GetMoviesResponse> GetMovies(Movie fields, Limits limits, Sort sort);
+        protected abstract Task<KODIRPC.VideoLibrary.GetMoviesResponse> GetMovies(Movie fields, Limits limits, Sort sort);
  
-        private MovieVm MovieFactory(XBMCRPC.Video.Details.Movie arg)
+        private MovieVm MovieFactory(KODIRPC.Video.Details.Movie arg)
         {
             return new MovieVm(arg,_appContext);
         }

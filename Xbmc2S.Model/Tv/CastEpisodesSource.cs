@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Okra.Data;
-using XBMCRPC.List;
-using XBMCRPC.List.Filter;
-using Episodes = XBMCRPC.List.Filter.Fields.Episodes;
+using KODIRPC.List;
+using KODIRPC.List.Filter;
+using Episodes = KODIRPC.List.Filter.Fields.Episodes;
 
 namespace Xbmc2S.Model
 {
@@ -55,9 +55,9 @@ namespace Xbmc2S.Model
 
         async protected override Task<DataListPageResult<EpisodeVm>> FetchPageAsync(int pageNumber)
         {
-            var mvs = await _server.XBMC.VideoLibrary.GetEpisodes(new Rule.Episodes() { field = Episodes.actor, Operator = Operators.Is, value = _actor }, 0,0, XBMCRPC.Video.Fields.Episode.AllFields(),
-                new Limits() { start = (pageNumber - 1) * PageSize, end = (pageNumber - 1) * PageSize + PageSize },
-                new Sort()
+            var mvs = await _server.XBMC.VideoLibrary.GetEpisodes(filter:new Rule.Episodes() { field = Episodes.actor, Operator = Operators.Is, value = _actor },tvshowid: 0, season: 0, properties:KODIRPC.Video.Fields.Episode.AllFields(),
+                limits:new Limits() { start = (pageNumber - 1) * PageSize, end = (pageNumber - 1) * PageSize + PageSize },
+                sort:new Sort()
                 {
                     method = Sort_method.label,
                     ignorearticle = true,
@@ -76,7 +76,7 @@ namespace Xbmc2S.Model
             return new DataListPageResult<EpisodeVm>(mvs.limits.total, PageSize, pageNumber, list);
         }
 
-        private EpisodeVm ItemFactory(XBMCRPC.Video.Details.Episode arg)
+        private EpisodeVm ItemFactory(KODIRPC.Video.Details.Episode arg)
         {
             return new EpisodeVm(arg, _server);
         }

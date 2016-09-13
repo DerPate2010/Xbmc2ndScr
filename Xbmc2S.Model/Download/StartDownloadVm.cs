@@ -4,8 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Windows.Input;
 using Okra.Core;
-using XBMCRPC.Files;
-using XBMCRPC.List.Fields;
+using KODIRPC.Files;
+using KODIRPC.List.Fields;
 
 namespace Xbmc2S.Model.Download
 {

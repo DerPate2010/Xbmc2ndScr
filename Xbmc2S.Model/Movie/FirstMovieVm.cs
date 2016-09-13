@@ -1,10 +1,10 @@
-﻿using XBMCRPC.List.Item;
+﻿using KODIRPC.List.Item;
 
 namespace Xbmc2S.Model
 {
     internal class FirstMovieVm:MovieVm, IMultiCellItem
     {
-        public FirstMovieVm(XBMCRPC.Video.Details.Movie movie, IAppContext appContext)
+        public FirstMovieVm(KODIRPC.Video.Details.Movie movie, IAppContext appContext)
             : base(movie, appContext)
         {
             ColSpan = RowSpan = 2;

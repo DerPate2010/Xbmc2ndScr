@@ -2,11 +2,11 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Okra.Core;
-using XBMCRPC.Audio.Details;
-using XBMCRPC.AudioLibrary;
-using XBMCRPC.Methods;
-using XBMCRPC.Playlist;
-using Song = XBMCRPC.Audio.Fields.Song;
+using KODIRPC.Audio.Details;
+using KODIRPC.AudioLibrary;
+using KODIRPC.Methods;
+using KODIRPC.Playlist;
+using Song = KODIRPC.Audio.Fields.Song;
 
 namespace Xbmc2S.Model
 {
@@ -48,7 +48,7 @@ namespace Xbmc2S.Model
             {
                 return _songs;
             }
-            var songs = await _appContext.XBMC.AudioLibrary.GetSongs(new GetSongs_filterAlbumid(){albumid = Id},Song.AllFields());
+            var songs = await _appContext.XBMC.AudioLibrary.GetSongs(filter:new GetSongs_filterAlbumid(){albumid = Id},properties:Song.AllFields());
             _songs = songs.songs.OrderBy(e => e.track).Select(SongFactory).ToList();
             return _songs;
         }
@@ -62,7 +62,7 @@ namespace Xbmc2S.Model
             }
         }
 
-        private SongVm SongFactory(XBMCRPC.Audio.Details.Song arg)
+        private SongVm SongFactory(KODIRPC.Audio.Details.Song arg)
         {
             return new SongVm(arg, _appContext);
         }

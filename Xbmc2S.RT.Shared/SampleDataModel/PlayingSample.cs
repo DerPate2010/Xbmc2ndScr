@@ -1,5 +1,5 @@
-﻿using XBMCRPC.List.Item;
-using XBMCRPC.Player.Property;
+﻿using KODIRPC.List.Item;
+using KODIRPC.Player.Property;
 using Xbmc2S.Model;
 
 namespace Xbmc2S.RT.SampleDataModel

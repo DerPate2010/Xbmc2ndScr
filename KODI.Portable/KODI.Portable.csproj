@@ -1426,6 +1426,7 @@
     <Compile Include="..\KODIRPC.Portable\NotificationListenerSocketState.cs">
       <Link>NotificationListenerSocketState.cs</Link>
     </Compile>
+    <Compile Include="ClientKodi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

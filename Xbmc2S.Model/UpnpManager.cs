@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using XBMCRPC;
+using KODIRPC;
 using Xbmc2S.RT.UPnP;
 
 namespace Xbmc2S.Model

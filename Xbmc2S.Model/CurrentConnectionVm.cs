@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using StreamClient.VLM;
-using XBMCRPC.Application;
-using XBMCRPC.Application.Property;
+using KODIRPC.Application;
+using KODIRPC.Application.Property;
 
 namespace Xbmc2S.Model
 {
@@ -58,7 +58,7 @@ namespace Xbmc2S.Model
             Task<Value> connectionTask=null;
             try
             {
-                connectionTask = _appContext.XBMC.Application.GetProperties(new GetProperties_properties(){ XBMCRPC.Application.Property.Name.version });
+                connectionTask = _appContext.XBMC.Application.GetProperties(new GetProperties_properties(){ KODIRPC.Application.Property.Name.version });
                 _connectionTask = connectionTask;
                 await connectionTask;
 

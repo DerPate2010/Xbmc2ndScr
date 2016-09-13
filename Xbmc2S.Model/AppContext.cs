@@ -2,10 +2,10 @@
 using System.Globalization;
 using System.Net;
 using TmdbWrapper;
-using XBMCRPC;
+using KODIRPC;
 using Xbmc2S.Model.Download;
-using XBMCRPC.Application;
-using XBMCRPC.Application.Property;
+using KODIRPC.Application;
+using KODIRPC.Application.Property;
 
 namespace Xbmc2S.Model
 {
@@ -57,7 +57,7 @@ namespace Xbmc2S.Model
             {
                 XBMC.Dispose();
             }
-            XBMC = new XBMCRPC.Client(PlatformServices, host, port, Settings.User, Settings.Password);
+            XBMC = new KODIRPC.Client(new ConnectionSettings(host, port, Settings.User, Settings.Password), PlatformServices);
             
             ImageManager = PlatformServices.GetImageManager(XBMC, !string.IsNullOrEmpty(Settings.Password));
 

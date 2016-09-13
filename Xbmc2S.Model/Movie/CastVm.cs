@@ -2,7 +2,7 @@
 using System;
 using TmdbWrapper;
 using TmdbWrapper.Movies;
-using XBMCRPC.Video;
+using KODIRPC.Video;
 
 namespace Xbmc2S.Model
 {

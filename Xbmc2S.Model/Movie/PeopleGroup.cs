@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using XBMCRPC.List;
-using XBMCRPC.Video;
-using XBMCRPC.Video.Fields;
+using KODIRPC.List;
+using KODIRPC.Video;
+using KODIRPC.Video.Fields;
 
 namespace Xbmc2S.Model
 {

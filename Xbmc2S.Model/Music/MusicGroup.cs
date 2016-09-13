@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using XBMCRPC.Audio.Fields;
-using XBMCRPC.List;
+using KODIRPC.Audio.Fields;
+using KODIRPC.List;
 
 namespace Xbmc2S.Model
 {
@@ -18,7 +18,7 @@ namespace Xbmc2S.Model
             
         }
 
-        private AlbumVm ItemFactory(XBMCRPC.Audio.Details.Album arg)
+        private AlbumVm ItemFactory(KODIRPC.Audio.Details.Album arg)
         {
             if (first)
             {

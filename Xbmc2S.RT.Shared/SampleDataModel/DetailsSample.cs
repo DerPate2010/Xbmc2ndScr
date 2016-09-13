@@ -8,7 +8,7 @@ using System.Windows.Input;
 using Okra.Core;
 using Xbmc2S.Model;
 using Xbmc2S.RT.UPnP;
-using XBMCRPC.Video;
+using KODIRPC.Video;
 
 namespace Xbmc2S.RT.SampleDataModel
 {

@@ -14,9 +14,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using XBMCRPC;
-using XBMCRPC.Application;
-using XBMCRPC.Application.Property;
+using KODIRPC;
+using KODIRPC.Application;
+using KODIRPC.Application.Property;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -91,9 +91,9 @@ namespace Xbmc2S.RT.WelcomeWizard
                 }
                 txtPort.Text = port.ToString();
 
-                var xbmc = new Client(new PlatformServices.PlatformServices(), host, port, txtUser.Text,
-                                      txtPass.Password);
-                var props = await xbmc.Application.GetProperties( new GetProperties_properties() { XBMCRPC.Application.Property.Name.version });
+                var xbmc = new Client(new ConnectionSettings(host, port, txtUser.Text,
+                                      txtPass.Password), new PlatformServices.PlatformServices());
+                var props = await xbmc.Application.GetProperties( new GetProperties_properties() { KODIRPC.Application.Property.Name.version });
 
                 App.MainVm.Settings.Set(host, port, txtUser.Text, txtPass.Password);
 

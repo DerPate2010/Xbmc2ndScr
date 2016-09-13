@@ -1,4 +1,4 @@
-﻿using XBMCRPC;
+﻿using KODIRPC;
 using Xbmc2S.Model;
 using Xbmc2S.Model.Download;
 using IPlatformServices = Xbmc2S.Model.IPlatformServices;

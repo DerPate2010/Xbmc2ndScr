@@ -113,6 +113,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <ProjectReference Include="..\KODI.Portable\KODI.Portable.csproj">
+      <Project>{7945e1be-c5b8-4a19-ae1a-4e4696080396}</Project>
+      <Name>KODI.Portable</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TMDbWrapper\TmdbWrapper.Portable.csproj">
       <Project>{52DA4869-9D9A-4328-B603-F66C6BEBC44D}</Project>
       <Name>TmdbWrapper.Portable</Name>
@@ -125,10 +129,6 @@
     <ProjectReference Include="..\Xbmc2S.PlatformServices\Xbmc2S.PlatformServices.csproj">
       <Project>{271e2a1c-492f-4881-92e7-170b2705e88d}</Project>
       <Name>Xbmc2S.PlatformServices</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XBMCRPC13.Portable\XBMCRPC13.Portable.csproj">
-      <Project>{52eb0a62-3be8-4886-852b-ab5a68309360}</Project>
-      <Name>XBMCRPC13.Portable</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

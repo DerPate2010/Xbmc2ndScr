@@ -9,7 +9,7 @@ using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
-using XBMCRPC;
+using KODIRPC;
 using Xbmc2S.Model;
 
 namespace Xbmc2S.RT.PlatformServices

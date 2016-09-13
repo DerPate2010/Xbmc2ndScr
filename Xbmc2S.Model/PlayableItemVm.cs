@@ -3,12 +3,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Okra.Core;
-using XBMCRPC.Audio.Details;
-using XBMCRPC.List.Fields;
+using KODIRPC.Audio.Details;
+using KODIRPC.List.Fields;
 using Xbmc2S.Model.Download;
 using Xbmc2S.RT.UPnP;
-using Base = XBMCRPC.Video.Details.Base;
-using Media = XBMCRPC.Files.Media;
+using Base = KODIRPC.Video.Details.Base;
+using Media = KODIRPC.Files.Media;
 
 namespace Xbmc2S.Model
 {
@@ -73,18 +73,18 @@ namespace Xbmc2S.Model
 
         private void WatchlistNeverExecute()
         {
-            //var mv = await _appContext.XBMC.VideoLibrary.GetMovieDetails(_movie.movieid, XBMCRPC.Video.Fields.Movie.AllFields());
+            //var mv = await _appContext.XBMC.VideoLibrary.GetMovieDetails(_movie.movieid, KODIRPC.Video.Fields.Movie.AllFields());
             //var genres = mv.moviedetails.genre.ToList();
             //if (!genres.Contains("WatchList"))
             //{
             //    genres.Add("WatchList");
             //    await _appContext.XBMC.VideoLibrary.SetMovieDetails(_movie.movieid, genre: genres.ToArray());
             //}
-            //var g = await _appContext.XBMC.VideoLibrary.GetGenres(properties: XBMCRPC.Library.Fields.Genre.AllFields());
+            //var g = await _appContext.XBMC.VideoLibrary.GetGenres(properties: KODIRPC.Library.Fields.Genre.AllFields());
             //var gw = g.genres.FirstOrDefault(g2 => g2.title == "WatchList");
             //var mvs =
             //    await
-            //    _appContext.XBMC.VideoLibrary.GetMovies2(XBMCRPC.Video.Fields.Movie.AllFields(),
+            //    _appContext.XBMC.VideoLibrary.GetMovies2(KODIRPC.Video.Fields.Movie.AllFields(),
             //                                         filter: new VideoLibrary.GetMoviesfilter1() { genreid = gw.genreid });
 
         //    await _appContext.WatchList.AddItem(this);

@@ -37,6 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\KODI.Portable\KODI.Portable.csproj">
+      <Project>{7945e1be-c5b8-4a19-ae1a-4e4696080396}</Project>
+      <Name>KODI.Portable</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TMDbWrapper\TmdbWrapper.Portable.csproj">
       <Project>{52DA4869-9D9A-4328-B603-F66C6BEBC44D}</Project>
       <Name>TmdbWrapper.Portable</Name>
@@ -44,10 +48,6 @@
     <ProjectReference Include="..\Xbmc2S.Model\Xbmc2S.Model.csproj">
       <Project>{4D213AF6-B08B-4DBF-AD96-DD89352B5456}</Project>
       <Name>Xbmc2S.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XBMCRPC13.Portable\XBMCRPC13.Portable.csproj">
-      <Project>{52EB0A62-3BE8-4886-852B-AB5A68309360}</Project>
-      <Name>XBMCRPC13.Portable</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

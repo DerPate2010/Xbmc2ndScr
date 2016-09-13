@@ -1,6 +1,6 @@
 ﻿using System;
-using XBMCRPC.Audio.Details;
-using XBMCRPC.Playlist;
+using KODIRPC.Audio.Details;
+using KODIRPC.Playlist;
 
 namespace Xbmc2S.Model
 {

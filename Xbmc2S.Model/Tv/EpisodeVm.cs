@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Okra.Core;
-using XBMCRPC.Playlist;
-using XBMCRPC.Video.Details;
+using KODIRPC.Playlist;
+using KODIRPC.Video.Details;
 using Xbmc2S.Model.Download;
 
 namespace Xbmc2S.Model
