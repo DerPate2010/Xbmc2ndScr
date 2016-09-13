@@ -7,17 +7,17 @@ using System.Windows.Input;
 using System.Xml.Linq;
 using Okra.Core;
 using TmdbWrapper;
-using XBMCRPC.Audio.Fields;
-using XBMCRPC.Files;
-using XBMCRPC.List;
-using XBMCRPC.List.Fields;
-using XBMCRPC.List.Item;
-using XBMCRPC.List.Items;
-using XBMCRPC.Playlist;
-using XBMCRPC.Video.Fields;
+using KODIRPC.Audio.Fields;
+using KODIRPC.Files;
+using KODIRPC.List;
+using KODIRPC.List.Fields;
+using KODIRPC.List.Item;
+using KODIRPC.List.Items;
+using KODIRPC.Playlist;
+using KODIRPC.Video.Fields;
 using Xbmc2S.Model.Download;
 using Xbmc2S.RT.UPnP;
-using Files = XBMCRPC.Methods.Files;
+using Files = KODIRPC.Methods.Files;
 
 namespace Xbmc2S.Model
 {
@@ -375,7 +375,7 @@ namespace Xbmc2S.Model
 
         public async Task<DirectoryInfo> GetDirectory(string path, Media mediaType)
         {
-            var content = await _appContext.XBMC.Files.GetDirectory(path, mediaType, properties: new XBMCRPC.List.Fields.Files()
+            var content = await _appContext.XBMC.Files.GetDirectory(path, mediaType, properties: new KODIRPC.List.Fields.Files()
             {
                 FilesItem.title
             }, sort: new Sort() { method = Sort_method.label, order = Sort_order.@ascending });
@@ -385,7 +385,7 @@ namespace Xbmc2S.Model
 
         public async Task<FileInfo> GetFileDetails(string path, Media mediaType)
         {
-            var file = await _appContext.XBMC.Files.GetFileDetails(path, mediaType, XBMCRPC.List.Fields.Files.AllFields());
+            var file = await _appContext.XBMC.Files.GetFileDetails(path, mediaType, KODIRPC.List.Fields.Files.AllFields());
             
             return new FileInfo(file.filedetails, _appContext);
         }
@@ -406,7 +406,7 @@ namespace Xbmc2S.Model
             GetDirectoryResponse files;
             try
             {
-                files = await _appContext.XBMC.Files.GetDirectory(directory, mediaType, new XBMCRPC.List.Fields.Files() { FilesItem.mimetype });
+                files = await _appContext.XBMC.Files.GetDirectory(directory, mediaType, new KODIRPC.List.Fields.Files() { FilesItem.mimetype });
             }
             catch (Exception ex)
             {

@@ -2,9 +2,10 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Okra.Data;
-using XBMCRPC.List;
-using XBMCRPC.List.Filter;
-using TVShows = XBMCRPC.List.Filter.Fields.TVShows;
+using KODIRPC.List;
+using KODIRPC.List.Filter;
+using KODIRPC.Settings;
+using TVShows = KODIRPC.List.Filter.Fields.TVShows;
 
 namespace Xbmc2S.Model
 {
@@ -43,19 +44,20 @@ namespace Xbmc2S.Model
 
         async protected override Task<DataListPageResult<TVShowVm>> FetchPageAsync(int pageNumber)
         {
-            var mvs = await _server.XBMC.VideoLibrary.GetTVShows(new Rule.TVShows(){field = TVShows.actor, Operator = Operators.Is, value = _actor}, XBMCRPC.Video.Fields.TVShow.AllFields(),
-                                                                  new Limits() { start = (pageNumber - 1) * PageSize, end = (pageNumber - 1) * PageSize + PageSize },
+            var mvs = await _server.XBMC.VideoLibrary.GetTVShows(filter: new Rule.TVShows() { field = TVShows.actor, Operator = Operators.Is, value = _actor }, properties: KODIRPC.Video.Fields.TVShow.AllFields(),limits:
+                                                                  new Limits() { start = (pageNumber - 1) * PageSize, end = (pageNumber - 1) * PageSize + PageSize }, sort:
                                                                   new Sort()
-                                                                      {
-                                                                          method = Sort_method.label,
-                                                                          ignorearticle = true,
-                                                                          order = Sort_order.@ascending
-                                                                      });
+                                                                  {
+                                                                      method = Sort_method.label,
+                                                                      ignorearticle = true,
+                                                                      order = Sort_order.@ascending
+                                                                  });
+
             var list = mvs.tvshows.Select(ItemFactory).ToList();
             return new DataListPageResult<TVShowVm>(mvs.limits.total, PageSize, pageNumber, list);
         }
 
-        private TVShowVm ItemFactory(XBMCRPC.Video.Details.TVShow arg)
+        private TVShowVm ItemFactory(KODIRPC.Video.Details.TVShow arg)
         {
             return new TVShowVm(arg, _server);
         }
@@ -104,9 +106,9 @@ namespace Xbmc2S.Model
 
         async protected override Task<DataListPageResult<TVShowVm>> FetchPageAsync(int pageNumber)
         {
-            var mvs = await _server.XBMC.VideoLibrary.GetTVShows(new Rule.TVShows(){field = TVShows.title, Operator = Operators.contains, value = _query},XBMCRPC.Video.Fields.TVShow.AllFields(),
-                                                                  new Limits() { start = (pageNumber - 1) * PageSize, end = (pageNumber - 1) * PageSize + PageSize },
-                                                                  new Sort()
+            var mvs = await _server.XBMC.VideoLibrary.GetTVShows(filter:new Rule.TVShows(){field = TVShows.title, Operator = Operators.contains, value = _query},properties:KODIRPC.Video.Fields.TVShow.AllFields(),
+                                                                  limits: new Limits() { start = (pageNumber - 1) * PageSize, end = (pageNumber - 1) * PageSize + PageSize },
+                                                                  sort: new Sort()
                                                                       {
                                                                           method = Sort_method.label,
                                                                           ignorearticle = true,
@@ -116,7 +118,7 @@ namespace Xbmc2S.Model
             return new DataListPageResult<TVShowVm>(mvs.limits.total, PageSize, pageNumber, list);
         }
 
-        private TVShowVm ItemFactory(XBMCRPC.Video.Details.TVShow arg)
+        private TVShowVm ItemFactory(KODIRPC.Video.Details.TVShow arg)
         {
             return new TVShowVm(arg, _server);
         }

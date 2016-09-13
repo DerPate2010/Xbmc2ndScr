@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using XBMCRPC.List;
-using XBMCRPC.Video.Fields;
+using KODIRPC.List;
+using KODIRPC.Video.Fields;
 
 namespace Xbmc2S.Model
 {
@@ -18,7 +18,7 @@ namespace Xbmc2S.Model
             RefreshTops(movies.movies.Select(MovieFactory).ToList());
         }
 
-        private MovieVm MovieFactory(XBMCRPC.Video.Details.Movie arg)
+        private MovieVm MovieFactory(KODIRPC.Video.Details.Movie arg)
         {
             int first = counter%10;
             counter++;

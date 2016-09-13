@@ -15,7 +15,7 @@ namespace Xbmc2S.Model
         public VideoImages Images { get; private set; }
 
 
-        public BaseVM(XBMCRPC.Video.Details.Base baseDetails, IAppContext appContext):this(appContext)
+        public BaseVM(KODIRPC.Video.Details.Base baseDetails, IAppContext appContext):this(appContext)
         {
 
 
@@ -35,13 +35,13 @@ namespace Xbmc2S.Model
             Images = new VideoImages(appContext, thumb); 
             
         }
-        public BaseVM(XBMCRPC.Media.Details.Base baseDetails, IAppContext appContext)
+        public BaseVM(KODIRPC.Media.Details.Base baseDetails, IAppContext appContext)
             : this(appContext)
         {
             Images= new VideoImages(appContext, baseDetails);
         }
 
-        protected void SetImage(XBMCRPC.Media.Details.Base baseDetails)
+        protected void SetImage(KODIRPC.Media.Details.Base baseDetails)
         {
             Images.SetImages(baseDetails);
 

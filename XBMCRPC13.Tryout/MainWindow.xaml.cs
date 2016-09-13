@@ -50,8 +50,20 @@ namespace XBMCRPC13.Tryout
         {
             System.Collections.Generic.List<string> s;
             IPlatformServices platformServices = new PlatformServices();
-            var xbmc = new Client(platformServices,"localhost", 85);
-            var m = await xbmc.VideoLibrary.GetMovies(new XBMCRPC.List.Filter.Rule.Movies() { field = Movies.playcount, Operator = Operators.Is, value = "0" }, Movie.AllFields(), new Limits() { start = 1, end = 10 });
+            var xbmc = new Client(platformServices,"localhost", 8080,"kodi","kodi");
+
+            //var Lim = new Limits() { start = 1, end = 10 };
+            //var Rule = new XBMCRPC.List.Filter.Rule.Movies() { field = Movies.playcount, Operator = Operators.Is, value = "0" };
+            XBMCRPC.VideoLibrary.GetMovies_filterGenreid Dummy = null;
+            var m = await xbmc.VideoLibrary.GetMovies(
+               //               new XBMCRPC.List.Filter.Rule.Movies() { field = Movies.playcount, Operator = Operators.Is, value = "0" },
+               //               Movie.AllFields(),
+               //               new Limits() { start = 1, end = 10 }
+               Movie.AllFields(),
+               new Limits() { start = 1, end = 100 }, 
+               null,
+               new XBMCRPC.List.Filter.Rule.Movies() { field = Movies.playcount, Operator = Operators.Is, value = "0" }
+               );
             xbmc.Playlist.OnClear += Playlist_OnClear;
 
             //await xbmc.StartNotificationListener();
@@ -63,11 +75,16 @@ namespace XBMCRPC13.Tryout
             var playerPropertiesAll = await xbmc.Player.GetProperties(1, XBMCRPC.Player.GetProperties_properties.AllFields());
             var ret0 = await xbmc.JSONRPC.Introspect();
             var ret1 = await xbmc.Application.GetProperties(GetProperties_properties.AllFields());
-            var ret2 = await xbmc.VideoLibrary.GetTVShows(TVShow.AllFields());
+
+            // MAM: direct TypeCasting is not allowed within Parameterlist, so we need a new dummy variable
+            XBMCRPC.VideoLibrary.GetTVShows_filterGenreid GId = null;
+            var ret2 = await xbmc.VideoLibrary.GetTVShows(
+                TVShow.AllFields(),null,null, GId
+                );
 
             var ret3 = await xbmc.VideoLibrary.SetMovieDetails(3, playcount: 10);
-            var ret4 = await xbmc.VideoLibrary.GetMovies(Movie.AllFields(), new Limits() { start = 1, end = 10 });
-            var ret4a = await xbmc.Files.PrepareDownload(ret4.movies[0].thumbnail);
+           // var ret4 = await xbmc.VideoLibrary.GetMovies(Movie.AllFields(), new Limits() { start = 1, end = 10 });
+            //var ret4a = await xbmc.Files.PrepareDownload(ret4.movies[0].thumbnail);
             var unlistedFiles = await GetUnlistedFiles(xbmc);
 
 

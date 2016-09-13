@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using XBMCRPC.List;
-using XBMCRPC.List.Filter;
-using XBMCRPC.Methods;
-using XBMCRPC.Video.Fields;
-using XBMCRPC.VideoLibrary;
-using Movies = XBMCRPC.List.Filter.Fields.Movies;
+using KODIRPC.List;
+using KODIRPC.List.Filter;
+using KODIRPC.Methods;
+using KODIRPC.Video.Fields;
+using KODIRPC.VideoLibrary;
+using Movies = KODIRPC.List.Filter.Fields.Movies;
 
 namespace Xbmc2S.Model
 {
@@ -26,9 +26,9 @@ namespace Xbmc2S.Model
             return new ItemsSourceReference(){ Type = ItemsSourceType.Movie, Filter = ItemsSourceFilter.All};
         }
 
-        protected override async Task<XBMCRPC.VideoLibrary.GetMoviesResponse> GetMovies(Movie fields, Limits limits, Sort sort)
+        protected override async Task<KODIRPC.VideoLibrary.GetMoviesResponse> GetMovies(Movie fields, Limits limits, Sort sort)
         {
-            XBMCRPC.VideoLibrary.GetMoviesResponse mvs;
+            KODIRPC.VideoLibrary.GetMoviesResponse mvs;
             if (_appContext.Settings.ShowWatched)
             {
                 mvs = await _appContext.XBMC.VideoLibrary.GetMovies(fields, limits, sort);    
@@ -37,7 +37,7 @@ namespace Xbmc2S.Model
             {
                 mvs =
                     await
-                        _appContext.XBMC.VideoLibrary.GetMovies(new Rule.Movies() { field = Movies.playcount, Operator = Operators.Is, value = "0" },fields, limits, sort);    
+                        _appContext.XBMC.VideoLibrary.GetMovies(filter:new Rule.Movies() { field = Movies.playcount, Operator = Operators.Is, value = "0" },properties:fields, limits:limits, sort:sort);    
             }
             
             return mvs;

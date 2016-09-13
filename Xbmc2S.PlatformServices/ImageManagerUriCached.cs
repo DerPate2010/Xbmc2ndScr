@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Xbmc2S.Model;
-using XBMCRPC;
+using KODIRPC;
 
 namespace Xbmc2S.RT.PlatformServices
 {

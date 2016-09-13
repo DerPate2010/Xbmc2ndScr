@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
-using XBMCRPC;
-using XBMCRPC.Global;
-using XBMCRPC.List.Item;
-using XBMCRPC.Methods;
-using XBMCRPC.Player;
-using XBMCRPC.Player.Property;
-using Base = XBMCRPC.Video.Details.Base;
+using KODIRPC;
+using KODIRPC.Global;
+using KODIRPC.List.Item;
+using KODIRPC.Methods;
+using KODIRPC.Player;
+using KODIRPC.Player.Property;
+using Base = KODIRPC.Video.Details.Base;
 
 namespace Xbmc2S.Model
 {
@@ -23,7 +23,7 @@ namespace Xbmc2S.Model
             Player = playerid;
         }
 
-        protected PlayingXbmcItemVm(XBMCRPC.Media.Details.Base baseDetails, int playerid, IAppContext server)
+        protected PlayingXbmcItemVm(KODIRPC.Media.Details.Base baseDetails, int playerid, IAppContext server)
             : base(baseDetails, server)
         {
             Player = playerid;
@@ -38,7 +38,7 @@ namespace Xbmc2S.Model
 
         public async Task Pause()
         {
-            await _appContext.XBMC.Player.PlayPause(Toggle2.toggle, Player);
+            await _appContext.XBMC.Player.PlayPause(Player, Toggle2.toggle);
         }
 
         public async Task Stop()
@@ -83,7 +83,7 @@ namespace Xbmc2S.Model
 
         public async Task Seek(double percent)
         {
-            await _appContext.XBMC.Player.Seek(percent, Player);
+            await _appContext.XBMC.Player.Seek(Player, percent);
         }
 
         public void RefreshTime()

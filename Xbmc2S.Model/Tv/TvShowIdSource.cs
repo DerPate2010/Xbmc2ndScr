@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Okra.Data;
-using XBMCRPC.Video.Fields;
+using KODIRPC.Video.Fields;
 
 namespace Xbmc2S.Model
 {

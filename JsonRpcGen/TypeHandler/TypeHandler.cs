@@ -8,7 +8,7 @@ namespace JsonRpcGen.TypeHandler
     abstract class TypeHandler
     {
         private string _netType;
-
+      
         public TypeHandler(string fullname)
         {
             Fullname = fullname;
@@ -71,6 +71,7 @@ namespace JsonRpcGen.TypeHandler
             //throw new NotImplementedException();
         }
 
+        public bool IsEnum { get; protected set; }
         public override string ToString()
         {
             return Fullname;

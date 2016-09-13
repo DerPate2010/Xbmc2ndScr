@@ -18,11 +18,16 @@ namespace JsonRpcGen
             //AnyType=AddToMap(new BuiltInTypeHandler("any", "string"));
             AnyType=AddToMap(new BuiltInTypeHandler("any", "object"));
             AddBuiltInType("boolean", "bool");
-            AddBuiltInType("Optional.Boolean", "bool?");
+            // MAM: dont produce Nullables here anymore. They are produced later on and for every simple type
+            // AddBuiltInType("Optional.Boolean", "bool?");
+            AddBuiltInType("Optional.Boolean", "bool");
             AddBuiltInType("integer", "int");
-            AddBuiltInType("Optional.Integer", "int?");
+            // AddBuiltInType("Optional.Integer", "int?");
+            AddBuiltInType("Optional.Integer", "int");
             AddBuiltInType("number", "double");
-            AddBuiltInType("Optional.Number", "double?");
+            // AddBuiltInType("Optional.Number", "double?");
+            AddBuiltInType("Optional.Number", "double");
+
             AddBuiltInType("string", "string");
             AddBuiltInType("Optional.String", "string");
             AddBuiltInType("Global.String.NotEmpty", "string");

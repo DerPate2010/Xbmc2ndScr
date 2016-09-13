@@ -1,4 +1,4 @@
-﻿using XBMCRPC.Video;
+﻿using KODIRPC.Video;
 
 namespace Xbmc2S.Model
 {

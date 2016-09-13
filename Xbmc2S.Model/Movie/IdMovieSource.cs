@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using XBMCRPC.List;
-using XBMCRPC.Methods;
-using XBMCRPC.Video.Fields;
+using KODIRPC.List;
+using KODIRPC.Methods;
+using KODIRPC.Video.Fields;
 
 namespace Xbmc2S.Model
 {
@@ -26,13 +26,13 @@ namespace Xbmc2S.Model
             return new ItemsSourceReference(){ Type = ItemsSourceType.Movie, Filter = ItemsSourceFilter.Id, Param = _query.ToString()};
         }
 
-        protected override async Task<XBMCRPC.VideoLibrary.GetMoviesResponse> GetMovies(Movie fields, Limits limits, Sort sort)
+        protected override async Task<KODIRPC.VideoLibrary.GetMoviesResponse> GetMovies(Movie fields, Limits limits, Sort sort)
         {
             var mvs = await _appContext.XBMC.VideoLibrary.GetMovieDetails(_query, Movie.AllFields());
-            return new XBMCRPC.VideoLibrary.GetMoviesResponse()
+            return new KODIRPC.VideoLibrary.GetMoviesResponse()
                 {
                     limits = new LimitsReturned(){total = 1},
-                    movies = new List<XBMCRPC.Video.Details.Movie>(){ mvs.moviedetails}
+                    movies = new List<KODIRPC.Video.Details.Movie>(){ mvs.moviedetails}
                 };
 
         }

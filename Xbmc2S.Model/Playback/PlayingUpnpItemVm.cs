@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using XBMCRPC.Files;
-using XBMCRPC.List;
-using XBMCRPC.List.Fields;
-using XBMCRPC.List.Filter;
-using XBMCRPC.List.Item;
-using XBMCRPC.Video.Fields;
+using KODIRPC.Files;
+using KODIRPC.List;
+using KODIRPC.List.Fields;
+using KODIRPC.List.Filter;
+using KODIRPC.List.Item;
+using KODIRPC.Video.Fields;
 using Xbmc2S.RT.UPnP;
-using Episodes = XBMCRPC.List.Filter.Fields.Episodes;
-using Movies = XBMCRPC.List.Filter.Fields.Movies;
+using Episodes = KODIRPC.List.Filter.Fields.Episodes;
+using Movies = KODIRPC.List.Filter.Fields.Movies;
 
 namespace Xbmc2S.Model
 {
@@ -58,8 +58,8 @@ namespace Xbmc2S.Model
         {
                 var parts = _curPlayback.PosTrackuri.Split('/');
                 string filename = parts.Last();
-                var candidates = await _appContext.XBMC.VideoLibrary.GetMovies(new Rule.Movies() { field = Movies.filename, Operator = Operators.Is, value = filename }, Movie.AllFields(), limits: new Limits(){end = 1});
-                var candidates2 = await _appContext.XBMC.VideoLibrary.GetEpisodes(new Rule.Episodes() { field = Episodes.filename, Operator = Operators.Is, value = filename }, properties: Episode.AllFields(), limits: new Limits(){end = 1});
+                var candidates = await _appContext.XBMC.VideoLibrary.GetMovies(filter:new Rule.Movies() { field = Movies.filename, Operator = Operators.Is, value = filename }, properties:Movie.AllFields(), limits: new Limits(){end = 1});
+                var candidates2 = await _appContext.XBMC.VideoLibrary.GetEpisodes(filter:new Rule.Episodes() { field = Episodes.filename, Operator = Operators.Is, value = filename }, properties: Episode.AllFields(), limits: new Limits(){end = 1});
 
                 if (candidates.limits.total == 1 && candidates2.limits.total == 0)
                 {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using XBMCRPC.Audio.Details;
-using XBMCRPC.Media;
-using XBMCRPC.Video;
-using XBMCRPC.Video.Details;
+using KODIRPC.Audio.Details;
+using KODIRPC.Media;
+using KODIRPC.Video;
+using KODIRPC.Video.Details;
 using Xbmc2S.Model;
 using Xbmc2S.Model.Download;
 

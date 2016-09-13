@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Okra.Data;
-using XBMCRPC.List;
-using XBMCRPC.Methods;
+using KODIRPC.List;
+using KODIRPC.Methods;
 
 namespace Xbmc2S.Model
 {
@@ -40,7 +40,7 @@ namespace Xbmc2S.Model
 
         async protected override Task<DataListPageResult<TVShowVm>> FetchPageAsync(int pageNumber)
         {
-            var mvs = await _server.XBMC.VideoLibrary.GetTVShows(XBMCRPC.Video.Fields.TVShow.AllFields(),
+            var mvs = await _server.XBMC.VideoLibrary.GetTVShows(KODIRPC.Video.Fields.TVShow.AllFields(),
                                                                  new Limits() { start = (pageNumber - 1) * PageSize, end = (pageNumber - 1) * PageSize + PageSize },
                                                                  new Sort()
                                                                      {
@@ -52,7 +52,7 @@ namespace Xbmc2S.Model
             return new DataListPageResult<TVShowVm>(mvs.limits.total, PageSize, pageNumber, list);
         }
 
-        private TVShowVm ItemFactory(XBMCRPC.Video.Details.TVShow arg)
+        private TVShowVm ItemFactory(KODIRPC.Video.Details.TVShow arg)
         {
             return new TVShowVm(arg, _server);
         }

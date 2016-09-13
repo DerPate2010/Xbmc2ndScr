@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Okra.Core;
 using Q42.WinRT.Portable.Data;
-using XBMCRPC.Global;
-using XBMCRPC.Playlist;
-using XBMCRPC.Video.Details;
-using Season = XBMCRPC.Video.Fields.Season;
+using KODIRPC.Global;
+using KODIRPC.Playlist;
+using KODIRPC.Video.Details;
+using Season = KODIRPC.Video.Fields.Season;
 
 namespace Xbmc2S.Model
 {
@@ -19,7 +19,7 @@ namespace Xbmc2S.Model
         private List<IItemDetails> _items;
         private IEnumerable<ICastVm> _cast;
 
-        public TVShowVm(XBMCRPC.Video.Details.TVShow tvShow, IAppContext appContext, bool useBanner=true)
+        public TVShowVm(KODIRPC.Video.Details.TVShow tvShow, IAppContext appContext, bool useBanner=true)
             : base(tvShow, appContext)
         {
             _tvShow = tvShow;
@@ -56,7 +56,7 @@ namespace Xbmc2S.Model
             return _seasons;
         }
 
-        private SeasonVm SeasonFactory(XBMCRPC.Video.Details.Season arg)
+        private SeasonVm SeasonFactory(KODIRPC.Video.Details.Season arg)
         {
             return new SeasonVm(arg, _appContext, this);
         }
@@ -118,9 +118,9 @@ namespace Xbmc2S.Model
                     await _appContext.XBMC.Playlist.Clear(wellKnownPlayerIdVideo);
                     foreach (var episode in eps)
                     {
-                        await _appContext.XBMC.Playlist.Add(new ItemEpisodeid() { episodeid = episode.Id }, wellKnownPlayerIdVideo);
+                        await _appContext.XBMC.Playlist.Add(wellKnownPlayerIdVideo,new ItemEpisodeid() { episodeid = episode.Id });
                     }
-                    await _appContext.XBMC.Player.PlayPause(true, wellKnownPlayerIdVideo);
+                    await _appContext.XBMC.Player.PlayPause(wellKnownPlayerIdVideo, true);
 
                 }
                 base.PlayExecute();

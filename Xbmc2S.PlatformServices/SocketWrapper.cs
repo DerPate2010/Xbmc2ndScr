@@ -3,7 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Windows.Networking;
 using Windows.Networking.Sockets;
-using XBMCRPC;
+using KODIRPC;
 
 namespace Xbmc2S.RT.PlatformServices
 {

@@ -1,0 +1,1449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7945E1BE-C5B8-4A19-AE1A-4E4696080396}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KODI.Portable</RootNamespace>
+    <AssemblyName>KODI.Portable</AssemblyName>
+    <DefaultLanguage>de-DE</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\KODIRPC.Portable\Client.cs">
+      <Link>Client.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\ConnectionSettings.cs">
+      <Link>ConnectionSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\IPlatformServices.cs">
+      <Link>IPlatformServices.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\ISocket.cs">
+      <Link>ISocket.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\ISocketFactory.cs">
+      <Link>ISocketFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KodiAPIVersion.cs">
+      <Link>KodiAPIVersion.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Addons\ExecuteAddon_params1.cs">
+      <Link>KODIRPC\Addons\ExecuteAddon_params1.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Addons\ExecuteAddon_params2.cs">
+      <Link>KODIRPC\Addons\ExecuteAddon_params2.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Addons\GetAddonDetailsResponse.cs">
+      <Link>KODIRPC\Addons\GetAddonDetailsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Addons\GetAddonsResponse.cs">
+      <Link>KODIRPC\Addons\GetAddonsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Addons\GetAddonsResponse_addons.cs">
+      <Link>KODIRPC\Addons\GetAddonsResponse_addons.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Addons\GetAddons_enabled2.cs">
+      <Link>KODIRPC\Addons\GetAddons_enabled2.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Addon\Content.cs">
+      <Link>KODIRPC\Addon\Content.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Addon\Details.cs">
+      <Link>KODIRPC\Addon\Details.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Addon\Details_dependencies.cs">
+      <Link>KODIRPC\Addon\Details_dependencies.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Addon\Details_dependenciesItem.cs">
+      <Link>KODIRPC\Addon\Details_dependenciesItem.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Addon\Details_extrainfo.cs">
+      <Link>KODIRPC\Addon\Details_extrainfo.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Addon\Details_extrainfoItem.cs">
+      <Link>KODIRPC\Addon\Details_extrainfoItem.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Addon\Fields.cs">
+      <Link>KODIRPC\Addon\Fields.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Addon\Types.cs">
+      <Link>KODIRPC\Addon\Types.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Application\GetProperties_properties.cs">
+      <Link>KODIRPC\Application\GetProperties_properties.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Application\OnVolumeChanged_data.cs">
+      <Link>KODIRPC\Application\OnVolumeChanged_data.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Application\Property\Name.cs">
+      <Link>KODIRPC\Application\Property\Name.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Application\Property\Value.cs">
+      <Link>KODIRPC\Application\Property\Value.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Application\Property\Value_version.cs">
+      <Link>KODIRPC\Application\Property\Value_version.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Application\Property\Value_version_tag.cs">
+      <Link>KODIRPC\Application\Property\Value_version_tag.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Array\Integer.cs">
+      <Link>KODIRPC\Array\Integer.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Array\String.cs">
+      <Link>KODIRPC\Array\String.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\Export_options1.cs">
+      <Link>KODIRPC\AudioLibrary\Export_options1.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\Export_optionsPath.cs">
+      <Link>KODIRPC\AudioLibrary\Export_optionsPath.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetAlbumDetailsResponse.cs">
+      <Link>KODIRPC\AudioLibrary\GetAlbumDetailsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetAlbumsResponse.cs">
+      <Link>KODIRPC\AudioLibrary\GetAlbumsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetAlbumsResponse_albums.cs">
+      <Link>KODIRPC\AudioLibrary\GetAlbumsResponse_albums.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetAlbums_filterArtist.cs">
+      <Link>KODIRPC\AudioLibrary\GetAlbums_filterArtist.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetAlbums_filterArtistid.cs">
+      <Link>KODIRPC\AudioLibrary\GetAlbums_filterArtistid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetAlbums_filterGenre.cs">
+      <Link>KODIRPC\AudioLibrary\GetAlbums_filterGenre.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetAlbums_filterGenreid.cs">
+      <Link>KODIRPC\AudioLibrary\GetAlbums_filterGenreid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetArtistDetailsResponse.cs">
+      <Link>KODIRPC\AudioLibrary\GetArtistDetailsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetArtistsResponse.cs">
+      <Link>KODIRPC\AudioLibrary\GetArtistsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetArtistsResponse_artists.cs">
+      <Link>KODIRPC\AudioLibrary\GetArtistsResponse_artists.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetArtists_filterAlbum.cs">
+      <Link>KODIRPC\AudioLibrary\GetArtists_filterAlbum.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetArtists_filterAlbumid.cs">
+      <Link>KODIRPC\AudioLibrary\GetArtists_filterAlbumid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetArtists_filterGenre.cs">
+      <Link>KODIRPC\AudioLibrary\GetArtists_filterGenre.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetArtists_filterGenreid.cs">
+      <Link>KODIRPC\AudioLibrary\GetArtists_filterGenreid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetArtists_filterSongid.cs">
+      <Link>KODIRPC\AudioLibrary\GetArtists_filterSongid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetGenresResponse.cs">
+      <Link>KODIRPC\AudioLibrary\GetGenresResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetGenresResponse_genres.cs">
+      <Link>KODIRPC\AudioLibrary\GetGenresResponse_genres.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetRecentlyAddedAlbumsResponse.cs">
+      <Link>KODIRPC\AudioLibrary\GetRecentlyAddedAlbumsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetRecentlyAddedAlbumsResponse_albums.cs">
+      <Link>KODIRPC\AudioLibrary\GetRecentlyAddedAlbumsResponse_albums.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetRecentlyAddedSongsResponse.cs">
+      <Link>KODIRPC\AudioLibrary\GetRecentlyAddedSongsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetRecentlyAddedSongsResponse_songs.cs">
+      <Link>KODIRPC\AudioLibrary\GetRecentlyAddedSongsResponse_songs.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetRecentlyPlayedAlbumsResponse.cs">
+      <Link>KODIRPC\AudioLibrary\GetRecentlyPlayedAlbumsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetRecentlyPlayedAlbumsResponse_albums.cs">
+      <Link>KODIRPC\AudioLibrary\GetRecentlyPlayedAlbumsResponse_albums.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetRecentlyPlayedSongsResponse.cs">
+      <Link>KODIRPC\AudioLibrary\GetRecentlyPlayedSongsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetRecentlyPlayedSongsResponse_songs.cs">
+      <Link>KODIRPC\AudioLibrary\GetRecentlyPlayedSongsResponse_songs.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetSongDetailsResponse.cs">
+      <Link>KODIRPC\AudioLibrary\GetSongDetailsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetSongsResponse.cs">
+      <Link>KODIRPC\AudioLibrary\GetSongsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetSongsResponse_songs.cs">
+      <Link>KODIRPC\AudioLibrary\GetSongsResponse_songs.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetSongs_filterAlbum.cs">
+      <Link>KODIRPC\AudioLibrary\GetSongs_filterAlbum.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetSongs_filterAlbumid.cs">
+      <Link>KODIRPC\AudioLibrary\GetSongs_filterAlbumid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetSongs_filterArtist.cs">
+      <Link>KODIRPC\AudioLibrary\GetSongs_filterArtist.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetSongs_filterArtistid.cs">
+      <Link>KODIRPC\AudioLibrary\GetSongs_filterArtistid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetSongs_filterGenre.cs">
+      <Link>KODIRPC\AudioLibrary\GetSongs_filterGenre.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\GetSongs_filterGenreid.cs">
+      <Link>KODIRPC\AudioLibrary\GetSongs_filterGenreid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\OnExport_data.cs">
+      <Link>KODIRPC\AudioLibrary\OnExport_data.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\OnRemove_data.cs">
+      <Link>KODIRPC\AudioLibrary\OnRemove_data.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\AudioLibrary\OnUpdate_data.cs">
+      <Link>KODIRPC\AudioLibrary\OnUpdate_data.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Audio\Album\ReleaseType.cs">
+      <Link>KODIRPC\Audio\Album\ReleaseType.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Audio\Details\Album.cs">
+      <Link>KODIRPC\Audio\Details\Album.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Audio\Details\Artist.cs">
+      <Link>KODIRPC\Audio\Details\Artist.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Audio\Details\Base.cs">
+      <Link>KODIRPC\Audio\Details\Base.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Audio\Details\Media.cs">
+      <Link>KODIRPC\Audio\Details\Media.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Audio\Details\Song.cs">
+      <Link>KODIRPC\Audio\Details\Song.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Audio\Fields\Album.cs">
+      <Link>KODIRPC\Audio\Fields\Album.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Audio\Fields\Artist.cs">
+      <Link>KODIRPC\Audio\Fields\Artist.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Audio\Fields\Song.cs">
+      <Link>KODIRPC\Audio\Fields\Song.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Configuration.cs">
+      <Link>KODIRPC\Configuration.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Favourites\GetFavouritesResponse.cs">
+      <Link>KODIRPC\Favourites\GetFavouritesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Favourites\GetFavouritesResponse_favourites.cs">
+      <Link>KODIRPC\Favourites\GetFavouritesResponse_favourites.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Favourite\Details\Favourite.cs">
+      <Link>KODIRPC\Favourite\Details\Favourite.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Favourite\Fields\Favourite.cs">
+      <Link>KODIRPC\Favourite\Fields\Favourite.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Favourite\Type.cs">
+      <Link>KODIRPC\Favourite\Type.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Files\GetDirectoryResponse.cs">
+      <Link>KODIRPC\Files\GetDirectoryResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Files\GetDirectoryResponse_files.cs">
+      <Link>KODIRPC\Files\GetDirectoryResponse_files.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Files\GetFileDetailsResponse.cs">
+      <Link>KODIRPC\Files\GetFileDetailsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Files\GetSourcesResponse.cs">
+      <Link>KODIRPC\Files\GetSourcesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Files\Media.cs">
+      <Link>KODIRPC\Files\Media.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Files\PrepareDownloadResponse.cs">
+      <Link>KODIRPC\Files\PrepareDownloadResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Files\PrepareDownloadResponse_mode.cs">
+      <Link>KODIRPC\Files\PrepareDownloadResponse_mode.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Files\PrepareDownloadResponse_protocol.cs">
+      <Link>KODIRPC\Files\PrepareDownloadResponse_protocol.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Global\IncrementDecrement.cs">
+      <Link>KODIRPC\Global\IncrementDecrement.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Global\Time.cs">
+      <Link>KODIRPC\Global\Time.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Global\Toggle2.cs">
+      <Link>KODIRPC\Global\Toggle2.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Global\Weekday.cs">
+      <Link>KODIRPC\Global\Weekday.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\GUI\ActivateWindow_parameters.cs">
+      <Link>KODIRPC\GUI\ActivateWindow_parameters.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\GUI\GetProperties_properties.cs">
+      <Link>KODIRPC\GUI\GetProperties_properties.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\GUI\GetStereoscopicModesResponse.cs">
+      <Link>KODIRPC\GUI\GetStereoscopicModesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\GUI\GetStereoscopicModesResponse_stereoscopicmodes.cs">
+      <Link>KODIRPC\GUI\GetStereoscopicModesResponse_stereoscopicmodes.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\GUI\OnScreensaverDeactivated_data.cs">
+      <Link>KODIRPC\GUI\OnScreensaverDeactivated_data.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\GUI\Property\Name.cs">
+      <Link>KODIRPC\GUI\Property\Name.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\GUI\Property\Value.cs">
+      <Link>KODIRPC\GUI\Property\Value.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\GUI\Property\Value_currentcontrol.cs">
+      <Link>KODIRPC\GUI\Property\Value_currentcontrol.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\GUI\Property\Value_currentwindow.cs">
+      <Link>KODIRPC\GUI\Property\Value_currentwindow.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\GUI\Property\Value_skin.cs">
+      <Link>KODIRPC\GUI\Property\Value_skin.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\GUI\SetStereoscopicMode_mode.cs">
+      <Link>KODIRPC\GUI\SetStereoscopicMode_mode.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\GUI\ShowNotification_image1.cs">
+      <Link>KODIRPC\GUI\ShowNotification_image1.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\GUI\Stereoscopy\Mode.cs">
+      <Link>KODIRPC\GUI\Stereoscopy\Mode.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\GUI\Stereoscopy\Mode_mode.cs">
+      <Link>KODIRPC\GUI\Stereoscopy\Mode_mode.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\GUI\Window.cs">
+      <Link>KODIRPC\GUI\Window.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Input\Action.cs">
+      <Link>KODIRPC\Input\Action.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Input\OnInputRequested_data.cs">
+      <Link>KODIRPC\Input\OnInputRequested_data.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Item\Details\Base.cs">
+      <Link>KODIRPC\Item\Details\Base.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Item\Fields\Base.cs">
+      <Link>KODIRPC\Item\Fields\Base.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\JSONRPC\IntrospectResponse.cs">
+      <Link>KODIRPC\JSONRPC\IntrospectResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\JSONRPC\Introspect_filter.cs">
+      <Link>KODIRPC\JSONRPC\Introspect_filter.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\JSONRPC\Introspect_filter_type.cs">
+      <Link>KODIRPC\JSONRPC\Introspect_filter_type.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\JSONRPC\PermissionResponse.cs">
+      <Link>KODIRPC\JSONRPC\PermissionResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\JSONRPC\VersionResponse.cs">
+      <Link>KODIRPC\JSONRPC\VersionResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\JSONRPC\VersionResponse_version.cs">
+      <Link>KODIRPC\JSONRPC\VersionResponse_version.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Library\Details\Genre.cs">
+      <Link>KODIRPC\Library\Details\Genre.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Library\Fields\Genre.cs">
+      <Link>KODIRPC\Library\Fields\Genre.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Fields\All.cs">
+      <Link>KODIRPC\List\Fields\All.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Fields\Files.cs">
+      <Link>KODIRPC\List\Fields\Files.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\AlbumsAnd.cs">
+      <Link>KODIRPC\List\Filter\AlbumsAnd.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\AlbumsAnd_and.cs">
+      <Link>KODIRPC\List\Filter\AlbumsAnd_and.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\AlbumsOr.cs">
+      <Link>KODIRPC\List\Filter\AlbumsOr.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\AlbumsOr_or.cs">
+      <Link>KODIRPC\List\Filter\AlbumsOr_or.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\ArtistsAnd.cs">
+      <Link>KODIRPC\List\Filter\ArtistsAnd.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\ArtistsAnd_and.cs">
+      <Link>KODIRPC\List\Filter\ArtistsAnd_and.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\ArtistsOr.cs">
+      <Link>KODIRPC\List\Filter\ArtistsOr.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\ArtistsOr_or.cs">
+      <Link>KODIRPC\List\Filter\ArtistsOr_or.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\EpisodesAnd.cs">
+      <Link>KODIRPC\List\Filter\EpisodesAnd.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\EpisodesAnd_and.cs">
+      <Link>KODIRPC\List\Filter\EpisodesAnd_and.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\EpisodesOr.cs">
+      <Link>KODIRPC\List\Filter\EpisodesOr.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\EpisodesOr_or.cs">
+      <Link>KODIRPC\List\Filter\EpisodesOr_or.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\Fields\Albums.cs">
+      <Link>KODIRPC\List\Filter\Fields\Albums.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\Fields\Artists.cs">
+      <Link>KODIRPC\List\Filter\Fields\Artists.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\Fields\Episodes.cs">
+      <Link>KODIRPC\List\Filter\Fields\Episodes.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\Fields\Movies.cs">
+      <Link>KODIRPC\List\Filter\Fields\Movies.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\Fields\MusicVideos.cs">
+      <Link>KODIRPC\List\Filter\Fields\MusicVideos.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\Fields\Songs.cs">
+      <Link>KODIRPC\List\Filter\Fields\Songs.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\Fields\Textures.cs">
+      <Link>KODIRPC\List\Filter\Fields\Textures.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\Fields\TVShows.cs">
+      <Link>KODIRPC\List\Filter\Fields\TVShows.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\MoviesAnd.cs">
+      <Link>KODIRPC\List\Filter\MoviesAnd.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\MoviesAnd_and.cs">
+      <Link>KODIRPC\List\Filter\MoviesAnd_and.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\MoviesOr.cs">
+      <Link>KODIRPC\List\Filter\MoviesOr.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\MoviesOr_or.cs">
+      <Link>KODIRPC\List\Filter\MoviesOr_or.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\MusicVideosAnd.cs">
+      <Link>KODIRPC\List\Filter\MusicVideosAnd.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\MusicVideosAnd_and.cs">
+      <Link>KODIRPC\List\Filter\MusicVideosAnd_and.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\MusicVideosOr.cs">
+      <Link>KODIRPC\List\Filter\MusicVideosOr.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\MusicVideosOr_or.cs">
+      <Link>KODIRPC\List\Filter\MusicVideosOr_or.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\Operators.cs">
+      <Link>KODIRPC\List\Filter\Operators.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\Rule.cs">
+      <Link>KODIRPC\List\Filter\Rule.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\SongsAnd.cs">
+      <Link>KODIRPC\List\Filter\SongsAnd.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\SongsAnd_and.cs">
+      <Link>KODIRPC\List\Filter\SongsAnd_and.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\SongsOr.cs">
+      <Link>KODIRPC\List\Filter\SongsOr.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\SongsOr_or.cs">
+      <Link>KODIRPC\List\Filter\SongsOr_or.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\TexturesAnd.cs">
+      <Link>KODIRPC\List\Filter\TexturesAnd.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\TexturesAnd_and.cs">
+      <Link>KODIRPC\List\Filter\TexturesAnd_and.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\TexturesOr.cs">
+      <Link>KODIRPC\List\Filter\TexturesOr.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\TexturesOr_or.cs">
+      <Link>KODIRPC\List\Filter\TexturesOr_or.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\TVShowsAnd.cs">
+      <Link>KODIRPC\List\Filter\TVShowsAnd.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\TVShowsAnd_and.cs">
+      <Link>KODIRPC\List\Filter\TVShowsAnd_and.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\TVShowsOr.cs">
+      <Link>KODIRPC\List\Filter\TVShowsOr.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Filter\TVShowsOr_or.cs">
+      <Link>KODIRPC\List\Filter\TVShowsOr_or.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Items\Sources.cs">
+      <Link>KODIRPC\List\Items\Sources.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Items\SourcesItem.cs">
+      <Link>KODIRPC\List\Items\SourcesItem.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Item\All.cs">
+      <Link>KODIRPC\List\Item\All.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Item\Base.cs">
+      <Link>KODIRPC\List\Item\Base.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Item\Base_type.cs">
+      <Link>KODIRPC\List\Item\Base_type.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Item\Base_uniqueid.cs">
+      <Link>KODIRPC\List\Item\Base_uniqueid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Item\File.cs">
+      <Link>KODIRPC\List\Item\File.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Item\File_filetype.cs">
+      <Link>KODIRPC\List\Item\File_filetype.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Limits.cs">
+      <Link>KODIRPC\List\Limits.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\LimitsReturned.cs">
+      <Link>KODIRPC\List\LimitsReturned.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Sort.cs">
+      <Link>KODIRPC\List\Sort.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Sort_method.cs">
+      <Link>KODIRPC\List\Sort_method.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\List\Sort_order.cs">
+      <Link>KODIRPC\List\Sort_order.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Media\Artwork.cs">
+      <Link>KODIRPC\Media\Artwork.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Media\Details\Base.cs">
+      <Link>KODIRPC\Media\Details\Base.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Notifications\Item1.cs">
+      <Link>KODIRPC\Notifications\Item1.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Notifications\Item2.cs">
+      <Link>KODIRPC\Notifications\Item2.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Notifications\Item3.cs">
+      <Link>KODIRPC\Notifications\Item3.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Notifications\Item4.cs">
+      <Link>KODIRPC\Notifications\Item4.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Notifications\Item5.cs">
+      <Link>KODIRPC\Notifications\Item5.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Notifications\Item6.cs">
+      <Link>KODIRPC\Notifications\Item6.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Notifications\Item7.cs">
+      <Link>KODIRPC\Notifications\Item7.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Notifications\ItemType.cs">
+      <Link>KODIRPC\Notifications\ItemType.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Notifications\Item\Type.cs">
+      <Link>KODIRPC\Notifications\Item\Type.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Audio\Stream.cs">
+      <Link>KODIRPC\Player\Audio\Stream.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\GetActivePlayersResponse.cs">
+      <Link>KODIRPC\Player\GetActivePlayersResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\GetActivePlayersResponseItem.cs">
+      <Link>KODIRPC\Player\GetActivePlayersResponseItem.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\GetItemResponse.cs">
+      <Link>KODIRPC\Player\GetItemResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\GetPlayersResponse.cs">
+      <Link>KODIRPC\Player\GetPlayersResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\GetPlayersResponseItem.cs">
+      <Link>KODIRPC\Player\GetPlayersResponseItem.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\GetPlayersResponseItem_type.cs">
+      <Link>KODIRPC\Player\GetPlayersResponseItem_type.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\GetPlayers_media.cs">
+      <Link>KODIRPC\Player\GetPlayers_media.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\GetProperties_properties.cs">
+      <Link>KODIRPC\Player\GetProperties_properties.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\GoTo_to1.cs">
+      <Link>KODIRPC\Player\GoTo_to1.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Move_direction.cs">
+      <Link>KODIRPC\Player\Move_direction.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Notifications\Data.cs">
+      <Link>KODIRPC\Player\Notifications\Data.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Notifications\Player.cs">
+      <Link>KODIRPC\Player\Notifications\Player.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\OnPropertyChanged_data.cs">
+      <Link>KODIRPC\Player\OnPropertyChanged_data.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\OnSeek_data.cs">
+      <Link>KODIRPC\Player\OnSeek_data.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\OnStop_data.cs">
+      <Link>KODIRPC\Player\OnStop_data.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Open_item1.cs">
+      <Link>KODIRPC\Player\Open_item1.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Open_item2.cs">
+      <Link>KODIRPC\Player\Open_item2.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Open_itemChannelid.cs">
+      <Link>KODIRPC\Player\Open_itemChannelid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Open_itemPartymode.cs">
+      <Link>KODIRPC\Player\Open_itemPartymode.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Open_itemRecordingid.cs">
+      <Link>KODIRPC\Player\Open_itemRecordingid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Open_options.cs">
+      <Link>KODIRPC\Player\Open_options.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Position\Time.cs">
+      <Link>KODIRPC\Player\Position\Time.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Property\Name.cs">
+      <Link>KODIRPC\Player\Property\Name.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Property\Value.cs">
+      <Link>KODIRPC\Player\Property\Value.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Property\Value_audiostreams.cs">
+      <Link>KODIRPC\Player\Property\Value_audiostreams.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Property\Value_subtitles.cs">
+      <Link>KODIRPC\Player\Property\Value_subtitles.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Repeat.cs">
+      <Link>KODIRPC\Player\Repeat.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Rotate_value.cs">
+      <Link>KODIRPC\Player\Rotate_value.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\SeekResponse.cs">
+      <Link>KODIRPC\Player\SeekResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Seek_value1.cs">
+      <Link>KODIRPC\Player\Seek_value1.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Seek_valuePercentage.cs">
+      <Link>KODIRPC\Player\Seek_valuePercentage.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Seek_valueSeconds.cs">
+      <Link>KODIRPC\Player\Seek_valueSeconds.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Seek_valueStep.cs">
+      <Link>KODIRPC\Player\Seek_valueStep.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Seek_valueStep_step.cs">
+      <Link>KODIRPC\Player\Seek_valueStep_step.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Seek_valueTime.cs">
+      <Link>KODIRPC\Player\Seek_valueTime.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\SetAudioStream_stream1.cs">
+      <Link>KODIRPC\Player\SetAudioStream_stream1.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\SetRepeat_repeat1.cs">
+      <Link>KODIRPC\Player\SetRepeat_repeat1.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\SetSubtitle_subtitle1.cs">
+      <Link>KODIRPC\Player\SetSubtitle_subtitle1.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Speed.cs">
+      <Link>KODIRPC\Player\Speed.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Subtitle.cs">
+      <Link>KODIRPC\Player\Subtitle.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Type.cs">
+      <Link>KODIRPC\Player\Type.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Player\Zoom_zoom1.cs">
+      <Link>KODIRPC\Player\Zoom_zoom1.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\Add_item1.cs">
+      <Link>KODIRPC\Playlist\Add_item1.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\GetItemsResponse.cs">
+      <Link>KODIRPC\Playlist\GetItemsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\GetItemsResponse_items.cs">
+      <Link>KODIRPC\Playlist\GetItemsResponse_items.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\GetPlaylistsResponse.cs">
+      <Link>KODIRPC\Playlist\GetPlaylistsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\GetPlaylistsResponseItem.cs">
+      <Link>KODIRPC\Playlist\GetPlaylistsResponseItem.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\GetProperties_properties.cs">
+      <Link>KODIRPC\Playlist\GetProperties_properties.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\Insert_item1.cs">
+      <Link>KODIRPC\Playlist\Insert_item1.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\Item1.cs">
+      <Link>KODIRPC\Playlist\Item1.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\ItemAlbumid.cs">
+      <Link>KODIRPC\Playlist\ItemAlbumid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\ItemArtistid.cs">
+      <Link>KODIRPC\Playlist\ItemArtistid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\ItemEpisodeid.cs">
+      <Link>KODIRPC\Playlist\ItemEpisodeid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\ItemFile.cs">
+      <Link>KODIRPC\Playlist\ItemFile.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\ItemGenreid.cs">
+      <Link>KODIRPC\Playlist\ItemGenreid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\ItemMovieid.cs">
+      <Link>KODIRPC\Playlist\ItemMovieid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\ItemMusicvideoid.cs">
+      <Link>KODIRPC\Playlist\ItemMusicvideoid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\ItemSongid.cs">
+      <Link>KODIRPC\Playlist\ItemSongid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\OnAdd_data.cs">
+      <Link>KODIRPC\Playlist\OnAdd_data.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\OnClear_data.cs">
+      <Link>KODIRPC\Playlist\OnClear_data.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\OnRemove_data.cs">
+      <Link>KODIRPC\Playlist\OnRemove_data.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\Property\Name.cs">
+      <Link>KODIRPC\Playlist\Property\Name.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\Property\Value.cs">
+      <Link>KODIRPC\Playlist\Property\Value.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Playlist\Type.cs">
+      <Link>KODIRPC\Playlist\Type.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Profiles\Details\Profile.cs">
+      <Link>KODIRPC\Profiles\Details\Profile.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Profiles\Fields\Profile.cs">
+      <Link>KODIRPC\Profiles\Fields\Profile.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Profiles\GetProfilesResponse.cs">
+      <Link>KODIRPC\Profiles\GetProfilesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Profiles\GetProfilesResponse_profiles.cs">
+      <Link>KODIRPC\Profiles\GetProfilesResponse_profiles.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Profiles\Password.cs">
+      <Link>KODIRPC\Profiles\Password.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Profiles\Password_encryption.cs">
+      <Link>KODIRPC\Profiles\Password_encryption.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\ChannelGroup\Id1.cs">
+      <Link>KODIRPC\PVR\ChannelGroup\Id1.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\Channel\Type.cs">
+      <Link>KODIRPC\PVR\Channel\Type.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\Details\Broadcast.cs">
+      <Link>KODIRPC\PVR\Details\Broadcast.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\Details\Channel.cs">
+      <Link>KODIRPC\PVR\Details\Channel.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\Details\ChannelGroup.cs">
+      <Link>KODIRPC\PVR\Details\ChannelGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\Details\Recording.cs">
+      <Link>KODIRPC\PVR\Details\Recording.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\Details\Timer.cs">
+      <Link>KODIRPC\PVR\Details\Timer.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\Details\Timer_weekdays.cs">
+      <Link>KODIRPC\PVR\Details\Timer_weekdays.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\Fields\Broadcast.cs">
+      <Link>KODIRPC\PVR\Fields\Broadcast.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\Fields\Channel.cs">
+      <Link>KODIRPC\PVR\Fields\Channel.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\Fields\Recording.cs">
+      <Link>KODIRPC\PVR\Fields\Recording.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\Fields\Timer.cs">
+      <Link>KODIRPC\PVR\Fields\Timer.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\GetBroadcastDetailsResponse.cs">
+      <Link>KODIRPC\PVR\GetBroadcastDetailsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\GetBroadcastsResponse.cs">
+      <Link>KODIRPC\PVR\GetBroadcastsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\GetBroadcastsResponse_broadcasts.cs">
+      <Link>KODIRPC\PVR\GetBroadcastsResponse_broadcasts.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\GetChannelDetailsResponse.cs">
+      <Link>KODIRPC\PVR\GetChannelDetailsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\GetChannelGroupDetailsResponse.cs">
+      <Link>KODIRPC\PVR\GetChannelGroupDetailsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\GetChannelGroupDetails_channels.cs">
+      <Link>KODIRPC\PVR\GetChannelGroupDetails_channels.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\GetChannelGroupsResponse.cs">
+      <Link>KODIRPC\PVR\GetChannelGroupsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\GetChannelGroupsResponse_channelgroups.cs">
+      <Link>KODIRPC\PVR\GetChannelGroupsResponse_channelgroups.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\GetChannelsResponse.cs">
+      <Link>KODIRPC\PVR\GetChannelsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\GetChannelsResponse_channels.cs">
+      <Link>KODIRPC\PVR\GetChannelsResponse_channels.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\GetProperties_properties.cs">
+      <Link>KODIRPC\PVR\GetProperties_properties.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\GetRecordingDetailsResponse.cs">
+      <Link>KODIRPC\PVR\GetRecordingDetailsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\GetRecordingsResponse.cs">
+      <Link>KODIRPC\PVR\GetRecordingsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\GetRecordingsResponse_recordings.cs">
+      <Link>KODIRPC\PVR\GetRecordingsResponse_recordings.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\GetTimerDetailsResponse.cs">
+      <Link>KODIRPC\PVR\GetTimerDetailsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\GetTimersResponse.cs">
+      <Link>KODIRPC\PVR\GetTimersResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\GetTimersResponse_timers.cs">
+      <Link>KODIRPC\PVR\GetTimersResponse_timers.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\Property\Name.cs">
+      <Link>KODIRPC\PVR\Property\Name.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\Property\Value.cs">
+      <Link>KODIRPC\PVR\Property\Value.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\Record_channel1.cs">
+      <Link>KODIRPC\PVR\Record_channel1.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\PVR\TimerState.cs">
+      <Link>KODIRPC\PVR\TimerState.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Settings\GetCategoriesResponse.cs">
+      <Link>KODIRPC\Settings\GetCategoriesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Settings\GetCategoriesResponse_categories.cs">
+      <Link>KODIRPC\Settings\GetCategoriesResponse_categories.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Settings\GetCategories_properties.cs">
+      <Link>KODIRPC\Settings\GetCategories_properties.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Settings\GetSectionsResponse.cs">
+      <Link>KODIRPC\Settings\GetSectionsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Settings\GetSectionsResponse_sections.cs">
+      <Link>KODIRPC\Settings\GetSectionsResponse_sections.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Settings\GetSections_properties.cs">
+      <Link>KODIRPC\Settings\GetSections_properties.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Settings\GetSettingsResponse.cs">
+      <Link>KODIRPC\Settings\GetSettingsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Settings\GetSettingsResponse_settings.cs">
+      <Link>KODIRPC\Settings\GetSettingsResponse_settings.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Settings\GetSettings_filter1.cs">
+      <Link>KODIRPC\Settings\GetSettings_filter1.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Settings\GetSettingValueResponse.cs">
+      <Link>KODIRPC\Settings\GetSettingValueResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\Base.cs">
+      <Link>KODIRPC\Setting\Details\Base.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\Category.cs">
+      <Link>KODIRPC\Setting\Details\Category.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\Category_groups.cs">
+      <Link>KODIRPC\Setting\Details\Category_groups.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\ControlBase.cs">
+      <Link>KODIRPC\Setting\Details\ControlBase.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\ControlButton.cs">
+      <Link>KODIRPC\Setting\Details\ControlButton.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\ControlButton_type.cs">
+      <Link>KODIRPC\Setting\Details\ControlButton_type.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\ControlCheckmark.cs">
+      <Link>KODIRPC\Setting\Details\ControlCheckmark.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\ControlCheckmark_format.cs">
+      <Link>KODIRPC\Setting\Details\ControlCheckmark_format.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\ControlCheckmark_type.cs">
+      <Link>KODIRPC\Setting\Details\ControlCheckmark_type.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\ControlEdit.cs">
+      <Link>KODIRPC\Setting\Details\ControlEdit.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\ControlEdit_type.cs">
+      <Link>KODIRPC\Setting\Details\ControlEdit_type.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\ControlHeading.cs">
+      <Link>KODIRPC\Setting\Details\ControlHeading.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\ControlList.cs">
+      <Link>KODIRPC\Setting\Details\ControlList.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\ControlList_type.cs">
+      <Link>KODIRPC\Setting\Details\ControlList_type.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\ControlRange.cs">
+      <Link>KODIRPC\Setting\Details\ControlRange.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\ControlRange_type.cs">
+      <Link>KODIRPC\Setting\Details\ControlRange_type.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\ControlSlider.cs">
+      <Link>KODIRPC\Setting\Details\ControlSlider.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\ControlSlider_type.cs">
+      <Link>KODIRPC\Setting\Details\ControlSlider_type.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\ControlSpinner.cs">
+      <Link>KODIRPC\Setting\Details\ControlSpinner.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\ControlSpinner_type.cs">
+      <Link>KODIRPC\Setting\Details\ControlSpinner_type.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\Group.cs">
+      <Link>KODIRPC\Setting\Details\Group.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\Group_settings.cs">
+      <Link>KODIRPC\Setting\Details\Group_settings.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\Section.cs">
+      <Link>KODIRPC\Setting\Details\Section.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\Section_categories.cs">
+      <Link>KODIRPC\Setting\Details\Section_categories.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\SettingAction.cs">
+      <Link>KODIRPC\Setting\Details\SettingAction.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\SettingAddon.cs">
+      <Link>KODIRPC\Setting\Details\SettingAddon.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\SettingBase.cs">
+      <Link>KODIRPC\Setting\Details\SettingBase.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\SettingBool.cs">
+      <Link>KODIRPC\Setting\Details\SettingBool.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\SettingInt.cs">
+      <Link>KODIRPC\Setting\Details\SettingInt.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\SettingInt_options.cs">
+      <Link>KODIRPC\Setting\Details\SettingInt_options.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\SettingInt_optionsItem.cs">
+      <Link>KODIRPC\Setting\Details\SettingInt_optionsItem.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\SettingList.cs">
+      <Link>KODIRPC\Setting\Details\SettingList.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\SettingNumber.cs">
+      <Link>KODIRPC\Setting\Details\SettingNumber.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\SettingPath.cs">
+      <Link>KODIRPC\Setting\Details\SettingPath.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\SettingPath_sources.cs">
+      <Link>KODIRPC\Setting\Details\SettingPath_sources.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\SettingString.cs">
+      <Link>KODIRPC\Setting\Details\SettingString.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\SettingString_options.cs">
+      <Link>KODIRPC\Setting\Details\SettingString_options.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Details\SettingString_optionsItem.cs">
+      <Link>KODIRPC\Setting\Details\SettingString_optionsItem.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Level.cs">
+      <Link>KODIRPC\Setting\Level.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Type.cs">
+      <Link>KODIRPC\Setting\Type.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Setting\Value\List.cs">
+      <Link>KODIRPC\Setting\Value\List.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\System\GetProperties_properties.cs">
+      <Link>KODIRPC\System\GetProperties_properties.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\System\OnQuit_data.cs">
+      <Link>KODIRPC\System\OnQuit_data.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\System\Property\Name.cs">
+      <Link>KODIRPC\System\Property\Name.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\System\Property\Value.cs">
+      <Link>KODIRPC\System\Property\Value.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Textures\Details\Size.cs">
+      <Link>KODIRPC\Textures\Details\Size.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Textures\Details\Texture.cs">
+      <Link>KODIRPC\Textures\Details\Texture.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Textures\Details\Texture_sizes.cs">
+      <Link>KODIRPC\Textures\Details\Texture_sizes.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Textures\Fields\Texture.cs">
+      <Link>KODIRPC\Textures\Fields\Texture.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Textures\GetTexturesResponse.cs">
+      <Link>KODIRPC\Textures\GetTexturesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Textures\GetTexturesResponse_textures.cs">
+      <Link>KODIRPC\Textures\GetTexturesResponse_textures.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\Export_options1.cs">
+      <Link>KODIRPC\VideoLibrary\Export_options1.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\Export_optionsPath.cs">
+      <Link>KODIRPC\VideoLibrary\Export_optionsPath.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetEpisodeDetailsResponse.cs">
+      <Link>KODIRPC\VideoLibrary\GetEpisodeDetailsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetEpisodesResponse.cs">
+      <Link>KODIRPC\VideoLibrary\GetEpisodesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetEpisodesResponse_episodes.cs">
+      <Link>KODIRPC\VideoLibrary\GetEpisodesResponse_episodes.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetEpisodes_filterActor.cs">
+      <Link>KODIRPC\VideoLibrary\GetEpisodes_filterActor.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetEpisodes_filterDirector.cs">
+      <Link>KODIRPC\VideoLibrary\GetEpisodes_filterDirector.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetEpisodes_filterGenre.cs">
+      <Link>KODIRPC\VideoLibrary\GetEpisodes_filterGenre.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetEpisodes_filterGenreid.cs">
+      <Link>KODIRPC\VideoLibrary\GetEpisodes_filterGenreid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetEpisodes_filterYear.cs">
+      <Link>KODIRPC\VideoLibrary\GetEpisodes_filterYear.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetGenresResponse.cs">
+      <Link>KODIRPC\VideoLibrary\GetGenresResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetGenresResponse_genres.cs">
+      <Link>KODIRPC\VideoLibrary\GetGenresResponse_genres.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetGenres_type.cs">
+      <Link>KODIRPC\VideoLibrary\GetGenres_type.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMovieDetailsResponse.cs">
+      <Link>KODIRPC\VideoLibrary\GetMovieDetailsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMovieSetDetailsResponse.cs">
+      <Link>KODIRPC\VideoLibrary\GetMovieSetDetailsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMovieSetDetails_movies.cs">
+      <Link>KODIRPC\VideoLibrary\GetMovieSetDetails_movies.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMovieSetsResponse.cs">
+      <Link>KODIRPC\VideoLibrary\GetMovieSetsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMovieSetsResponse_sets.cs">
+      <Link>KODIRPC\VideoLibrary\GetMovieSetsResponse_sets.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMoviesResponse.cs">
+      <Link>KODIRPC\VideoLibrary\GetMoviesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMoviesResponse_movies.cs">
+      <Link>KODIRPC\VideoLibrary\GetMoviesResponse_movies.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMovies_filterActor.cs">
+      <Link>KODIRPC\VideoLibrary\GetMovies_filterActor.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMovies_filterCountry.cs">
+      <Link>KODIRPC\VideoLibrary\GetMovies_filterCountry.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMovies_filterDirector.cs">
+      <Link>KODIRPC\VideoLibrary\GetMovies_filterDirector.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMovies_filterGenre.cs">
+      <Link>KODIRPC\VideoLibrary\GetMovies_filterGenre.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMovies_filterGenreid.cs">
+      <Link>KODIRPC\VideoLibrary\GetMovies_filterGenreid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMovies_filterSet.cs">
+      <Link>KODIRPC\VideoLibrary\GetMovies_filterSet.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMovies_filterSetid.cs">
+      <Link>KODIRPC\VideoLibrary\GetMovies_filterSetid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMovies_filterStudio.cs">
+      <Link>KODIRPC\VideoLibrary\GetMovies_filterStudio.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMovies_filterTag.cs">
+      <Link>KODIRPC\VideoLibrary\GetMovies_filterTag.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMovies_filterYear.cs">
+      <Link>KODIRPC\VideoLibrary\GetMovies_filterYear.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMusicVideoDetailsResponse.cs">
+      <Link>KODIRPC\VideoLibrary\GetMusicVideoDetailsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMusicVideosResponse.cs">
+      <Link>KODIRPC\VideoLibrary\GetMusicVideosResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMusicVideosResponse_musicvideos.cs">
+      <Link>KODIRPC\VideoLibrary\GetMusicVideosResponse_musicvideos.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMusicVideos_filterArtist.cs">
+      <Link>KODIRPC\VideoLibrary\GetMusicVideos_filterArtist.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMusicVideos_filterDirector.cs">
+      <Link>KODIRPC\VideoLibrary\GetMusicVideos_filterDirector.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMusicVideos_filterGenre.cs">
+      <Link>KODIRPC\VideoLibrary\GetMusicVideos_filterGenre.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMusicVideos_filterGenreid.cs">
+      <Link>KODIRPC\VideoLibrary\GetMusicVideos_filterGenreid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMusicVideos_filterStudio.cs">
+      <Link>KODIRPC\VideoLibrary\GetMusicVideos_filterStudio.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMusicVideos_filterTag.cs">
+      <Link>KODIRPC\VideoLibrary\GetMusicVideos_filterTag.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetMusicVideos_filterYear.cs">
+      <Link>KODIRPC\VideoLibrary\GetMusicVideos_filterYear.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetRecentlyAddedEpisodesResponse.cs">
+      <Link>KODIRPC\VideoLibrary\GetRecentlyAddedEpisodesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetRecentlyAddedEpisodesResponse_episodes.cs">
+      <Link>KODIRPC\VideoLibrary\GetRecentlyAddedEpisodesResponse_episodes.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetRecentlyAddedMoviesResponse.cs">
+      <Link>KODIRPC\VideoLibrary\GetRecentlyAddedMoviesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetRecentlyAddedMoviesResponse_movies.cs">
+      <Link>KODIRPC\VideoLibrary\GetRecentlyAddedMoviesResponse_movies.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetRecentlyAddedMusicVideosResponse.cs">
+      <Link>KODIRPC\VideoLibrary\GetRecentlyAddedMusicVideosResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetRecentlyAddedMusicVideosResponse_musicvideos.cs">
+      <Link>KODIRPC\VideoLibrary\GetRecentlyAddedMusicVideosResponse_musicvideos.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetSeasonDetailsResponse.cs">
+      <Link>KODIRPC\VideoLibrary\GetSeasonDetailsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetSeasonsResponse.cs">
+      <Link>KODIRPC\VideoLibrary\GetSeasonsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetSeasonsResponse_seasons.cs">
+      <Link>KODIRPC\VideoLibrary\GetSeasonsResponse_seasons.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetTVShowDetailsResponse.cs">
+      <Link>KODIRPC\VideoLibrary\GetTVShowDetailsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetTVShowsResponse.cs">
+      <Link>KODIRPC\VideoLibrary\GetTVShowsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetTVShowsResponse_tvshows.cs">
+      <Link>KODIRPC\VideoLibrary\GetTVShowsResponse_tvshows.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetTVShows_filterActor.cs">
+      <Link>KODIRPC\VideoLibrary\GetTVShows_filterActor.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetTVShows_filterGenre.cs">
+      <Link>KODIRPC\VideoLibrary\GetTVShows_filterGenre.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetTVShows_filterGenreid.cs">
+      <Link>KODIRPC\VideoLibrary\GetTVShows_filterGenreid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetTVShows_filterStudio.cs">
+      <Link>KODIRPC\VideoLibrary\GetTVShows_filterStudio.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetTVShows_filterTag.cs">
+      <Link>KODIRPC\VideoLibrary\GetTVShows_filterTag.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\GetTVShows_filterYear.cs">
+      <Link>KODIRPC\VideoLibrary\GetTVShows_filterYear.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\OnExport_data.cs">
+      <Link>KODIRPC\VideoLibrary\OnExport_data.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\OnRemove_data.cs">
+      <Link>KODIRPC\VideoLibrary\OnRemove_data.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\VideoLibrary\OnUpdate_data.cs">
+      <Link>KODIRPC\VideoLibrary\OnUpdate_data.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Cast.cs">
+      <Link>KODIRPC\Video\Cast.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\CastItem.cs">
+      <Link>KODIRPC\Video\CastItem.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Details\Base.cs">
+      <Link>KODIRPC\Video\Details\Base.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Details\Episode.cs">
+      <Link>KODIRPC\Video\Details\Episode.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Details\Episode_uniqueid.cs">
+      <Link>KODIRPC\Video\Details\Episode_uniqueid.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Details\File.cs">
+      <Link>KODIRPC\Video\Details\File.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Details\Item.cs">
+      <Link>KODIRPC\Video\Details\Item.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Details\Media.cs">
+      <Link>KODIRPC\Video\Details\Media.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Details\Movie.cs">
+      <Link>KODIRPC\Video\Details\Movie.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Details\MovieSet.cs">
+      <Link>KODIRPC\Video\Details\MovieSet.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Details\MusicVideo.cs">
+      <Link>KODIRPC\Video\Details\MusicVideo.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Details\Season.cs">
+      <Link>KODIRPC\Video\Details\Season.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Details\TVShow.cs">
+      <Link>KODIRPC\Video\Details\TVShow.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Fields\Episode.cs">
+      <Link>KODIRPC\Video\Fields\Episode.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Fields\Movie.cs">
+      <Link>KODIRPC\Video\Fields\Movie.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Fields\MovieSet.cs">
+      <Link>KODIRPC\Video\Fields\MovieSet.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Fields\MusicVideo.cs">
+      <Link>KODIRPC\Video\Fields\MusicVideo.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Fields\Season.cs">
+      <Link>KODIRPC\Video\Fields\Season.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Fields\TVShow.cs">
+      <Link>KODIRPC\Video\Fields\TVShow.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Resume.cs">
+      <Link>KODIRPC\Video\Resume.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Streams.cs">
+      <Link>KODIRPC\Video\Streams.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Streams_audio.cs">
+      <Link>KODIRPC\Video\Streams_audio.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Streams_audioItem.cs">
+      <Link>KODIRPC\Video\Streams_audioItem.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Streams_subtitle.cs">
+      <Link>KODIRPC\Video\Streams_subtitle.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Streams_subtitleItem.cs">
+      <Link>KODIRPC\Video\Streams_subtitleItem.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Streams_video.cs">
+      <Link>KODIRPC\Video\Streams_video.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\Video\Streams_videoItem.cs">
+      <Link>KODIRPC\Video\Streams_videoItem.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\XBMC\GetInfoBooleansResponse.cs">
+      <Link>KODIRPC\XBMC\GetInfoBooleansResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\XBMC\GetInfoBooleans_booleans.cs">
+      <Link>KODIRPC\XBMC\GetInfoBooleans_booleans.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\XBMC\GetInfoLabelsResponse.cs">
+      <Link>KODIRPC\XBMC\GetInfoLabelsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\KODIRPC\XBMC\GetInfoLabels_labels.cs">
+      <Link>KODIRPC\XBMC\GetInfoLabels_labels.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\Methods\Addons.cs">
+      <Link>Methods\Addons.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\Methods\Application.cs">
+      <Link>Methods\Application.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\Methods\AudioLibrary.cs">
+      <Link>Methods\AudioLibrary.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\Methods\Favourites.cs">
+      <Link>Methods\Favourites.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\Methods\Files.cs">
+      <Link>Methods\Files.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\Methods\GUI.cs">
+      <Link>Methods\GUI.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\Methods\Input.cs">
+      <Link>Methods\Input.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\Methods\JSONRPC.cs">
+      <Link>Methods\JSONRPC.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\Methods\Player.cs">
+      <Link>Methods\Player.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\Methods\Playlist.cs">
+      <Link>Methods\Playlist.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\Methods\Profiles.cs">
+      <Link>Methods\Profiles.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\Methods\PVR.cs">
+      <Link>Methods\PVR.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\Methods\Settings.cs">
+      <Link>Methods\Settings.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\Methods\System.cs">
+      <Link>Methods\System.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\Methods\Textures.cs">
+      <Link>Methods\Textures.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\Methods\VideoLibrary.cs">
+      <Link>Methods\VideoLibrary.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\Methods\XBMC.cs">
+      <Link>Methods\XBMC.cs</Link>
+    </Compile>
+    <Compile Include="..\KODIRPC.Portable\NotificationListenerSocketState.cs">
+      <Link>NotificationListenerSocketState.cs</Link>
+    </Compile>
+    <Compile Include="ClientKodi.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

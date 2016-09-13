@@ -1,5 +1,5 @@
 ﻿using System;
-using XBMCRPC;
+using KODIRPC;
 using Xbmc2S.Model.Download;
 
 namespace Xbmc2S.Model

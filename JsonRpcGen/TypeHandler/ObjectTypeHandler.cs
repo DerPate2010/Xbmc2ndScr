@@ -27,7 +27,7 @@ namespace JsonRpcGen.TypeHandler
 
         private TypeReference GetTypeHandler(JProperty prop)
         {
-            string typeName;
+            // string typeName; // MAM??? Variable never used, maybe for debuggin only?
 
             string propertyType = prop.First["type"] != null ? prop.First["type"].ToString() : null;
             var typeNameForAnonymousType = _containingTypeName + "_" + prop.Name;

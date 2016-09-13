@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 // The Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234233
-using XBMCRPC.Files;
+using KODIRPC.Files;
 
 namespace Xbmc2S.RT
 {

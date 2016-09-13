@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using Okra.Core;
-using XBMCRPC.List.Item;
-using XBMCRPC.Methods;
-using XBMCRPC.Player;
-using XBMCRPC.Video;
-using File = XBMCRPC.Video.Details.File;
+using KODIRPC.List.Item;
+using KODIRPC.Methods;
+using KODIRPC.Player;
+using KODIRPC.Video;
+using File = KODIRPC.Video.Details.File;
 
 namespace Xbmc2S.Model
 {
@@ -75,7 +75,7 @@ namespace Xbmc2S.Model
         {
             if (_subtitleCount > 0)
             {
-                await Server.XBMC.Player.SetSubtitle(SetSubtitle_subtitle1.off,wellKnownPlayerIdVideo,  false);
+                await Server.XBMC.Player.SetSubtitle(wellKnownPlayerIdVideo, SetSubtitle_subtitle1.off, false);
             }
         }
     }

@@ -1,5 +1,5 @@
-﻿using XBMCRPC.Audio.Details;
-using XBMCRPC.List.Item;
+﻿using KODIRPC.Audio.Details;
+using KODIRPC.List.Item;
 
 namespace Xbmc2S.Model
 {

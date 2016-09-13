@@ -1,9 +1,9 @@
 ﻿using TmdbWrapper;
-using XBMCRPC;
+using KODIRPC;
 
 namespace Xbmc2S.Model
 {
-    public interface IPlatformServices: XBMCRPC.IPlatformServices,IRequester
+    public interface IPlatformServices: KODIRPC.IPlatformServices,IRequester
     {
         ISettingsManager SettingsManager { get; }
         IImageManager GetImageManager(Client xbmc, bool needsLogin);

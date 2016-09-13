@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using Q42.WinRT.Data;
-using XBMCRPC;
+using KODIRPC;
 using Xbmc2S.Model;
 
 namespace Xbmc2S.RT.PlatformServices

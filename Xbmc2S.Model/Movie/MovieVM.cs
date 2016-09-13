@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using Okra.Core;
-using XBMCRPC.List.Item;
-using XBMCRPC.Methods;
-using XBMCRPC.Playlist;
-using XBMCRPC.Video.Details;
+using KODIRPC.List.Item;
+using KODIRPC.Methods;
+using KODIRPC.Playlist;
+using KODIRPC.Video.Details;
 
 namespace Xbmc2S.Model
 {
@@ -15,8 +15,8 @@ namespace Xbmc2S.Model
         private readonly IAppContext _appContext;
 
 
-        public MovieVm(XBMCRPC.Video.Details.Movie movie, IAppContext appContext)
-            : this((XBMCRPC.Video.Details.File)movie, appContext)
+        public MovieVm(KODIRPC.Video.Details.Movie movie, IAppContext appContext)
+            : this((KODIRPC.Video.Details.File)movie, appContext)
         {
             _movie = movie;
             SecondLabel = movie.tagline;
@@ -48,7 +48,7 @@ namespace Xbmc2S.Model
 
         async void ToWatchlistExecute()
         {
-            //var mv = await _appContext.XBMC.VideoLibrary.GetMovieDetails(_movie.movieid, new XBMCRPC.Video.Fields.Movie(){ XBMCRPC.Video.Fields.MovieItem.genre});
+            //var mv = await _appContext.XBMC.VideoLibrary.GetMovieDetails(_movie.movieid, new KODIRPC.Video.Fields.Movie(){ KODIRPC.Video.Fields.MovieItem.genre});
             var tags = _movie.tag.ToList();
             if (!tags.Contains(WatchlistKey))
             {
@@ -89,7 +89,7 @@ namespace Xbmc2S.Model
             
         }
 
-        private MovieVm(XBMCRPC.Video.Details.File movie, IAppContext appContext) : base(movie, appContext)
+        private MovieVm(KODIRPC.Video.Details.File movie, IAppContext appContext) : base(movie, appContext)
         {
             _appContext = appContext;
             Label = movie.title;

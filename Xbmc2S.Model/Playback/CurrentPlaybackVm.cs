@@ -7,13 +7,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Okra.Core;
-using XBMCRPC.List.Fields;
-using XBMCRPC.List.Item;
+using KODIRPC.List.Fields;
+using KODIRPC.List.Item;
 using Xbmc2S.RT.UPnP;
-using XBMCRPC.Methods;
-using XBMCRPC.Player;
-using All = XBMCRPC.List.Fields.All;
-using Base = XBMCRPC.Media.Details.Base;
+using KODIRPC.Methods;
+using KODIRPC.Player;
+using All = KODIRPC.List.Fields.All;
+using Base = KODIRPC.Media.Details.Base;
 
 namespace Xbmc2S.Model
 {
@@ -87,7 +87,7 @@ namespace Xbmc2S.Model
         {
         }
 
-        PlayingXbmcItemVm CurrentItemFactory(XBMCRPC.List.Item.All currentItem, int playerid)
+        PlayingXbmcItemVm CurrentItemFactory(KODIRPC.List.Item.All currentItem, int playerid)
         {
             if (currentItem.type == Base_type.song)
             {
@@ -240,7 +240,7 @@ namespace Xbmc2S.Model
             private set { _playList = value; OnPropertyChanged(); }
         }
 
-        private PlaylistItemVm PlaylistItemFactory(XBMCRPC.List.Item.All arg, int pos, int player)
+        private PlaylistItemVm PlaylistItemFactory(KODIRPC.List.Item.All arg, int pos, int player)
         {
             return new PlaylistItemVm( arg, _appContext, pos, player);
         }
@@ -276,7 +276,7 @@ namespace Xbmc2S.Model
         private readonly int _pos;
         private readonly int _player;
 
-        public PlaylistItemVm(XBMCRPC.List.Item.All all, AppContext appContext, int pos, int player)
+        public PlaylistItemVm(KODIRPC.List.Item.All all, AppContext appContext, int pos, int player)
         {
             _appContext = appContext;
             _pos = pos;

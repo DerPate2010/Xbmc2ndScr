@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Okra.Data;
-using XBMCRPC.AudioLibrary;
-using XBMCRPC.List;
-using XBMCRPC.Methods;
+using KODIRPC.AudioLibrary;
+using KODIRPC.List;
+using KODIRPC.Methods;
 
 namespace Xbmc2S.Model
 {
@@ -71,9 +71,9 @@ namespace Xbmc2S.Model
 
         async protected override Task<DataListPageResult<AlbumVm>> FetchPageAsync(int pageNumber)
         {
-            var mvs = await _server.XBMC.AudioLibrary.GetAlbums(new GetAlbums_filterArtistid() { artistid = _artistId }, XBMCRPC.Audio.Fields.Album.AllFields(),
-                                                                 new Limits() { start = (pageNumber - 1) * PageSize, end = (pageNumber - 1) * PageSize + PageSize },
-                                                                 new Sort()
+            var mvs = await _server.XBMC.AudioLibrary.GetAlbums(filter:new GetAlbums_filterArtistid() { artistid = _artistId }, properties: KODIRPC.Audio.Fields.Album.AllFields(),
+                                                                limits: new Limits() { start = (pageNumber - 1) * PageSize, end = (pageNumber - 1) * PageSize + PageSize },
+                                                                sort: new Sort()
                                                                      {
                                                                          method = Sort_method.title,
                                                                          ignorearticle = true,
@@ -83,7 +83,7 @@ namespace Xbmc2S.Model
             return new DataListPageResult<AlbumVm>(mvs.limits.total, PageSize, pageNumber, list);
         }
 
-        private AlbumVm ItemFactory(XBMCRPC.Audio.Details.Album arg)
+        private AlbumVm ItemFactory(KODIRPC.Audio.Details.Album arg)
         {
             return new AlbumVm(arg, _server);
         }

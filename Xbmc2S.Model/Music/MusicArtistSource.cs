@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Okra.Data;
-using XBMCRPC.List;
+using KODIRPC.List;
 
 namespace Xbmc2S.Model
 {
@@ -67,7 +67,7 @@ namespace Xbmc2S.Model
 
         async protected override Task<DataListPageResult<ArtistVm>> FetchPageAsync(int pageNumber)
         {
-            var mvs = await _server.XBMC.AudioLibrary.GetArtists(true, XBMCRPC.Audio.Fields.Artist.AllFields(),
+            var mvs = await _server.XBMC.AudioLibrary.GetArtists(true, KODIRPC.Audio.Fields.Artist.AllFields(),
                                                                  new Limits() { start = (pageNumber - 1) * PageSize, end = (pageNumber - 1) * PageSize + PageSize },
                                                                  new Sort()
                                                                      {
@@ -79,7 +79,7 @@ namespace Xbmc2S.Model
             return new DataListPageResult<ArtistVm>(mvs.limits.total, PageSize, pageNumber, list);
         }
 
-        private ArtistVm ItemFactory(XBMCRPC.Audio.Details.Artist arg)
+        private ArtistVm ItemFactory(KODIRPC.Audio.Details.Artist arg)
         {
             return new ArtistVm(arg, _server);
         }

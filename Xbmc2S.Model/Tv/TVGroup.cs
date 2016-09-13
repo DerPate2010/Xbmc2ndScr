@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using XBMCRPC.List;
-using XBMCRPC.Video.Fields;
+using KODIRPC.List;
+using KODIRPC.Video.Fields;
 
 namespace Xbmc2S.Model
 {
@@ -26,7 +26,7 @@ namespace Xbmc2S.Model
             }
         }
 
-        private TVShowVm MovieFactory(XBMCRPC.Video.Details.TVShow arg)
+        private TVShowVm MovieFactory(KODIRPC.Video.Details.TVShow arg)
         {
             return new TVShowVm(arg, _server);
         }

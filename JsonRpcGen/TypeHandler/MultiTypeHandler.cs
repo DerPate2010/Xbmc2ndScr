@@ -6,12 +6,12 @@ using Newtonsoft.Json.Linq;
 
 namespace JsonRpcGen.TypeHandler
 {
-    internal class MultiTypeHandler :TypeHandler
+    internal class MultiTypeHandler : TypeHandler
     {
         private readonly JToken _types;
         public List<TypeReference> TypeHandlers { get; private set; }
 
-        
+
 
         public MultiTypeHandler(JToken types, string fullname) : base(fullname)
         {
@@ -21,7 +21,7 @@ namespace JsonRpcGen.TypeHandler
             _types = types;
 
             int counter = 1;
-            TypeHandlers= new List<TypeReference>();
+            TypeHandlers = new List<TypeReference>();
             foreach (var type in _types)
             {
                 var refType = type["$ref"];
@@ -37,7 +37,7 @@ namespace JsonRpcGen.TypeHandler
                     string postfix;
                     if (p != null && p.Count() == 1)
                     {
-                        postfix = ((JProperty) p.First).Name;
+                        postfix = ((JProperty)p.First).Name;
                         postfix = Global.MakeFirstUpper(postfix);
                     }
                     else
@@ -61,6 +61,7 @@ namespace JsonRpcGen.TypeHandler
             //writer.WriteLine("    }");
             return;
 
+#if NOTINUSEANYMORE
             bool handleBaseAsInterface = false;
 
             foreach (var type in _types)
@@ -93,7 +94,7 @@ namespace JsonRpcGen.TypeHandler
             writer.WriteLine(" " + Name);
             writer.WriteLine("   {");
             writer.WriteLine("   }");
-            
+#endif
         }
     }
 }

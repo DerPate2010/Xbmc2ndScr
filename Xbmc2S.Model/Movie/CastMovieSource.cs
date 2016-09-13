@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
 using TmdbWrapper;
-using XBMCRPC.List;
-using XBMCRPC.List.Filter;
-using XBMCRPC.Methods;
-using XBMCRPC.Video.Fields;
-using XBMCRPC.VideoLibrary;
-using Movies = XBMCRPC.List.Filter.Fields.Movies;
+using KODIRPC.List;
+using KODIRPC.List.Filter;
+using KODIRPC.Methods;
+using KODIRPC.Video.Fields;
+using KODIRPC.VideoLibrary;
+using Movies = KODIRPC.List.Filter.Fields.Movies;
 
 namespace Xbmc2S.Model
 {
@@ -36,7 +36,7 @@ namespace Xbmc2S.Model
 
         protected override async Task<GetMoviesResponse> GetMovies(Movie fields, Limits limits, Sort sort)
         {
-            var mvs = await _appContext.XBMC.VideoLibrary.GetMovies(new Rule.Movies(){field = Movies.actor, Operator = Operators.contains, value = _query }, fields, limits, sort);
+            var mvs = await _appContext.XBMC.VideoLibrary.GetMovies(filter:new Rule.Movies(){field = Movies.actor, Operator = Operators.contains, value = _query }, properties:fields, limits:limits, sort:sort);
             return mvs;
         }
 

@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using XBMCRPC.Audio.Details;
+using KODIRPC.Audio.Details;
 
 namespace Xbmc2S.Model
 {

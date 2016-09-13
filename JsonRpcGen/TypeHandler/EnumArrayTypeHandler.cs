@@ -27,7 +27,9 @@ namespace JsonRpcGen.TypeHandler
                     writer.WriteLine("       [global::System.Runtime.Serialization.EnumMember(Value=\"" + name + "\")]");
                     name = Global.MakeFirstUpper(name);
                 }
-                writer.WriteLine("       " + name + ",");
+
+                // MAM: stupid KODI Name "Visualization-library" illegal for Enum, so we change "-" to "_"
+                writer.WriteLine("       " + Global.ChangeDotsAndDashesToUnderscores(name) + ",");
 
             }
             writer.WriteLine("   }");

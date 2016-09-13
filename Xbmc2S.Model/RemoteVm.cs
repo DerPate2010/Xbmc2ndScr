@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Okra.Core;
-using XBMCRPC.Application;
-using XBMCRPC.Application.Property;
-using XBMCRPC.Global;
+using KODIRPC.Application;
+using KODIRPC.Application.Property;
+using KODIRPC.Global;
 
 namespace Xbmc2S.Model
 {

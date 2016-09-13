@@ -130,6 +130,10 @@
     <Compile Include="XbmcServer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\KODI.Portable\KODI.Portable.csproj">
+      <Project>{7945e1be-c5b8-4a19-ae1a-4e4696080396}</Project>
+      <Name>KODI.Portable</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Okra.Core\Okra.Portable.csproj">
       <Project>{ebecf832-39f6-488a-a306-f8341e915003}</Project>
       <Name>Okra.Portable</Name>
@@ -145,10 +149,6 @@
     <ProjectReference Include="..\Xbmc2S.Upnp\Xbmc2S.Upnp.csproj">
       <Project>{c505a2f9-d11d-48c8-964d-a8512ae7cb4e}</Project>
       <Name>Xbmc2S.Upnp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XBMCRPC13.Portable\XBMCRPC13.Portable.csproj">
-      <Project>{52eb0a62-3be8-4886-852b-ab5a68309360}</Project>
-      <Name>XBMCRPC13.Portable</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

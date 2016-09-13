@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using XBMCRPC.List;
-using XBMCRPC.List.Filter;
-using XBMCRPC.Methods;
-using XBMCRPC.Video.Fields;
-using XBMCRPC.VideoLibrary;
-using Movies = XBMCRPC.List.Filter.Fields.Movies;
+using KODIRPC.List;
+using KODIRPC.List.Filter;
+using KODIRPC.Methods;
+using KODIRPC.Video.Fields;
+using KODIRPC.VideoLibrary;
+using Movies = KODIRPC.List.Filter.Fields.Movies;
 
 namespace Xbmc2S.Model
 {
@@ -32,7 +32,7 @@ namespace Xbmc2S.Model
 
         protected override async Task<GetMoviesResponse> GetMovies(Movie fields, Limits limits, Sort sort)
         {
-            var mvs = await _appContext.XBMC.VideoLibrary.GetMovies(new Rule.Movies() { field = Movies.title, Operator = Operators.contains, value = _query }, fields, limits, sort);
+            var mvs = await _appContext.XBMC.VideoLibrary.GetMovies(filter:new Rule.Movies() { field = Movies.title, Operator = Operators.contains, value = _query }, properties:fields, limits:limits, sort:sort);
             return mvs;
         }
     }   
@@ -70,13 +70,13 @@ namespace Xbmc2S.Model
 
         private static async Task<GetMoviesResponse> GetResult(AppContext appContext, Movie fields, Limits limits, Sort sort, string query)
         {
-            return await appContext.XBMC.VideoLibrary.GetMovies(new MoviesOr(){ or = new List<object>() 
+            return await appContext.XBMC.VideoLibrary.GetMovies(filter:new MoviesOr(){ or = new List<object>() 
                 {
                     new Rule.Movies () { field = Movies.title, Operator = Operators.contains, value = query }, 
                     new Rule.Movies() { field = Movies.plot, Operator = Operators.contains, value = query }, 
                     new Rule.Movies() { field = Movies.plotoutline, Operator = Operators.contains, value = query }, 
                     new Rule.Movies() { field = Movies.tagline, Operator = Operators.contains, value = query }, 
-                }},fields, limits, sort);
+                }},properties:fields, limits:limits, sort:sort);
         }
     }
 
@@ -125,12 +125,12 @@ namespace Xbmc2S.Model
         {
             //if (_genreId == 0)
             //{
-            //    var g = await _appContext.XBMC.VideoLibrary.GetGenres(properties: XBMCRPC.Library.Fields.Genre.AllFields());
+            //    var g = await _appContext.XBMC.VideoLibrary.GetGenres(properties: KODIRPC.Library.Fields.Genre.AllFields());
             //    var gw = g.genres.FirstOrDefault(g2 => g2.title == _query);
             //    _genreId = gw.genreid;
             //}
 
-            var mvs = await _appContext.XBMC.VideoLibrary.GetMovies(new GetMovies_filterGenre(){genre = _query},fields, limits, sort);
+            var mvs = await _appContext.XBMC.VideoLibrary.GetMovies(filter:new GetMovies_filterGenre(){genre = _query},properties:fields, limits:limits, sort:sort);
             return mvs;
         }
     }
@@ -158,7 +158,7 @@ namespace Xbmc2S.Model
         protected override async Task<GetMoviesResponse> GetMovies(Movie fields, Limits limits, Sort sort)
         {
 
-            var mvs = await _appContext.XBMC.VideoLibrary.GetMovies(new GetMovies_filterTag(){tag = _query},fields, limits, sort);
+            var mvs = await _appContext.XBMC.VideoLibrary.GetMovies(filter:new GetMovies_filterTag(){tag = _query},properties:fields, limits:limits, sort:sort);
             return mvs;
         }
     }

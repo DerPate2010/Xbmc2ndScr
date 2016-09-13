@@ -1,5 +1,5 @@
 ﻿using System;
-using XBMCRPC.Video.Details;
+using KODIRPC.Video.Details;
 
 namespace Xbmc2S.Model
 {
@@ -38,7 +38,7 @@ namespace Xbmc2S.Model
             _image = _appContext.ImageManager.GetBlankImage();
         }
 
-        public VideoImages(IAppContext appContext, XBMCRPC.Media.Details.Base baseDetails)
+        public VideoImages(IAppContext appContext, KODIRPC.Media.Details.Base baseDetails)
         {
             _appContext = appContext;
             _imagePath = baseDetails.thumbnail;
@@ -123,7 +123,7 @@ namespace Xbmc2S.Model
             Banner = obj;
         }
 
-        public void SetImages(XBMCRPC.Media.Details.Base baseDetails)
+        public void SetImages(KODIRPC.Media.Details.Base baseDetails)
         {
             _imageLoaded = false;
             _fanArt = null;

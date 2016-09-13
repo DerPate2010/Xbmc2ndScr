@@ -68,7 +68,6 @@ namespace JsonRpcGen
             }
         }
 
-
         public static string MakeFirstUpper(string name)
         {
             var chars = name.ToCharArray();
@@ -77,6 +76,28 @@ namespace JsonRpcGen
             return name;
         }
 
+        // MAM: we need to change some Names used for Enums to "sane" Values.
+        // usually, the program already changed "." to "_" somewhere, but alas, I broke it somehow :-(
+        // but we also need to change "-" to "_" from Kodi 16 on ("Visualizaton-Library"), so we do it both
+        // at the same time now in this function :-)
+        //
+        public static string ChangeDotsAndDashesToUnderscores(string name)
+        {
+            string x = "";
+            int i;
+            for (i = 0; i < name.Count(); i++)
+            {
+                if (name[i] == '.' || name[i] == '-')
+                {
+                    x = x + '_';
+                }
+                else
+                {
+                    x = x + name[i];
+                }
+            }
+            return x;
+        }
 
         public static bool IsReservedName(string name)
         {
